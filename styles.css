@@ -1,15 +1,18 @@
-/* All styles from the <style> tags go here */
-.header {
-    background-color: #000;
-    color: #fff;
-    padding: 0.75rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    shadow-md;
-    position: sticky;
-    top: 0;
-    z-10;
+/* Base styles */
+body {
+    font-family: 'Inter', sans-serif;
 }
 
-/* Add other styles here, as is */
+.section {
+    padding: 4rem 0;
+}
+
+.service-card {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add other common styles here */
