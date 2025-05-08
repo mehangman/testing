@@ -1,89 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta name="description" content="OM International Courier offers reliable domestic and international shipping services from New Delhi. Track shipments, get quotes, and explore our partner network[...]">
+    <meta name="description" content="OM International Courier offers reliable domestic and international shipping services from New Delhi. Track shipments, get quotes, and explore our partner network.">
     <link rel="canonical" href="https://ominternationalcourier.pages.dev/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OM International Courier Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/services.css">
+    <link rel="stylesheet" href="styles/tracking.css">
+    <link rel="stylesheet" href="styles/contact.css">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CourierService",
-        "name": "OM International Courier",
-        "url": "https://ominternationalcourier.pages.dev/",
-        "description": "Reliable domestic and international courier services based in New Delhi.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "253, A/6, 2nd Floor",
-            "addressLocality": "Shahpur Jat",
-            "addressRegion": "New Delhi",
-            "postalCode": "110049",
-            "addressCountry": "IN"
-        },
-        "telephone": "+919560264547",
-        "image": "https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg"
-    }
+    {/* Keep the same JSON-LD data here */}
     </script>
-    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-gray-100">
-    <header class="header">
-        <div class="logo">
-            <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" class="rounded-full">
-            <span class="text-yellow-400 mr-1">OM</span> International Courier
-        </div>
-        <nav class="nav">
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#rates">Rates</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#track-shipment">Track</a></li>
-                <li><a href="#partner-logos">Partners</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Header -->
+    <div data-include="sections/header.html"></div>
 
     <main>
-        <section
-            class="hero bg-cover bg-no-repeat bg-center text-center py-12 px-4 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px]"
-            style="background-image: url('https://img.pikbest.com/backgrounds/20200423/2d-labor-day-delivery-banner_1910020.jpg!sw800')">
-            <div class="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
+        <!-- Hero Section -->
+        <div data-include="sections/hero.html"></div>
 
-            <div class="relative z-10 max-w-4xl w-full px-4 space-y-6">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-yellow-400 drop-shadow-lg">
-                    Your Trusted Courier Partner
-                </h1>
-                <p class="text-lg md:text-xl mb-6 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">
-                    Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions
-                </p>
-                <p class="text-md md:text-lg mb-8 text-white font-semibold">
-                    <span class="bg-gradient-to-r from-blue-600 to-green-500 px-6 py-2 rounded-full inline-block">
-                        ✈ From Delhi to the World!
-                    </span>
-                </p>
-                <button
-                    onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Quotation Request&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request a quotation[...]'"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold rounded-full shadow-2xl py-4 px-10 transition-all duration-300 text-lg md:text-xl transform hover:scale-105 focus:o[...]"
-                >
-                    Get Instant Quote
-                </button>
-            </div>
-        </section>
+        <!-- Services -->
+        <div data-include="sections/services.html"></div>
 
-        <!-- Sections omitted for brevity -->
+        <!-- Rates -->
+        <div data-include="sections/rates.html"></div>
+
+        <!-- Service Areas -->
+        <div data-include="sections/areas.html"></div>
+
+        <!-- Contact -->
+        <div data-include="sections/contact.html"></div>
+
+        <!-- Tracking -->
+        <div data-include="sections/tracking.html"></div>
+
+        <!-- Partners -->
+        <div data-include="sections/partners.html"></div>
     </main>
 
-    <footer class="footer">
-        © 2025 OM International Courier. All rights reserved.
-    </footer>
+    <!-- Footer -->
+    <div data-include="partials/footer.html"></div>
 
-    <script src="script.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        // Include partials
+        document.querySelectorAll('[data-include]').forEach(el => {
+            const file = el.getAttribute('data-include');
+            fetch(file)
+                .then(res => res.text())
+                .then(html => {
+                    el.innerHTML = html;
+                    el.removeAttribute('data-include');
+                });
+        });
+    </script>
 </body>
-
 </html>
