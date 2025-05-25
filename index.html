@@ -37,11 +37,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Tailwind classes for shadow, sticky, top, z-index are applied directly in the HTML for better maintainability */
-        }
-
-        .logo {
-            /* Tailwind classes used directly */
         }
 
         .logo img {
@@ -49,10 +44,6 @@
             border-radius: 50%;
             height: 30px;
             width: 30px;
-        }
-
-        .nav {
-            /* Tailwind classes used directly */
         }
 
         .nav ul {
@@ -76,291 +67,150 @@
             color: #FACC15; /* text-yellow-400 */
         }
 
-        /* Fix for header overlap */
         .hero {
             position: relative;
-            z-index: 0; /* Ensure hero is behind sticky header */
+            z-index: 0; 
         }
     
-        header.sticky { /* Ensure sticky header has higher z-index */
+        header.sticky { 
             position: sticky;
             top: 0;
-            z-index: 50; /* Higher z-index for header */
+            z-index: 50; 
         }
 
-        /* Media query for small screens */
         @media (max-width: 768px) {
-            .nav {
-                display: none;
-            }
-
-            .header {
-                justify-content: center;
-            }
-
-            .logo {
-                margin-left: auto;
-                margin-right: auto;
-            }
+            .nav { display: none; }
+            .header { justify-content: center; }
+            .logo { margin-left: auto; margin-right: auto; }
         }
 
-        /* Media query for larger screens */
         @media (min-width: 769px) {
-            .nav {
-                display: block !important; /* Ensure nav is shown on larger screens */
-            }
+            .nav { display: block !important; }
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .section { padding: 4rem 0; }
 
-        .section {
-            padding: 4rem 0;
-        }
-
-        .delhi-focus {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #e65100;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-img {
-            height: 40px;
+        .logo-img { /* Base style for partner logos, specific background colors in HTML */
+            height: 48px; /* h-12 */
             object-fit: contain;
-            margin: 0 0.5rem;
-        }
-
-        #partner-logos {
-            background-color: #708090; /* slate-500 or similar */
-        }
-
-        .white-logo {
-            background-color: white;
             padding: 0.3rem;
             border-radius: 0.25rem;
         }
+        
+        /* Specific background colors for logos, if not handled by Tailwind classes like white-logo etc. */
+        .white-logo-bg { background-color: white; }
+        .gold-logo-bg { background-color: #ffcc00; }
+        .black-logo-bg { background-color: black; }
+        .purple-logo-bg { background-color: purple; }
 
-        .gold-logo {
-            background-color: #ffcc00; /* Consider Tailwind yellow-400 or similar */
-            padding: 0.3rem;
-            border-radius: 0.25rem;
-        }
-
-        .black-logo {
-            background-color: black;
-            padding: 0.3rem;
-            border-radius: 0.25rem;
-        }
-
-        .purple-logo {
-            background-color: purple; /* Consider Tailwind purple-600 or similar */
-            padding: 0.3rem;
-            border-radius: 0.25rem;
-        }
 
         .tracking-section {
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 4rem 0; text-align: center; position: relative; overflow: hidden;
+            min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-        
         .tracking-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); z-index: 1;
         }
-        
-        .tracking-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 1rem;
-        }
-        
-        .tracking-section h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .tracking-section p {
-            font-size: 1.25rem;
-            color: #e5e7eb; /* Tailwind gray-200 */
-            margin-bottom: 2rem;
-        }
-        
+        .tracking-content { position: relative; z-index: 2; max-width: 800px; padding: 0 1rem; }
+        .tracking-section h2 { font-size: 2.5rem; color: white; margin-bottom: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .tracking-section p { font-size: 1.25rem; color: #e5e7eb; margin-bottom: 2rem; }
         .tracking-form {
-            display: flex;
-            gap: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.65);
-            border-radius: 0.75rem;
-            padding: 1rem;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            margin: 0 auto;
+            display: flex; gap: 0.5rem; background-color: rgba(255, 255, 255, 0.65);
+            border-radius: 0.75rem; padding: 1rem; width: 90%; max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); margin: 0 auto;
         }
-        
         .tracking-form select {
-            flex: 1;
-            padding: 0.75rem;
-            border: 2px solid #f59e0b; /* Tailwind amber-500 */
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            background-color: white;
-            appearance: none; /* For custom arrow if desired */
+            flex: 1; padding: 0.75rem; border: 2px solid #f59e0b; border-radius: 0.5rem;
+            font-size: 1rem; background-color: white; appearance: none;
         }
-        
         .tracking-form button {
-            padding: 0.75rem 1.5rem;
-            background-color: #f59e0b; /* Tailwind amber-500 */
-            color: black;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem; background-color: #f59e0b; color: black; border: none;
+            border-radius: 0.5rem; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
         }
-        
-        .tracking-form button:hover {
-            background-color: #d97706; /* Tailwind amber-600 */
-            transform: translateY(-1px);
-        }
+        .tracking-form button:hover { background-color: #d97706; transform: translateY(-1px); }
         
         @media (max-width: 640px) {
-            .tracking-form {
-                flex-direction: column;
-            }
-            
-            .tracking-form select {
-                border-radius: 0.5rem;
-                /* border-right: 2px solid #f59e0b; */ /* Not needed for column layout */
-            }
-            
-            .tracking-form button {
-                border-radius: 0.5rem;
-            }
-        }
-
-        .partner-options {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-            gap: 0.5rem;
-        }
-
-        .partner-options img {
-            height: 40px;
-            object-fit: contain;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            border-radius: 0.25rem;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            padding: 0.3rem;
-            background-color: white;
-        }
-
-        .partner-options img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            .tracking-form { flex-direction: column; }
+            .tracking-form select, .tracking-form button { border-radius: 0.5rem; }
         }
 
         .service-card {
-            background-color: #ffffff;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tailwind shadow-md */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff; border-radius: 0.5rem; padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .service-card:hover {
-            transform: translateY(-0.25rem);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Tailwind shadow-lg */
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: bold; /* font-bold */
-            margin-bottom: 0.75rem; /* mb-3 */
-            color: #1e293b; /* text-slate-800 */
-        }
-
-        .service-card p {
-            font-size: 1rem; /* text-base */
-            color: #4b5563; /* text-slate-600 */
-            line-height: 1.5; /* leading-relaxed */
-        }
-
+        .service-card:hover { transform: translateY(-0.25rem); box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+        .service-card h3 { font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem; color: #1e293b; }
+        .service-card p { font-size: 1rem; color: #4b5563; line-height: 1.5; }
         .service-icon {
-            width: 3rem; /* w-12 */
-            height: 3rem; /* h-12 */
-            margin-bottom: 1rem; /* mb-4 */
-            border-radius: 50%; /* rounded-full */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f0f4f8; /* bg-slate-100 or similar */
-            color: #6b7280; /* text-slate-500 */
+            width: 3rem; height: 3rem; margin-bottom: 1rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background-color: #f0f4f8; color: #6b7280;
         }
+        .service-icon img { max-width: 80%; max-height: 80%; }
 
-        .service-icon img {
-            max-width: 80%;
-            max-height: 80%;
-        }
+        footer { background-color: #000; color: #fff; padding: 1rem; text-align: center; }
 
-        footer {
-            background-color: #000;
-            color: #fff;
-            padding: 1rem; /* p-4 */
-            text-align: center;
-        }
-
-        /* Header Spacing Fix & Contact Section Styling */
         #rates, #contact, #track-shipment, #partner-logos, #services, #area {
-            padding-top: 6rem; /* pt-24 */
-            scroll-margin-top: 5rem; /* Adjust based on actual sticky header height */
+            padding-top: 6rem; scroll-margin-top: 5rem; 
         }
+        header.sticky { z-index: 1000 !important; }
         
-        header.sticky { /* Ensure sticky header has higher z-index */
-            z-index: 1000 !important; /* Increased z-index */
-        }
-        
-        /* Responsive Adjustments for section padding */
         @media (max-width: 768px) {
             #rates, #contact, #track-shipment, #partner-logos, #services, #area {
-                padding-top: 4rem; /* pt-16 */
-                scroll-margin-top: 4rem; /* Adjust for smaller screens if header height changes */
+                padding-top: 4rem; scroll-margin-top: 4rem;
             }
-            
-            /* Ensure button text is not too large on small screens */
-            button, .button { /* Added .button class for broader application if needed */
-                padding: 0.75rem 1.5rem; /* p-3 px-6 */
-                font-size: 1rem; /* text-base */
-            }
-            .contact-method {
-                font-size: 0.95rem;
-            }
+            button, .button { padding: 0.75rem 1.5rem; font-size: 1rem; }
+            .contact-method { font-size: 0.95rem; }
+        }
+        a { transition: color 0.3s ease; }
+
+        /* Styles for Partner Logo Slider */
+        #partner-logos {
+            overflow-x: hidden; /* Important: Hides the parts of the track that are outside the viewport */
+            background-color: #334155; /* bg-slate-700 */
+            padding-top: 3rem; /* Reduced padding as header is removed */
+            padding-bottom: 3rem;
+        }
+
+        .logos-track-container {
+            width: 100%;
+            display: flex; /* Use flex to make the track move */
+        }
+
+        .logos-track {
+            display: flex; /* Contains the logos */
+            align-items: center;
+            animation: continuous-slide 30s linear infinite; /* Adjust duration for speed */
+            will-change: transform; /* Hint for browser optimization */
+        }
+
+        .logos-track img {
+            height: 48px; /* h-12 */
+            flex-shrink: 0; /* Prevent logos from shrinking */
+            margin: 0 1rem; /* mx-4 equivalent for spacing between logos */
+            /* Removed individual background color classes like white-logo, gold-logo from here if they were for padding */
+            /* The .logo-img class will handle common styling like padding if needed */
+            object-fit: contain;
         }
         
-        /* Hover transitions for links */
-        a {
-            transition: color 0.3s ease;
+        /* Add specific background for logos if they are transparent and need it */
+        .dt_dc_logo_bg { background-color: white; padding: 0.3rem; border-radius: 0.25rem; }
+        .tpc_logo_bg { background-color: white; padding: 0.3rem; border-radius: 0.25rem; }
+        .bluedart_logo_bg { background-color: #ffcc00; padding: 0.3rem; border-radius: 0.25rem; }
+        .delhivery_logo_bg { background-color: black; padding: 0.3rem; border-radius: 0.25rem; }
+        .fedex_logo_bg { background-color: purple; padding: 0.3rem; border-radius: 0.25rem; }
+        .aramex_logo_bg { background-color: white; padding: 0.3rem; border-radius: 0.25rem; }
+
+
+        @keyframes continuous-slide {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%); /* Slides one full set of logos (assuming duplicated content) */
+            }
         }
     </style>
 </head>
@@ -407,59 +257,49 @@
         </section>
 
         <section id="services" class="section bg-gray-100 py-12 px-4 text-center rounded-md">
-            <h2 class="text-3xl font-bold mb-10 text-blue-700">Our Comprehensive Services</h2> <div class="service-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"> <div class="service-card">
+            <h2 class="text-3xl font-bold mb-10 text-blue-700">Our Comprehensive Services</h2>
+            <div class="service-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="service-card">
                     <div class="service-icon">
                         <img src="https://placehold.co/40x40/F0F4F8/6B7280?text=🚚" alt="Domestic Delivery Icon" onerror="this.src='https://placehold.co/40x40/F0F4F8/6B7280?text=Icon'">
                     </div>
                     <h3>Domestic Courier Services</h3>
-                    <p>
-                        Fast and reliable delivery across India. Handling parcels of all categories with efficiency.
-                    </p>
+                    <p>Fast and reliable delivery across India. Handling parcels of all categories with efficiency.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://placehold.co/40x40/F0F4F8/6B7280?text=✈️" alt="International Delivery Icon" onerror="this.src='https://placehold.co/40x40/F0F4F8/6B7280?text=Icon'">
                     </div>
                     <h3>International Courier Services</h3>
-                    <p>
-                        Expedited and reliable international courier options for global reach.
-                    </p>
+                    <p>Expedited and reliable international courier options for global reach.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://placehold.co/40x40/F0F4F8/6B7280?text=📍" alt="Tracking Icon" onerror="this.src='https://placehold.co/40x40/F0F4F8/6B7280?text=Icon'">
                     </div>
                     <h3>State-of-the-Art Tracking</h3>
-                    <p>
-                        Real-time tracking facility for all consignments to maintain transparency.
-                    </p>
+                    <p>Real-time tracking facility for all consignments to maintain transparency.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://placehold.co/40x40/F0F4F8/6B7280?text=🌐" alt="Network Icon" onerror="this.src='https://placehold.co/40x40/F0F4F8/6B7280?text=Icon'">
                     </div>
                     <h3>Extensive Network</h3>
-                    <p>
-                        Strong collaboration with franchises to maximize service coverage.
-                    </p>
+                    <p>Strong collaboration with franchises to maximize service coverage.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://placehold.co/40x40/F0F4F8/6B7280?text=⚙️" alt="Custom Solutions Icon" onerror="this.src='https://placehold.co/40x40/F0F4F8/6B7280?text=Icon'">
                     </div>
                     <h3>Customized Solutions</h3>
-                    <p>
-                        Tailored offerings to cater to individual or business needs.
-                    </p>
+                    <p>Tailored offerings to cater to individual or business needs.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://placehold.co/40x40/F0F4F8/6B7280?text=🤝" alt="Franchise Adaptability Icon" onerror="this.src='https://placehold.co/40x40/F0F4F8/6B7280?text=Icon'">
                     </div>
                     <h3>Adaptability to Franchises</h3>
-                    <p>
-                        Efficiently work in tandem with other franchises.
-                    </p>
+                    <p>Efficiently work in tandem with other franchises.</p>
                 </div>
             </div>
         </section>
@@ -468,9 +308,7 @@
             <div class="absolute inset-0 bg-[url('https://previews.123rf.com/images/gmast3r/gmast3r1604/gmast3r160400443/55343577-truck-lorry-car-on-road-cargo-shipping-delivery-banner-flat-vector-illustration.jpg')] bg-cover bg-center"></div>
             <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-yellow-400 drop-shadow-md">
-                    Competitive Shipping Rates
-                </h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-yellow-400 drop-shadow-md">Competitive Shipping Rates</h2>
                 <div class="space-y-6 px-4">
                     <p class="text-lg md:text-xl text-gray-100 leading-relaxed max-w-3xl mx-auto">
                         For immediate rate confirmation on finalized shipments, submit your particulars using our structured template by clicking the button below.
@@ -492,116 +330,92 @@
         </section>
         
         <section id="area" class="section bg-gray-100 py-12 px-4 text-center rounded-md">
-            <h2 class="text-3xl font-bold mb-10 text-blue-700">Our Service Areas</h2> <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto"> We operate primarily from New Delhi, with a strong network to serve a wide range of domestic and international locations.
-            </p>
-            <div class="flex flex-wrap justify-center gap-6 mt-6"> <div class="bg-white rounded-lg shadow-lg p-6 text-center w-60 hover:shadow-xl transition-shadow duration-300"> <h3 class="font-semibold text-xl text-blue-600 mb-3">North India</h3> <ul class="list-disc list-inside text-gray-700 text-left space-y-1"> <li>Delhi & NCR</li>
-                        <li>Haryana</li>
-                        <li>Punjab</li>
-                        <li>Uttar Pradesh</li>
-                        <li>Rajasthan</li>
-                        <li>Himachal Pradesh</li>
-                        <li>Jammu & Kashmir</li>
+            <h2 class="text-3xl font-bold mb-10 text-blue-700">Our Service Areas</h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">We operate primarily from New Delhi, with a strong network to serve a wide range of domestic and international locations.</p>
+            <div class="flex flex-wrap justify-center gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center w-60 hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="font-semibold text-xl text-blue-600 mb-3">North India</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-left space-y-1">
+                        <li>Delhi & NCR</li><li>Haryana</li><li>Punjab</li><li>Uttar Pradesh</li><li>Rajasthan</li><li>Himachal Pradesh</li><li>Jammu & Kashmir</li>
                     </ul>
                 </div>
-                 <div class="bg-white rounded-lg shadow-lg p-6 text-center w-60 hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center w-60 hover:shadow-xl transition-shadow duration-300">
                     <h3 class="font-semibold text-xl text-blue-600 mb-3">East India</h3>
                     <ul class="list-disc list-inside text-gray-700 text-left space-y-1">
-                        <li>Bihar</li>
-                        <li>Jharkhand</li>
-                        <li>West Bengal</li>
-                        <li>Odisha</li>
-                        <li>North East States</li>
+                        <li>Bihar</li><li>Jharkhand</li><li>West Bengal</li><li>Odisha</li><li>North East States</li>
                     </ul>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg p-6 text-center w-60 hover:shadow-xl transition-shadow duration-300">
                     <h3 class="font-semibold text-xl text-blue-600 mb-3">West India</h3>
                     <ul class="list-disc list-inside text-gray-700 text-left space-y-1">
-                        <li>Maharashtra</li>
-                        <li>Gujarat</li>
-                        <li>Madhya Pradesh</li>
-                        <li>Goa</li>
+                        <li>Maharashtra</li><li>Gujarat</li><li>Madhya Pradesh</li><li>Goa</li>
                     </ul>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg p-6 text-center w-60 hover:shadow-xl transition-shadow duration-300">
                     <h3 class="font-semibold text-xl text-blue-600 mb-3">South India</h3>
                     <ul class="list-disc list-inside text-gray-700 text-left space-y-1">
-                        <li>Karnataka</li>
-                        <li>Tamil Nadu</li>
-                        <li>Andhra Pradesh</li>
-                        <li>Telangana</li>
-                        <li>Kerala</li>
+                        <li>Karnataka</li><li>Tamil Nadu</li><li>Andhra Pradesh</li><li>Telangana</li><li>Kerala</li>
                     </ul>
                 </div>
             </div>
-            <p class="mt-10 text-gray-600 text-lg"> For international shipments and specific service areas, please <a href="#contact"
-                    class="text-blue-500 hover:text-blue-700 font-semibold no-underline" onclick="smoothScrollTo('contact')">contact us</a> for detailed service
-                availability and arrangements.
-            </p>
+            <p class="mt-10 text-gray-600 text-lg">For international shipments and specific service areas, please <a href="#contact" class="text-blue-500 hover:text-blue-700 font-semibold no-underline" onclick="smoothScrollTo('contact')">contact us</a> for detailed service availability and arrangements.</p>
         </section>
 
         <section id="contact" class="section relative py-16 px-4 text-center overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://t4.ftcdn.net/jpg/05/86/20/87/360_F_586208777_ff5IARSx9mR3y3hmfMYDTrQyQE4cA5nY.jpg')] bg-cover bg-center"></div>
-            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-md"></div> <div class="relative z-10 max-w-5xl mx-auto"> <h2 class="text-3xl md:text-4xl font-bold mb-12 text-yellow-400 drop-shadow-md"> Get In Touch With Us
-                </h2>
-        
-                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch"> <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col"> <h3 class="text-2xl font-semibold text-yellow-400 mb-6 text-left">Contact Information</h3>
-                        <p class="text-lg text-gray-200 mb-6 text-left flex-grow"> Reach out for quotes, support, or partnership opportunities. We're here to help with all your courier needs.
-                        </p>
-                        <div class="space-y-5 text-gray-200 text-left"> <div class="contact-method">
-                                <strong class="block text-yellow-400 mb-1 text-sm uppercase tracking-wider">Phone:</strong>
-                                <a href="tel:+919560264547" class="hover:text-yellow-300 transition-colors text-lg block">
-                                    +91 9560264547
-                                </a> 
-                                <a href="tel:+918766338468" class="hover:text-yellow-300 transition-colors text-lg block">
-                                    +91 8766338468
-                                </a>
-                            </div>
-        
+            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-md"></div>
+            <div class="relative z-10 max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-yellow-400 drop-shadow-md">Get In Touch With Us</h2>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+                    <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-semibold text-yellow-400 mb-6 text-left">Contact Information</h3>
+                        <p class="text-base md:text-lg text-gray-200 mb-6 text-left flex-grow">Reach out for quotes, support, or partnership opportunities. We're here to help with all your courier needs.</p>
+                        <div class="space-y-5 text-gray-200 text-left">
                             <div class="contact-method">
-                                <strong class="block text-yellow-400 mb-1 text-sm uppercase tracking-wider">Email:</strong>
-                                <a href="mailto:ominternationalcep@gmail.com" 
-                                   class="hover:text-yellow-300 transition-colors break-all text-lg block">
-                                   ominternationalcep@gmail.com
-                                </a>
+                                <strong class="block text-yellow-400 mb-1 text-xs md:text-sm uppercase tracking-wider">Phone:</strong>
+                                <a href="tel:+919560264547" class="hover:text-yellow-300 transition-colors text-md md:text-lg block">+91 9560264547</a> 
+                                <a href="tel:+918766338468" class="hover:text-yellow-300 transition-colors text-md md:text-lg block">+91 8766338468</a>
                             </div>
-        
+                            <div class="contact-method">
+                                <strong class="block text-yellow-400 mb-1 text-xs md:text-sm uppercase tracking-wider">Email:</strong>
+                                <a href="mailto:ominternationalcep@gmail.com" class="hover:text-yellow-300 transition-colors break-all text-md md:text-lg block">ominternationalcep@gmail.com</a>
+                            </div>
                             <div class="contact-method mt-5">
-                                <strong class="block text-yellow-400 mb-2 text-sm uppercase tracking-wider">Office Address:</strong>
-                                <p class="text-gray-200 leading-relaxed text-lg">
-                                    253, A/6, 2nd Floor<br>
-                                    Shahpur Jat, New Delhi-110049, India
-                                </p>
+                                <strong class="block text-yellow-400 mb-2 text-xs md:text-sm uppercase tracking-wider">Office Address:</strong>
+                                <p class="text-gray-200 leading-relaxed text-md md:text-lg">253, A/6, 2nd Floor<br>Shahpur Jat, New Delhi-110049, India</p>
                             </div>
                         </div>
                     </div>
         
-                    <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
-                        <h3 class="text-2xl font-semibold text-yellow-400 mb-6 text-left">Instant Message</h3>
-                        <p class="text-lg text-gray-200 mb-6 text-left flex-grow">
-                            Connect with us quickly via WhatsApp for immediate assistance or quick queries.
-                        </p>
-                        <a href="https://wa.me/919560264547?text=Hello%20OM%20International%20Courier,%20I%20have%20a%20query." target="_blank"
-                           class="flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg transition-colors duration-300 w-full text-lg mt-auto"> <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"/>
-                            </svg>
-                            <span>Message us on WhatsApp</span>
-                        </a>
-                        <p class="text-sm text-gray-400 mt-4 text-center">
-                            Typically replies within minutes.
-                        </p>
+                    <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
+                        <h3 class="text-xl md:text-2xl font-semibold text-yellow-400 mb-6 text-left">Instant Message</h3>
+                        <p class="text-base md:text-lg text-gray-200 mb-6 text-left flex-grow">Connect with us quickly via WhatsApp or LinkedIn for immediate assistance or quick queries.</p>
+                        <div class="mt-auto space-y-4"> 
+                            <a href="https://wa.me/919560264547?text=Hello%20OM%20International%20Courier,%20I%20have%20a%20query." target="_blank"
+                               class="flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-300 w-full text-sm md:text-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"/>
+                                </svg>
+                                <span>Message on WhatsApp</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/your-company-page" target="_blank"
+                               class="flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-300 w-full text-sm md:text-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                                <span>Connect on LinkedIn</span>
+                            </a>
+                        </div>
+                        <p class="text-xs md:text-sm text-gray-400 mt-4 text-center">Typically replies within minutes.</p>
                     </div>
                 </div>
             </div>
         </section>
             
-        <section 
-            id="track-shipment" 
-            class="tracking-section"
-            style="background-image: url('https://venuxpress.com/assets/images/domestic-courier.jpg')">
+        <section id="track-shipment" class="tracking-section" style="background-image: url('https://venuxpress.com/assets/images/domestic-courier.jpg')">
             <div class="tracking-content">
                 <h2>Track Your Shipment</h2>
                 <p>Select a courier partner to track your shipment in real-time.</p>
-                
                 <div class="tracking-form">
                     <select id="courier-partner" class="bg-white border-2 border-amber-500 rounded-md p-3 focus:ring-amber-400 focus:border-amber-400 text-gray-700">
                         <option value="dtdc">DTDC</option>
@@ -616,37 +430,41 @@
             </div>
         </section>
 
-        <section id="partner-logos" class="section bg-slate-700 py-12 px-4 text-center" > <h2 class="text-3xl font-bold mb-10 text-gray-100">Our Trusted Partners</h2> <div class="flex justify-center items-center space-x-6 flex-wrap gap-6"> <img class="logo-img white-logo h-12 transform hover:scale-110 transition-transform duration-200" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x40/FFFFFF/000000?text=DTDC'; this.onerror=null;">
-                <img class="logo-img white-logo h-12 transform hover:scale-110 transition-transform duration-200" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x40/FFFFFF/000000?text=TPC'; this.onerror=null;">
-                <img class="logo-img gold-logo h-12 transform hover:scale-110 transition-transform duration-200" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x40/FFCC00/000000?text=BlueDart'; this.onerror=null;">
-                <img class="logo-img black-logo h-12 transform hover:scale-110 transition-transform duration-200" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x40/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
-                <img class="logo-img purple-logo h-12 transform hover:scale-110 transition-transform duration-200" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x40/4F0080/FFFFFF?text=FedEx'; this.onerror=null;">
-                <img class="logo-img white-logo h-12 transform hover:scale-110 transition-transform duration-200" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x40/FFFFFF/000000?text=Aramex'; this.onerror=null;">
+        <section id="partner-logos" class="section"> <div class="logos-track-container">
+                <div class="logos-track">
+                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
+                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
+                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
+                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
+                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4F0080/FFFFFF?text=FedEx'; this.onerror=null;">
+                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
+                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
+                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
+                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
+                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
+                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4F0080/FFFFFF?text=FedEx'; this.onerror=null;">
+                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer bg-black text-white py-8 px-4 text-center"> <p class="mb-2">&copy; <span id="currentYear"></span> OM International Courier. All rights reserved.</p>
+    <footer class="footer bg-black text-white py-8 px-4 text-center">
+        <p class="mb-2">&copy; <span id="currentYear"></span> OM International Courier. All rights reserved.</p>
         <p class="text-sm text-gray-400">Designed with care in New Delhi</p>
     </footer>
 
     <script>
-        // Smooth scroll for internal links
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('header.sticky') ? document.querySelector('header.sticky').offsetHeight : 70; // Dynamic header height or fallback
+                const headerOffset = document.querySelector('header.sticky') ? document.querySelector('header.sticky').offsetHeight : 70;
                 const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
-        
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         }
 
-        // Attach smooth scroll to relevant links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -655,86 +473,22 @@
             });
         });
 
-        // Tracking shipment function
         function trackShipment() {
             const courier = document.getElementById("courier-partner").value;
             let trackingUrl = "";
-
             switch (courier) {
-                case "dtdc":
-                    trackingUrl = "https://www.dtdc.in/tracking/tracking.asp";
-                    break;
-                case "tpc":
-                    trackingUrl = "https://trackingstatus.in/the-professional-courier-tracking/";
-                    break;
-                case "bluedart":
-                    trackingUrl = "https://www.bluedart.com/tracking";
-                    break;
-                case "delhivery":
-                    trackingUrl = "https://www.delhivery.com/tracking";
-                    break;
-                case "fedex":
-                    trackingUrl = "https://www.fedex.com/en-in/tracking.html";
-                    break;
-                case "aramex":
-                    trackingUrl = "https://www.aramex.com/track/shipments";
-                    break;
-                default:
-                    // Replace alert with a custom message display if possible
-                    console.error("Please select a courier partner."); 
-                    // Example: document.getElementById('tracking-error-message').textContent = "Please select a partner.";
-                    return;
+                case "dtdc": trackingUrl = "https://www.dtdc.in/tracking/tracking.asp"; break;
+                case "tpc": trackingUrl = "https://trackingstatus.in/the-professional-courier-tracking/"; break;
+                case "bluedart": trackingUrl = "https://www.bluedart.com/tracking"; break;
+                case "delhivery": trackingUrl = "https://www.delhivery.com/tracking"; break;
+                case "fedex": trackingUrl = "https://www.fedex.com/en-in/tracking.html"; break;
+                case "aramex": trackingUrl = "https://www.aramex.com/track/shipments"; break;
+                default: console.error("Please select a courier partner."); return;
             }
-            if (trackingUrl) {
-                window.open(trackingUrl, "_blank");
-            }
+            if (trackingUrl) window.open(trackingUrl, "_blank");
         }
         
-        // Update partner selection (if using partner options images - currently not in the tracking form)
-        // document.querySelectorAll('.partner-options img').forEach(img => {
-        //     img.addEventListener('click', () => {
-        //         const courier = img.dataset.courier;
-        //         document.getElementById('courier-partner').value = courier;
-        //     });
-        // });
-
-        // Handle phone click for copy/call (kept for reference, ensure it's used if phone numbers are directly clickable for copy)
-        function handlePhoneClick(element) {
-            const phoneNumber = element.textContent.trim(); // Trim whitespace
-            // Basic check for mobile devices
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-            if (isMobile) {
-                window.location.href = `tel:${phoneNumber.replace(/\s/g, '')}`; // Remove spaces for tel link
-            } else {
-                // Clipboard copy for desktop
-                navigator.clipboard.writeText(phoneNumber).then(() => {
-                    // Replace alert with a more subtle notification if possible
-                    console.log(`Phone number ${phoneNumber} copied to clipboard!`);
-                    // Example: const originalText = element.innerHTML; element.innerHTML = 'Copied!'; setTimeout(()=> element.innerHTML = originalText, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                    // Fallback for older browsers if navigator.clipboard is not supported (rare)
-                    try {
-                        const tempInput = document.createElement("input");
-                        tempInput.value = phoneNumber;
-                        document.body.appendChild(tempInput);
-                        tempInput.select();
-                        document.execCommand("copy");
-                        document.body.removeChild(tempInput);
-                        console.log(`Phone number ${phoneNumber} copied to clipboard (fallback)!`);
-                    } catch (e) {
-                        console.error('Fallback copy failed: ', e);
-                    }
-                });
-            }
-        }
-        // Example usage if you make phone numbers clickable for copy:
-        // document.querySelectorAll('.copyable-phone').forEach(el => el.addEventListener('click', () => handlePhoneClick(el)));
-
-        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
     </script>
 </body>
 </html>
