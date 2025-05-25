@@ -40,7 +40,6 @@
         .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; }
         .nav ul li a:hover { color: #FACC15; }
         .hero { position: relative; z-index: 0; }
-        /* Removed sticky header styles */
 
         @media (max-width: 768px) {
             .nav { display: none; }
@@ -50,7 +49,7 @@
         @media (min-width: 769px) { .nav { display: block !important; } }
 
         body { font-family: 'Inter', sans-serif; }
-        .section { padding: 4rem 1rem; position: relative; /* Ensure sections can have positioned children */ } 
+        .section { padding: 4rem 1rem; position: relative; } 
 
         .logo-img { height: 48px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
         .dt_dc_logo_bg { background-color: white; }
@@ -60,102 +59,64 @@
         .fedex_logo_bg { background-color: purple; }
         .aramex_logo_bg { background-color: white; }
 
-        .tracking-section { /* Styles for the tracking section itself */
+        .tracking-section {
             text-align: center; position: relative; overflow: hidden;
             min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 4rem 1rem; /* Ensure padding is consistent */
+            padding: 4rem 1rem;
         }
-        .tracking-section-bg-overlay { /* Overlay for the background image */
+        .tracking-section-bg-overlay {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); /* Darker overlay for better text contrast */
-             z-index: 1; /* Ensure overlay is above background but below content */
+            background-color: rgba(0,0,0,0.6); z-index: 1;
         }
         .tracking-content { position: relative; z-index: 2; max-width: 800px; padding: 0 1rem; width: 100%;}
         
-        /* Updated Tracking Section Heading */
         .tracking-section .tracking-heading {
-            font-size: 2.25rem; /* text-4xl */
-            line-height: 2.5rem; /* leading-10 */
-            font-weight: 700; /* font-bold */
-            color: white;
-            margin-bottom: 1rem; /* mb-4 */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 2.25rem; line-height: 2.5rem; font-weight: 700; color: white;
+            margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         .tracking-section .tracking-subheading {
-            font-size: 1.125rem; /* text-lg */
-            color: #e5e7eb; /* text-gray-200 */
-            margin-bottom: 2.5rem; /* mb-10 */
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.125rem; color: #e5e7eb; margin-bottom: 2.5rem;
+            max-width: 600px; margin-left: auto; margin-right: auto;
         }
-        /* Updated Tracking Form Container */
         .tracking-form-container {
-            background-color: rgba(255, 255, 255, 0.1); /* More subtle background */
-            backdrop-filter: blur(8px);
-            border-radius: 0.75rem; /* rounded-xl */
-            padding: 2rem; /* p-8 */
-            width: 100%;
-            max-width: 550px; /* Slightly narrower for a sleeker look */
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Softer shadow */
-            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
+            border-radius: 0.75rem; padding: 2rem; width: 100%; max-width: 550px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); margin: 0 auto;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .tracking-form {
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            gap: 1.5rem; /* Increased gap */
-        }
-        .tracking-form select, .tracking-form input[type="text"] { /* Style for select and potential AWB input */
-            padding: 0.875rem 1rem; /* py-3.5 px-4 */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 0.5rem; /* rounded-lg */
-            font-size: 1rem; /* text-base */
-            background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
-            color: white;
-            appearance: none;
-            outline: none;
+        .tracking-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .tracking-form select, .tracking-form input[type="text"] {
+            padding: 0.875rem 1rem; border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem; font-size: 1rem; background-color: rgba(255, 255, 255, 0.05);
+            color: white; appearance: none; outline: none;
             transition: border-color 0.3s ease, background-color 0.3s ease;
         }
+        .tracking-form select::placeholder, .tracking-form input[type="text"]::placeholder { color: #a0aec0; } /* Light gray placeholder */
         .tracking-form select:focus, .tracking-form input[type="text"]:focus {
-            border-color: #FACC15; /* yellow-400 */
-            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #FACC15; background-color: rgba(255, 255, 255, 0.1);
         }
-        .tracking-form select option {
-            background-color: #333; /* Dark background for dropdown options */
-            color: white;
-        }
+        .tracking-form select option { background-color: #333; color: white; }
         .tracking-form button {
-            padding: 0.875rem 1.5rem; /* py-3.5 px-6 */
-            background-color: #FACC15; /* bg-yellow-400 */
-            color: #111827; /* text-gray-900 */
-            border: none;
-            border-radius: 0.5rem; /* rounded-lg */
-            font-size: 1rem; /* text-base */
-            font-weight: 600; /* font-semibold */
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            padding: 0.875rem 1.5rem; background-color: #FACC15; color: #111827;
+            border: none; border-radius: 0.5rem; font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .tracking-form button:hover {
-            background-color: #FBBF24; /* hover:bg-yellow-500 */
-            transform: translateY(-2px);
-        }
+        .tracking-form button:hover { background-color: #FBBF24; transform: translateY(-2px); }
         
-        footer { background-color: #000; color: #fff; padding: 1rem; text-align: center; }
+        footer { background-color: #000; color: #fff; padding: 2rem 1rem; text-align: center; margin-top: 0;} /* Ensure footer is directly after About Us */
 
-        /* Removed scroll-margin-top as header is not sticky */
-        #rates, #contact, #track-shipment, #partner-logos, #services, #area {
-            padding-top: 4rem; /* Standard padding */
+        #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
+            padding-top: 4rem; 
         }
         
         @media (max-width: 768px) {
-            #rates, #contact, #track-shipment, #partner-logos, #services, #area {
+            #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
                 padding-top: 3rem;
             }
             button, .button { padding: 0.75rem 1.5rem; font-size: 1rem; }
             .contact-method { font-size: 0.95rem; }
-            .tracking-section .tracking-heading { font-size: 1.875rem; line-height: 2.25rem; } /* text-3xl */
-            .tracking-section .tracking-subheading { font-size: 1rem; } /* text-base */
+            .tracking-section .tracking-heading { font-size: 1.875rem; line-height: 2.25rem; }
+            .tracking-section .tracking-subheading { font-size: 1rem; }
             .tracking-form-container { padding: 1.5rem; }
         }
         a { transition: color 0.3s ease; }
@@ -168,49 +129,36 @@
         .logos-track-container { width: 100%; display: flex; }
         .logos-track {
             display: flex; align-items: center;
-            animation: continuous-slide-logos 30s linear infinite;
+            animation: continuous-slide-logos 45s linear infinite; /* Adjusted speed */
             will-change: transform;
         }
         .logos-track img {
-            height: 48px; flex-shrink: 0; margin: 0 1rem; object-fit: contain;
+            height: 48px; flex-shrink: 0; margin: 0 1.5rem; /* Increased margin slightly */ 
+            object-fit: contain;
         }
         @keyframes continuous-slide-logos {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-50%); } /* Assuming duplicated content for seamless loop */
         }
 
         /* Styles for Service Card Slider */
         #services {
-            overflow-x: hidden; 
-            padding-top: 4rem; 
-            padding-bottom: 4rem;
-            /* background-color: #f3f4f6; Removed direct bg color, will use blurred image */
-            position: relative; /* For blurred background */
+            overflow-x: hidden; padding-top: 4rem; padding-bottom: 4rem; position: relative;
         }
         .section-blur-bg {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-size: cover;
-            background-position: center;
-            filter: blur(8px);
-            -webkit-filter: blur(8px);
-            z-index: -1; /* Behind content */
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover; background-position: center;
+            filter: blur(8px); -webkit-filter: blur(8px); z-index: -1;
         }
-        .services-track-container {
-            width: 100%; position: relative; z-index: 1; /* Above blurred bg */
-        }
+        .services-track-container { width: 100%; position: relative; z-index: 1; }
         .services-track {
-            display: flex;
-            align-items: stretch; 
+            display: flex; align-items: stretch; 
             animation: continuous-slide-services 50s linear infinite; 
             will-change: transform;
         }
         .service-slide-card {
-            width: 350px; 
-            flex-shrink: 0; 
-            margin: 0 1rem; 
-            display: flex; 
-            align-items: center; 
+            width: 350px; flex-shrink: 0; margin: 0 1rem; 
+            display: flex; align-items: center; 
         }
         .service-slide-icon-container { flex-shrink: 0; margin-right: 1.25rem; }
         .service-slide-icon-wrapper { 
@@ -228,38 +176,50 @@
         }
 
         /* Styles for Service Areas Section */
-        #area {
-            position: relative; /* For blurred background */
-            overflow: hidden; /* To contain blur */
-        }
+        #area { position: relative; overflow: hidden; }
         .area-card {
-            background-color: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .area-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        .area-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .area-card h3 { color: #FACC15; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .area-card ul li { color: #e5e7eb; }
+
+        /* Styles for About Us Section */
+        #about-us {
+            background-color: #1f2937; /* bg-gray-800, slightly different from body for distinction */
+            color: #d1d5db; /* text-gray-300 */
+            padding-bottom: 3rem; /* Ensure enough padding at the bottom */
         }
-        .area-card h3 {
-            color: #FACC15; /* text-yellow-400 */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        #about-us h2, #about-us h3 {
+            color: #FACC15; /* text-yellow-400 for headings */
         }
-        .area-card ul li {
-            color: #e5e7eb; /* text-gray-200 */
+        #about-us a {
+            color: #9ca3af; /* text-gray-400 for links */
+            transition: color 0.3s ease;
         }
-        .area-card-icon { /* Optional: if you want to add icons to area cards */
-            font-size: 2.5rem; /* text-4xl */
-            margin-bottom: 0.75rem; /* mb-3 */
-            color: #FACC15; /* text-yellow-400 */
+        #about-us a:hover {
+            color: #FACC15; /* text-yellow-400 on hover */
         }
+        .quick-link-item {
+            padding: 0.25rem 0;
+        }
+        .input-error-highlight {
+            border-color: #ef4444 !important; /* red-500 */
+        }
+        #tracking-number-error {
+            color: #fca5a5; /* red-300 */
+            font-size: 0.875rem; /* text-sm */
+            margin-top: 0.5rem;
+            display: none; /* Hidden by default */
+        }
+
 
     </style>
 </head>
 
-<body class="bg-gray-800 text-gray-100"> <header class="header shadow-md bg-black text-white">
+<body class="bg-gray-900 text-gray-100"> <header class="header shadow-md bg-black text-white">
         <div class="logo text-xl font-bold ml-4 flex items-center">
             <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-8 w-8 mr-2"> <span class="text-yellow-400 mr-1">OM</span> International Courier
         </div>
@@ -270,6 +230,7 @@
                 <li><a href="#contact" class="hover:text-yellow-300">Contact</a></li>
                 <li><a href="#track-shipment" class="hover:text-yellow-300">Track</a></li>
                 <li><a href="#partner-logos" class="hover:text-yellow-300">Partners</a></li>
+                <li><a href="#about-us" class="hover:text-yellow-300">About Us</a></li>
             </ul>
         </nav>
     </header>
@@ -294,143 +255,57 @@
         </section>
 
         <section id="services" class="section">
-            <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2VydmljZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=80');"></div>
-            
+            <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1c2luZXNzJTIwbG9naXN0aWNzfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80');"></div>
             <h2 class="text-3xl font-bold mb-12 text-center text-white relative z-10">Our <span class="text-yellow-400">Comprehensive</span> Services</h2>
             <div class="services-track-container">
                 <div class="services-track">
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-blue-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Domestic Courier</h3>
-                            <p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-green-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/047857?text=✈️'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">International Courier</h3>
-                            <p class="text-slate-700">Expedited, dependable international options for your global reach.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-yellow-500 text-white">
-                                 <img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/B45309?text=📍'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Real-Time Tracking</h3>
-                            <p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-purple-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Extensive Network</h3>
-                            <p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-pink-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Customized Solutions</h3>
-                            <p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-indigo-500 text-white">
-                                 <img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/3730A3?text=🤝'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Franchise Adaptability</h3>
-                            <p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-blue-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Domestic Courier</h3>
-                            <p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-green-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/047857?text=✈️'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">International Courier</h3>
-                            <p class="text-slate-700">Expedited, dependable international options for your global reach.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-yellow-500 text-white">
-                                 <img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/B45309?text=📍'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Real-Time Tracking</h3>
-                            <p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-purple-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Extensive Network</h3>
-                            <p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-pink-500 text-white">
-                                <img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Customized Solutions</h3>
-                            <p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container">
-                            <div class="service-slide-icon-wrapper bg-indigo-500 text-white">
-                                 <img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon" onerror="this.src='https://placehold.co/40x40/FFFFFF/3730A3?text=🤝'">
-                            </div>
-                        </div>
-                        <div class="service-slide-content">
-                            <h3 class="text-slate-800">Franchise Adaptability</h3>
-                            <p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p>
-                        </div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
+                    </div>
+                    <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon"></div></div>
+                        <div class="service-slide-content"><h3 class="text-slate-800">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
                     </div>
                 </div>
             </div>
@@ -444,8 +319,7 @@
                 <div class="space-y-6 px-4">
                     <p class="text-lg md:text-xl text-gray-100 leading-relaxed max-w-3xl mx-auto">For immediate rate confirmation on finalized shipments, submit your particulars using our structured template by clicking the button below.</p>
                     <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-lg border border-white/10">
-                        <button 
-                            onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Courier Rate Request - Shipment Particulars&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request the current rate for my shipment based on the following particulars:%0d%0a%0d%0a[ Pickup Details ]%0d%0aCompany Name: %0d%0aContact Person: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Delivery Details ]%0d%0aRecipient Name: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Shipment Particulars ]%0d%0aType: (Document/Parcel)%0d%0aWeight: %0d%0aDimensions: %0d%0aContents: %0d%0aDeclared Value: %0d%0aSpecial Instructions: %0d%0a%0d%0aPlease confirm your rate and service availability for this specific shipment.%0d%0a%0d%0aContact Information:%0d%0aName: %0d%0aEmail: %0d%0aPhone: %0d%0a%0d%0aBest regards,%0d%0a[Your Full Name]'"
+                        <button onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Courier Rate Request - Shipment Particulars&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request the current rate for my shipment based on the following particulars:%0d%0a%0d%0a[ Pickup Details ]%0d%0aCompany Name: %0d%0aContact Person: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Delivery Details ]%0d%0aRecipient Name: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Shipment Particulars ]%0d%0aType: (Document/Parcel)%0d%0aWeight: %0d%0aDimensions: %0d%0aContents: %0d%0aDeclared Value: %0d%0aSpecial Instructions: %0d%0a%0d%0aPlease confirm your rate and service availability for this specific shipment.%0d%0a%0d%0aContact Information:%0d%0aName: %0d%0aEmail: %0d%0aPhone: %0d%0a%0d%0aBest regards,%0d%0a[Your Full Name]'"
                             class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg md:text-xl">
                             Request Rate Details
                         </button>
@@ -460,36 +334,15 @@
         </section>
         
         <section id="area" class="section">
-            <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1520038410233-7141be7e6f97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFwJTIwZ2xvYmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=80');"></div>
-            
+            <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1578575437130-5297cde5590d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2xvYmFsJTIwbWFwfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80');"></div>
             <div class="relative z-10">
                 <h2 class="text-3xl font-bold mb-12 text-center text-white">Our <span class="text-yellow-400">Service Areas</span></h2>
                 <p class="text-lg text-gray-200 mb-10 max-w-3xl mx-auto text-center">We operate primarily from New Delhi, with a strong network to serve a wide range of domestic and international locations.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-                    <div class="area-card rounded-xl shadow-xl p-6 text-center">
-                        <h3 class="font-semibold text-xl mb-3">North India</h3>
-                        <ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs">
-                            <li>Delhi & NCR</li><li>Haryana</li><li>Punjab</li><li>Uttar Pradesh</li><li>Rajasthan</li><li>Himachal Pradesh</li><li>Jammu & Kashmir</li>
-                        </ul>
-                    </div>
-                    <div class="area-card rounded-xl shadow-xl p-6 text-center">
-                        <h3 class="font-semibold text-xl mb-3">East India</h3>
-                        <ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs">
-                            <li>Bihar</li><li>Jharkhand</li><li>West Bengal</li><li>Odisha</li><li>North East States</li>
-                        </ul>
-                    </div>
-                    <div class="area-card rounded-xl shadow-xl p-6 text-center">
-                        <h3 class="font-semibold text-xl mb-3">West India</h3>
-                        <ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs">
-                            <li>Maharashtra</li><li>Gujarat</li><li>Madhya Pradesh</li><li>Goa</li>
-                        </ul>
-                    </div>
-                    <div class="area-card rounded-xl shadow-xl p-6 text-center">
-                        <h3 class="font-semibold text-xl mb-3">South India</h3>
-                        <ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs">
-                            <li>Karnataka</li><li>Tamil Nadu</li><li>Andhra Pradesh</li><li>Telangana</li><li>Kerala</li>
-                        </ul>
-                    </div>
+                    <div class="area-card rounded-xl shadow-xl p-6 text-center"><h3 class="font-semibold text-xl mb-3">North India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Delhi & NCR</li><li>Haryana</li><li>Punjab</li><li>Uttar Pradesh</li><li>Rajasthan</li><li>Himachal Pradesh</li><li>Jammu & Kashmir</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-6 text-center"><h3 class="font-semibold text-xl mb-3">East India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Bihar</li><li>Jharkhand</li><li>West Bengal</li><li>Odisha</li><li>North East States</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-6 text-center"><h3 class="font-semibold text-xl mb-3">West India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Maharashtra</li><li>Gujarat</li><li>Madhya Pradesh</li><li>Goa</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-6 text-center"><h3 class="font-semibold text-xl mb-3">South India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Karnataka</li><li>Tamil Nadu</li><li>Andhra Pradesh</li><li>Telangana</li><li>Kerala</li></ul></div>
                 </div>
                 <p class="mt-12 text-gray-300 text-lg text-center">For international shipments and specific service areas, please <a href="#contact" class="text-yellow-400 hover:text-yellow-300 font-semibold underline" onclick="smoothScrollTo('contact')">contact us</a>.</p>
             </div>
@@ -518,7 +371,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"/></svg>
                                 <span>Message on WhatsApp</span>
                             </a>
-                            <a href="https://www.linkedin.com/company/your-company-page" target="_blank" class="flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-300 w-full text-sm md:text-base">
+                            <a href="https://www.linkedin.com/company/om-international-courier" target="_blank" class="flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-300 w-full text-sm md:text-base">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                                 <span>Connect on LinkedIn</span>
                             </a>
@@ -530,14 +383,15 @@
         </section>
             
         <section id="track-shipment" class="tracking-section" style="background-image: url('https://venuxpress.com/assets/images/domestic-courier.jpg'); background-size: cover; background-position: center;">
-            <div class="tracking-section-bg-overlay"></div> <div class="tracking-content">
+            <div class="tracking-section-bg-overlay"></div>
+            <div class="tracking-content">
                 <h2 class="tracking-heading">Track Your <span class="text-yellow-400">Shipment</span></h2>
-                <p class="tracking-subheading">Enter your tracking details below or select a partner to track directly on their site.</p>
-                
+                <p class="tracking-subheading">Enter your tracking number and select a partner to track your shipment.</p>
                 <div class="tracking-form-container">
                     <div class="tracking-form">
+                        <input type="text" id="tracking-number-input" placeholder="Enter Your Tracking Number" class="text-center">
                         <select id="courier-partner" class="text-center">
-                            <option value="">Select Courier Partner to Track</option>
+                            <option value="">Select Courier Partner</option>
                             <option value="dtdc">DTDC</option>
                             <option value="tpc">Professional Couriers</option>
                             <option value="bluedart">Blue Dart</option>
@@ -546,6 +400,7 @@
                             <option value="aramex">Aramex</option>
                         </select>
                         <button onclick="trackShipment()">Track Directly</button>
+                        <p id="tracking-number-error">Please enter a tracking number and select a courier.</p>
                     </div>
                 </div>
             </div>
@@ -569,6 +424,47 @@
                 </div>
             </div>
         </section>
+
+        <section id="about-us" class="section">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">About <span class="text-yellow-400">OM International Courier</span></h2>
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12 items-start">
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-semibold mb-4">Our Story</h3>
+                        <p class="mb-4 leading-relaxed">
+                            Founded with a vision to bridge distances and connect businesses and individuals across the globe, OM International Courier has grown into a trusted name in logistics. Based in the heart of New Delhi, we pride ourselves on our commitment to reliability, speed, and customer satisfaction. Our extensive network and dedicated team ensure that your parcels are handled with utmost care and delivered on time, every time.
+                        </p>
+                        <p class="mb-4 leading-relaxed">
+                            We understand the importance of each shipment, whether it's a critical business document, a personal gift, or commercial cargo. That's why we leverage state-of-the-art technology for tracking and offer a comprehensive suite of domestic and international courier services tailored to meet diverse needs. At OM International Courier, we're not just delivering packages; we're delivering peace of mind.
+                        </p>
+                         <p class="leading-relaxed">
+                            Our mission is to provide seamless, efficient, and cost-effective courier solutions, fostering strong relationships with our clients and partners through transparency and excellence in service.
+                        </p>
+                    </div>
+                    <div class="md:col-span-1">
+                        <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
+                        <div class="bg-gray-700/50 p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-semibold text-yellow-400 mb-3">Our Franchise Partners</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">DTDC Services</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">The Professional Couriers Network</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Blue Dart Express</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Delhivery Logistics</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">FedEx India</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Aramex Global Solutions</a></li>
+                            </ul>
+                            <h4 class="text-xl font-semibold text-yellow-400 mb-3">Connect With Us</h4>
+                            <ul class="space-y-2">
+                                <li class="quick-link-item"><a href="#contact" onclick="smoothScrollTo('contact')">Contact Page</a></li>
+                                <li class="quick-link-item"><a href="mailto:ominternationalcep@gmail.com">Email Us: ominternationalcep@gmail.com</a></li>
+                                <li class="quick-link-item"><a href="tel:+919560264547">Call Us: +91 9560264547</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer bg-black text-white py-8 px-4 text-center">
@@ -580,9 +476,7 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                // const headerOffset = document.querySelector('header.sticky') ? document.querySelector('header.sticky').offsetHeight : 0; // Header not sticky, so offset is 0 or minimal
                 const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                // const offsetPosition = elementPosition - headerOffset;
                 window.scrollTo({ top: elementPosition, behavior: 'smooth' });
             }
         }
@@ -597,31 +491,70 @@
 
         function trackShipment() {
             const courierSelect = document.getElementById("courier-partner");
+            const trackingInput = document.getElementById("tracking-number-input");
+            const errorMessageElement = document.getElementById("tracking-number-error");
+
             const courier = courierSelect.value;
+            const trackingNumber = trackingInput.value.trim();
             let trackingUrl = "";
 
+            // Reset errors
+            trackingInput.classList.remove('input-error-highlight');
+            courierSelect.classList.remove('input-error-highlight');
+            errorMessageElement.style.display = 'none';
+            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.';
+
+
+            if (!trackingNumber && !courier) {
+                trackingInput.classList.add('input-error-highlight');
+                courierSelect.classList.add('input-error-highlight');
+                errorMessageElement.style.display = 'block';
+                return;
+            }
+            if (!trackingNumber) {
+                trackingInput.classList.add('input-error-highlight');
+                errorMessageElement.textContent = 'Please enter a tracking number.';
+                errorMessageElement.style.display = 'block';
+                return;
+            }
             if (!courier) {
-                // Optionally, display a message to select a courier
-                // For example, by revealing a hidden message element:
-                // document.getElementById('tracking-error-message').style.display = 'block';
-                // setTimeout(() => { document.getElementById('tracking-error-message').style.display = 'none'; }, 3000);
-                console.warn("Please select a courier partner to track directly.");
-                // You could also change the placeholder of the select or add a temporary message
-                courierSelect.classList.add('border-red-500'); // Example: highlight select if no option chosen
-                setTimeout(() => courierSelect.classList.remove('border-red-500'), 2000);
+                courierSelect.classList.add('input-error-highlight');
+                errorMessageElement.textContent = 'Please select a courier partner.';
+                errorMessageElement.style.display = 'block';
                 return;
             }
 
+            // Encode the tracking number for URL safety
+            const encodedTrackingNumber = encodeURIComponent(trackingNumber);
+
             switch (courier) {
-                case "dtdc": trackingUrl = "https://www.dtdc.in/tracking/tracking.asp"; break;
-                case "tpc": trackingUrl = "https://trackingstatus.in/the-professional-courier-tracking/"; break;
-                case "bluedart": trackingUrl = "https://www.bluedart.com/tracking"; break;
-                case "delhivery": trackingUrl = "https://www.delhivery.com/tracking"; break;
-                case "fedex": trackingUrl = "https://www.fedex.com/en-in/tracking.html"; break;
-                case "aramex": trackingUrl = "https://www.aramex.com/track/shipments"; break;
-                default: console.error("Invalid courier partner selected."); return; // Should not happen if select is used
+                case "dtdc": 
+                    trackingUrl = `https://www.dtdc.in/tracking/shipment-tracking.asp?strCnNo1=${encodedTrackingNumber}&strSearchType=cnno`;
+                    break;
+                case "tpc": 
+                    trackingUrl = `https://www.tpcindia.com/tracking.aspx?id=${encodedTrackingNumber}`; 
+                    break;
+                case "bluedart": 
+                    trackingUrl = `https://www.bluedart.com/maintracking.html?g-recaptcha-response=&awb=awb&numbers=${encodedTrackingNumber}`;
+                    break;
+                case "delhivery": 
+                    trackingUrl = `https://www.delhivery.com/track/package/${encodedTrackingNumber}`; 
+                    break;
+                case "fedex": 
+                    trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; 
+                    break;
+                case "aramex": 
+                    trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; 
+                    break;
+                default: 
+                    console.error("Invalid courier partner selected."); 
+                    errorMessageElement.textContent = 'Invalid courier selected.';
+                    errorMessageElement.style.display = 'block';
+                    return;
             }
-            if (trackingUrl) window.open(trackingUrl, "_blank");
+            if (trackingUrl) {
+                window.open(trackingUrl, "_blank");
+            }
         }
         
         document.getElementById('currentYear').textContent = new Date().getFullYear();
