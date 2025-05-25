@@ -172,7 +172,7 @@
 
         @keyframes continuous-slide-services {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-2292px);  }
+            100% { transform: translateX(-2292px);  } /* Half of total width of all cards + margins */
         }
 
         /* Styles for Service Areas Section */
@@ -192,9 +192,11 @@
             color: #d1d5db; /* text-gray-300 */
             padding-bottom: 3rem; /* Ensure enough padding at the bottom */
         }
-        #about-us h2, #about-us h3 {
-            color: #FACC15; /* text-yellow-400 for headings */
+        /* Main heading for About Us */
+        #about-us h2 {
+            color: #FACC15; /* text-yellow-400 */
         }
+        /* Subheadings (H3 and H4) will be styled via Tailwind classes directly on elements */
         #about-us a {
             color: #9ca3af; /* text-gray-400 for links */
             transition: color 0.3s ease;
@@ -219,9 +221,11 @@
     </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100"> <header class="header shadow-md bg-black text-white">
+<body class="bg-gray-900 text-gray-100">
+    <header class="header shadow-md bg-black text-white">
         <div class="logo text-xl font-bold ml-4 flex items-center">
-            <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-8 w-8 mr-2"> <span class="text-yellow-400 mr-1">OM</span> International Courier
+            <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-8 w-8 mr-2">
+            <span class="text-yellow-400 mr-1">OM</span> International Courier
         </div>
         <nav class="nav mr-4">
             <ul>
@@ -260,51 +264,51 @@
             <div class="services-track-container">
                 <div class="services-track">
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/1D4ED8?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/047857?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/B45309?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/5B21B6?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/9D174D?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/3730A3?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/1D4ED8?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
                     </div>
-                    <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon"></div></div>
+                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/047857?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/B45309?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/5B21B6?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/9D174D?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
-                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon"></div></div>
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/3730A3?text=Icon';"></div></div>
                         <div class="service-slide-content"><h3 class="text-slate-800">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
                     </div>
                 </div>
@@ -429,8 +433,28 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">About <span class="text-yellow-400">OM International Courier</span></h2>
                 <div class="grid md:grid-cols-3 gap-8 lg:gap-12 items-start">
+                    <div class="md:col-span-1">
+                        <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Quick Links</h3>
+                        <div class="bg-gray-700/50 p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-semibold text-yellow-300 mb-3">Our Franchise Partners</h4>
+                            <ul class="space-y-2 mb-6">
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">DTDC Services</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">The Professional Couriers Network</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Blue Dart Express</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Delhivery Logistics</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">FedEx India</a></li>
+                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Aramex Global Solutions</a></li>
+                            </ul>
+                            <h4 class="text-xl font-semibold text-yellow-300 mb-3">Connect With Us</h4>
+                            <ul class="space-y-2">
+                                <li class="quick-link-item"><a href="#contact" onclick="smoothScrollTo('contact')">Contact Page</a></li>
+                                <li class="quick-link-item"><a href="mailto:ominternationalcep@gmail.com">Email Us: ominternationalcep@gmail.com</a></li>
+                                <li class="quick-link-item"><a href="tel:+919560264547">Call Us: +91 9560264547</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="md:col-span-2">
-                        <h3 class="text-2xl font-semibold mb-4">Our Story</h3>
+                        <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Our Story</h3>
                         <p class="mb-4 leading-relaxed">
                             Founded with a vision to bridge distances and connect businesses and individuals across the globe, OM International Courier has grown into a trusted name in logistics. Based in the heart of New Delhi, we pride ourselves on our commitment to reliability, speed, and customer satisfaction. Our extensive network and dedicated team ensure that your parcels are handled with utmost care and delivered on time, every time.
                         </p>
@@ -440,26 +464,6 @@
                          <p class="leading-relaxed">
                             Our mission is to provide seamless, efficient, and cost-effective courier solutions, fostering strong relationships with our clients and partners through transparency and excellence in service.
                         </p>
-                    </div>
-                    <div class="md:col-span-1">
-                        <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
-                        <div class="bg-gray-700/50 p-6 rounded-lg shadow-md">
-                            <h4 class="text-xl font-semibold text-yellow-400 mb-3">Our Franchise Partners</h4>
-                            <ul class="space-y-2 mb-6">
-                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">DTDC Services</a></li>
-                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">The Professional Couriers Network</a></li>
-                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Blue Dart Express</a></li>
-                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Delhivery Logistics</a></li>
-                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">FedEx India</a></li>
-                                <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Aramex Global Solutions</a></li>
-                            </ul>
-                            <h4 class="text-xl font-semibold text-yellow-400 mb-3">Connect With Us</h4>
-                            <ul class="space-y-2">
-                                <li class="quick-link-item"><a href="#contact" onclick="smoothScrollTo('contact')">Contact Page</a></li>
-                                <li class="quick-link-item"><a href="mailto:ominternationalcep@gmail.com">Email Us: ominternationalcep@gmail.com</a></li>
-                                <li class="quick-link-item"><a href="tel:+919560264547">Call Us: +91 9560264547</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -473,6 +477,7 @@
     </footer>
 
     <script>
+        // Smooth scroll functionality
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
@@ -481,6 +486,7 @@
             }
         }
 
+        // Attach smooth scroll to all internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -489,6 +495,7 @@
             });
         });
 
+        // Tracking shipment functionality
         function trackShipment() {
             const courierSelect = document.getElementById("courier-partner");
             const trackingInput = document.getElementById("tracking-number-input");
@@ -557,8 +564,10 @@
             }
         }
         
+        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+        // Pause/play animation for services slider on hover/touch
         const servicesTrack = document.querySelector('.services-track');
         if (servicesTrack) {
             servicesTrack.addEventListener('mouseenter', () => { servicesTrack.style.animationPlayState = 'paused'; });
@@ -566,6 +575,17 @@
             servicesTrack.addEventListener('touchstart', () => { servicesTrack.style.animationPlayState = 'paused'; }, { passive: true });
             servicesTrack.addEventListener('touchend', () => { servicesTrack.style.animationPlayState = 'running'; });
         }
+
+        // Pause/play animation for partner logos slider on hover/touch
+        const logosTrack = document.querySelector('.logos-track');
+        if (logosTrack) {
+            logosTrack.addEventListener('mouseenter', () => { logosTrack.style.animationPlayState = 'paused'; });
+            logosTrack.addEventListener('mouseleave', () => { logosTrack.style.animationPlayState = 'running'; });
+            // Adding touch support for logo slider as well
+            logosTrack.addEventListener('touchstart', () => { logosTrack.style.animationPlayState = 'paused'; }, { passive: true });
+            logosTrack.addEventListener('touchend', () => { logosTrack.style.animationPlayState = 'running'; });
+        }
+
     </script>
 </body>
 </html>
