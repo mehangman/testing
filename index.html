@@ -34,7 +34,6 @@
         .header {
             background-color: #000; color: #fff; padding: 0.75rem 1rem;
             display: flex; justify-content: space-between; align-items: center;
-            /* Removed: position: sticky; top: 0; z-index: 50; */
         }
         .logo img { margin-right: 0.5rem; border-radius: 50%; height: 30px; width: 30px; }
         .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
@@ -167,7 +166,7 @@
         .logos-track-container { width: 100%; display: flex; }
         .logos-track {
             display: flex; align-items: center;
-            animation: continuous-slide-logos 20s linear infinite; /* Faster animation */
+            animation: continuous-slide-logos 15s linear infinite; /* Faster animation */
             will-change: transform;
         }
         .logos-track img {
@@ -197,7 +196,7 @@
         .services-track-container { width: 100%; position: relative; z-index: 1; }
         .services-track {
             display: flex; align-items: stretch; 
-            animation: continuous-slide-services 50s linear infinite; 
+            animation: continuous-slide-services 30s linear infinite; /* Faster animation */
             will-change: transform;
         }
         .service-slide-card {
@@ -233,7 +232,7 @@
 
         @keyframes continuous-slide-services {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-2082px);  } 
+            100% { transform: translateX(-2082px);  } /* Needs recalculation if card count/size changes */
         }
 
 
@@ -260,8 +259,7 @@
         #about-us h2 { /* Main "About OM..." heading */
             color: #FACC15; 
         }
-        /* Sub-headings (Our Story, Quick Links, etc.) will use specific Tailwind classes */
-        #about-us a:not(.map-image-link) { /* Exclude map image link from default link styling if needed */
+        #about-us a:not(.map-image-link) { 
             color: #9ca3af; 
             transition: color 0.3s ease;
         }
@@ -280,10 +278,21 @@
             margin-top: 0.5rem;
             display: none; 
         }
-        .map-image-container img {
-            border: 2px solid #4b5563; /* gray-600 */
-            border-radius: 0.5rem; /* rounded-lg */
-        }
+        
+        /* Gradient Text Styles */
+        .text-gradient { display: inline-block; } /* Needed for background-clip to work well */
+        .text-gradient-1 { background: linear-gradient(to right, #ef4444, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-2 { background: linear-gradient(to right, #f59e0b, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-3 { background: linear-gradient(to right, #84cc16, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-4 { background: linear-gradient(to right, #10b981, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-5 { background: linear-gradient(to right, #0ea5e9, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-6 { background: linear-gradient(to right, #8b5cf6, #d946ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-7 { background: linear-gradient(to right, #ec4899, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-blue-purple { background: linear-gradient(to right, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-green-yellow { background: linear-gradient(to right, #22c55e, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-pink-orange { background: linear-gradient(to right, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .text-gradient-teal-cyan { background: linear-gradient(to right, #14b8a6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+
     </style>
 </head>
 
@@ -330,37 +339,53 @@
                 <div class="services-track">
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/1D4ED8?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-red-500">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-1">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/047857?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-orange-500">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-2">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/B45309?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-lime-500">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-3">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/5B21B6?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-green-500">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-4">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/9D174D?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-cyan-500">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-5">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/3730A3?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-violet-500">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-6">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
                     </div>
                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-blue-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/1D4ED8?text=🚚" alt="Domestic Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/1D4ED8?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-red-500">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-1">Domestic Courier</h3><p class="text-slate-700">Fast, reliable delivery across India. Parcels of all categories handled efficiently.</p></div>
                     </div>
                      <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
                         <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-green-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/047857?text=✈️" alt="International Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/047857?text=Icon';"></div></div>
-                        <div class="service-slide-content"><h3 class="text-orange-500">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-2">International Courier</h3><p class="text-slate-700">Expedited, dependable international options for your global reach.</p></div>
                     </div>
+                     <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-yellow-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/B45309?text=📍" alt="Tracking Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/B45309?text=Icon';"></div></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-3">Real-Time Tracking</h3><p class="text-slate-700">State-of-the-art tracking for all consignments, ensuring transparency.</p></div>
                     </div>
+                    <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-purple-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/5B21B6?text=🌐" alt="Network Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/5B21B6?text=Icon';"></div></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-4">Extensive Network</h3><p class="text-slate-700">Strong franchise collaboration to maximize service coverage effectively.</p></div>
+                    </div>
+                    <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-pink-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/9D174D?text=⚙️" alt="Custom Solutions Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/9D174D?text=Icon';"></div></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-5">Customized Solutions</h3><p class="text-slate-700">Tailored offerings designed to cater to your individual or business needs.</p></div>
+                    </div>
+                    <div class="service-slide-card bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-white/20">
+                        <div class="service-slide-icon-container"><div class="service-slide-icon-wrapper bg-indigo-500 text-white"><img src="https://placehold.co/40x40/FFFFFF/3730A3?text=🤝" alt="Adaptability Icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FFFFFF/3730A3?text=Icon';"></div></div>
+                        <div class="service-slide-content"><h3 class="text-gradient text-gradient-6">Franchise Adaptability</h3><p class="text-slate-700">Efficiently working in tandem with other franchises for seamless operations.</p></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -392,10 +417,10 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center text-white">Our <span class="text-yellow-400">Service Areas</span></h2>
                 <p class="text-md md:text-lg text-gray-200 mb-8 md:mb-10 max-w-3xl mx-auto text-center">We operate primarily from New Delhi, with a strong network to serve a wide range of domestic and international locations.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-rose-500">North India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Delhi & NCR</li><li>Haryana</li><li>Punjab</li><li>Uttar Pradesh</li><li>Rajasthan</li><li>Himachal Pradesh</li><li>Jammu & Kashmir</li></ul></div>
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-amber-500">East India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Bihar</li><li>Jharkhand</li><li>West Bengal</li><li>Odisha</li><li>North East States</li></ul></div>
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-emerald-500">West India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Maharashtra</li><li>Gujarat</li><li>Madhya Pradesh</li><li>Goa</li></ul></div>
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-indigo-500">South India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Karnataka</li><li>Tamil Nadu</li><li>Andhra Pradesh</li><li>Telangana</li><li>Kerala</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-blue-purple">North India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Delhi & NCR</li><li>Haryana</li><li>Punjab</li><li>Uttar Pradesh</li><li>Rajasthan</li><li>Himachal Pradesh</li><li>Jammu & Kashmir</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-green-yellow">East India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Bihar</li><li>Jharkhand</li><li>West Bengal</li><li>Odisha</li><li>North East States</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-pink-orange">West India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Maharashtra</li><li>Gujarat</li><li>Madhya Pradesh</li><li>Goa</li></ul></div>
+                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-teal-cyan">South India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Karnataka</li><li>Tamil Nadu</li><li>Andhra Pradesh</li><li>Telangana</li><li>Kerala</li></ul></div>
                 </div>
                 <p class="mt-8 md:mt-12 text-gray-300 text-md md:text-lg text-center">For international shipments and specific service areas, please <a href="#contact" class="text-yellow-400 hover:text-yellow-300 font-semibold underline" onclick="smoothScrollTo('contact')">contact us</a>.</p>
             </div>
@@ -408,7 +433,7 @@
                 <h2 class="text-2xl md:text-4xl font-bold mb-8 md:mb-12 text-yellow-400 drop-shadow-md">Get In Touch With Us</h2>
                 <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch">
                     <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
-                        <h3 class="text-lg md:text-2xl font-semibold text-pink-500 mb-4 md:mb-6 text-left">Contact Information</h3>
+                        <h3 class="text-lg md:text-2xl font-semibold mb-4 md:mb-6 text-left text-gradient text-gradient-5">Contact Information</h3>
                         <p class="text-sm md:text-lg text-gray-200 mb-4 md:mb-6 text-left flex-grow">Reach out for quotes, support, or partnership opportunities. We're here to help with all your courier needs.</p>
                         <div class="space-y-4 md:space-y-5 text-gray-200 text-left">
                             <div class="contact-method"><strong class="block text-yellow-400 mb-1 text-xs md:text-sm uppercase tracking-wider">Phone:</strong><a href="tel:+919560264547" class="hover:text-yellow-300 transition-colors text-sm md:text-lg block">+91 9560264547</a> <a href="tel:+918766338468" class="hover:text-yellow-300 transition-colors text-sm md:text-lg block">+91 8766338468</a></div>
@@ -417,7 +442,7 @@
                         </div>
                     </div>
                     <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
-                        <h3 class="text-lg md:text-2xl font-semibold text-purple-500 mb-4 md:mb-6 text-left">Instant Message</h3>
+                        <h3 class="text-lg md:text-2xl font-semibold mb-4 md:mb-6 text-left text-gradient text-gradient-6">Instant Message</h3>
                         <p class="text-sm md:text-lg text-gray-200 mb-4 md:mb-6 text-left flex-grow">Connect with us quickly via WhatsApp, LinkedIn, or find our location on Google Maps.</p>
                         <div class="mt-auto space-y-3 md:space-y-4"> 
                             <a href="https://wa.me/919560264547?text=Hello%20OM%20International%20Courier,%20I%20have%20a%20query." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 md:space-x-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 px-4 md:py-3 md:px-5 rounded-lg transition-colors duration-300 w-full text-xs md:text-base">
@@ -489,9 +514,9 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">About <span class="text-yellow-400">OM International Courier</span></h2>
                 <div class="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 items-start">
                     <div class="md:col-span-1">
-                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-orange-400">Quick Links</h3>
+                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gradient text-gradient-7">Quick Links</h3>
                         <div class="bg-gray-700/50 p-4 md:p-6 rounded-lg shadow-md">
-                            <h4 class="text-lg md:text-xl font-semibold text-light-blue-400 mb-3">Our Franchise Partners</h4>
+                            <h4 class="text-lg md:text-xl font-semibold text-gradient text-gradient-blue-purple mb-3">Our Franchise Partners</h4>
                             <ul class="space-y-1 md:space-y-2 mb-4 md:mb-6 text-sm md:text-base">
                                 <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">DTDC Services</a></li>
                                 <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">The Professional Couriers Network</a></li>
@@ -500,7 +525,7 @@
                                 <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">FedEx India</a></li>
                                 <li class="quick-link-item"><a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline">Aramex Global Solutions</a></li>
                             </ul>
-                            <h4 class="text-lg md:text-xl font-semibold text-teal-400 mb-3">Connect With Us</h4>
+                            <h4 class="text-lg md:text-xl font-semibold text-gradient text-gradient-green-yellow mb-3">Connect With Us</h4>
                             <ul class="space-y-1 md:space-y-2 text-sm md:text-base">
                                 <li class="quick-link-item"><a href="#contact" onclick="smoothScrollTo('contact')">Contact Page</a></li>
                                 <li class="quick-link-item"><a href="mailto:ominternationalcep@gmail.com">Email Us: ominternationalcep@gmail.com</a></li>
@@ -509,23 +534,20 @@
                         </div>
                     </div>
                     <div class="md:col-span-2">
-                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-lime-400">Our Story</h3>
+                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gradient text-gradient-pink-orange">Our Story</h3>
                         <p class="mb-4 leading-relaxed text-sm md:text-base">
-                            Founded with a vision to bridge distances and connect businesses and individuals across the globe, OM International Courier has grown into a trusted name in logistics. Based in the heart of New Delhi, we pride ourselves on our commitment to reliability, speed, and customer satisfaction. Our extensive network and dedicated team ensure that your parcels are handled with utmost care and delivered on time, every time.
+                            Founded in New Delhi with a clear vision to bridge geographical distances, OM International Courier embarked on its journey to connect businesses and individuals, not just across India, but to the farthest corners of the globe. From humble beginnings, we have diligently grown into a widely recognized and trusted name in the logistics and courier industry. Our strategic location in the bustling capital city serves as a pivotal hub, enabling us to efficiently manage a vast network of domestic and international shipments. We pride ourselves immensely on an unwavering commitment to three core principles: unparalleled reliability, exceptional speed, and complete customer satisfaction. These pillars form the bedrock of our operations.
                         </p>
                         <p class="mb-4 leading-relaxed text-sm md:text-base">
-                            We understand the importance of each shipment, whether it's a critical business document, a personal gift, or commercial cargo. That's why we leverage state-of-the-art technology for tracking and offer a comprehensive suite of domestic and international courier services tailored to meet diverse needs. At OM International Courier, we're not just delivering packages; we're delivering peace of mind.
+                            Our dedicated and highly skilled team, coupled with an extensive and robust operational network, ensures that every parcel entrusted to us is handled with the utmost precision and care. We meticulously oversee each stage of the delivery process, guaranteeing that your shipments arrive at their destinations punctually, every single time. We profoundly understand the intrinsic importance and often critical nature of each consignment. Whether it's an urgent business document vital for a corporate transaction, a cherished personal gift meant to convey heartfelt emotions, or substantial commercial cargo essential for business continuity, each package is treated with the significance it deserves.
                         </p>
-                         <p class="leading-relaxed text-sm md:text-base">
-                            Our mission is to provide seamless, efficient, and cost-effective courier solutions, fostering strong relationships with our clients and partners through transparency and excellence in service.
+                         <p class="mb-4 leading-relaxed text-sm md:text-base">
+                            To achieve this level of service, OM International Courier consistently invests in and leverages state-of-the-art technology. This includes advanced real-time tracking systems that provide complete transparency and control over your shipments from pickup to delivery. We offer a comprehensive and versatile suite of domestic and international courier services, meticulously designed and tailored to meet the diverse and evolving needs of our varied clientele. At OM International Courier, our service extends beyond mere package delivery; we are fundamentally in the business of delivering assurance, confidence, and peace of mind.
                         </p>
-                        <div class="mt-6 md:mt-8">
-                             <h4 class="text-lg md:text-xl font-semibold text-yellow-300 mb-3">Our Location</h4>
-                             <a href="https://www.google.com/maps/search/?api=1&query=OM+International+Courier%2C+253%2C+A%2F6%2C+2nd+Floor%2C+Shahpur+Jat%2C+New+Delhi-110049%2C+India" target="_blank" rel="noopener noreferrer" class="map-image-link block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 map-image-container">
-                                <img src="https://placehold.co/600x350/CBD5E0/1A202C?text=Find+OM+International+Courier+on+Google+Maps&font=inter" alt="Map showing OM International Courier location in Shahpur Jat, New Delhi" class="w-full h-auto object-cover">
-                            </a>
+                        <p class="leading-relaxed text-sm md:text-base">
+                            Our enduring mission is to provide consistently seamless, remarkably efficient, and highly cost-effective courier solutions. We are dedicated to fostering strong, long-lasting relationships with our valued clients and esteemed partners, built on a foundation of complete transparency, operational excellence, and an unyielding pursuit of service perfection. We continually strive to innovate and adapt, ensuring we remain at the forefront of the logistics industry, ready to meet the challenges of tomorrow and exceed the expectations of our customers today.
+                        </p>
                         </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -542,8 +564,7 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                // const headerOffset = 0; // Header is no longer sticky
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset; // Removed - headerOffset
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({ top: elementPosition, behavior: 'smooth' });
             }
         }
@@ -629,35 +650,37 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // Pause/play animation for sliders on hover/touch
-        function setupSliderAnimation(trackSelector) {
+        function setupSliderAnimation(trackSelector, disableTouchPause = false) {
             const track = document.querySelector(trackSelector);
             if (track) {
                 track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
                 track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
-                track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
-                track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
+                if (!disableTouchPause) { // Only add touch listeners if not disabled
+                    track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
+                    track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
+                }
             }
         }
-        setupSliderAnimation('.services-track');
-        setupSliderAnimation('.logos-track');
+        setupSliderAnimation('.services-track'); // Touch pause enabled by default
+        setupSliderAnimation('.logos-track', true); // Touch pause disabled for logos track
 
-        // Adjust animation for services slider based on actual content width (more robust for responsiveness)
+        // Adjust animation for services slider based on actual content width
         function adjustServiceSliderAnimation() {
             const track = document.querySelector('.services-track');
             if (!track) return;
             const cards = track.querySelectorAll('.service-slide-card');
             if (cards.length === 0) return;
 
-            let totalWidth = 0;
-            // Calculate total width of the original set of cards (assuming first half are originals)
-            const originalCardCount = cards.length / 2; // Assuming duplicated for seamless loop
-            for(let i=0; i < originalCardCount; i++) {
+            let totalWidthOriginalSet = 0;
+            // Assuming the first half of the cards are the original set
+            const originalCardCount = cards.length / 2; 
+            for(let i = 0; i < originalCardCount; i++) {
                 const card = cards[i];
                 const style = window.getComputedStyle(card);
-                totalWidth += card.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+                totalWidthOriginalSet += card.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
             }
             
-            const animationDistance = totalWidth; // Move by the width of the original set
+            const animationDistance = totalWidthOriginalSet; 
             
             const styleSheets = document.styleSheets;
             for (let i = 0; i < styleSheets.length; i++) {
