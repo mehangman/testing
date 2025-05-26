@@ -61,24 +61,25 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Basic header styling */
+        /* Header styling - No longer sticky */
         .header {
             background-color: #000; color: #fff; padding: 0.75rem 1rem;
             display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 50;
+            /* position: sticky; top: 0; z-index: 50; -- Removed for scrolling header */
+            z-index: 50; /* Still useful for potential overlaps if any other high z-index elements exist */
         }
         .logo img { margin-right: 0.5rem; border-radius: 50%; height: 30px; width: 30px; }
         .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
         .nav ul li { margin-left: 1rem; }
         .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; font-size: 0.875rem; }
         .nav ul li a:hover { color: #FACC15; }
-        .hero { position: relative; z-index: 0; } /* Hero section itself doesn't need high z-index, its content does */
+        .hero { position: relative; z-index: 0; }
 
         /* Responsive navigation */
         @media (max-width: 768px) {
             .nav { display: none; }
-            .header { justify-content: center; }
-            .logo { margin-left: auto; margin-right: auto; font-size: 1rem; }
+            .header { justify-content: center; } /* Centers the logo block */
+            .logo { margin-left: auto; margin-right: auto; font-size: 1rem; } /* Ensures logo block is centered */
             .logo img { height: 24px; width: 24px;}
         }
         @media (min-width: 769px) {
@@ -90,14 +91,16 @@
         /* Enhanced Section Animation */
         .section {
             padding: 3rem 1rem;
-            position: relative; /* Establishes stacking context */
+            position: relative; /* Establishes stacking context, important for containing backgrounds */
             opacity: 0;
-            transform: scale(0.95); /* Start slightly smaller and centered */
+            transform: scale(0.95);
             transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* Add a default background to ensure no transparent flashing if child backgrounds are complex */
+            background-color: transparent; /* Or a base color like #111827 if sections are on dark bg */
         }
         .section.visible {
             opacity: 1;
-            transform: scale(1); /* Scale to normal size */
+            transform: scale(1);
         }
         @media (min-width: 768px) {
             .section { padding: 4rem 1rem; }
@@ -106,9 +109,8 @@
         /* Attractive Animated Headings */
         .section-heading {
             position: relative;
-            display: inline-block; /* Allows ::after to be positioned relative to text width if centered */
-            padding-bottom: 12px; /* Space for underline */
-            /* Tailwind classes like text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center text-white will be on the H2 */
+            display: inline-block;
+            padding-bottom: 12px;
         }
         .section-heading::after {
             content: '';
@@ -117,15 +119,14 @@
             bottom: 0;
             transform: translateX(-50%) scaleX(0);
             transform-origin: center;
-            width: 70px; /* Adjust width as desired */
+            width: 70px;
             height: 3px;
             background-color: #FACC15; /* yellow-400 */
-            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.3s; /* Delayed and smooth ease */
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
         }
         .section.visible .section-heading::after {
             transform: translateX(-50%) scaleX(1);
         }
-
 
         /* Partner logo styling */
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
@@ -141,16 +142,16 @@
         .tracking-section {
             text-align: center; position: relative; overflow: hidden;
             min-height: 450px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 3rem 1rem;
+            padding: 3rem 1rem; /* Padding handled by .section class now */
         }
-         @media (min-width: 768px) { .tracking-section { min-height: 500px; padding: 4rem 1rem; } }
+         @media (min-width: 768px) { .tracking-section { min-height: 500px; } } /* Padding handled by .section */
         .tracking-section-bg-overlay {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); z-index: 1; /* Overlay for tracking bg image */
+            background-color: rgba(0,0,0,0.6); z-index: 1;
         }
-        .tracking-content { position: relative; z-index: 2; /* Above overlay */ max-width: 800px; padding: 0 1rem; width: 100%;}
+        .tracking-content { position: relative; z-index: 2; max-width: 800px; padding: 0 1rem; width: 100%;}
 
-        .tracking-section .tracking-heading { /* This is an h2 inside .tracking-content */
+        .tracking-section .tracking-heading {
             font-size: 1.875rem; line-height: 2.25rem; font-weight: 700; color: white;
             margin-bottom: 1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
@@ -190,29 +191,22 @@
         .tracking-form button:hover { background-color: #FBBF24; transform: translateY(-2px); }
 
         /* Footer styling */
-        footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; /* Push footer to bottom with flex body */ }
+        footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
 
-        /* Section top padding for anchor links - Adjusted for sticky header */
+        /* Section top margin for anchor links - Replaced sticky header padding */
         #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
-            padding-top: calc(3rem + 60px);  /* Default for mobile + approx header height */
-            margin-top: -60px; /* Offset for sticky header */
-        }
-         @media (min-width: 768px) {
-             #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
-                padding-top: calc(4rem + 60px);
-                margin-top: -60px;
-            }
+            scroll-margin-top: 20px; /* Adjust this value for desired spacing from viewport top on hash link navigation */
+            /* Removed padding-top and margin-top related to sticky header */
         }
 
         a { transition: color 0.3s ease; }
 
         /* Styles for Partner Logo Slider */
-        #partner-logos { /* This is a .section */
-            overflow-x: hidden; background-color: #334155;
-            /* padding-top/bottom handled by .section and anchor adjustment */
+        #partner-logos {
+            overflow-x: hidden; background-color: #334155; /* This section has its own distinct background */
         }
-        .logos-track-container { width: 100%; display: flex; position: relative; z-index: 1; /* Ensure above section bg */ }
+        .logos-track-container { width: 100%; display: flex; position: relative; z-index: 1; }
         .logos-track {
             display: flex; align-items: center;
             animation: continuous-slide-logos 10s linear infinite;
@@ -226,9 +220,8 @@
         }
 
         /* Styles for Service Card Slider */
-        #services { /* This is a .section */
+        #services {
             overflow-x: hidden; position: relative;
-            /* padding-top/bottom handled by .section and anchor adjustment */
         }
         .section-blur-bg { /* Specific to #services and #area */
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -236,7 +229,7 @@
             filter: blur(8px); -webkit-filter: blur(8px); z-index: -1; /* Behind section content */
             transition: background-image 0.5s ease-in-out;
         }
-        .services-track-container { width: 100%; position: relative; z-index: 2; /* Above section-blur-bg */ }
+        .services-track-container { width: 100%; position: relative; z-index: 2; }
         .services-track {
             display: flex; align-items: stretch;
             animation: continuous-slide-services 20s linear infinite;
@@ -267,7 +260,7 @@
         }
 
         /* Styles for Service Areas Section */
-        #area { position: relative; overflow: hidden; } /* This is a .section */
+        #area { position: relative; overflow: hidden; }
         .area-card {
             background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
@@ -278,10 +271,10 @@
          @media (min-width: 768px) { .area-card ul li { font-size: 0.875rem; } }
 
         /* Styles for About Us Section */
-        #about-us { /* This is a .section */
-            background-color: #1f2937; color: #d1d5db;
+        #about-us {
+            background-color: #1f2937; color: #d1d5db; /* This section has its own distinct background */
         }
-        #about-us .section-heading { color: #FACC15; } /* Override for specific heading color if needed */
+        #about-us .section-heading { color: #FACC15; }
         #about-us a:not(.map-image-link) { color: #9ca3af; transition: color 0.3s ease; }
         #about-us a:not(.map-image-link):hover { color: #FACC15; }
         .quick-link-item { padding: 0.25rem 0; }
@@ -303,20 +296,18 @@
         .text-gradient-teal-cyan { background: linear-gradient(to right, #14b8a6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
 
         html { scroll-behavior: smooth; }
-        body { display: flex; flex-direction: column; min-height: 100vh; }
+        body { display: flex; flex-direction: column; min-height: 100vh; background-color: #111827; /* Base background for the whole page */ }
         main { flex-grow: 1; }
 
     </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100">
-    <div class="preloader">
+<body class="text-gray-100"> <div class="preloader">
         <div class="spinner"></div>
     </div>
 
     <header class="header shadow-md">
-        <div class="logo text-xl font-bold ml-4 flex items-center">
-            <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-8 w-8 mr-2">
+        <div class="logo text-xl font-bold ml-4 flex items-center"> <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-8 w-8 mr-2">
             <span class="text-yellow-400 mr-1">OM</span> International Courier
         </div>
         <nav class="nav mr-4">
@@ -349,8 +340,7 @@
             </div>
         </section>
 
-        <section id="services" class="section animate-on-scroll">
-            <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1c2luZXNzJTIwbG9naXN0aWNzfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80');"></div>
+        <section id="services" class="section animate-on-scroll bg-gray-800"> <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1c2luZXNzJTIwbG9naXN0aWNzfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80');"></div>
             <div class="relative z-10 text-center"> <h2 class="section-heading text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-white">Our <span class="text-yellow-400">Comprehensive</span> Services</h2>
             </div>
             <div class="services-track-container">
@@ -429,8 +419,7 @@
             </div>
         </section>
 
-        <section id="area" class="section animate-on-scroll">
-            <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1578575437130-5297cde5590d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2xvYmFsJTIwbWFwfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80');"></div>
+        <section id="area" class="section animate-on-scroll bg-gray-800"> <div class="section-blur-bg" style="background-image: url('https://images.unsplash.com/photo-1578575437130-5297cde5590d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2xvYmFsJTIwbWFwfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80');"></div>
             <div class="relative z-10 text-center"> <h2 class="section-heading text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-white">Our <span class="text-yellow-400">Service Areas</span></h2>
                 <p class="text-md md:text-lg text-gray-200 mb-8 md:mb-10 max-w-3xl mx-auto text-center">We operate from New Delhi, serving a wide range of domestic and international locations.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
@@ -506,8 +495,7 @@
             </div>
         </section>
 
-        <section id="partner-logos" class="section animate-on-scroll">
-            <div class="logos-track-container">
+        <section id="partner-logos" class="section animate-on-scroll bg-slate-700"> <div class="logos-track-container">
                 <div class="logos-track">
                     <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
                     <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
@@ -525,8 +513,7 @@
             </div>
         </section>
 
-        <section id="about-us" class="section animate-on-scroll">
-            <div class="container mx-auto px-4">
+        <section id="about-us" class="section animate-on-scroll bg-gray-900"> <div class="container mx-auto px-4">
                 <div class="text-center"> <h2 class="section-heading text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">About <span class="text-yellow-400">OM International Courier</span></h2>
                 </div>
                 <div class="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 items-start">
@@ -595,9 +582,15 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('.header')?.offsetHeight || 60; // Approx header height
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+                // Offset for scrolling, so the section title isn't flush against the top
+                const offset = 20; // Adjust this value as needed
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
         }
 
@@ -674,7 +667,7 @@
             }
         }
         setupSliderAnimation('.services-track');
-        setupSliderAnimation('.logos-track', true);
+        setupSliderAnimation('.logos-track', true); // Disable touch pause for logos as it's purely decorative
 
         function adjustServiceSliderAnimation() {
             const track = document.querySelector('.services-track');
@@ -683,7 +676,8 @@
             if (cards.length === 0) return;
 
             let totalWidthOriginalSet = 0;
-            const originalCardCount = Math.ceil(cards.length / 2);
+            // Assuming the track is duplicated, calculate width of the first half
+            const originalCardCount = Math.ceil(cards.length / 2); 
             for(let i = 0; i < originalCardCount; i++) {
                 if (cards[i]) {
                     const card = cards[i];
@@ -693,6 +687,7 @@
             }
             const animationDistance = totalWidthOriginalSet;
 
+            // Update the @keyframes rule for continuous-slide-services
             const styleSheets = document.styleSheets;
             for (let i = 0; i < styleSheets.length; i++) {
                 try {
@@ -701,11 +696,12 @@
                         for (let j = 0; j < rules.length; j++) {
                             if (rules[j].type === CSSRule.KEYFRAMES_RULE && rules[j].name === 'continuous-slide-services') {
                                 const keyframesRule = rules[j];
+                                // Find the 100% keyframe and update its transform
                                 for (let k = 0; k < keyframesRule.cssRules.length; k++) {
                                     const keyframe = keyframesRule.cssRules[k];
                                     if (keyframe.keyText === '100%') {
                                         keyframe.style.transform = `translateX(-${animationDistance}px)`;
-                                        return; 
+                                        return; // Exit after updating
                                     }
                                 }
                             }
@@ -714,26 +710,34 @@
                 } catch (e) { /* console.warn("Could not access stylesheet: ", e); */ }
             }
         }
-
+        
+        // Intersection Observer for section animations
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
-        const sectionObserverOptions = { root: null, rootMargin: '0px', threshold: 0.15 }; // Trigger a bit earlier/later if needed
+        const sectionObserverOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.15 // 15% of the section is visible
+        };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 } else {
-                     // Optional: Remove 'visible' to re-animate if scrolling up and then down again
-                     // entry.target.classList.remove('visible');
+                    // Optional: Remove 'visible' to re-animate if scrolling up and then down again
+                    // This can be performance intensive if many sections re-animate often.
+                    // entry.target.classList.remove('visible'); 
                 }
             });
         }, sectionObserverOptions);
 
-        sectionsToAnimate.forEach(section => { sectionObserver.observe(section); });
+        sectionsToAnimate.forEach(section => {
+            sectionObserver.observe(section);
+        });
 
         window.addEventListener('load', () => {
             adjustServiceSliderAnimation();
-            // Initial check for sections already in viewport on load
+            // Initial check for sections already in viewport on load, useful if page loads scrolled down
             sectionsToAnimate.forEach(section => {
                 if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
                     section.classList.add('visible');
