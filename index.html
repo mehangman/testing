@@ -103,7 +103,7 @@
             .section { padding: 4rem 1rem; } /* Larger padding for larger screens */
         }
 
-        /* Attractive Animated Headings */
+        /* Attractive Animated Headings (Used in other sections) */
         .section-heading { 
             position: relative;
             display: inline-block;
@@ -224,7 +224,7 @@
         .logos-track-container { width: 100%; display: flex; position: relative; z-index: 1; }
         .logos-track {
             display: flex; align-items: center;
-            animation: continuous-slide-logos 20s linear infinite; /* Slower animation */
+            animation: continuous-slide-logos 20s linear infinite; 
             will-change: transform;
         }
         .logos-track img { height: 36px; flex-shrink: 0; margin: 0 1rem; object-fit: contain; }
@@ -232,54 +232,46 @@
         
         @keyframes continuous-slide-logos {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); } /* Adjusted for 2 sets of logos */
+            100% { transform: translateX(-50%); } 
         }
 
-        /* New Services Section Styles */
+        /* New Services Section Styles - Full Section Slides */
         #services {
-            padding: 0; /* Remove default section padding, manage internally */
-            min-height: 80vh;
-            display: flex; /* Keep flex for centering the slider container */
-            flex-direction: column; /* Allow heading to be above slider */
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            padding: 0; 
+            min-height: 100vh; /* Takes full viewport height */
+            /* If header is sticky and has known height, use: calc(100vh - var(--header-height, 60px)); */
+            position: relative; 
             overflow: hidden;
+            /* Removed flex properties, slider container will manage its content */
         }
 
         .services-slider-container {
-            position: relative;
+            position: relative; /* Changed from absolute to relative if it's the direct child managing slides */
             width: 100%;
-            /* Adjusted height to be slightly less than section to accommodate title and dots */
-            height: calc(100% - 8rem); /* Example: 100% of parent minus space for title/dots */
-            min-height: 65vh; /* Ensure it has a minimum height */
-            max-width: 1200px; /* Max width for the slider content */
-            margin: 0 auto; /* Center the slider container */
+            height: 100%; /* Fills the #services section */
         }
         
         .service-card {
             position: absolute;
-            inset: 0; /* Fill the services-slider-container */
+            inset: 0; 
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
-            display: flex; /* For centering the inner content box */
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Ensure transform is part of transition */
+            display: flex; 
             align-items: center;
             justify-content: center;
-            transform: translateX(100%); /* Start off-screen to the right */
+            transform: translateX(100%); /* Default start off-screen to the right */
             will-change: opacity, transform;
         }
 
         .service-card.active {
             opacity: 1;
             pointer-events: auto;
-            transform: translateX(0);
+            transform: translateX(0); /* Slide into view */
             z-index: 10;
         }
         
-        .service-card.prev-active {
-             transform: translateX(-100%); /* Move to the left when becoming inactive */
-        }
+        /* .service-card.prev-active is handled by JS applying transform directly */
 
         .service-card-blurred-bg {
             position: absolute;
@@ -288,71 +280,79 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            filter: blur(10px) brightness(0.7); /* Increased blur and slight darken */
-            transform: scale(1.1); /* Slightly scale up for blur edge */
-            transition: background-image 0.7s ease-in-out; /* Smooth bg change */
+            filter: blur(10px) brightness(0.7); 
+            transform: scale(1.1); 
+            transition: background-image 0.7s ease-in-out; 
             z-index: 1;
         }
 
         .service-card-inner-content {
             position: relative;
             z-index: 2;
-            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
-            backdrop-filter: blur(5px); /* Subtle blur on the overlay itself */
-            padding: 1.5rem; /* p-6 */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* shadow-2xl */
-            width: 90%; /* Responsive width */
-            max-width: 900px; /* lg:max-w-5xl */
+            background-color: rgba(0, 0, 0, 0.65); 
+            backdrop-filter: blur(8px); 
+            padding: 2rem; 
+            border-radius: 1rem; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4); 
+            width: 90%;
+            max-width: 1024px; 
             color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .service-text-info h3 {
-            color: #FACC15; /* yellow-400 */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            color: #FACC15; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+             /* Sizes applied via Tailwind in HTML */
         }
         .service-text-info p {
-            color: #E5E7EB; /* gray-200 */
+            color: #E5E7EB; 
+            line-height: 1.75;
+            /* Sizes applied via Tailwind in HTML */
         }
 
         .service-image-container img {
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            background-color: rgba(255,255,255,0.1); /* Slight bg for placeholder */
+            border-radius: 0.75rem; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            background-color: rgba(255,255,255,0.05);
+            /* Sizes applied via Tailwind in HTML */
         }
         
-        /* Responsive adjustments for card content */
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .service-card-inner-content {
-                padding: 2.5rem; /* p-10 */
+                padding: 3rem; 
+            }
+        }
+        @media (min-width: 1024px) { 
+            .service-card-inner-content {
+                padding: 4rem;
             }
         }
 
         .service-dots-container {
             position: absolute;
-            bottom: 1rem; /* Closer to bottom */
+            bottom: 2rem; 
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 0.75rem; /* space-x-3 */
-            z-index: 20; /* Above cards */
+            gap: 0.75rem; 
+            z-index: 20; 
             padding: 0.5rem;
             background-color: rgba(0,0,0,0.3);
             border-radius: 9999px;
         }
 
         .service-dot {
-            width: 10px; /* Smaller dots */
+            width: 10px; 
             height: 10px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4); /* Lighter inactive */
+            background-color: rgba(255, 255, 255, 0.4); 
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .service-dot.active {
-            background-color: #FACC15; /* yellow-400 for active */
+            background-color: #FACC15; 
             transform: scale(1.2);
         }
         
@@ -364,7 +364,7 @@
             background-color: rgba(0, 0, 0, 0.4);
             color: white;
             border-radius: 50%;
-            width: 2.75rem; /* Slightly larger */
+            width: 2.75rem; 
             height: 2.75rem;
             display: flex;
             align-items: center;
@@ -378,26 +378,24 @@
             transform: translateY(-50%) scale(1.05);
         }
         .service-nav-arrow svg {
-            width: 1.5rem; /* w-6 */
-            height: 1.5rem; /* h-6 */
+            width: 1.5rem; 
+            height: 1.5rem; 
         }
-        #prevService { left: 1rem; }
-        #nextService { right: 1rem; }
+        #prevService { left: 2rem; }
+        #nextService { right: 2rem; }
 
-        @media (max-width: 767px) { /* Hide arrows on mobile, rely on swipe */
+        @media (max-width: 767px) { 
             .service-nav-arrow { display: none; }
             .service-card-inner-content {
-                /* Stack text and image on mobile */
                 display: flex;
                 flex-direction: column;
+                padding: 1.5rem;
             }
             .service-text-info { order: 2; text-align: center; margin-top: 1rem;}
-            .service-image-container { order: 1; }
-            .service-text-info h3 { font-size: 1.5rem; } /* text-2xl */
-            .service-text-info p { font-size: 0.875rem; } /* text-sm */
-            .service-image-container img {
-                width: 8rem; /* w-32 */
-                height: 8rem; /* h-32 */
+            .service-image-container { order: 1; margin-bottom: 1rem; } /* Added margin-bottom */
+            /* Font and image sizes for mobile are set in JS HTML structure via Tailwind */
+            .service-dots-container {
+                bottom: 1rem;
             }
         }
         /* End New Services Section Styles */
@@ -498,9 +496,6 @@
         </section>
 
         <section id="services" class="section animate-on-scroll">
-            <div class="text-center mb-8 md:mb-12">
-                 <h2 class="section-heading text-2xl md:text-4xl font-bold">Our <span class="heading-gradient-part">Services</span></h2>
-            </div>
             <div class="services-slider-container">
                 </div>
             <div class="service-dots-container">
@@ -704,9 +699,9 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('.header')?.offsetHeight || 60; // Height of sticky header
+                const headerOffset = document.querySelector('.header')?.offsetHeight || 60; 
                 const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset - 20; // Extra 20px margin
+                const offsetPosition = elementPosition - headerOffset - 20; 
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -789,19 +784,17 @@
         }
         setupSliderAnimation('.logos-track', true); 
 
-        // Intersection Observer for section animations
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = {
             root: null, 
             rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the element is visible
+            threshold: 0.1 
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // observer.unobserve(entry.target); // Optional: stop observing after animation
                 }
             });
         }, sectionObserverOptions);
@@ -810,50 +803,50 @@
             sectionObserver.observe(section);
         });
         
-        // New Services Slider Logic
+        // New Services Slider Logic - Full Section Slides
         document.addEventListener('DOMContentLoaded', () => {
             const servicesData = [
                 {
                     title: "Domestic Courier",
                     description: "Fast, reliable delivery across India. Efficient handling for all parcel types, ensuring your packages reach their destination swiftly and securely within the country.",
-                    imageSrc: "https://placehold.co/256x256/FACC15/111827?text=Domestic",
+                    imageSrc: "https://placehold.co/256x256/FDE047/1F2937?text=Domestic", // Brighter yellow
                     altText: "Domestic Courier Service",
-                    bgImage: "https://images.unsplash.com/photo-1587502536575-620050172890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2l0eSUyMG1hcCUyMGJsdXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
+                    bgImage: "https://images.unsplash.com/photo-1566996675874-10f870d788fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW5kaWElMjBtYXB8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // India map related
                 },
                 {
                     title: "International Courier",
                     description: "Expedited, dependable global shipping for your international reach. We connect you to the world with seamless customs clearance and timely deliveries across borders.",
-                    imageSrc: "https://placehold.co/256x256/FACC15/111827?text=Global",
+                    imageSrc: "https://placehold.co/256x256/A5F3FC/1F2937?text=Global", // Light cyan
                     altText: "International Courier Service",
-                    bgImage: "https://images.unsplash.com/photo-1545156079-f5cb39307349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGdsb2JhbCUyMG5ldHdvcmslMjBibHVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=70"
+                    bgImage: "https://images.unsplash.com/photo-1506038917769-93a6856c847e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdsb2JhbCUyMGNvbW11bmljYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Global network
                 },
                 {
                     title: "Real-Time Tracking",
                     description: "Advanced tracking for all consignments, ensuring full transparency. Monitor your shipment's journey from pickup to delivery with our easy-to-use online tools.",
-                    imageSrc: "https://placehold.co/256x256/FACC15/111827?text=Tracking",
+                    imageSrc: "https://placehold.co/256x256/D9F99D/1F2937?text=Track", // Light green
                     altText: "Real-Time Shipment Tracking",
-                    bgImage: "https://images.unsplash.com/photo-1604357209793-f05a1013751d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGVjaG5vbG9neSUyMGJsdXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
+                    bgImage: "https://images.unsplash.com/photo-1585664811087-47f65abbad64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9naXN0aWNzJTIwdHJhY2tpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Tracking/tech
                 },
                 {
                     title: "Extensive Network",
                     description: "Strong franchise collaboration for maximum service coverage. Our widespread network ensures we can reach even the most remote locations efficiently.",
-                    imageSrc: "https://placehold.co/256x256/FACC15/111827?text=Network",
+                    imageSrc: "https://placehold.co/256x256/FBCFE8/1F2937?text=Network", // Light pink
                     altText: "Extensive Courier Network",
-                    bgImage: "https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmV0d29yayUyMGJsdXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
+                    bgImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmV0d29yayUyMGNvbm5lY3Rpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Network connections
                 },
                 {
                     title: "Customized Solutions",
                     description: "Tailored services for your unique individual or business needs. From special handling to bulk shipments, we adapt to your specific requirements.",
-                    imageSrc: "https://placehold.co/256x256/FACC15/111827?text=Solutions",
+                    imageSrc: "https://placehold.co/256x256/BFDBFE/1F2937?text=Custom", // Light blue
                     altText: "Customized Courier Solutions",
-                    bgImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnVzaW5lc3MlMjBtZWV0aW5nJTIwYmx1cnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
+                    bgImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YnVzaW5lc3MlMjBzb2x1dGlvbnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Business solutions
                 },
                 {
                     title: "Franchise Adaptability",
                     description: "Seamless operations by working efficiently with partner franchises. Our collaborative approach ensures consistent service quality across all touchpoints.",
-                    imageSrc: "https://placehold.co/256x256/FACC15/111827?text=Adaptable",
+                    imageSrc: "https://placehold.co/256x256/DDD6FE/1F2937?text=Partners", // Light purple
                     altText: "Franchise Adaptability",
-                    bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXdvcmtlJTIwYmx1cnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
+                    bgImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sbGFib3JhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70" // Collaboration/teamwork
                 }
             ];
 
@@ -863,39 +856,37 @@
             const nextButton = document.getElementById('nextService');
 
             if (!sliderContainer || !dotsContainer || !prevButton || !nextButton) {
-                console.error("Slider elements not found!");
+                console.error("Slider elements not found for services section!");
                 return;
             }
 
             let currentServiceIndex = 0;
-            let serviceCards = []; // To store references to card elements
+            let serviceCards = []; 
 
             function renderServices() {
-                sliderContainer.innerHTML = ''; // Clear existing cards
-                dotsContainer.innerHTML = ''; // Clear existing dots
+                sliderContainer.innerHTML = ''; 
+                dotsContainer.innerHTML = ''; 
 
                 servicesData.forEach((service, index) => {
-                    // Create service card
                     const card = document.createElement('div');
-                    card.className = 'service-card absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex items-center justify-center p-4 md:p-0';
-                    // For slide-in animation, initial transform is set in CSS
+                    // Removed p-4 md:p-0 from class list
+                    card.className = 'service-card absolute inset-0 w-full h-full transition-all duration-700 ease-in-out opacity-0 pointer-events-none flex items-center justify-center';
                     
                     card.innerHTML = `
                         <div class="service-card-blurred-bg" style="background-image: url('${service.bgImage}');"></div>
                         <div class="service-card-inner-content grid md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <div class="service-text-info order-2 md:order-1 md:col-span-7">
-                                <h3 class="text-2xl sm:text-3xl lg:text-3xl font-bold mb-3 md:mb-4">${service.title}</h3>
-                                <p class="text-sm sm:text-base lg:text-base leading-relaxed">${service.description}</p>
+                            <div class="service-text-info order-2 md:order-1 md:col-span-7 text-center md:text-left">
+                                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">${service.title}</h3>
+                                <p class="text-sm sm:text-base lg:text-lg leading-relaxed">${service.description}</p>
                             </div>
-                            <div class="service-image-container order-1 md:order-2 md:col-span-5 flex justify-center md:justify-end items-center">
-                                <img src="${service.imageSrc}" alt="${service.altText}" class="w-36 h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 object-contain">
+                            <div class="service-image-container order-1 md:order-2 md:col-span-5 flex justify-center items-center">
+                                <img src="${service.imageSrc}" alt="${service.altText}" class="w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 object-contain">
                             </div>
                         </div>
                     `;
                     sliderContainer.appendChild(card);
                     serviceCards.push(card);
 
-                    // Create dot
                     const dot = document.createElement('div');
                     dot.className = 'service-dot';
                     dot.addEventListener('click', () => showService(index));
@@ -908,50 +899,33 @@
                 currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
                 serviceCards.forEach((card, i) => {
-                    card.classList.remove('active', 'prev-active');
-                    // Reset transform for non-active cards to ensure correct entry animation
-                    if (i !== currentServiceIndex) {
-                         // Determine if it should be to the left or right for next animation
-                        if (i === oldIndex) { // The card that was just active
-                            if (direction === 'next') {
-                                card.style.transform = 'translateX(-100%)';
-                            } else {
-                                card.style.transform = 'translateX(100%)';
-                            }
-                        } else { // Other non-active cards
-                             card.style.transform = 'translateX(100%)'; // Default to right
-                        }
+                    card.classList.remove('active');
+                    // Default to off-screen right for cards not involved in immediate transition out
+                    if (i !== oldIndex && i !== currentServiceIndex) {
+                        card.style.transform = 'translateX(100%)';
                     }
                 });
                 
-                // Animate out the old card
-                if (serviceCards[oldIndex]) {
-                    serviceCards[oldIndex].classList.add('prev-active'); // This will trigger its exit animation if defined
-                     // Explicitly set transform for exit based on direction
+                if (serviceCards[oldIndex] && oldIndex !== currentServiceIndex) {
                     if (direction === 'next') {
                         serviceCards[oldIndex].style.transform = 'translateX(-100%)';
-                    } else {
+                    } else { 
                         serviceCards[oldIndex].style.transform = 'translateX(100%)';
                     }
                 }
 
-                // Animate in the new card
                 if (serviceCards[currentServiceIndex]) {
-                    // Set initial position based on direction for slide-in
-                    if (direction === 'next') {
-                        serviceCards[currentServiceIndex].style.transform = 'translateX(100%)';
-                    } else {
-                        serviceCards[currentServiceIndex].style.transform = 'translateX(-100%)';
+                    if (oldIndex !== currentServiceIndex) { 
+                        if (direction === 'next') {
+                            serviceCards[currentServiceIndex].style.transform = 'translateX(100%)';
+                        } else { 
+                            serviceCards[currentServiceIndex].style.transform = 'translateX(-100%)';
+                        }
+                        void serviceCards[currentServiceIndex].offsetWidth; 
                     }
-                    // Force reflow to apply initial transform before transition
-                    void serviceCards[currentServiceIndex].offsetWidth; 
-                    
                     serviceCards[currentServiceIndex].classList.add('active');
-                    // The 'active' class in CSS should set transform to translateX(0)
                 }
 
-
-                // Update dots
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentServiceIndex);
                 });
@@ -960,10 +934,9 @@
             prevButton.addEventListener('click', () => showService(currentServiceIndex - 1, 'prev'));
             nextButton.addEventListener('click', () => showService(currentServiceIndex + 1, 'next'));
 
-            // Swipe functionality
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; // Minimum pixels for a swipe
+            const swipeThreshold = 50; 
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -975,26 +948,24 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
+                if (touchEndX < touchStartX - swipeThreshold) { 
                     showService(currentServiceIndex + 1, 'next');
-                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
+                } else if (touchEndX > touchStartX + swipeThreshold) { 
                     showService(currentServiceIndex - 1, 'prev');
                 }
             }
 
-            // Initialize slider
             renderServices();
             if (serviceCards.length > 0) {
-                 // Show initial card without slide-in from side, just fade in
-                serviceCards[0].style.transform = 'translateX(0)';
-                serviceCards[0].classList.add('active');
-                dotsContainer.children[0].classList.add('active');
+                serviceCards[0].style.transform = 'translateX(0)'; 
+                serviceCards[0].classList.add('active'); 
+                if (dotsContainer.children[0]) {
+                    dotsContainer.children[0].classList.add('active');
+                }
             }
         });
 
-
         window.addEventListener('load', () => {
-            // Initial check for visible sections on load (e.g., if already scrolled)
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom >= 0) { 
