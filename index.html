@@ -104,11 +104,10 @@
         }
 
         /* Attractive Animated Headings */
-        .section-heading { /* Applied to H2 in sections */
+        .section-heading { 
             position: relative;
             display: inline-block;
             padding-bottom: 12px;
-            /* Gradient will be applied by .section-heading-gradient */
         }
         .section-heading::after {
             content: '';
@@ -119,31 +118,28 @@
             transform-origin: center;
             width: 70px;
             height: 3px;
-            background-color: #FACC15; /* yellow-400, complements gold gradient */
+            background-color: #FACC15; 
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
         }
         .section.visible .section-heading::after {
             transform: translateX(-50%) scaleX(1);
         }
         
-        /* Gradient for general section headings */
         .section-heading-gradient {
-            background: linear-gradient(to right, #FACC15, #FBBF24, #FFD700); /* Yellow to Gold */
+            background: linear-gradient(to right, #FACC15, #FBBF24, #FFD700); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
         }
 
-        /* Gradient for Hero heading (H1) */
         .hero-heading-gradient {
-            background: linear-gradient(to right, #FDE047, #FBBF24, #F59E0B); /* Brighter Yellow to Orange-Gold */
+            background: linear-gradient(to right, #FDE047, #FBBF24, #F59E0B); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
         }
-
 
         /* Partner logo styling */
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
@@ -167,12 +163,11 @@
         }
         .tracking-content { position: relative; z-index: 2; max-width: 800px; padding: 0 1rem; width: 100%;}
 
-        .tracking-section .tracking-heading { /* This is an H2 */
-            font-size: 1.875rem; line-height: 2.25rem; font-weight: 700; color: white; /* Gradient will override this */
+        .tracking-section .tracking-heading { 
+            font-size: 1.875rem; line-height: 2.25rem; font-weight: 700;
             margin-bottom: 1rem;
-            /* text-shadow: 1px 1px 3px rgba(0,0,0,0.5); Removed for gradient */
         }
-        @media (min-width: 768px) { .tracking-section .tracking-heading { font-size: 2.25rem; line-height: 2.5rem; /* text-shadow: 2px 2px 4px rgba(0,0,0,0.5); */ } }
+        @media (min-width: 768px) { .tracking-section .tracking-heading { font-size: 2.25rem; line-height: 2.5rem; } }
         .tracking-section .tracking-subheading {
             font-size: 1rem; color: #e5e7eb; margin-bottom: 2rem;
             max-width: 600px; margin-left: auto; margin-right: auto;
@@ -207,7 +202,6 @@
          @media (min-width: 768px) { .tracking-form button { padding: 0.875rem 1.5rem; font-size: 1rem; } }
         .tracking-form button:hover { background-color: #FBBF24; transform: translateY(-2px); }
 
-        /* Footer styling */
         footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
 
@@ -217,15 +211,13 @@
 
         a { transition: color 0.3s ease; }
 
-        /* Styles for Partner Logo Slider */
         #partner-logos {
-            overflow-x: hidden; background-color: #1f2937; /* Darker background for contrast */
+            overflow-x: hidden; background-color: #1f2937; 
         }
         .logos-track-container { width: 100%; display: flex; position: relative; z-index: 1; }
         .logos-track {
             display: flex; align-items: center;
-            /* Animation: name duration timing-function delay iteration-count direction fill-mode play-state */
-            animation: continuous-slide-logos 25s linear infinite; /* Increased duration */
+            animation: continuous-slide-logos 5s linear infinite; /* Updated duration */
             will-change: transform;
         }
         .logos-track img { height: 36px; flex-shrink: 0; margin: 0 1rem; object-fit: contain; }
@@ -233,88 +225,81 @@
         
         @keyframes continuous-slide-logos {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); } /* Corrected for duplicated content */
+            100% { transform: translateX(-25%); } /* Updated for 4 sets of logos */
         }
 
-        /* Styles for Service Card Slider */
         #services {
             overflow-x: hidden; position: relative;
-            background: #111827; /* Professional dark background for the section */
+            background: #111827; 
         }
-        .section-blur-bg { /* Specific to #services and #area */
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-size: cover; background-position: center;
-            filter: blur(3px); -webkit-filter: blur(3px); /* Reduced blur */
-            z-index: -1; 
-            transition: background-image 0.5s ease-in-out;
-        }
+        /* .section-blur-bg removed as per request */
         .services-track-container { width: 100%; position: relative; z-index: 2; }
         .services-track {
-            display: flex; align-items: stretch; /* Ensure cards have same height if content varies */
+            display: flex; align-items: stretch; 
             animation: continuous-slide-services 20s linear infinite;
             will-change: transform;
-            padding: 1rem 0; /* Add some padding for visual separation if cards are near edges */
+            padding: 1rem 0; 
         }
         .service-slide-card {
-            width: 320px; /* Increased width */
+            width: 320px; 
             flex-shrink: 0; margin: 0 0.75rem;
-            display: flex; /* Changed to flex for better internal alignment */
-            flex-direction: column; /* Stack icon and content vertically */
-            align-items: center; /* Center items horizontally */
-            text-align: center; /* Center text */
-            background-color: white; /* Solid white background */
-            border-radius: 0.75rem; /* Tailwind rounded-xl */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* Tailwind shadow-lg */
-            padding: 1.25rem; /* Increased padding (p-5) */
-            border: 1px solid #e5e7eb; /* Subtle border (border-gray-200) */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            background-color: white; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
+            padding: 1.25rem; 
+            border: 1px solid #e5e7eb; 
         }
          @media (min-width: 768px) { 
             .service-slide-card { 
-                width: 380px; /* Increased width for desktop */
+                width: 380px; 
                 margin: 0 1rem; 
-                padding: 1.5rem; /* Increased padding (md:p-6) */
-                flex-direction: row; /* Icon beside content on larger screens */
-                text-align: left; /* Align text to left for row layout */
+                padding: 1.5rem; 
+                flex-direction: row; 
+                text-align: left; 
                 align-items: center; 
             }
         }
         .service-slide-icon-container { 
             flex-shrink: 0; 
-            margin-bottom: 0.75rem; /* Space below icon on mobile */
+            margin-bottom: 0.75rem; 
         }
          @media (min-width: 768px) { 
             .service-slide-icon-container { 
-                margin-right: 1.25rem; /* Space between icon and content on desktop */
-                margin-bottom: 0; /* No bottom margin on desktop */
+                margin-right: 1.25rem; 
+                margin-bottom: 0; 
             } 
         }
         .service-slide-icon-wrapper {
             width: 3.5rem; height: 3.5rem; border-radius: 9999px;
             display: flex; align-items: center; justify-content: center;
         }
-        @media (min-width: 768px) { .service-slide-icon-wrapper { width: 4.5rem; height: 4.5rem; } } /* Slightly smaller than original 5rem to fit card */
+        @media (min-width: 768px) { .service-slide-icon-wrapper { width: 4.5rem; height: 4.5rem; } } 
         .service-slide-icon-wrapper img { width: 2rem; height: 2rem; object-fit: contain; }
         @media (min-width: 768px) { .service-slide-icon-wrapper img { width: 2.25rem; height: 2.25rem; } }
         
         .service-slide-content {
-            flex-grow: 1; /* Allow content to take available space */
+            flex-grow: 1; 
         }
         .service-slide-content h3 { 
-            font-size: 1.125rem; /* Increased base size */
+            font-size: 1.125rem; 
             font-weight: 600; 
             margin-bottom: 0.25rem; 
-            color: #1f2937; /* Darker text for better contrast on white */
+            color: #1f2937; 
         }
         @media (min-width: 768px) { 
             .service-slide-content h3 { 
-                font-size: 1.25rem; /* md:text-xl */
+                font-size: 1.25rem; 
                 margin-bottom: 0.5rem; 
             } 
         }
         .service-slide-content p { 
-            font-size: 0.875rem; /* Increased base size */
+            font-size: 0.875rem; 
             line-height: 1.5; 
-            color: #4b5563; /* Slightly lighter dark text (text-gray-600) */
+            color: #4b5563; 
         }
         @media (min-width: 768px) { 
             .service-slide-content p { 
@@ -328,8 +313,14 @@
             100% { transform: translateX(-2082px);  } /* Dynamically adjusted by JS */
         }
 
-        /* Styles for Service Areas Section */
         #area { position: relative; overflow: hidden; }
+         .section-blur-bg-area { /* Renamed to avoid conflict if needed, or ensure it's only for #area */
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover; background-position: center;
+            filter: blur(3px); -webkit-filter: blur(3px); 
+            z-index: -1; 
+            transition: background-image 0.5s ease-in-out;
+        }
         .area-card {
             background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
@@ -339,18 +330,15 @@
         .area-card ul li { color: #e5e7eb; font-size: 0.875rem; }
          @media (min-width: 768px) { .area-card ul li { font-size: 0.875rem; } }
 
-        /* Styles for About Us Section */
         #about-us {
             background-color: #1f2937; color: #d1d5db;
         }
-        /* #about-us .section-heading { color: #FACC15; } Replaced by gradient */
         #about-us a:not(.map-image-link) { color: #9ca3af; transition: color 0.3s ease; }
         #about-us a:not(.map-image-link):hover { color: #FACC15; }
         .quick-link-item { padding: 0.25rem 0; }
         .input-error-highlight { border-color: #ef4444 !important; }
         #tracking-number-error { color: #fca5a5; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
 
-        /* Gradient Text Styles (Existing - for reference or specific use) */
         .text-gradient { display: inline-block; }
         .text-gradient-1 { background: linear-gradient(to right, #ef4444, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
         .text-gradient-2 { background: linear-gradient(to right, #f59e0b, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
@@ -394,7 +382,7 @@
 
     <main>
         <section
-            class="hero bg-cover bg-no-repeat bg-center text-center py-10 px-4 md:py-12 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] md:min-h-[600px] animate-on-scroll" /* Increased min-height */
+            class="hero bg-cover bg-no-repeat bg-center text-center py-10 px-4 md:py-12 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] md:min-h-[600px] animate-on-scroll"
             style="background-image: url('https://img.pikbest.com/backgrounds/20200423/2d-labor-day-delivery-banner_1910020.jpg!sw800')">
             <div class="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
             <div class="relative z-10 max-w-4xl w-full px-4 space-y-4 md:space-y-6">
@@ -411,8 +399,7 @@
             </div>
         </section>
 
-        <section id="services" class="section animate-on-scroll"> {/* Removed bg-gray-800, dark bg set in CSS */}
-            <div class="section-blur-bg" style="background-image: url('https://png.pngtree.com/background/20230522/original/pngtree-3d-hexagonal-wallpaper-with-blue-and-red-led-lights-picture-image_2690743.jpg');"></div>
+        <section id="services" class="section animate-on-scroll">
             <div class="relative z-10 text-center">
                  <h2 class="section-heading text-2xl md:text-4xl font-bold mb-8 md:mb-12 section-heading-gradient">Our Comprehensive Services</h2>
             </div>
@@ -492,7 +479,8 @@
             </div>
         </section>
 
-        <section id="area" class="section animate-on-scroll bg-gray-800"> <div class="section-blur-bg" style="background-image: url('https://img.freepik.com/free-vector/worldwide-global-map-outline-black-background_1017-46153.jpg?semt=ais_hybrid&w=740');"></div>
+        <section id="area" class="section animate-on-scroll bg-gray-800">
+             <div class="section-blur-bg-area" style="background-image: url('https://img.freepik.com/free-vector/worldwide-global-map-outline-black-background_1017-46153.jpg?semt=ais_hybrid&w=740');"></div>
             <div class="relative z-10 text-center">
                 <h2 class="section-heading text-2xl md:text-4xl font-bold mb-8 md:mb-12 section-heading-gradient">Our Service Areas</h2>
                 <p class="text-md md:text-lg text-gray-200 mb-8 md:mb-10 max-w-3xl mx-auto text-center">We operate from New Delhi, serving a wide range of domestic and international locations.</p>
@@ -570,9 +558,21 @@
             </div>
         </section>
 
-        <section id="partner-logos" class="section animate-on-scroll"> {/* bg-slate-700 removed, new bg in CSS */ }
+        <section id="partner-logos" class="section animate-on-scroll">
             <div class="logos-track-container">
                 <div class="logos-track">
+                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
+                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
+                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
+                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
+                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4F0080/FFFFFF?text=FedEx'; this.onerror=null;">
+                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
+                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
+                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
+                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
+                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
+                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4F0080/FFFFFF?text=FedEx'; this.onerror=null;">
+                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
                     <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
                     <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
                     <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
@@ -796,8 +796,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                } else {
-                    // entry.target.classList.remove('visible'); 
                 }
             });
         }, sectionObserverOptions);
