@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OM International Courier Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="application/ld+json">
     {
@@ -88,7 +89,7 @@
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
         .section {
-            padding: 3rem 1rem; /* Default padding for sections */
+            padding: 3rem 1rem; 
             position: relative;
             opacity: 0;
             transform: scale(0.95);
@@ -100,10 +101,9 @@
             transform: scale(1);
         }
         @media (min-width: 768px) {
-            .section { padding: 4rem 1rem; } /* Larger padding for larger screens */
+            .section { padding: 4rem 1rem; } 
         }
 
-        /* Attractive Animated Headings (Used in other sections) */
         .section-heading { 
             position: relative;
             display: inline-block;
@@ -143,7 +143,6 @@
             text-fill-color: transparent;
         }
 
-        /* Partner logo styling */
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
          @media (min-width: 768px) { .logo-img { height: 48px; } }
         .dt_dc_logo_bg { background-color: white; }
@@ -153,7 +152,6 @@
         .fedex_logo_bg { background-color: purple; }
         .aramex_logo_bg { background-color: white; }
 
-        /* Tracking section specific styling */
         .tracking-section {
             text-align: center; position: relative; overflow: hidden;
             min-height: 450px; display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -213,7 +211,7 @@
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
 
         #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
-            scroll-margin-top: 60px; /* Adjusted for sticky header */
+            scroll-margin-top: 60px; 
         }
 
         a { transition: color 0.3s ease; }
@@ -235,99 +233,133 @@
             100% { transform: translateX(-50%); } 
         }
 
-        /* New Services Section Styles - Full Section Slides */
+        /* Services Section - Integrated Background Content */
         #services {
             padding: 0; 
-            min-height: 100vh; /* Takes full viewport height */
-            /* If header is sticky and has known height, use: calc(100vh - var(--header-height, 60px)); */
+            min-height: 100vh; 
+            height: 100vh; 
             position: relative; 
             overflow: hidden;
-            /* Removed flex properties, slider container will manage its content */
-        }
-
-        .services-slider-container {
-            position: relative; /* Changed from absolute to relative if it's the direct child managing slides */
-            width: 100%;
-            height: 100%; /* Fills the #services section */
+            /* The main background of #services itself is not set, as each slide has its own */
         }
         
-        .service-card {
+        .services-slider-container { /* This container holds the slides */
+            position: relative; 
+            width: 100%;
+            height: 100%; 
+            z-index: 1; /* Ensure slides are above any potential base #services background if one were added */
+        }
+        
+        .service-slide-item { 
             position: absolute;
             inset: 0; 
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Ensure transform is part of transition */
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
             display: flex; 
+            flex-direction: column; /* Default for mobile: image top, text bottom */
             align-items: center;
-            justify-content: center;
-            transform: translateX(100%); /* Default start off-screen to the right */
-            will-change: opacity, transform;
-        }
-
-        .service-card.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(0); /* Slide into view */
-            z-index: 10;
-        }
-        
-        /* .service-card.prev-active is handled by JS applying transform directly */
-
-        .service-card-blurred-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
+            justify-content: center; /* Center content vertically and horizontally */
+            padding: 2rem; /* Padding around the content within the slide */
+            text-align: center; /* Center text by default */
             background-size: cover;
             background-position: center;
-            filter: blur(10px) brightness(0.7); 
-            transform: scale(1.1); 
-            transition: background-image 0.7s ease-in-out; 
-            z-index: 1;
+            transform: translateX(100%); 
+            will-change: opacity, transform;
+            color: #FFFFFF; /* Default text color, can be overridden if needed */
         }
 
-        .service-card-inner-content {
-            position: relative;
-            z-index: 2;
-            background-color: rgba(0, 0, 0, 0.65); 
-            backdrop-filter: blur(8px); 
-            padding: 2rem; 
-            border-radius: 1rem; 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4); 
-            width: 90%;
-            max-width: 1024px; 
-            color: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .service-slide-item.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0); 
+            z-index: 2; 
         }
         
-        .service-text-info h3 {
-            color: #FACC15; 
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-             /* Sizes applied via Tailwind in HTML */
+        .service-slide-content-wrapper {
+            position: relative; /* For z-indexing if needed, and positioning context */
+            z-index: 3; /* Ensure content is above the slide's own background image */
+            max-width: 900px; /* Max width of the content area */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* Gap between image and text block */
         }
-        .service-text-info p {
-            color: #E5E7EB; 
-            line-height: 1.75;
-            /* Sizes applied via Tailwind in HTML */
+        
+        .service-slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700;
+            color: #FACC15; /* Yellow accent for title */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            margin-bottom: 0.5rem;
         }
 
-        .service-image-container img {
-            border-radius: 0.75rem; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            background-color: rgba(255,255,255,0.05);
-            /* Sizes applied via Tailwind in HTML */
+        .service-slide-description {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem; /* text-base */
+            line-height: 1.7;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            max-width: 600px; /* Limit width of paragraph for readability */
+        }
+
+        .service-slide-integrated-image {
+            max-width: 200px; /* Control size of the integrated image */
+            max-height: 200px;
+            width: 100%; /* Responsive within its max-width */
+            object-fit: contain; /* Or cover, depending on image types */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            /* Could add a subtle border: border: 2px solid rgba(255,255,255,0.2); */
         }
         
-        @media (min-width: 768px) { 
-            .service-card-inner-content {
-                padding: 3rem; 
+        /* Responsive adjustments for slide content layout */
+        @media (min-width: 768px) { /* md breakpoint */
+            .service-slide-item {
+                padding: 3rem;
+            }
+            .service-slide-content-wrapper {
+                flex-direction: row; /* Side-by-side layout */
+                text-align: left; /* Align text to left for desktop */
+                gap: 2.5rem;
+            }
+            .service-slide-text-block { /* New wrapper for title and description */
+                flex: 3; /* Text block takes more space */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; /* Align text to start */
+            }
+            .service-slide-integrated-image-container { /* New wrapper for image */
+                flex: 2; /* Image takes less space */
+                display: flex;
+                justify-content: center; /* Center image in its column */
+                align-items: center;
+            }
+            .service-slide-title {
+                font-size: 2.75rem; /* text-5xl */
+            }
+            .service-slide-description {
+                font-size: 1.125rem; /* text-lg */
+            }
+            .service-slide-integrated-image {
+                max-width: 280px; 
+                max-height: 280px;
             }
         }
-        @media (min-width: 1024px) { 
-            .service-card-inner-content {
-                padding: 4rem;
+        @media (min-width: 1024px) { /* lg breakpoint */
+             .service-slide-title {
+                font-size: 3.25rem; 
+            }
+            .service-slide-description {
+                font-size: 1.25rem; 
+            }
+             .service-slide-integrated-image {
+                max-width: 320px; 
+                max-height: 320px;
             }
         }
+
 
         .service-dots-container {
             position: absolute;
@@ -336,7 +368,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 0.75rem; 
-            z-index: 20; 
+            z-index: 10; 
             padding: 0.5rem;
             background-color: rgba(0,0,0,0.3);
             border-radius: 9999px;
@@ -353,52 +385,45 @@
 
         .service-dot.active {
             background-color: #FACC15; 
-            transform: scale(1.2);
+            transform: scale(1.3); 
         }
         
         .service-nav-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 20;
-            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 10; 
+            background-color: rgba(0, 0, 0, 0.3);
             color: white;
             border-radius: 50%;
-            width: 2.75rem; 
-            height: 2.75rem;
+            width: 3rem; 
+            height: 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
         }
         .service-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.5);
             transform: translateY(-50%) scale(1.05);
         }
         .service-nav-arrow svg {
             width: 1.5rem; 
             height: 1.5rem; 
         }
-        #prevService { left: 2rem; }
-        #nextService { right: 2rem; }
+        #prevService { left: 1.5rem; } 
+        #nextService { right: 1.5rem; } 
 
         @media (max-width: 767px) { 
             .service-nav-arrow { display: none; }
-            .service-card-inner-content {
-                display: flex;
-                flex-direction: column;
-                padding: 1.5rem;
-            }
-            .service-text-info { order: 2; text-align: center; margin-top: 1rem;}
-            .service-image-container { order: 1; margin-bottom: 1rem; } /* Added margin-bottom */
-            /* Font and image sizes for mobile are set in JS HTML structure via Tailwind */
-            .service-dots-container {
-                bottom: 1rem;
-            }
+            .service-dots-container { bottom: 1rem; }
+            .service-slide-title { font-size: 1.75rem; } /* Adjust mobile title size */
+            .service-slide-description { font-size: 0.875rem; } /* Adjust mobile desc size */
+            .service-slide-integrated-image { max-width: 150px; max-height: 150px; }
         }
-        /* End New Services Section Styles */
+        /* End Services Section Styles */
 
 
         #area { position: relative; overflow: hidden; }
@@ -803,50 +828,51 @@
             sectionObserver.observe(section);
         });
         
-        // New Services Slider Logic - Full Section Slides
+        // Services Slider Logic - Integrated Background Content
         document.addEventListener('DOMContentLoaded', () => {
             const servicesData = [
                 {
                     title: "Domestic Courier",
                     description: "Fast, reliable delivery across India. Efficient handling for all parcel types, ensuring your packages reach their destination swiftly and securely within the country.",
-                    imageSrc: "https://placehold.co/256x256/FDE047/1F2937?text=Domestic", // Brighter yellow
-                    altText: "Domestic Courier Service",
-                    bgImage: "https://images.unsplash.com/photo-1566996675874-10f870d788fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW5kaWElMjBtYXB8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // India map related
+                    integratedImageUrl: "https://placehold.co/300x300/FDE047/1F2937?text=India+Map+Icon", 
+                    altText: "Domestic Parcel Delivery",
+                    // Example of a more abstract/textured background
+                    mainBgUrl: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "International Courier",
                     description: "Expedited, dependable global shipping for your international reach. We connect you to the world with seamless customs clearance and timely deliveries across borders.",
-                    imageSrc: "https://placehold.co/256x256/A5F3FC/1F2937?text=Global", // Light cyan
-                    altText: "International Courier Service",
-                    bgImage: "https://images.unsplash.com/photo-1506038917769-93a6856c847e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdsb2JhbCUyMGNvbW11bmljYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Global network
+                    integratedImageUrl: "https://placehold.co/300x300/A5F3FC/1F2937?text=Globe+Icon", 
+                    altText: "International Shipping",
+                    mainBgUrl: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Real-Time Tracking",
                     description: "Advanced tracking for all consignments, ensuring full transparency. Monitor your shipment's journey from pickup to delivery with our easy-to-use online tools.",
-                    imageSrc: "https://placehold.co/256x256/D9F99D/1F2937?text=Track", // Light green
-                    altText: "Real-Time Shipment Tracking",
-                    bgImage: "https://images.unsplash.com/photo-1585664811087-47f65abbad64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9naXN0aWNzJTIwdHJhY2tpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Tracking/tech
+                    integratedImageUrl: "https://placehold.co/300x300/D9F99D/1F2937?text=Track+Symbol", 
+                    altText: "Shipment Tracking",
+                    mainBgUrl: "https://images.unsplash.com/photo-1557683304-678aab083da8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Extensive Network",
                     description: "Strong franchise collaboration for maximum service coverage. Our widespread network ensures we can reach even the most remote locations efficiently.",
-                    imageSrc: "https://placehold.co/256x256/FBCFE8/1F2937?text=Network", // Light pink
-                    altText: "Extensive Courier Network",
-                    bgImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmV0d29yayUyMGNvbm5lY3Rpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Network connections
+                    integratedImageUrl: "https://placehold.co/300x300/FBCFE8/1F2937?text=Network+Web", 
+                    altText: "Courier Network",
+                    mainBgUrl: "https://images.unsplash.com/photo-1557683325-3ba8f0df79de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Customized Solutions",
                     description: "Tailored services for your unique individual or business needs. From special handling to bulk shipments, we adapt to your specific requirements.",
-                    imageSrc: "https://placehold.co/256x256/BFDBFE/1F2937?text=Custom", // Light blue
-                    altText: "Customized Courier Solutions",
-                    bgImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YnVzaW5lc3MlMjBzb2x1dGlvbnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70" // Business solutions
+                    integratedImageUrl: "https://placehold.co/300x300/BFDBFE/1F2937?text=Tailored+Box", 
+                    altText: "Customized Solutions",
+                    mainBgUrl: "https://images.unsplash.com/photo-1557683308-04fe74403247?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Franchise Adaptability",
                     description: "Seamless operations by working efficiently with partner franchises. Our collaborative approach ensures consistent service quality across all touchpoints.",
-                    imageSrc: "https://placehold.co/256x256/DDD6FE/1F2937?text=Partners", // Light purple
-                    altText: "Franchise Adaptability",
-                    bgImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sbGFib3JhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70" // Collaboration/teamwork
+                    integratedImageUrl: "https://placehold.co/300x300/DDD6FE/1F2937?text=Handshake", 
+                    altText: "Franchise Partners",
+                    mainBgUrl: "https://images.unsplash.com/photo-1557683321-ead24b075200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
                 }
             ];
 
@@ -856,36 +882,36 @@
             const nextButton = document.getElementById('nextService');
 
             if (!sliderContainer || !dotsContainer || !prevButton || !nextButton) {
-                console.error("Slider elements not found for services section!");
+                console.error("Required elements for services slider not found!");
                 return;
             }
 
             let currentServiceIndex = 0;
-            let serviceCards = []; 
+            let serviceSlides = []; 
 
             function renderServices() {
                 sliderContainer.innerHTML = ''; 
                 dotsContainer.innerHTML = ''; 
 
                 servicesData.forEach((service, index) => {
-                    const card = document.createElement('div');
-                    // Removed p-4 md:p-0 from class list
-                    card.className = 'service-card absolute inset-0 w-full h-full transition-all duration-700 ease-in-out opacity-0 pointer-events-none flex items-center justify-center';
+                    const slide = document.createElement('div');
+                    slide.className = 'service-slide-item';
+                    // Set the main background for the slide itself
+                    slide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${service.mainBgUrl}')`;
                     
-                    card.innerHTML = `
-                        <div class="service-card-blurred-bg" style="background-image: url('${service.bgImage}');"></div>
-                        <div class="service-card-inner-content grid md:grid-cols-12 gap-6 md:gap-8 items-center">
-                            <div class="service-text-info order-2 md:order-1 md:col-span-7 text-center md:text-left">
-                                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">${service.title}</h3>
-                                <p class="text-sm sm:text-base lg:text-lg leading-relaxed">${service.description}</p>
+                    slide.innerHTML = `
+                        <div class="service-slide-content-wrapper">
+                            <div class="service-slide-integrated-image-container">
+                                <img src="${service.integratedImageUrl}" alt="${service.altText}" class="service-slide-integrated-image">
                             </div>
-                            <div class="service-image-container order-1 md:order-2 md:col-span-5 flex justify-center items-center">
-                                <img src="${service.imageSrc}" alt="${service.altText}" class="w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 object-contain">
+                            <div class="service-slide-text-block">
+                                <h3 class="service-slide-title">${service.title}</h3>
+                                <p class="service-slide-description">${service.description}</p>
                             </div>
                         </div>
                     `;
-                    sliderContainer.appendChild(card);
-                    serviceCards.push(card);
+                    sliderContainer.appendChild(slide);
+                    serviceSlides.push(slide);
 
                     const dot = document.createElement('div');
                     dot.className = 'service-dot';
@@ -898,32 +924,31 @@
                 const oldIndex = currentServiceIndex;
                 currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
-                serviceCards.forEach((card, i) => {
-                    card.classList.remove('active');
-                    // Default to off-screen right for cards not involved in immediate transition out
-                    if (i !== oldIndex && i !== currentServiceIndex) {
-                        card.style.transform = 'translateX(100%)';
+                serviceSlides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                     if (i !== oldIndex && i !== currentServiceIndex) {
+                        slide.style.transform = 'translateX(100%)'; 
                     }
                 });
                 
-                if (serviceCards[oldIndex] && oldIndex !== currentServiceIndex) {
+                if (serviceSlides[oldIndex] && oldIndex !== currentServiceIndex) {
                     if (direction === 'next') {
-                        serviceCards[oldIndex].style.transform = 'translateX(-100%)';
+                        serviceSlides[oldIndex].style.transform = 'translateX(-100%)';
                     } else { 
-                        serviceCards[oldIndex].style.transform = 'translateX(100%)';
+                        serviceSlides[oldIndex].style.transform = 'translateX(100%)';
                     }
                 }
 
-                if (serviceCards[currentServiceIndex]) {
-                    if (oldIndex !== currentServiceIndex) { 
+                if (serviceSlides[currentServiceIndex]) {
+                     if (oldIndex !== currentServiceIndex) { 
                         if (direction === 'next') {
-                            serviceCards[currentServiceIndex].style.transform = 'translateX(100%)';
+                            serviceSlides[currentServiceIndex].style.transform = 'translateX(100%)';
                         } else { 
-                            serviceCards[currentServiceIndex].style.transform = 'translateX(-100%)';
+                            serviceSlides[currentServiceIndex].style.transform = 'translateX(-100%)';
                         }
-                        void serviceCards[currentServiceIndex].offsetWidth; 
+                        void serviceSlides[currentServiceIndex].offsetWidth; 
                     }
-                    serviceCards[currentServiceIndex].classList.add('active');
+                    serviceSlides[currentServiceIndex].classList.add('active'); 
                 }
 
                 Array.from(dotsContainer.children).forEach((dot, i) => {
@@ -956,9 +981,9 @@
             }
 
             renderServices();
-            if (serviceCards.length > 0) {
-                serviceCards[0].style.transform = 'translateX(0)'; 
-                serviceCards[0].classList.add('active'); 
+            if (serviceSlides.length > 0) {
+                serviceSlides[0].style.transform = 'translateX(0)'; 
+                serviceSlides[0].classList.add('active'); 
                 if (dotsContainer.children[0]) {
                     dotsContainer.children[0].classList.add('active');
                 }
