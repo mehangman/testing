@@ -118,7 +118,7 @@
             transform-origin: center;
             width: 70px;
             height: 3px;
-            background-color: #FACC15; 
+            background: linear-gradient(to right, #FACC15, #FBBF24, #FFD700); /* Gradient underline */
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
         }
         .section.visible .section-heading::after {
@@ -126,7 +126,8 @@
         }
         
         .section-heading-gradient {
-            background: linear-gradient(to right, #FACC15, #FBBF24, #FFD700); 
+            /* Example: A vibrant mix of purple, pink, and orange */
+            background: linear-gradient(to right, #8B5CF6, #EC4899, #F97316); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -134,7 +135,8 @@
         }
 
         .hero-heading-gradient {
-            background: linear-gradient(to right, #FDE047, #FBBF24, #F59E0B); 
+            /* Example: A bright mix of cyan, green, and yellow */
+            background: linear-gradient(to right, #22D3EE, #A3E635, #FDE047); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -217,7 +219,7 @@
         .logos-track-container { width: 100%; display: flex; position: relative; z-index: 1; }
         .logos-track {
             display: flex; align-items: center;
-            animation: continuous-slide-logos 5s linear infinite; /* Updated duration */
+            animation: continuous-slide-logos 5s linear infinite;
             will-change: transform;
         }
         .logos-track img { height: 36px; flex-shrink: 0; margin: 0 1rem; object-fit: contain; }
@@ -225,14 +227,13 @@
         
         @keyframes continuous-slide-logos {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-25%); } /* Updated for 4 sets of logos */
+            100% { transform: translateX(-25%); } 
         }
 
         #services {
             overflow-x: hidden; position: relative;
             background: #111827; 
         }
-        /* .section-blur-bg removed as per request */
         .services-track-container { width: 100%; position: relative; z-index: 2; }
         .services-track {
             display: flex; align-items: stretch; 
@@ -314,7 +315,7 @@
         }
 
         #area { position: relative; overflow: hidden; }
-         .section-blur-bg-area { /* Renamed to avoid conflict if needed, or ensure it's only for #area */
+         .section-blur-bg-area { 
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-size: cover; background-position: center;
             filter: blur(3px); -webkit-filter: blur(3px); 
@@ -340,6 +341,7 @@
         #tracking-number-error { color: #fca5a5; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
 
         .text-gradient { display: inline-block; }
+        /* Specific gradients for service cards and area cards - kept for thematic consistency */
         .text-gradient-1 { background: linear-gradient(to right, #ef4444, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
         .text-gradient-2 { background: linear-gradient(to right, #f59e0b, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
         .text-gradient-3 { background: linear-gradient(to right, #84cc16, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
@@ -355,6 +357,14 @@
         html { scroll-behavior: smooth; }
         body { display: flex; flex-direction: column; min-height: 100vh; background-color: #111827; }
         main { flex-grow: 1; }
+
+        .about-us-image-gallery img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .about-us-image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
 
     </style>
 </head>
@@ -594,8 +604,8 @@
                 <div class="text-center">
                     <h2 class="section-heading text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 section-heading-gradient">About <span class="section-heading-gradient" style="display:inline;">OM International Courier</span></h2>
                 </div>
-                <div class="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 items-start">
-                    <div class="md:col-span-1">
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 items-start">
+                    <div class="lg:col-span-1">
                         <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gradient text-gradient-7">Quick Links</h3>
                         <div class="bg-gray-700/50 p-4 md:p-6 rounded-lg shadow-md">
                             <h4 class="text-lg md:text-xl font-semibold text-gradient text-gradient-blue-purple mb-3">Our Franchise Partners</h4>
@@ -615,26 +625,23 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="md:col-span-2">
+                    <div class="lg:col-span-2">
                         <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gradient text-gradient-pink-orange">Our Story</h3>
-                        <p class="mb-3 leading-relaxed text-sm md:text-base">
-                            OM International Courier started in New Delhi, aiming to connect businesses and individuals globally. We've grown from a small firm to a trusted logistics name.
-                        </p>
-                        <p class="mb-3 leading-relaxed text-sm md:text-base">
-                            Our New Delhi hub efficiently manages shipments across India and worldwide. We are committed to reliability, speed, and total customer satisfaction. These values drive our operations.
-                        </p>
-                        <p class="mb-3 leading-relaxed text-sm md:text-base">
-                            Our skilled team and strong network ensure every parcel is handled with precision. We oversee each delivery stage, guaranteeing timely arrival.
-                        </p>
-                         <p class="mb-3 leading-relaxed text-sm md:text-base">
-                            We understand each consignment's importance, be it a business document, a personal gift, or commercial cargo. Every package receives our full attention.
-                        </p>
-                        <p class="mb-3 leading-relaxed text-sm md:text-base">
-                           We use advanced technology, like real-time tracking, for transparency. Our diverse domestic and international services meet varied client needs.
-                        </p>
-                        <p class="leading-relaxed text-sm md:text-base">
-                           At OM International Courier, we deliver more than packages; we deliver assurance and peace of mind. Our mission is to offer seamless, efficient, and cost-effective solutions, building lasting client and partner relationships through transparency and service excellence.
-                        </p>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2 space-y-3 text-sm md:text-base leading-relaxed">
+                                <p>OM International Courier started in New Delhi, aiming to connect businesses and individuals globally. We've grown from a small firm to a trusted logistics name.</p>
+                                <p>Our New Delhi hub efficiently manages shipments across India and worldwide. We are committed to reliability, speed, and total customer satisfaction. These values drive our operations.</p>
+                                <p>Our skilled team and strong network ensure every parcel is handled with precision. We oversee each delivery stage, guaranteeing timely arrival.</p>
+                                <p>We understand each consignment's importance, be it a business document, a personal gift, or commercial cargo. Every package receives our full attention.</p>
+                                <p>We use advanced technology, like real-time tracking, for transparency. Our diverse domestic and international services meet varied client needs.</p>
+                                <p>At OM International Courier, we deliver more than packages; we deliver assurance and peace of mind. Our mission is to offer seamless, efficient, and cost-effective solutions, building lasting client and partner relationships through transparency and service excellence.</p>
+                            </div>
+                            <div class="md:col-span-1 flex flex-col space-y-4 about-us-image-gallery mt-6 md:mt-0">
+                                <img src="https://placehold.co/300x200/FACC15/111827?text=Secure+Packages" alt="Securely packaged courier items" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                                <img src="https://placehold.co/300x200/8B5CF6/FFFFFF?text=Global+Shipping" alt="Illustration of global shipping network" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                                <img src="https://placehold.co/300x200/22D3EE/111827?text=Fast+Delivery" alt="Courier delivering a package quickly" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -789,7 +796,7 @@
         const sectionObserverOptions = {
             root: null, 
             rootMargin: '0px',
-            threshold: 0.15 
+            threshold: 0.1  // Adjusted threshold slightly for earlier trigger if needed
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -807,7 +814,8 @@
         window.addEventListener('load', () => {
             adjustServiceSliderAnimation();
             sectionsToAnimate.forEach(section => {
-                if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) { // Check if any part of the section is visible
                     section.classList.add('visible');
                 }
             });
