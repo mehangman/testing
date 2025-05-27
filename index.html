@@ -118,7 +118,7 @@
             transform-origin: center;
             width: 70px;
             height: 3px;
-            background: linear-gradient(to right, #FACC15, #FBBF24, #FFD700); /* Gradient underline */
+            background: linear-gradient(to right, #FDE047, #FBBF24, #F59E0B); /* Brighter gold gradient underline */
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
         }
         .section.visible .section-heading::after {
@@ -126,17 +126,19 @@
         }
         
         .section-heading-gradient {
-            /* Example: A vibrant mix of purple, pink, and orange */
-            background: linear-gradient(to right, #8B5CF6, #EC4899, #F97316); 
+            /* Brighter: Vibrant Orange -> Bright Pink -> Light Purple */
+            background: linear-gradient(to right, #fb923c, #f472b6, #c084fc); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
+            /* Add a subtle text shadow for depth if needed, but ensure it doesn't dull the gradient */
+            /* text-shadow: 1px 1px 2px rgba(0,0,0,0.1); */
         }
 
         .hero-heading-gradient {
-            /* Example: A bright mix of cyan, green, and yellow */
-            background: linear-gradient(to right, #22D3EE, #A3E635, #FDE047); 
+            /* Brighter: Bright Yellow -> Vibrant Green -> Bright Cyan */
+            background: linear-gradient(to right, #fde047, #84cc16, #67e8f9); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -198,11 +200,17 @@
         .tracking-form select option { background-color: #333; color: white; }
         .tracking-form button {
             padding: 0.75rem 1.5rem; background-color: #FACC15; color: #111827;
-            border: none; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 600;
-            cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 700; /* Increased font-weight */
+            cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-shadow: 0px 1px 1px rgba(0,0,0,0.2); /* Subtle text shadow */
         }
          @media (min-width: 768px) { .tracking-form button { padding: 0.875rem 1.5rem; font-size: 1rem; } }
-        .tracking-form button:hover { background-color: #FBBF24; transform: translateY(-2px); }
+        .tracking-form button:hover { 
+            background-color: #FBBF24; 
+            transform: translateY(-2px) scale(1.02); /* Slightly more pop on hover */
+            box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4); /* Yellowish glow */
+        }
+
 
         footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
@@ -796,7 +804,7 @@
         const sectionObserverOptions = {
             root: null, 
             rootMargin: '0px',
-            threshold: 0.1  // Adjusted threshold slightly for earlier trigger if needed
+            threshold: 0.1
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -815,7 +823,7 @@
             adjustServiceSliderAnimation();
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom >= 0) { // Check if any part of the section is visible
+                if (rect.top < window.innerHeight && rect.bottom >= 0) { 
                     section.classList.add('visible');
                 }
             });
