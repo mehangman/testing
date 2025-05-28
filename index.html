@@ -126,7 +126,6 @@
             transform: translateX(-50%) scaleX(1);
         }
         
-        /* Updated Heading Gradient */
         .heading-gradient-part {
             background: linear-gradient(to right, #FACC15, #F59E0B); 
             -webkit-background-clip: text;
@@ -136,7 +135,6 @@
             padding: 0 0.25em;
         }
         
-        /* Updated Hero Heading Gradient */
         .hero-heading-gradient-part {
             background: linear-gradient(to right, #FFD700, #FFA500);
             -webkit-background-clip: text;
@@ -144,6 +142,38 @@
             background-clip: text;
             text-fill-color: transparent;
         }
+
+        /* Styling for "From Delhi to the World" tag */
+        .delhi-tag-container { /* Added container for better centering if needed */
+            text-align: center;
+        }
+        .delhi-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem; /* py-2.5 px-5 */
+            border-radius: 50px; /* rounded-full */
+            background: linear-gradient(to right, #22d3ee, #a3e635); /* from-cyan-400 to-lime-500 */
+            color: #1f2937; /* gray-800 for text */
+            font-weight: 600; /* font-semibold */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* shadow-md */
+            /* No interactive hover effects like scale or shadow change */
+        }
+
+        .animated-plane {
+            display: inline-block;
+            animation: flyPath 3s ease-in-out infinite;
+            margin-right: 0.5rem; 
+            font-size: 1.1em; /* Slightly larger plane */
+            color: #065f46; /* emerald-800 for plane color */
+        }
+
+        @keyframes flyPath {
+            0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            25% { transform: translateX(5px) translateY(-3px) rotate(10deg); }
+            50% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            75% { transform: translateX(-5px) translateY(3px) rotate(-10deg); }
+        }
+
 
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
          @media (min-width: 768px) { .logo-img { height: 48px; } }
@@ -214,8 +244,10 @@
 
         a { transition: color 0.3s ease; }
 
+        /* Partner Logos Section - Background changed to black */
         #partner-logos {
-            overflow-x: hidden; background-color: #1f2937; 
+            overflow-x: hidden; 
+            background-color: #000000; /* Changed from #1f2937 */
         }
         .logos-track-container { width: 100%; display: flex; position: relative; z-index: 1; }
         .logos-track {
@@ -261,29 +293,28 @@
             text-align: center;
             color: #FFFFFF;
             will-change: opacity; 
-            overflow: hidden; /* Important for pseudo-elements */
+            overflow: hidden; 
         }
 
-        .service-slide-item::before { /* For blurred background image */
+        .service-slide-item::before { 
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background-size: cover;
             background-position: center;
-            background-image: var(--slide-bg-image); /* Set via JS */
-            filter: blur(3px); /* Adjust blur amount as needed */
-            transform: scale(1.05); /* To prevent blurred edges from showing */
+            background-image: var(--slide-bg-image); 
+            filter: blur(3px); 
+            transform: scale(1.05); 
             z-index: 1;
         }
         
-        .service-slide-item::after { /* For dark overlay for text contrast */
+        .service-slide-item::after { 
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.45); /* Adjust opacity as needed */
-            z-index: 1; /* Same level as blurred bg, content wrapper is higher */
+            background-color: rgba(0,0,0,0.45); 
+            z-index: 1; 
         }
-
 
         .service-slide-item.active {
             opacity: 1; 
@@ -292,8 +323,8 @@
         }
         
         .service-slide-content-wrapper {
-            position: relative; /* Ensure this is above pseudo-elements */
-            z-index: 2;  /* Higher z-index than ::before and ::after */
+            position: relative; 
+            z-index: 2;  
             max-width: 900px; 
             width: 100%;
             display: flex;
@@ -307,7 +338,7 @@
             font-size: 2.25rem; 
             font-weight: 700;
             color: #FACC15; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Enhanced shadow for readability */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); 
             margin-bottom: 0.5rem;
         }
 
@@ -315,7 +346,7 @@
             font-family: 'Raleway', sans-serif;
             font-size: 1rem; 
             line-height: 1.7;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Enhanced shadow for readability */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); 
             max-width: 600px; 
         }
 
@@ -519,8 +550,11 @@
             <div class="relative z-10 max-w-4xl w-full px-4 space-y-4 md:space-y-6">
                 <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
                 <p class="text-md sm:text-lg md:text-xl mb-6 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
-                <p class="text-sm sm:text-md md:text-lg mb-8 text-white font-semibold">
-                    <span class="text-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-500 px-5 py-2.5 md:px-6 rounded-full inline-block font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">✈ From Delhi to the World!</span>
+                <p class="delhi-tag-container text-sm sm:text-md md:text-lg mb-8 font-semibold">
+                    <span class="delhi-tag">
+                        <span class="animated-plane">✈️</span>
+                        From Delhi to the World!
+                    </span>
                 </p>
                 <button
                     onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Quotation Request&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request a quotation for courier services. Please find my company details below:%0d%0a%0d%0aCompany Name:%0d%0aCompany Address:%0d%0aContact Person:%0d%0aPhone Number:%0d%0aEmail Address:%0d%0a%0d%0aLooking forward to hearing from you soon.%0d%0a%0d%0aSincerely,%0d%0a[Your Name]'"
@@ -815,18 +849,23 @@
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        function setupSliderAnimation(trackSelector, disableTouchPause = false) {
+        // Modified setupSliderAnimation to prevent pause on hover for specific sliders
+        function setupSliderAnimation(trackSelector, disableTouchPause = false, noHoverPause = false) {
             const track = document.querySelector(trackSelector);
             if (track) {
-                track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
-                track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+                if (!noHoverPause) { // Only add hover listeners if noHoverPause is false
+                    track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
+                    track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+                }
+                // Touch pause logic remains conditional via disableTouchPause
                 if (!disableTouchPause) {
                     track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
                     track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
                 }
             }
         }
-        setupSliderAnimation('.logos-track', true); 
+        // Call for logos-track: disable touch pause and disable hover pause
+        setupSliderAnimation('.logos-track', true, true); 
 
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = {
@@ -914,7 +953,6 @@
                 servicesData.forEach((service, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
-                    // Set CSS custom property for background image
                     slide.style.setProperty('--slide-bg-image', `url('${service.mainBgUrl}')`);
                     
                     slide.innerHTML = `
