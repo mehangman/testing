@@ -152,76 +152,88 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1rem 2rem; /* Generous padding */
-            background: #1A1A1A; /* Very dark gray, almost black */
-            border: 1px solid #444; /* Medium gray border */
-            border-radius: 0.75rem; /* Slightly larger radius */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255,255,255,0.05) inset; /* Darker shadow, subtle inset */
+            padding: 1.25rem 2.5rem; /* Slightly adjusted padding */
+            background: linear-gradient(145deg, #2c3e50, #1e3a5f); /* Dark blue to deeper blue gradient */
+            border: 2px solid #FACC15; /* Brighter, thicker yellow border */
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), /* Enhanced outer shadow */
+                        0 0 20px rgba(250, 204, 21, 0.15) inset, /* Subtle yellow inner glow */
+                        0 0 5px #FACC15; /* Outer border glow */
             overflow: hidden;
-            margin-top: 1.5rem; /* Increased space above */
+            margin-top: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added for subtle hover effect if desired */
         }
+
+        /* Optional: Add a subtle hover effect
+        .world-phrase-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55),
+                        0 0 25px rgba(250, 204, 21, 0.2) inset,
+                        0 0 8px #FDE047;
+        }
+        */
 
         .world-phrase-text {
             font-weight: 700;
-            font-size: 1.2em; /* Larger text */
-            background: linear-gradient(to right, #E0E0E0, #999999); /* Light gray to darker gray gradient for text */
+            font-size: 1.3em; /* Slightly larger text */
+            background: linear-gradient(to right, #FDE047, #FBBF24); /* Bright yellow to gold gradient */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.7); /* Stronger text shadow for contrast */
-            margin-bottom: 16px; /* Increased space between text and line */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Adjusted text shadow for clarity */
+            margin-bottom: 1rem; /* Space between text and line */
             z-index: 2;
         }
 
         .vehicle-path-line {
             width: 100%;
-            height: 2px; /* Standard line thickness */
-            background-color: #666; /* Darker gray for path line */
-            border-radius: 1px;
+            height: 3px; /* Slightly thicker line */
+            background-color: #FACC15; /* Bright yellow line */
+            border-radius: 1.5px;
             z-index: 1;
-            margin-bottom: 10px; /* Space for emoji to sit above/on line */
+            margin-bottom: 12px; /* Space for emoji */
+            box-shadow: 0 0 8px rgba(250, 204, 21, 0.7); /* Yellow glow for the line */
         }
 
-        .flying-airplane-emoji { /* For the airplane emoji */
+        .flying-airplane-emoji {
             position: absolute;
-            bottom: 5px; /* Adjust to make emoji sit visually on the line */
-            left: -40px; /* Start off-screen (emoji width + buffer) */
-            font-size: 28px; /* Adjust emoji size */
+            bottom: 6px; /* Adjust to sit nicely on the thicker line */
+            left: -45px; /* Start off-screen (emoji width + buffer), adjusted for potentially larger emoji/glow */
+            font-size: 30px; /* Slightly larger emoji */
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
             z-index: 3;
-            /* Emoji color is typically controlled by the font/system, not CSS color property */
+            text-shadow: 0 0 6px #FDE047, 0 0 10px #FBBF24, 0 0 15px rgba(255,255,255,0.3); /* Enhanced yellow/white glow */
+            filter: brightness(1.1); /* Make emoji slightly brighter */
         }
 
         @keyframes flyEmojiOnLine {
             0% {
-                left: -40px; /* Start position: completely off-screen to the left */
+                left: -45px; /* Start position */
                 opacity: 0;
-                transform: translateX(0) translateY(0);
+                transform: translateX(0) translateY(0) rotate(0deg);
             }
-            10% { /* Fade in at the starting position */
-                left: -40px;
+            10% {
+                left: -45px;
                 opacity: 1;
-                transform: translateX(0) translateY(0);
+                transform: translateX(0) translateY(0) rotate(0deg);
             }
-            /* Optional: add a slight lift or wobble
-            20% {
-                transform: translateX(20%) translateY(-3px);
+            15% { /* Slight lift-off effect */
+                transform: translateX(5%) translateY(-3px) rotate(5deg);
             }
-            80% {
-                 transform: translateX(calc(100% + 20px)) translateY(-2px);
+            85% { /* Preparing to land */
+                 transform: translateX(calc(100% - 30px)) translateY(-2px) rotate(-3deg);
             }
-            */
-            90% { /* Emoji's left edge reaches the right edge of the container */
+            90% {
                 left: 100%;
                 opacity: 1;
-                transform: translateX(0) translateY(0); /* Ensure it's moving straight */
+                transform: translateX(0) translateY(0) rotate(0deg); /* Straighten out */
             }
-            100% { /* Ensure it's fully off-screen and faded out */
+            100% {
                 left: 100%;
                 opacity: 0;
-                transform: translateX(0) translateY(0);
+                transform: translateX(0) translateY(0) rotate(0deg);
             }
         }
         /* --- End of Updated Styling --- */
@@ -605,8 +617,7 @@
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈</span>
-                    </div>
+                        <span class="flying-airplane-emoji">✈️</span> </div>
                 </div>
 
                 <button
@@ -622,12 +633,12 @@
                 </div>
             <div class="service-dots-container">
                 </div>
-            <button id="prevService" class="service-nav-arrow">
+            <button id="prevService" class="service-nav-arrow" aria-label="Previous service">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
             </button>
-            <button id="nextService" class="service-nav-arrow">
+            <button id="nextService" class="service-nav-arrow" aria-label="Next service">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
@@ -719,7 +730,7 @@
                 <div class="tracking-form-container">
                     <div class="tracking-form">
                         <input type="text" id="tracking-number-input" placeholder="Enter Your Tracking Number" class="text-center">
-                        <select id="courier-partner" class="text-center">
+                        <select id="courier-partner" class="text-center" aria-label="Select Courier Partner">
                             <option value="">Select Courier Partner</option>
                             <option value="dtdc">DTDC</option>
                             <option value="tpc">Professional Couriers</option>
@@ -811,7 +822,7 @@
     </footer>
 
     <script>
-        // Preloader
+        // Preloader Logic
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
             if (preloader) {
@@ -819,12 +830,12 @@
             }
         });
 
-        // Smooth scroll functionality for navigation links
+        // Smooth scroll functionality for all anchor links pointing to an ID
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('.header')?.offsetHeight || 0;
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                const headerOffset = document.querySelector('.header')?.offsetHeight || 0; // Get header height
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset; // Adjust for header
                 window.scrollTo({
                     top: elementPosition,
                     behavior: 'smooth'
@@ -832,24 +843,15 @@
             }
         }
 
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        // Apply smooth scroll to all relevant links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href').substring(1);
-                if (document.getElementById(targetId)) {
+                if (document.getElementById(targetId)) { // Check if the target element exists
                     e.preventDefault();
                     smoothScrollTo(targetId);
                 }
             });
-        });
-
-        document.querySelectorAll('a[href^="#"]:not(nav a)').forEach(anchor => {
-            const targetId = anchor.getAttribute('href').substring(1);
-            if (document.getElementById(targetId)) {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    smoothScrollTo(targetId);
-                });
-            }
         });
 
         // Tracking shipment functionality
@@ -861,11 +863,13 @@
             const trackingNumber = trackingInput.value.trim();
             let trackingUrl = "";
 
+            // Reset error states
             trackingInput.classList.remove('input-error-highlight');
             courierSelect.classList.remove('input-error-highlight');
             errorMessageElement.style.display = 'none';
-            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.';
+            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.'; // Default error
 
+            // Validation
             if (!trackingNumber && !courier) {
                 trackingInput.classList.add('input-error-highlight');
                 courierSelect.classList.add('input-error-highlight');
@@ -885,6 +889,7 @@
                 return;
             }
 
+            // Construct tracking URL
             const encodedTrackingNumber = encodeURIComponent(trackingNumber);
             switch (courier) {
                 case "dtdc": trackingUrl = `https://www.dtdc.in/tracking/shipment-tracking.asp?strCnNo1=${encodedTrackingNumber}&strSearchType=cnno`; break;
@@ -894,42 +899,52 @@
                 case "fedex": trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; break;
                 case "aramex": trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; break;
                 default:
-                    errorMessageElement.textContent = 'Invalid courier selected.';
+                    errorMessageElement.textContent = 'Invalid courier selected.'; // Specific error
                     errorMessageElement.style.display = 'block';
-                    return;
+                    return; // Exit if no valid courier
             }
-            if (trackingUrl) window.open(trackingUrl, "_blank");
+            if (trackingUrl) { // Open URL if valid
+                window.open(trackingUrl, "_blank");
+            }
         }
 
+        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Partner Logos Slider Animation
+        // Partner Logos Slider Animation (Continuous, no pause on hover/touch)
         function setupSliderAnimation(trackSelector, noHoverPause = false) {
             const track = document.querySelector(trackSelector);
             if (track) {
+                // For continuous animation, we don't add hover/touch pause listeners if noHoverPause is true
                 if (!noHoverPause) {
                     track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
                     track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+                    track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
+                    track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
                 }
-                track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
-                track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
             }
         }
-        setupSliderAnimation('.logos-track', true);
+        setupSliderAnimation('.logos-track', true); // true makes it continuous without pause
 
-        // Section visibility animation
+        // Section visibility animation on scroll
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = {
-            root: null,
+            root: null, // relative to the viewport
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.1 // 10% of the element is visible
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Optional: unobserve after animation if you want it to trigger only once
+                    // observer.unobserve(entry.target);
                 }
+                // Optional: remove 'visible' class if element scrolls out of view (for re-animation)
+                // else {
+                //     entry.target.classList.remove('visible');
+                // }
             });
         }, sectionObserverOptions);
 
@@ -989,22 +1004,25 @@
             const prevButton = document.getElementById('prevService');
             const nextButton = document.getElementById('nextService');
 
+            // Check if all necessary elements are present
             if (!sliderContainer || !dotsContainer || !prevButton || !nextButton) {
-                return;
+                console.warn("Services slider elements not found. Slider functionality will be disabled.");
+                return; // Exit if elements are missing
             }
 
             let currentServiceIndex = 0;
-            let serviceSlides = [];
+            let serviceSlides = []; // To store slide elements
 
             function renderServices() {
-                sliderContainer.innerHTML = '';
-                dotsContainer.innerHTML = '';
+                sliderContainer.innerHTML = ''; // Clear existing slides
+                dotsContainer.innerHTML = '';   // Clear existing dots
+                serviceSlides = []; // Reset slides array
 
                 servicesData.forEach((service, index) => {
+                    // Create slide element
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
                     slide.style.setProperty('--slide-bg-image', `url('${service.mainBgUrl}')`);
-
                     slide.innerHTML = `
                         <div class="service-slide-content-wrapper">
                             <div class="service-slide-integrated-image-container">
@@ -1019,6 +1037,7 @@
                     sliderContainer.appendChild(slide);
                     serviceSlides.push(slide);
 
+                    // Create dot element
                     const dot = document.createElement('div');
                     dot.className = 'service-dot';
                     dot.setAttribute('aria-label', `Go to service slide ${index + 1}: ${service.title}`);
@@ -1030,29 +1049,33 @@
             }
 
             function showService(index) {
+                // Prevent re-triggering if already on the active slide
                 if (index === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
                     return;
                 }
 
-                currentServiceIndex = (index + servicesData.length) % servicesData.length;
+                currentServiceIndex = (index + servicesData.length) % servicesData.length; // Loop through slides
 
+                // Update active slide
                 serviceSlides.forEach(s => s.classList.remove('active'));
-
                 if (serviceSlides[currentServiceIndex]) {
                     serviceSlides[currentServiceIndex].classList.add('active');
                 }
 
+                // Update active dot
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentServiceIndex);
                 });
             }
 
+            // Event listeners for navigation
             prevButton.addEventListener('click', () => showService(currentServiceIndex - 1));
             nextButton.addEventListener('click', () => showService(currentServiceIndex + 1));
 
+            // Touch swipe functionality
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50;
+            const swipeThreshold = 50; // Minimum swipe distance
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -1064,21 +1087,24 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) {
+                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
                     showService(currentServiceIndex + 1);
-                } else if (touchEndX > touchStartX + swipeThreshold) {
+                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
                     showService(currentServiceIndex - 1);
                 }
+                // Reset touch coordinates
                 touchStartX = 0;
                 touchEndX = 0;
             }
 
+            // Initial render and display
             renderServices();
             if (serviceSlides.length > 0) {
-                showService(0);
+                showService(0); // Show the first slide initially
             }
         });
 
+        // Fallback for IntersectionObserver on page load for initially visible elements
         window.addEventListener('load', () => {
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
