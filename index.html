@@ -146,68 +146,72 @@
             text-fill-color: transparent;
         }
 
-        /* --- Updated "From Delhi to the World" Styling (Simple & Elegant 2D) --- */
+        /* --- Updated "From Delhi to the World" Styling (Simplified & Bright 2D) --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1rem 2rem; /* Adjusted padding */
-            background: linear-gradient(135deg, #FFDA77, #FFAC4E); /* Bright Yellow to Warm Orange gradient */
-            border: 2px solid #F59E0B; /* Solid, slightly darker orange border */
-            border-radius: 0.75rem; /* Standard rounded corners */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer, more subtle shadow for 2D lift */
+            padding: 1rem 2rem; 
+            background-color: #FFF9C4; /* Very light, pale yellow for simplicity and brightness */
+            border: 2px solid #FBC02D; /* Slightly richer, but still soft, yellow/gold border */
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow for a gentle lift */
             overflow: hidden;
             margin-top: 1.5rem;
-            transition: transform 0.3s ease; /* Smooth transition for potential hover effects */
+            transition: transform 0.3s ease; 
         }
 
         .world-phrase-text {
             font-weight: 700;
-            font-size: 1.25em; /* Adjusted for balance */
-            color: #1E3A5F; /* Dark, elegant blue for strong contrast */
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Very subtle shadow for readability */
-            margin-bottom: 0.75rem; /* Adjusted space */
+            font-size: 1.25em; 
+            background: linear-gradient(to right, #F9A825, #F57F17); /* Strong yellow to rich orange gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: none; /* Removed for simplicity with gradient */
+            margin-bottom: 0.75rem; 
             z-index: 2;
         }
 
         .vehicle-path-line {
             width: 100%;
-            height: 2px; /* Clean, thin line */
-            background-color: #F59E0B; /* Matching the border color */
+            height: 2px; 
+            background-color: #FBC02D; /* Matching the container's border color */
             border-radius: 1px;
             z-index: 1;
-            margin-bottom: 10px; /* Space for emoji */
+            margin-bottom: 10px; 
         }
 
         .flying-airplane-emoji {
             position: absolute;
-            bottom: 5px; /* Adjust to sit cleanly above the line */
-            left: -40px; /* Start off-screen */
-            font-size: 28px; /* Standard emoji size */
+            bottom: 5px; 
+            left: -40px; 
+            font-size: 28px; 
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
             z-index: 3;
-            color: #1E3A5F; /* Match text color for thematic consistency, or choose another bright color */
+            color: #E65100; /* Strong, dark orange for good contrast */
         }
 
         @keyframes flyEmojiOnLine {
             0% {
-                left: -40px; /* Start position: completely off-screen to the left */
+                left: -40px; 
                 opacity: 0;
                 transform: translateX(0);
             }
-            10% { /* Fade in at the starting position */
+            10% { 
                 left: -40px;
                 opacity: 1;
                 transform: translateX(0);
             }
-            90% { /* Emoji's left edge reaches the right edge of the container */
+            90% { 
                 left: 100%;
                 opacity: 1;
-                transform: translateX(0); /* Ensure it's moving straight */
+                transform: translateX(0); 
             }
-            100% { /* Ensure it's fully off-screen and faded out */
+            100% { 
                 left: 100%;
                 opacity: 0;
                 transform: translateX(0);
