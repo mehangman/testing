@@ -62,25 +62,26 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Header styling */
+        /* Header styling - No longer sticky */
         .header {
-            background-color: #000; color: #fff; padding: 0.75rem 1rem;
+            background-color: #000; color: #fff; padding: 0.6rem 1rem; /* Reduced padding */
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 50; position: sticky; top: 0;
+            /* Removed: position: sticky; top: 0; z-index: 50; */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add a subtle shadow if desired */
         }
-        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 30px; width: 30px; }
+        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 28px; width: 28px; } /* Slightly smaller logo */
         .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
         .nav ul li { margin-left: 1rem; }
         .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; font-size: 0.875rem; }
         .nav ul li a:hover { color: #FACC15; }
-        .hero { position: relative; z-index: 0; }
+        .hero { position: relative; z-index: 0; } /* Keep hero z-index if it has overlays */
 
         /* Responsive navigation */
         @media (max-width: 768px) {
             .nav { display: none; }
             .header { justify-content: center; }
             .logo { margin-left: auto; margin-right: auto; font-size: 1rem; }
-            .logo img { height: 24px; width: 24px;}
+            .logo img { height: 22px; width: 22px;}
         }
         @media (min-width: 769px) {
             .nav { display: block !important; }
@@ -210,10 +211,10 @@
         footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
 
-        /* scroll-margin-top ensures that the sticky header doesn't overlap the section title when jumping via URL hash */
-        #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
-            scroll-margin-top: 70px; /* Adjust if header height changes significantly, JS handles click scroll */
-        }
+        /* scroll-margin-top is removed as header is no longer sticky */
+        /* #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
+            scroll-margin-top: 70px; 
+        } */
 
         a { transition: color 0.3s ease; }
 
@@ -234,7 +235,7 @@
             100% { transform: translateX(-50%); } 
         }
 
-        /* Services Section - Integrated Background Content */
+        /* Services Section - Simplified Transitions */
         #services {
             padding: 0; 
             min-height: 100vh; 
@@ -253,9 +254,9 @@
         .service-slide-item { 
             position: absolute;
             inset: 0; 
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Slightly faster transition */
+            opacity: 0; /* Slides are invisible by default */
+            pointer-events: none; /* Non-active slides are not interactive */
+            transition: opacity 0.5s ease-in-out; /* Only transition opacity */
             display: flex; 
             flex-direction: column;
             align-items: center;
@@ -264,16 +265,16 @@
             text-align: center;
             background-size: cover;
             background-position: center;
-            transform: translateX(100%); /* Default off-screen to the right */
-            will-change: opacity, transform;
+            /* Removed transform and will-change: transform */
             color: #FFFFFF;
+            will-change: opacity; /* Only opacity will change */
         }
 
         .service-slide-item.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(0); 
-            z-index: 2; 
+            opacity: 1; /* Active slide is visible */
+            pointer-events: auto; /* Active slide is interactive */
+            z-index: 2; /* Ensure active slide is on top */
+            /* Removed transform: translateX(0) */
         }
         
         .service-slide-content-wrapper {
@@ -414,7 +415,7 @@
         #nextService { right: 1.5rem; } 
 
         @media (max-width: 767px) { 
-            .service-nav-arrow { display: none; } /* Arrows hidden on mobile, swipe is primary */
+            .service-nav-arrow { display: none; } 
             .service-dots-container { bottom: 1rem; }
             .service-slide-title { font-size: 1.75rem; }
             .service-slide-description { font-size: 0.875rem; }
@@ -461,7 +462,7 @@
         .text-gradient-pink-orange { background: linear-gradient(to right, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
         .text-gradient-teal-cyan { background: linear-gradient(to right, #14b8a6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
 
-        html { scroll-behavior: smooth; } /* Native smooth scroll for hash links if JS fails, and for general scroll */
+        html { scroll-behavior: smooth; } 
         body { display: flex; flex-direction: column; min-height: 100vh; background-color: #111827; }
         main { flex-grow: 1; }
 
@@ -721,19 +722,13 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const header = document.querySelector('.header');
-                // Get the actual height of the header, or fallback if not found
-                const headerOffset = header ? header.offsetHeight : 60; 
-                
-                // Calculate the position of the element relative to the document
+                // Since header is not sticky, no offset is needed.
+                // const headerOffset = 0; 
                 const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                // const offsetPosition = elementPosition - headerOffset; // No offset needed
                 
-                // Calculate the final scroll position: element's top - header height
-                // This ensures the top of the section is just below the sticky header
-                const offsetPosition = elementPosition - headerOffset; 
-
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: elementPosition, // Scroll directly to the element's top
                     behavior: 'smooth'
                 });
             }
@@ -743,18 +738,15 @@
         document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href').substring(1);
-                // Check if the target element exists on the page
                 if (document.getElementById(targetId)) {
-                    e.preventDefault(); // Prevent default anchor click behavior
-                    smoothScrollTo(targetId); // Call the custom smooth scroll function
+                    e.preventDefault(); 
+                    smoothScrollTo(targetId); 
                 }
-                // If targetId doesn't exist, let the browser handle it (e.g., if it's an external link by mistake)
             });
         });
         
-        // Also attach to other in-page links that might need this behavior
+        // Attach to other in-page links that might need this behavior
         document.querySelectorAll('a[href^="#"]:not(nav a)').forEach(anchor => {
-             // Check if the link is intended for section scrolling (has a valid target on page)
             const targetId = anchor.getAttribute('href').substring(1);
             if (document.getElementById(targetId)) {
                 anchor.addEventListener('click', function(e) {
@@ -763,7 +755,6 @@
                 });
             }
         });
-
 
         // Tracking shipment functionality
         function trackShipment() {
@@ -774,13 +765,11 @@
             const trackingNumber = trackingInput.value.trim();
             let trackingUrl = "";
 
-            // Reset error states
             trackingInput.classList.remove('input-error-highlight');
             courierSelect.classList.remove('input-error-highlight');
             errorMessageElement.style.display = 'none';
-            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.'; // Default error
+            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.'; 
 
-            // Validation
             if (!trackingNumber && !courier) {
                 trackingInput.classList.add('input-error-highlight');
                 courierSelect.classList.add('input-error-highlight');
@@ -809,48 +798,40 @@
                 case "fedex": trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; break;
                 case "aramex": trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; break;
                 default:
-                    errorMessageElement.textContent = 'Invalid courier selected.'; // More specific error
+                    errorMessageElement.textContent = 'Invalid courier selected.';
                     errorMessageElement.style.display = 'block';
-                    return; // Exit if courier is not recognized
+                    return; 
             }
-            if (trackingUrl) window.open(trackingUrl, "_blank"); // Open in new tab
+            if (trackingUrl) window.open(trackingUrl, "_blank"); 
         }
 
-        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Logo slider animation pause on hover/touch
         function setupSliderAnimation(trackSelector, disableTouchPause = false) {
             const track = document.querySelector(trackSelector);
             if (track) {
                 track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
                 track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
                 if (!disableTouchPause) {
-                    // Use passive true for touch events to improve scroll performance
                     track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
                     track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
                 }
             }
         }
-        setupSliderAnimation('.logos-track', true); // Disable touch pause for logos as it might be too sensitive
+        setupSliderAnimation('.logos-track', true); 
 
-        // Intersection Observer for animating sections on scroll
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = {
-            root: null, // relative to the viewport
+            root: null, 
             rootMargin: '0px',
-            threshold: 0.1 // 10% of the section is visible
+            threshold: 0.1 
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Optional: unobserve after animation to save resources, if animation is one-time
-                    // observer.unobserve(entry.target); 
                 }
-                // Optional: remove 'visible' class if element scrolls out of view to re-animate
-                // else { entry.target.classList.remove('visible'); }
             });
         }, sectionObserverOptions);
 
@@ -858,7 +839,7 @@
             sectionObserver.observe(section);
         });
         
-        // Services Slider Logic
+        // Services Slider Logic - Simplified Fade Transitions
         document.addEventListener('DOMContentLoaded', () => {
             const servicesData = [
                 {
@@ -925,7 +906,7 @@
                 servicesData.forEach((service, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
-                    slide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${service.mainBgUrl}')`; // Slightly darker overlay for text contrast
+                    slide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${service.mainBgUrl}')`;
                     
                     slide.innerHTML = `
                         <div class="service-slide-content-wrapper">
@@ -945,68 +926,47 @@
                     dot.className = 'service-dot';
                     dot.setAttribute('aria-label', `Go to service slide ${index + 1}: ${service.title}`);
                     dot.addEventListener('click', () => {
-                        const direction = index > currentServiceIndex ? 'next' : 'prev';
-                        showService(index, direction);
+                        showService(index); // No need to pass direction for dot clicks, logic handles it
                     });
                     dotsContainer.appendChild(dot);
                 });
             }
             
-            function showService(index, direction = 'next') {
+            function showService(index) {
+                if (index === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
+                     // If the requested slide is already active, do nothing to prevent re-triggering.
+                    return;
+                }
+
                 const oldIndex = currentServiceIndex;
                 currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
-                if (oldIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
-                    return; // Avoid re-animating the same active slide
+                // Deactivate all slides first to handle potential race conditions or multiple active slides
+                serviceSlides.forEach(s => s.classList.remove('active'));
+                
+                // Activate the new slide
+                if (serviceSlides[currentServiceIndex]) {
+                    serviceSlides[currentServiceIndex].classList.add('active');
+                } else {
+                    console.error("Error: New slide at index", currentServiceIndex, "not found.");
                 }
-
-                const oldSlide = serviceSlides[oldIndex];
-                const newSlide = serviceSlides[currentServiceIndex];
-
-                // Animate out the old slide if it exists and is different from the new slide
-                if (oldSlide && oldSlide !== newSlide) {
-                    oldSlide.classList.remove('active'); // This will trigger opacity transition to 0
-                    if (direction === 'next') {
-                        oldSlide.style.transform = 'translateX(-100%)'; // Slide out to the left
-                    } else { // prev
-                        oldSlide.style.transform = 'translateX(100%)';  // Slide out to the right
-                    }
-                }
-
-                // Prepare and animate in the new slide
-                if (newSlide) {
-                    // Set initial position for the incoming slide (off-screen)
-                    // Only set if it's a different slide to avoid jump if oldSlide was null (initial load)
-                    if (oldSlide !== newSlide) {
-                         if (direction === 'next') {
-                            newSlide.style.transform = 'translateX(100%)'; // Start from the right
-                        } else { // prev
-                            newSlide.style.transform = 'translateX(-100%)'; // Start from the left
-                        }
-                        // Force reflow to ensure the transform is applied before the transition to active state begins
-                        newSlide.offsetHeight; 
-                    }
-                    
-                    newSlide.classList.add('active'); // This will trigger transition to translateX(0%) and opacity 1
-                }
-
+                
                 // Update navigation dots
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentServiceIndex);
                 });
             }
 
-            prevButton.addEventListener('click', () => showService(currentServiceIndex - 1, 'prev'));
-            nextButton.addEventListener('click', () => showService(currentServiceIndex + 1, 'next'));
+            prevButton.addEventListener('click', () => showService(currentServiceIndex - 1));
+            nextButton.addEventListener('click', () => showService(currentServiceIndex + 1));
 
-            // Swipe functionality for touch devices
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; // Minimum swipe distance in pixels
+            const swipeThreshold = 50; 
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true }); // Passive for better scroll performance
+            }, { passive: true }); 
 
             sliderContainer.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
@@ -1014,21 +974,17 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
-                    showService(currentServiceIndex + 1, 'next');
-                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
-                    showService(currentServiceIndex - 1, 'prev');
+                if (touchEndX < touchStartX - swipeThreshold) { 
+                    showService(currentServiceIndex + 1);
+                } else if (touchEndX > touchStartX + swipeThreshold) { 
+                    showService(currentServiceIndex - 1);
                 }
-                // Reset touch coordinates for the next swipe
                 touchStartX = 0;
                 touchEndX = 0;
             }
 
-            // Initial setup
             renderServices();
             if (serviceSlides.length > 0) {
-                // For the initial load, directly set the first slide to active without off-screen positioning
-                serviceSlides[0].style.transform = 'translateX(0)'; 
                 serviceSlides[0].classList.add('active'); 
                 if (dotsContainer.children[0]) {
                     dotsContainer.children[0].classList.add('active');
@@ -1036,11 +992,9 @@
             }
         });
 
-        // Ensure sections already in view on load also get the 'visible' class (e.g. if page is reloaded mid-scroll)
         window.addEventListener('load', () => {
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // Check if the section is at all within the viewport
                 if (rect.top < window.innerHeight && rect.bottom >= 0) { 
                     section.classList.add('visible');
                 }
