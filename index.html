@@ -146,68 +146,82 @@
             text-fill-color: transparent;
         }
 
-        /* --- Updated "From Delhi to the World" Styling with Car --- */
+        /* --- Updated "From Delhi to the World" Styling with Airplane Emoji --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 0.9rem 1.8rem; /* Increased padding for more space */
-            background: linear-gradient(135deg, rgba(66, 153, 225, 0.15), rgba(59, 130, 246, 0.25)); /* Cool blue gradient */
-            border: 1px solid #60A5FA; /* Blue border */
-            border-radius: 0.6rem;
-            box-shadow: 0 6px 22px rgba(59, 130, 246, 0.2), 0 0 10px rgba(255,255,255,0.1) inset;
+            padding: 1rem 2rem; /* Generous padding */
+            background: #1A1A1A; /* Very dark gray, almost black */
+            border: 1px solid #444; /* Medium gray border */
+            border-radius: 0.75rem; /* Slightly larger radius */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255,255,255,0.05) inset; /* Darker shadow, subtle inset */
             overflow: hidden;
-            margin-top: 1.2rem; /* More space above */
+            margin-top: 1.5rem; /* Increased space above */
         }
 
         .world-phrase-text {
-            color: #E0E7FF; /* Lighter blueish-white text */
             font-weight: 700;
-            font-size: 1.15em; /* Slightly larger */
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            margin-bottom: 12px; /* Increased space between text and line */
+            font-size: 1.2em; /* Larger text */
+            background: linear-gradient(to right, #E0E0E0, #999999); /* Light gray to darker gray gradient for text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.7); /* Stronger text shadow for contrast */
+            margin-bottom: 16px; /* Increased space between text and line */
             z-index: 2;
         }
 
-        .vehicle-path-line { /* Renamed from plane-path-line */
+        .vehicle-path-line {
             width: 100%;
-            height: 3px; /* Slightly thicker line */
-            background-color: rgba(200, 200, 200, 0.7); /* Light gray for road */
-            border-radius: 1.5px;
+            height: 2px; /* Standard line thickness */
+            background-color: #666; /* Darker gray for path line */
+            border-radius: 1px;
             z-index: 1;
-            margin-bottom: 8px; /* Increased space for car to sit above line */
+            margin-bottom: 10px; /* Space for emoji to sit above/on line */
         }
 
-        .flying-car-icon { /* New class for the car */
+        .flying-airplane-emoji { /* For the airplane emoji */
             position: absolute;
-            bottom: 6px; /* Position car visually on the line */
-            left: -60px; /* Start further off-screen (car width + buffer) */
-            width: 50px; /* Adjust car size as needed */
-            height: auto;
+            bottom: 5px; /* Adjust to make emoji sit visually on the line */
+            left: -40px; /* Start off-screen (emoji width + buffer) */
+            font-size: 28px; /* Adjust emoji size */
             opacity: 0;
-            animation: driveOnLine 7s linear infinite 0.5s; /* New animation name */
-            color: #FACC15; /* Vibrant yellow car */
+            animation: flyEmojiOnLine 6s linear infinite 0.5s;
             z-index: 3;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+            /* Emoji color is typically controlled by the font/system, not CSS color property */
         }
 
-        @keyframes driveOnLine { /* New keyframes for car */
+        @keyframes flyEmojiOnLine {
             0% {
-                left: -60px;
+                left: -40px; /* Start position: completely off-screen to the left */
                 opacity: 0;
+                transform: translateX(0) translateY(0);
             }
-            10% {
-                left: -60px;
+            10% { /* Fade in at the starting position */
+                left: -40px;
                 opacity: 1;
+                transform: translateX(0) translateY(0);
             }
-            90% {
+            /* Optional: add a slight lift or wobble
+            20% {
+                transform: translateX(20%) translateY(-3px);
+            }
+            80% {
+                 transform: translateX(calc(100% + 20px)) translateY(-2px);
+            }
+            */
+            90% { /* Emoji's left edge reaches the right edge of the container */
                 left: 100%;
                 opacity: 1;
+                transform: translateX(0) translateY(0); /* Ensure it's moving straight */
             }
-            100% {
+            100% { /* Ensure it's fully off-screen and faded out */
                 left: 100%;
                 opacity: 0;
+                transform: translateX(0) translateY(0);
             }
         }
         /* --- End of Updated Styling --- */
@@ -590,9 +604,8 @@
                 <div class="text-center mb-8">
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
-                        <div class="vehicle-path-line"></div> <svg class="flying-car-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
-                            <path d="M176 256c44.11 0 80-35.89 80-80s-35.89-80-80-80-80 35.89-80 80 35.89 80 80 80zm311.1-40.34C478.4 194.2 460.3 184.1 448 176H256c-17.67 0-32 14.33-32 32s14.33 32 32 32h160.2L320 320H192c-17.67 0-32 14.33-32 32s14.33 32 32 32h128l96.21-80H512c17.67 0 32-14.33 32-32s-14.33-32-32-32h-24.9zM0 480h640v32H0v-32zM176 320c-52.94 0-96 43.06-96 96s43.06 96 96 96 96-43.06 96-96-43.06-96-96-96zm0 160c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64zm320-160c-52.94 0-96 43.06-96 96s43.06 96 96 96 96-43.06 96-96-43.06-96-96-96zm0 160c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"/>
-                        </svg>
+                        <div class="vehicle-path-line"></div>
+                        <span class="flying-airplane-emoji">✈</span>
                     </div>
                 </div>
 
