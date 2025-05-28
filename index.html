@@ -146,94 +146,71 @@
             text-fill-color: transparent;
         }
 
-        /* --- Updated "From Delhi to the World" Styling with Airplane Emoji --- */
+        /* --- Updated "From Delhi to the World" Styling (Simple & Elegant 2D) --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1.25rem 2.5rem; /* Slightly adjusted padding */
-            background: linear-gradient(145deg, #2c3e50, #1e3a5f); /* Dark blue to deeper blue gradient */
-            border: 2px solid #FACC15; /* Brighter, thicker yellow border */
-            border-radius: 1rem; /* More rounded corners */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), /* Enhanced outer shadow */
-                        0 0 20px rgba(250, 204, 21, 0.15) inset, /* Subtle yellow inner glow */
-                        0 0 5px #FACC15; /* Outer border glow */
+            padding: 1rem 2rem; /* Adjusted padding */
+            background: linear-gradient(135deg, #FFDA77, #FFAC4E); /* Bright Yellow to Warm Orange gradient */
+            border: 2px solid #F59E0B; /* Solid, slightly darker orange border */
+            border-radius: 0.75rem; /* Standard rounded corners */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer, more subtle shadow for 2D lift */
             overflow: hidden;
             margin-top: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added for subtle hover effect if desired */
+            transition: transform 0.3s ease; /* Smooth transition for potential hover effects */
         }
-
-        /* Optional: Add a subtle hover effect
-        .world-phrase-container:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55),
-                        0 0 25px rgba(250, 204, 21, 0.2) inset,
-                        0 0 8px #FDE047;
-        }
-        */
 
         .world-phrase-text {
             font-weight: 700;
-            font-size: 1.3em; /* Slightly larger text */
-            background: linear-gradient(to right, #FDE047, #FBBF24); /* Bright yellow to gold gradient */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Adjusted text shadow for clarity */
-            margin-bottom: 1rem; /* Space between text and line */
+            font-size: 1.25em; /* Adjusted for balance */
+            color: #1E3A5F; /* Dark, elegant blue for strong contrast */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Very subtle shadow for readability */
+            margin-bottom: 0.75rem; /* Adjusted space */
             z-index: 2;
         }
 
         .vehicle-path-line {
             width: 100%;
-            height: 3px; /* Slightly thicker line */
-            background-color: #FACC15; /* Bright yellow line */
-            border-radius: 1.5px;
+            height: 2px; /* Clean, thin line */
+            background-color: #F59E0B; /* Matching the border color */
+            border-radius: 1px;
             z-index: 1;
-            margin-bottom: 12px; /* Space for emoji */
-            box-shadow: 0 0 8px rgba(250, 204, 21, 0.7); /* Yellow glow for the line */
+            margin-bottom: 10px; /* Space for emoji */
         }
 
         .flying-airplane-emoji {
             position: absolute;
-            bottom: 6px; /* Adjust to sit nicely on the thicker line */
-            left: -45px; /* Start off-screen (emoji width + buffer), adjusted for potentially larger emoji/glow */
-            font-size: 30px; /* Slightly larger emoji */
+            bottom: 5px; /* Adjust to sit cleanly above the line */
+            left: -40px; /* Start off-screen */
+            font-size: 28px; /* Standard emoji size */
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
             z-index: 3;
-            text-shadow: 0 0 6px #FDE047, 0 0 10px #FBBF24, 0 0 15px rgba(255,255,255,0.3); /* Enhanced yellow/white glow */
-            filter: brightness(1.1); /* Make emoji slightly brighter */
+            color: #1E3A5F; /* Match text color for thematic consistency, or choose another bright color */
         }
 
         @keyframes flyEmojiOnLine {
             0% {
-                left: -45px; /* Start position */
+                left: -40px; /* Start position: completely off-screen to the left */
                 opacity: 0;
-                transform: translateX(0) translateY(0) rotate(0deg);
+                transform: translateX(0);
             }
-            10% {
-                left: -45px;
+            10% { /* Fade in at the starting position */
+                left: -40px;
                 opacity: 1;
-                transform: translateX(0) translateY(0) rotate(0deg);
+                transform: translateX(0);
             }
-            15% { /* Slight lift-off effect */
-                transform: translateX(5%) translateY(-3px) rotate(5deg);
-            }
-            85% { /* Preparing to land */
-                 transform: translateX(calc(100% - 30px)) translateY(-2px) rotate(-3deg);
-            }
-            90% {
+            90% { /* Emoji's left edge reaches the right edge of the container */
                 left: 100%;
                 opacity: 1;
-                transform: translateX(0) translateY(0) rotate(0deg); /* Straighten out */
+                transform: translateX(0); /* Ensure it's moving straight */
             }
-            100% {
+            100% { /* Ensure it's fully off-screen and faded out */
                 left: 100%;
                 opacity: 0;
-                transform: translateX(0) translateY(0) rotate(0deg);
+                transform: translateX(0);
             }
         }
         /* --- End of Updated Styling --- */
@@ -617,7 +594,7 @@
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈️</span> </div>
+                        <span class="flying-airplane-emoji">✈</span> </div>
                 </div>
 
                 <button
