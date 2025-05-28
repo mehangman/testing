@@ -64,17 +64,16 @@
 
         /* Header styling - No longer sticky */
         .header {
-            background-color: #000; color: #fff; padding: 0.6rem 1rem; /* Reduced padding */
+            background-color: #000; color: #fff; padding: 0.6rem 1rem; 
             display: flex; justify-content: space-between; align-items: center;
-            /* Removed: position: sticky; top: 0; z-index: 50; */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add a subtle shadow if desired */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
         }
-        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 28px; width: 28px; } /* Slightly smaller logo */
+        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 28px; width: 28px; } 
         .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
         .nav ul li { margin-left: 1rem; }
         .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; font-size: 0.875rem; }
         .nav ul li a:hover { color: #FACC15; }
-        .hero { position: relative; z-index: 0; } /* Keep hero z-index if it has overlays */
+        .hero { position: relative; z-index: 0; }
 
         /* Responsive navigation */
         @media (max-width: 768px) {
@@ -127,8 +126,9 @@
             transform: translateX(-50%) scaleX(1);
         }
         
+        /* Updated Heading Gradient */
         .heading-gradient-part {
-            background: linear-gradient(to right, #FEF3C7, #FFFFFF, #A5F3FC); 
+            background: linear-gradient(to right, #FACC15, #F59E0B); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -136,8 +136,9 @@
             padding: 0 0.25em;
         }
         
+        /* Updated Hero Heading Gradient */
         .hero-heading-gradient-part {
-            background: linear-gradient(to right, #FFFFFF, #FEF9C3, #D9F99D);
+            background: linear-gradient(to right, #FFD700, #FFA500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -211,11 +212,6 @@
         footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
 
-        /* scroll-margin-top is removed as header is no longer sticky */
-        /* #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
-            scroll-margin-top: 70px; 
-        } */
-
         a { transition: color 0.3s ease; }
 
         #partner-logos {
@@ -235,7 +231,7 @@
             100% { transform: translateX(-50%); } 
         }
 
-        /* Services Section - Simplified Transitions */
+        /* Services Section - Blurred Background Image */
         #services {
             padding: 0; 
             min-height: 100vh; 
@@ -254,32 +250,50 @@
         .service-slide-item { 
             position: absolute;
             inset: 0; 
-            opacity: 0; /* Slides are invisible by default */
-            pointer-events: none; /* Non-active slides are not interactive */
-            transition: opacity 0.5s ease-in-out; /* Only transition opacity */
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity 0.5s ease-in-out; 
             display: flex; 
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 2rem;
             text-align: center;
-            background-size: cover;
-            background-position: center;
-            /* Removed transform and will-change: transform */
             color: #FFFFFF;
-            will-change: opacity; /* Only opacity will change */
+            will-change: opacity; 
+            overflow: hidden; /* Important for pseudo-elements */
         }
 
+        .service-slide-item::before { /* For blurred background image */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-image: var(--slide-bg-image); /* Set via JS */
+            filter: blur(3px); /* Adjust blur amount as needed */
+            transform: scale(1.05); /* To prevent blurred edges from showing */
+            z-index: 1;
+        }
+        
+        .service-slide-item::after { /* For dark overlay for text contrast */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.45); /* Adjust opacity as needed */
+            z-index: 1; /* Same level as blurred bg, content wrapper is higher */
+        }
+
+
         .service-slide-item.active {
-            opacity: 1; /* Active slide is visible */
-            pointer-events: auto; /* Active slide is interactive */
-            z-index: 2; /* Ensure active slide is on top */
-            /* Removed transform: translateX(0) */
+            opacity: 1; 
+            pointer-events: auto; 
+            z-index: 2; 
         }
         
         .service-slide-content-wrapper {
-            position: relative;
-            z-index: 3; 
+            position: relative; /* Ensure this is above pseudo-elements */
+            z-index: 2;  /* Higher z-index than ::before and ::after */
             max-width: 900px; 
             width: 100%;
             display: flex;
@@ -293,7 +307,7 @@
             font-size: 2.25rem; 
             font-weight: 700;
             color: #FACC15; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Enhanced shadow for readability */
             margin-bottom: 0.5rem;
         }
 
@@ -301,7 +315,7 @@
             font-family: 'Raleway', sans-serif;
             font-size: 1rem; 
             line-height: 1.7;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Enhanced shadow for readability */
             max-width: 600px; 
         }
 
@@ -506,7 +520,7 @@
                 <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
                 <p class="text-md sm:text-lg md:text-xl mb-6 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
                 <p class="text-sm sm:text-md md:text-lg mb-8 text-white font-semibold">
-                    <span class="bg-gradient-to-r from-blue-600 to-green-500 px-4 py-2 md:px-6 rounded-full inline-block">✈ From Delhi to the World!</span>
+                    <span class="text-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-500 px-5 py-2.5 md:px-6 rounded-full inline-block font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">✈ From Delhi to the World!</span>
                 </p>
                 <button
                     onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Quotation Request&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request a quotation for courier services. Please find my company details below:%0d%0a%0d%0aCompany Name:%0d%0aCompany Address:%0d%0aContact Person:%0d%0aPhone Number:%0d%0aEmail Address:%0d%0a%0d%0aLooking forward to hearing from you soon.%0d%0a%0d%0aSincerely,%0d%0a[Your Name]'"
@@ -572,7 +586,7 @@
 
         <section id="contact" class="section relative py-12 md:py-16 px-4 text-center overflow-hidden animate-on-scroll">
             <div class="absolute inset-0 bg-[url('https://t4.ftcdn.net/jpg/05/86/20/87/360_F_586208777_ff5IARSx9mR3y3hmfMYDTrQyQE4cA5nY.jpg')] bg-cover bg-center z-0"></div>
-            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-md z-0"></div>
+            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm z-0"></div> 
             <div class="relative z-10 max-w-5xl mx-auto">
                 <h2 class="section-heading text-2xl md:text-4xl font-bold mb-8 md:mb-12">Get In <span class="heading-gradient-part">Touch With Us</span></h2>
                 <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch">
@@ -722,19 +736,14 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                // Since header is not sticky, no offset is needed.
-                // const headerOffset = 0; 
                 const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                // const offsetPosition = elementPosition - headerOffset; // No offset needed
-                
                 window.scrollTo({
-                    top: elementPosition, // Scroll directly to the element's top
+                    top: elementPosition, 
                     behavior: 'smooth'
                 });
             }
         }
 
-        // Attach event listeners to navigation links
         document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href').substring(1);
@@ -745,7 +754,6 @@
             });
         });
         
-        // Attach to other in-page links that might need this behavior
         document.querySelectorAll('a[href^="#"]:not(nav a)').forEach(anchor => {
             const targetId = anchor.getAttribute('href').substring(1);
             if (document.getElementById(targetId)) {
@@ -906,7 +914,8 @@
                 servicesData.forEach((service, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
-                    slide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${service.mainBgUrl}')`;
+                    // Set CSS custom property for background image
+                    slide.style.setProperty('--slide-bg-image', `url('${service.mainBgUrl}')`);
                     
                     slide.innerHTML = `
                         <div class="service-slide-content-wrapper">
@@ -926,7 +935,7 @@
                     dot.className = 'service-dot';
                     dot.setAttribute('aria-label', `Go to service slide ${index + 1}: ${service.title}`);
                     dot.addEventListener('click', () => {
-                        showService(index); // No need to pass direction for dot clicks, logic handles it
+                        showService(index); 
                     });
                     dotsContainer.appendChild(dot);
                 });
@@ -934,24 +943,19 @@
             
             function showService(index) {
                 if (index === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
-                     // If the requested slide is already active, do nothing to prevent re-triggering.
                     return;
                 }
 
-                const oldIndex = currentServiceIndex;
                 currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
-                // Deactivate all slides first to handle potential race conditions or multiple active slides
                 serviceSlides.forEach(s => s.classList.remove('active'));
                 
-                // Activate the new slide
                 if (serviceSlides[currentServiceIndex]) {
                     serviceSlides[currentServiceIndex].classList.add('active');
                 } else {
                     console.error("Error: New slide at index", currentServiceIndex, "not found.");
                 }
                 
-                // Update navigation dots
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentServiceIndex);
                 });
