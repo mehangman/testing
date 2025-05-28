@@ -210,8 +210,9 @@
         footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
          @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
 
+        /* scroll-margin-top ensures that the sticky header doesn't overlap the section title when jumping via URL hash */
         #rates, #contact, #track-shipment, #partner-logos, #services, #area, #about-us {
-            scroll-margin-top: 60px; 
+            scroll-margin-top: 70px; /* Adjust if header height changes significantly, JS handles click scroll */
         }
 
         a { transition: color 0.3s ease; }
@@ -240,14 +241,13 @@
             height: 100vh; 
             position: relative; 
             overflow: hidden;
-            /* The main background of #services itself is not set, as each slide has its own */
         }
         
-        .services-slider-container { /* This container holds the slides */
+        .services-slider-container {
             position: relative; 
             width: 100%;
             height: 100%; 
-            z-index: 1; /* Ensure slides are above any potential base #services background if one were added */
+            z-index: 1;
         }
         
         .service-slide-item { 
@@ -255,18 +255,18 @@
             inset: 0; 
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Slightly faster transition */
             display: flex; 
-            flex-direction: column; /* Default for mobile: image top, text bottom */
+            flex-direction: column;
             align-items: center;
-            justify-content: center; /* Center content vertically and horizontally */
-            padding: 2rem; /* Padding around the content within the slide */
-            text-align: center; /* Center text by default */
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
             background-size: cover;
             background-position: center;
-            transform: translateX(100%); 
+            transform: translateX(100%); /* Default off-screen to the right */
             will-change: opacity, transform;
-            color: #FFFFFF; /* Default text color, can be overridden if needed */
+            color: #FFFFFF;
         }
 
         .service-slide-item.active {
@@ -277,77 +277,75 @@
         }
         
         .service-slide-content-wrapper {
-            position: relative; /* For z-indexing if needed, and positioning context */
-            z-index: 3; /* Ensure content is above the slide's own background image */
-            max-width: 900px; /* Max width of the content area */
+            position: relative;
+            z-index: 3; 
+            max-width: 900px; 
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem; /* Gap between image and text block */
+            gap: 1.5rem;
         }
         
         .service-slide-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.25rem; /* text-4xl */
+            font-size: 2.25rem; 
             font-weight: 700;
-            color: #FACC15; /* Yellow accent for title */
+            color: #FACC15; 
             text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
             margin-bottom: 0.5rem;
         }
 
         .service-slide-description {
             font-family: 'Raleway', sans-serif;
-            font-size: 1rem; /* text-base */
+            font-size: 1rem; 
             line-height: 1.7;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            max-width: 600px; /* Limit width of paragraph for readability */
+            max-width: 600px; 
         }
 
         .service-slide-integrated-image {
-            max-width: 200px; /* Control size of the integrated image */
+            max-width: 200px; 
             max-height: 200px;
-            width: 100%; /* Responsive within its max-width */
-            object-fit: contain; /* Or cover, depending on image types */
-            border-radius: 0.5rem; /* rounded-lg */
+            width: 100%; 
+            object-fit: contain; 
+            border-radius: 0.5rem; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            /* Could add a subtle border: border: 2px solid rgba(255,255,255,0.2); */
         }
         
-        /* Responsive adjustments for slide content layout */
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .service-slide-item {
                 padding: 3rem;
             }
             .service-slide-content-wrapper {
-                flex-direction: row; /* Side-by-side layout */
-                text-align: left; /* Align text to left for desktop */
+                flex-direction: row; 
+                text-align: left; 
                 gap: 2.5rem;
             }
-            .service-slide-text-block { /* New wrapper for title and description */
-                flex: 3; /* Text block takes more space */
+            .service-slide-text-block { 
+                flex: 3; 
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start; /* Align text to start */
+                align-items: flex-start; 
             }
-            .service-slide-integrated-image-container { /* New wrapper for image */
-                flex: 2; /* Image takes less space */
+            .service-slide-integrated-image-container { 
+                flex: 2; 
                 display: flex;
-                justify-content: center; /* Center image in its column */
+                justify-content: center; 
                 align-items: center;
             }
             .service-slide-title {
-                font-size: 2.75rem; /* text-5xl */
+                font-size: 2.75rem; 
             }
             .service-slide-description {
-                font-size: 1.125rem; /* text-lg */
+                font-size: 1.125rem; 
             }
             .service-slide-integrated-image {
                 max-width: 280px; 
                 max-height: 280px;
             }
         }
-        @media (min-width: 1024px) { /* lg breakpoint */
+        @media (min-width: 1024px) { 
              .service-slide-title {
                 font-size: 3.25rem; 
             }
@@ -359,7 +357,6 @@
                 max-height: 320px;
             }
         }
-
 
         .service-dots-container {
             position: absolute;
@@ -417,14 +414,13 @@
         #nextService { right: 1.5rem; } 
 
         @media (max-width: 767px) { 
-            .service-nav-arrow { display: none; }
+            .service-nav-arrow { display: none; } /* Arrows hidden on mobile, swipe is primary */
             .service-dots-container { bottom: 1rem; }
-            .service-slide-title { font-size: 1.75rem; } /* Adjust mobile title size */
-            .service-slide-description { font-size: 0.875rem; } /* Adjust mobile desc size */
+            .service-slide-title { font-size: 1.75rem; }
+            .service-slide-description { font-size: 0.875rem; }
             .service-slide-integrated-image { max-width: 150px; max-height: 150px; }
         }
         /* End Services Section Styles */
-
 
         #area { position: relative; overflow: hidden; }
          .section-blur-bg-area { 
@@ -465,7 +461,7 @@
         .text-gradient-pink-orange { background: linear-gradient(to right, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
         .text-gradient-teal-cyan { background: linear-gradient(to right, #14b8a6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; } /* Native smooth scroll for hash links if JS fails, and for general scroll */
         body { display: flex; flex-direction: column; min-height: 100vh; background-color: #111827; }
         main { flex-grow: 1; }
 
@@ -476,7 +472,6 @@
             transform: scale(1.05);
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
-
     </style>
 </head>
 
@@ -536,6 +531,7 @@
                 </svg>
             </button>
         </section>
+
         <section id="rates" class="section relative py-12 md:py-16 px-4 text-center overflow-hidden animate-on-scroll">
             <div class="absolute inset-0 bg-[url('https://previews.123rf.com/images/gmast3r/gmast3r1604/gmast3r160400443/55343577-truck-lorry-car-on-road-cargo-shipping-delivery-banner-flat-vector-illustration.jpg')] bg-cover bg-center z-0"></div>
             <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm z-0"></div>
@@ -646,6 +642,7 @@
                     <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
                     <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4F0080/FFFFFF?text=FedEx'; this.onerror=null;">
                     <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
+                    
                     <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
                     <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
                     <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
@@ -720,13 +717,20 @@
             }
         });
 
-        // Smooth scroll functionality
+        // Smooth scroll functionality for navigation links
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('.header')?.offsetHeight || 60; 
+                const header = document.querySelector('.header');
+                // Get the actual height of the header, or fallback if not found
+                const headerOffset = header ? header.offsetHeight : 60; 
+                
+                // Calculate the position of the element relative to the document
                 const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset - 20; 
+                
+                // Calculate the final scroll position: element's top - header height
+                // This ensures the top of the section is just below the sticky header
+                const offsetPosition = elementPosition - headerOffset; 
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -735,15 +739,31 @@
             }
         }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Attach event listeners to navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href').substring(1);
+                // Check if the target element exists on the page
                 if (document.getElementById(targetId)) {
-                    e.preventDefault();
-                    smoothScrollTo(targetId);
+                    e.preventDefault(); // Prevent default anchor click behavior
+                    smoothScrollTo(targetId); // Call the custom smooth scroll function
                 }
+                // If targetId doesn't exist, let the browser handle it (e.g., if it's an external link by mistake)
             });
         });
+        
+        // Also attach to other in-page links that might need this behavior
+        document.querySelectorAll('a[href^="#"]:not(nav a)').forEach(anchor => {
+             // Check if the link is intended for section scrolling (has a valid target on page)
+            const targetId = anchor.getAttribute('href').substring(1);
+            if (document.getElementById(targetId)) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    smoothScrollTo(targetId);
+                });
+            }
+        });
+
 
         // Tracking shipment functionality
         function trackShipment() {
@@ -754,11 +774,13 @@
             const trackingNumber = trackingInput.value.trim();
             let trackingUrl = "";
 
+            // Reset error states
             trackingInput.classList.remove('input-error-highlight');
             courierSelect.classList.remove('input-error-highlight');
             errorMessageElement.style.display = 'none';
-            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.';
+            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.'; // Default error
 
+            // Validation
             if (!trackingNumber && !courier) {
                 trackingInput.classList.add('input-error-highlight');
                 courierSelect.classList.add('input-error-highlight');
@@ -787,40 +809,48 @@
                 case "fedex": trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; break;
                 case "aramex": trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; break;
                 default:
-                    errorMessageElement.textContent = 'Invalid courier selected.';
+                    errorMessageElement.textContent = 'Invalid courier selected.'; // More specific error
                     errorMessageElement.style.display = 'block';
-                    return;
+                    return; // Exit if courier is not recognized
             }
-            if (trackingUrl) window.open(trackingUrl, "_blank");
+            if (trackingUrl) window.open(trackingUrl, "_blank"); // Open in new tab
         }
 
+        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+        // Logo slider animation pause on hover/touch
         function setupSliderAnimation(trackSelector, disableTouchPause = false) {
             const track = document.querySelector(trackSelector);
             if (track) {
                 track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
                 track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
                 if (!disableTouchPause) {
+                    // Use passive true for touch events to improve scroll performance
                     track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
                     track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
                 }
             }
         }
-        setupSliderAnimation('.logos-track', true); 
+        setupSliderAnimation('.logos-track', true); // Disable touch pause for logos as it might be too sensitive
 
+        // Intersection Observer for animating sections on scroll
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = {
-            root: null, 
+            root: null, // relative to the viewport
             rootMargin: '0px',
-            threshold: 0.1 
+            threshold: 0.1 // 10% of the section is visible
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Optional: unobserve after animation to save resources, if animation is one-time
+                    // observer.unobserve(entry.target); 
                 }
+                // Optional: remove 'visible' class if element scrolls out of view to re-animate
+                // else { entry.target.classList.remove('visible'); }
             });
         }, sectionObserverOptions);
 
@@ -828,50 +858,49 @@
             sectionObserver.observe(section);
         });
         
-        // Services Slider Logic - Integrated Background Content
+        // Services Slider Logic
         document.addEventListener('DOMContentLoaded', () => {
             const servicesData = [
                 {
                     title: "Domestic Courier",
-                    description: "Fast, reliable delivery across India. Efficient handling for all parcel types, ensuring your packages reach their destination swiftly and securely within the country.",
+                    description: "Experience swift and secure door-to-door delivery across India. We offer versatile options including express and standard shipping, perfectly suited for documents, personal parcels, and e-commerce logistics, ensuring your items arrive safely and on time.",
                     integratedImageUrl: "https://placehold.co/300x300/FDE047/1F2937?text=India+Map+Icon", 
-                    altText: "Domestic Parcel Delivery",
-                    // Example of a more abstract/textured background
+                    altText: "Domestic Parcel Delivery in India",
                     mainBgUrl: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "International Courier",
-                    description: "Expedited, dependable global shipping for your international reach. We connect you to the world with seamless customs clearance and timely deliveries across borders.",
+                    description: "Connect to the globe with our expedited and dependable international shipping services. We leverage a robust global network, provide expert customs clearance assistance, and offer comprehensive tracking visibility for secure and timely cross-border deliveries.",
                     integratedImageUrl: "https://placehold.co/300x300/A5F3FC/1F2937?text=Globe+Icon", 
-                    altText: "International Shipping",
+                    altText: "Global International Shipping",
                     mainBgUrl: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Real-Time Tracking",
-                    description: "Advanced tracking for all consignments, ensuring full transparency. Monitor your shipment's journey from pickup to delivery with our easy-to-use online tools.",
+                    description: "Stay informed every step of the way with our advanced real-time tracking system. Accessible via a user-friendly interface on desktop and mobile, you can monitor your shipment's entire journey from pickup to delivery, with optional proactive notifications for key updates.",
                     integratedImageUrl: "https://placehold.co/300x300/D9F99D/1F2937?text=Track+Symbol", 
-                    altText: "Shipment Tracking",
+                    altText: "Live Shipment Tracking",
                     mainBgUrl: "https://images.unsplash.com/photo-1557683304-678aab083da8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Extensive Network",
-                    description: "Strong franchise collaboration for maximum service coverage. Our widespread network ensures we can reach even the most remote locations efficiently.",
+                    description: "Benefit from our comprehensive pan-India coverage and strong collaborations with leading logistics providers. Our extensive network and last-mile delivery expertise ensure we can efficiently reach even the most remote locations, providing consistent service quality.",
                     integratedImageUrl: "https://placehold.co/300x300/FBCFE8/1F2937?text=Network+Web", 
-                    altText: "Courier Network",
+                    altText: "Wide Courier Network Coverage",
                     mainBgUrl: "https://images.unsplash.com/photo-1557683325-3ba8f0df79de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Customized Solutions",
-                    description: "Tailored services for your unique individual or business needs. From special handling to bulk shipments, we adapt to your specific requirements.",
+                    description: "We understand unique shipping needs. We offer tailored logistics solutions, including bulk shipping discounts, specialized handling for fragile or high-value items, scheduled pickups, and industry-specific services to perfectly match your individual or business requirements.",
                     integratedImageUrl: "https://placehold.co/300x300/BFDBFE/1F2937?text=Tailored+Box", 
-                    altText: "Customized Solutions",
+                    altText: "Customized Shipping Solutions",
                     mainBgUrl: "https://images.unsplash.com/photo-1557683308-04fe74403247?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
                 },
                 {
                     title: "Franchise Adaptability",
-                    description: "Seamless operations by working efficiently with partner franchises. Our collaborative approach ensures consistent service quality across all touchpoints.",
+                    description: "Our seamless operations and standardized processes ensure consistent, high-quality service across our entire network, including all partner franchises. We work efficiently with our collaborators to provide a reliable and uniform experience for all your shipments.",
                     integratedImageUrl: "https://placehold.co/300x300/DDD6FE/1F2937?text=Handshake", 
-                    altText: "Franchise Partners",
+                    altText: "Reliable Franchise Partners",
                     mainBgUrl: "https://images.unsplash.com/photo-1557683321-ead24b075200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
                 }
             ];
@@ -882,7 +911,7 @@
             const nextButton = document.getElementById('nextService');
 
             if (!sliderContainer || !dotsContainer || !prevButton || !nextButton) {
-                console.error("Required elements for services slider not found!");
+                console.error("Required elements for services slider not found. Slider will not function.");
                 return;
             }
 
@@ -896,8 +925,7 @@
                 servicesData.forEach((service, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
-                    // Set the main background for the slide itself
-                    slide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${service.mainBgUrl}')`;
+                    slide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${service.mainBgUrl}')`; // Slightly darker overlay for text contrast
                     
                     slide.innerHTML = `
                         <div class="service-slide-content-wrapper">
@@ -915,7 +943,11 @@
 
                     const dot = document.createElement('div');
                     dot.className = 'service-dot';
-                    dot.addEventListener('click', () => showService(index));
+                    dot.setAttribute('aria-label', `Go to service slide ${index + 1}: ${service.title}`);
+                    dot.addEventListener('click', () => {
+                        const direction = index > currentServiceIndex ? 'next' : 'prev';
+                        showService(index, direction);
+                    });
                     dotsContainer.appendChild(dot);
                 });
             }
@@ -924,33 +956,41 @@
                 const oldIndex = currentServiceIndex;
                 currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
-                serviceSlides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                     if (i !== oldIndex && i !== currentServiceIndex) {
-                        slide.style.transform = 'translateX(100%)'; 
-                    }
-                });
-                
-                if (serviceSlides[oldIndex] && oldIndex !== currentServiceIndex) {
+                if (oldIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
+                    return; // Avoid re-animating the same active slide
+                }
+
+                const oldSlide = serviceSlides[oldIndex];
+                const newSlide = serviceSlides[currentServiceIndex];
+
+                // Animate out the old slide if it exists and is different from the new slide
+                if (oldSlide && oldSlide !== newSlide) {
+                    oldSlide.classList.remove('active'); // This will trigger opacity transition to 0
                     if (direction === 'next') {
-                        serviceSlides[oldIndex].style.transform = 'translateX(-100%)';
-                    } else { 
-                        serviceSlides[oldIndex].style.transform = 'translateX(100%)';
+                        oldSlide.style.transform = 'translateX(-100%)'; // Slide out to the left
+                    } else { // prev
+                        oldSlide.style.transform = 'translateX(100%)';  // Slide out to the right
                     }
                 }
 
-                if (serviceSlides[currentServiceIndex]) {
-                     if (oldIndex !== currentServiceIndex) { 
-                        if (direction === 'next') {
-                            serviceSlides[currentServiceIndex].style.transform = 'translateX(100%)';
-                        } else { 
-                            serviceSlides[currentServiceIndex].style.transform = 'translateX(-100%)';
+                // Prepare and animate in the new slide
+                if (newSlide) {
+                    // Set initial position for the incoming slide (off-screen)
+                    // Only set if it's a different slide to avoid jump if oldSlide was null (initial load)
+                    if (oldSlide !== newSlide) {
+                         if (direction === 'next') {
+                            newSlide.style.transform = 'translateX(100%)'; // Start from the right
+                        } else { // prev
+                            newSlide.style.transform = 'translateX(-100%)'; // Start from the left
                         }
-                        void serviceSlides[currentServiceIndex].offsetWidth; 
+                        // Force reflow to ensure the transform is applied before the transition to active state begins
+                        newSlide.offsetHeight; 
                     }
-                    serviceSlides[currentServiceIndex].classList.add('active'); 
+                    
+                    newSlide.classList.add('active'); // This will trigger transition to translateX(0%) and opacity 1
                 }
 
+                // Update navigation dots
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentServiceIndex);
                 });
@@ -959,13 +999,14 @@
             prevButton.addEventListener('click', () => showService(currentServiceIndex - 1, 'prev'));
             nextButton.addEventListener('click', () => showService(currentServiceIndex + 1, 'next'));
 
+            // Swipe functionality for touch devices
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; 
+            const swipeThreshold = 50; // Minimum swipe distance in pixels
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+            }, { passive: true }); // Passive for better scroll performance
 
             sliderContainer.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
@@ -973,15 +1014,20 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) { 
+                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
                     showService(currentServiceIndex + 1, 'next');
-                } else if (touchEndX > touchStartX + swipeThreshold) { 
+                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
                     showService(currentServiceIndex - 1, 'prev');
                 }
+                // Reset touch coordinates for the next swipe
+                touchStartX = 0;
+                touchEndX = 0;
             }
 
+            // Initial setup
             renderServices();
             if (serviceSlides.length > 0) {
+                // For the initial load, directly set the first slide to active without off-screen positioning
                 serviceSlides[0].style.transform = 'translateX(0)'; 
                 serviceSlides[0].classList.add('active'); 
                 if (dotsContainer.children[0]) {
@@ -990,9 +1036,11 @@
             }
         });
 
+        // Ensure sections already in view on load also get the 'visible' class (e.g. if page is reloaded mid-scroll)
         window.addEventListener('load', () => {
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
+                // Check if the section is at all within the viewport
                 if (rect.top < window.innerHeight && rect.bottom >= 0) { 
                     section.classList.add('visible');
                 }
