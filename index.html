@@ -64,29 +64,30 @@
 
         /* Header styling */
         .header {
-            background-color: #000; color: #fff; padding: 0.6rem 1rem;
+            background-color: #000; color: #fff; padding: 0.3rem 0.5rem; /* Reduced padding */
             display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
+            /* position: sticky; Removed sticky */
             top: 0;
             z-index: 50;
         }
-        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 28px; width: 28px; }
+        .logo { margin-left: 0.5rem; /* Reduced margin */ }
+        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 24px; width: 24px; /* Slightly smaller logo */ }
         .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
-        .nav ul li { margin-left: 1rem; }
-        .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; font-size: 0.875rem; }
+        .nav ul li { margin-left: 0.8rem; /* Reduced margin */ }
+        .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; font-size: 0.8rem; /* Slightly smaller font */ }
         .nav ul li a:hover { color: #FACC15; }
         .hero { position: relative; z-index: 0; }
 
         /* Responsive navigation */
         @media (max-width: 768px) {
             .nav { display: none; }
-            .header { justify-content: space-between; }
-            .logo { margin-left: 0; margin-right: 0; font-size: 1rem; }
-            .logo img { height: 22px; width: 22px;}
+            .header { justify-content: space-between; padding: 0.4rem 0.5rem; } /* Adjusted padding for mobile */
+            .logo { margin-left: 0.5rem; font-size: 0.9rem; }
+            .logo img { height: 20px; width: 20px;}
         }
         @media (min-width: 769px) {
-            .nav { display: block !important; }
+            .nav { display: block !important; margin-right: 0.5rem; /* Reduced margin */}
         }
 
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
@@ -146,21 +147,23 @@
             text-fill-color: transparent;
         }
 
-        /* --- "From Delhi to the World" Styling with Transparent Frosted Glass --- */
+        /* --- "From Delhi to the World" Styling --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1.25rem 2rem;
-            background-color: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            padding: 1rem 1.5rem; /* Adjusted padding */
+            background-color: transparent; /* Fully transparent background */
+            /* backdrop-filter: blur(8px); Removed blur */
+            /* -webkit-backdrop-filter: blur(8px); Removed blur */
             border-radius: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            /* border: 1px solid rgba(255, 255, 255, 0.15); Removed border */
+            /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); Removed shadow */
             overflow: hidden;
             margin-top: 1.5rem;
+            width: 90%; /* Ensure it has some width for the line */
+            max-width: 350px; /* Max width for the container */
         }
 
         .world-phrase-text {
@@ -172,37 +175,42 @@
             background-clip: text;
             text-fill-color: transparent;
             text-shadow: 0 1px 2px rgba(0,0,0,0.12);
-            margin-bottom: 16px; /* Space between text and the line */
-            z-index: 2; /* Phrase above line, but below emoji if they were to overlap path directly */
+            margin-bottom: 1.5rem; /* Increased space for emoji and line */
+            z-index: 2;
         }
 
         .vehicle-path-line {
-            width: 100%;
+            width: 100%; /* Line spans the container */
             height: 2px;
-            background-color: rgba(220, 220, 230, 0.65);
+            background-color: rgba(220, 220, 230, 0.65); /* Visible line */
             border-radius: 1px;
-            z-index: 1; /* Line below phrase and emoji */
-            margin-bottom: 10px; /* Space below the line for emoji positioning */
+            position: absolute;
+            bottom: 25px; /* Position line below text, adjust as needed */
+            left: 0;
+            z-index: 1;
         }
 
         .flying-airplane-emoji {
             position: absolute;
-            bottom: 11px; /* Aligns emoji's center with line's center (10px line margin-bottom + 1px half line height) */
+            bottom: 25px; /* Position emoji on the line, adjust Y to center on line */
             left: -40px;
             font-size: 28px;
             color: #FFFFFF;
             text-shadow: 0 0 6px rgba(0,0,0,0.35);
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
-            z-index: 3; /* Emoji on top */
-            transform: translateY(-50%); /* Vertically center the emoji itself on the 11px bottom reference */
+            z-index: 3;
+            transform: translateY(-50%); /* Vertically center emoji on its 'bottom' reference */
         }
 
         @keyframes flyEmojiOnLine {
-            0% { left: -40px; opacity: 0; }
-            10% { left: -40px; opacity: 1; }
-            90% { left: 100%; opacity: 1; }
-            100% { left: 100%; opacity: 0; }
+            0% { left: -40px; opacity: 0; transform: translateY(-50%) rotate(0deg); }
+            10% { left: -40px; opacity: 1; transform: translateY(-50%) rotate(0deg); }
+            48% { transform: translateY(-50%) rotate(0deg); } /* Keep straight */
+            50% { transform: translateY(-50%) rotate(0deg); } /* Midpoint, can add dip or rise here if desired */
+            52% { transform: translateY(-50%) rotate(0deg); } /* Keep straight */
+            90% { left: calc(100% + 10px); opacity: 1; transform: translateY(-50%) rotate(0deg); } /* Adjusted to fly off screen */
+            100% { left: calc(100% + 10px); opacity: 0; transform: translateY(-50%) rotate(0deg); }
         }
         /* --- End of Updated Styling --- */
 
@@ -298,13 +306,13 @@
         #services {
             padding-top: 3rem;
             padding-bottom: 3rem;
-            min-height: auto; /* Adjusted from fixed height */
-            height: auto; /* Adjusted from fixed height */
-            position: relative; /* For pseudo-element positioning and slide absolute positioning */
-            overflow: hidden; /* To contain pseudo-elements if they scale/blur */
+            min-height: auto;
+            height: auto;
+            position: relative;
+            overflow: hidden;
         }
 
-        #services::before { /* New: Section-wide background image holder */
+        #services::before { /* Section-wide background image holder */
             content: '';
             position: absolute;
             top: 0;
@@ -315,28 +323,28 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            filter: blur(2px) brightness(0.75);
-            z-index: 0; /* Behind all slide content */
-            opacity: 0; /* Start transparent, fade in via JS adding .background-active */
+            filter: brightness(0.65); /* Removed blur, adjusted brightness */
+            z-index: 0;
+            opacity: 0;
             transition: opacity 0.6s ease-in-out;
         }
 
-        #services.background-active::before { /* JS adds this class to fade in the background */
+        #services.background-active::before {
             opacity: 1;
         }
 
 
         .services-slider-container {
-            position: relative; /* To contain absolute positioned slides */
+            position: relative;
             width: 100%;
-            min-height: 500px;
-            display: flex; /* Not strictly necessary if slides are absolute, but can help with alignment if slides weren't full absolute */
-            z-index: 1; /* Ensure slider container is above the section's ::before pseudo-element */
+            min-height: 500px; /* Ensure there's enough height for content */
+            display: flex;
+            z-index: 1;
         }
 
         .service-slide-item {
             position: absolute;
-            inset: 0; /* Makes slide take full space of services-slider-container */
+            inset: 0;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
@@ -344,18 +352,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem; /* Reduced padding for more content space */
             text-align: center;
             color: #FFFFFF;
             will-change: opacity, transform;
-            overflow: hidden; /* Should not be needed if content is well-contained */
+            overflow: hidden;
             width: 100%;
             height: 100%;
-            /* Removed ::before for individual background, now handled by #services::before */
         }
         
         .service-slide-item::before {
-             content: none; /* Explicitly disable old background pseudo-element */
+             content: none; 
         }
 
 
@@ -363,14 +370,14 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.4);
-            z-index: 1; /* Overlay above section background, below slide content wrapper */
+            background-color: rgba(0,0,0,0.65); /* Increased opacity */
+            z-index: 1; 
         }
 
         .service-slide-item.active {
             opacity: 1;
             pointer-events: auto;
-            z-index: 2; /* Active slide itself above non-active ones */
+            z-index: 2; 
             transform: scale(1);
         }
         .service-slide-item:not(.active) {
@@ -379,26 +386,30 @@
 
         .service-slide-content-wrapper {
             position: relative;
-            z-index: 2; /* Content above its slide's ::after overlay */
-            max-width: 1000px;
+            z-index: 2; 
+            max-width: 90%; /* Increased max-width to use more horizontal space */
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem; /* Adjusted gap */
+            background-color: rgba(10, 10, 10, 0.7); /* Slightly more opaque background for the card itself */
+            padding: 1.5rem; /* Padding inside the card */
+            border-radius: 0.75rem; /* Rounded corners for the card */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Subtle shadow for depth */
         }
 
         .service-slide-integrated-image-container {
             flex-shrink: 0;
             width: 100%;
-            max-width: 200px;
+            max-width: 180px; /* Adjusted image size */
             margin-bottom: 1rem;
         }
 
         .service-slide-integrated-image {
             width: 100%;
             height: auto;
-            max-height: 200px;
+            max-height: 180px; /* Adjusted image size */
             object-fit: contain;
             border-radius: 0.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -413,19 +424,19 @@
 
         .service-slide-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
+            font-size: 1.6rem; /* Adjusted font size */
             font-weight: 700;
             color: #FACC15;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.65);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem; /* Adjusted margin */
         }
 
         .service-slide-description {
             font-family: 'Raleway', sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.65;
+            font-size: 0.85rem; /* Adjusted font size */
+            line-height: 1.6;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
-            max-width: 500px;
+            max-width: 100%; /* Allow description to use full width of text block */
         }
 
         /* Desktop layout for services */
@@ -436,28 +447,34 @@
             .service-slide-content-wrapper {
                 flex-direction: row;
                 align-items: center;
-                gap: 2.5rem;
+                gap: 2rem; /* Adjusted gap */
+                max-width: 85%; /* Wider on desktop */
+                padding: 2rem;
             }
             .service-slide-integrated-image-container {
-                flex: 1;
-                max-width: 280px;
+                flex: 0 0 220px; /* Fixed width for image container */
+                max-width: 220px;
                 margin-bottom: 0;
             }
             .service-slide-content-wrapper.slide-image-left .service-slide-integrated-image-container { order: 1; }
             .service-slide-content-wrapper.slide-image-left .service-slide-text-block { order: 2; align-items: flex-start; text-align: left; }
             .service-slide-content-wrapper.slide-image-right .service-slide-integrated-image-container { order: 2; }
             .service-slide-content-wrapper.slide-image-right .service-slide-text-block { order: 1; align-items: flex-start; text-align: left; }
-            .service-slide-integrated-image { max-height: 280px; }
-            .service-slide-text-block { flex: 1.5; align-items: flex-start; text-align: left; }
-            .service-slide-title { font-size: 2.5rem; }
-            .service-slide-description { font-size: 1.05rem; max-width: none; }
+            
+            .service-slide-integrated-image { max-height: 220px; }
+            .service-slide-text-block { flex: 1; align-items: flex-start; text-align: left; }
+            .service-slide-title { font-size: 2.25rem; }
+            .service-slide-description { font-size: 1rem; }
         }
         @media (min-width: 1024px) {
             .services-slider-container { min-height: 600px; }
-            .service-slide-integrated-image-container { max-width: 320px; }
-            .service-slide-integrated-image { max-height: 320px; }
-            .service-slide-title { font-size: 2.75rem; }
-            .service-slide-description { font-size: 1.1rem; }
+             .service-slide-content-wrapper {
+                max-width: 80%; /* Even wider on large screens */
+             }
+            .service-slide-integrated-image-container { flex: 0 0 280px; max-width: 280px; }
+            .service-slide-integrated-image { max-height: 280px; }
+            .service-slide-title { font-size: 2.5rem; }
+            .service-slide-description { font-size: 1.05rem; }
         }
 
         .service-dots-container {
@@ -467,7 +484,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 0.75rem;
-            z-index: 10; /* Above slides and section background */
+            z-index: 10;
             padding: 0.5rem;
             background-color: rgba(0,0,0,0.25);
             border-radius: 9999px;
@@ -488,7 +505,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 10; /* Above slides and section background */
+            z-index: 10;
             background-color: rgba(0, 0, 0, 0.25);
             color: white;
             border-radius: 50%;
@@ -512,12 +529,12 @@
         @media (max-width: 767px) {
             .service-nav-arrow { display: none; }
             .service-dots-container { bottom: 1rem; }
-            .service-slide-title { font-size: 1.6rem; }
-            .service-slide-description { font-size: 0.875rem; }
-            .service-slide-integrated-image-container { max-width: 160px; }
-            .service-slide-integrated-image { max-height: 160px; }
-            .services-slider-container { min-height: 500px; }
-            .service-slide-content-wrapper { gap: 1rem; padding: 1rem; }
+            .service-slide-title { font-size: 1.5rem; }
+            .service-slide-description { font-size: 0.8rem; }
+            .service-slide-integrated-image-container { max-width: 140px; }
+            .service-slide-integrated-image { max-height: 140px; }
+            .services-slider-container { min-height: 480px; } /* Adjusted height for mobile */
+            .service-slide-content-wrapper { gap: 0.8rem; padding: 1rem; max-width: 95%; }
         }
         /* --- End Services Section Enhanced Styling --- */
 
@@ -591,11 +608,9 @@
     </div>
 
     <header class="header shadow-md">
-        <div class="logo text-xl font-bold ml-4 flex items-center">
-            <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-8 w-8 mr-2">
-            <span class="text-yellow-400 mr-1">OM</span> International Courier
+        <div class="logo text-lg font-bold flex items-center"> <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-7 w-7 mr-2"> <span class="text-yellow-400 mr-1">OM</span> International Courier
         </div>
-        <nav class="nav mr-4">
+        <nav class="nav">
             <ul>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#rates">Rates</a></li>
@@ -611,16 +626,14 @@
             class="hero bg-cover bg-no-repeat bg-center text-center py-10 px-4 md:py-12 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] md:min-h-[600px] animate-on-scroll"
             style="background-image: url('https://img.pikbest.com/backgrounds/20200423/2d-labor-day-delivery-banner_1910020.jpg!sw800')">
             <div class="absolute inset-0 bg-black/60 z-0" style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);"></div>
-            <div class="relative z-10 max-w-4xl w-full px-4 space-y-4 md:space-y-6">
-                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
+            <div class="relative z-10 max-w-4xl w-full px-4 space-y-4 md:space-y-6 flex flex-col items-center"> <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
                 <p class="text-md sm:text-lg md:text-xl mb-6 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
 
                 <div class="text-center mb-8">
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈</span>
-                    </div>
+                        <span class="flying-airplane-emoji">✈️</span> </div>
                 </div>
 
                 <button
@@ -835,8 +848,8 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('.header')?.offsetHeight || 0;
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                // const headerOffset = document.querySelector('.header')?.offsetHeight || 0; // No longer needed for non-sticky header
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset; // Simplified for non-sticky
                 window.scrollTo({
                     top: elementPosition,
                     behavior: 'smooth'
@@ -947,47 +960,48 @@
                 {
                     title: "Domestic Courier",
                     description: "Experience swift, secure door-to-door delivery across India. We offer versatile options including express (same-day/next-day in metro areas) and standard shipping, perfectly suited for documents, personal parcels, e-commerce logistics, and items requiring special handling or COD.",
-                    mainBgUrl: "https://placehold.co/1280x720/E0E0E0/333333?text=Domestic+Logistics+Network", // Example: Light gray background
+                    mainBgUrl: "https://placehold.co/1280x720/E0E0E0/333333?text=Domestic+Logistics+Network",
                     integratedImageUrl: "https://placehold.co/220x220/FDE047/1F2937?text=Van+Icon",
                     altText: "Domestic Parcel Delivery Van"
                 },
                 {
                     title: "International Courier",
                     description: "Connect globally with our expedited and dependable international shipping. We leverage a robust worldwide network, provide expert customs clearance, and offer comprehensive end-to-end tracking for secure, timely cross-border deliveries of both commercial and personal shipments, with express and economy options.",
-                    mainBgUrl: "https://placehold.co/1280x720/D0E4F8/2A4B7C?text=Global+Shipping+Containers", // Example: Light blue background
+                    mainBgUrl: "https://placehold.co/1280x720/D0E4F8/2A4B7C?text=Global+Shipping+Containers",
                     integratedImageUrl: "https://placehold.co/220x220/A5F3FC/1F2937?text=Cargo+Plane",
                     altText: "International Cargo Plane"
                 },
                 {
                     title: "Real-Time Tracking",
                     description: "Stay informed every step of the way. Our advanced real-time tracking system is accessible via a user-friendly web and mobile interface, providing live updates, estimated delivery times, proactive notifications for key milestones, and digital proof of delivery.",
-                    mainBgUrl: "https://placehold.co/1280x720/E8F5E9/4CAF50?text=Live+Tracking+Dashboard", // Example: Light green background
+                    mainBgUrl: "https://placehold.co/1280x720/E8F5E9/4CAF50?text=Live+Tracking+Dashboard", 
                     integratedImageUrl: "https://placehold.co/220x220/D9F99D/1F2937?text=GPS+Pin",
                     altText: "Shipment Tracking GPS Pin"
                 },
                 {
                     title: "Extensive Network",
                     description: "Benefit from our comprehensive pan-India coverage, including tier 2 & 3 cities, through strong collaborations with leading logistics providers and local experts. Our extensive network ensures efficient last-mile delivery and consistent service quality nationwide.",
-                    mainBgUrl: "https://placehold.co/1280x720/FCE4EC/AD1457?text=India+Delivery+Network", // Example: Light pink background
+                    mainBgUrl: "https://placehold.co/1280x720/FCE4EC/AD1457?text=India+Delivery+Network",
                     integratedImageUrl: "https://placehold.co/220x220/FBCFE8/1F2937?text=Hub+Network",
                     altText: "Courier Hub Network"
                 },
                 {
                     title: "Customized Solutions",
                     description: "We understand unique shipping needs. We offer tailored logistics solutions, including bulk shipping discounts, specialized handling for fragile/high-value items, scheduled pickups, dedicated account managers for businesses, and optional services like temperature-controlled shipping or enhanced insurance.",
-                    mainBgUrl: "https://placehold.co/1280x720/E3F2FD/1E88E5?text=Tailored+Logistics+Plan", // Example: Pale blue background
+                    mainBgUrl: "https://placehold.co/1280x720/E3F2FD/1E88E5?text=Tailored+Logistics+Plan",
                     integratedImageUrl: "https://placehold.co/220x220/BFDBFE/1F2937?text=Settings+Icon",
                     altText: "Customized Shipping Settings"
                 },
                 {
                     title: "Franchise Adaptability",
                     description: "Our seamless operations, standardized processes, and integrated technology ensure consistent, high-quality service across our entire network, including all partner franchises. We empower collaborators with training and support for a reliable, uniform customer experience.",
-                    mainBgUrl: "https://placehold.co/1280x720/EDE7F6/5E35B1?text=Courier+Team+Collaboration", // Example: Light purple background
+                    mainBgUrl: "https://placehold.co/1280x720/EDE7F6/5E35B1?text=Courier+Team+Collaboration",
+                    integratedImageUrl: "https://placehold.co/220x220/C5B3F2/1F2937?text=Team+Icon", // Placeholder, consider a more relevant icon
                     altText: "Courier Franchise Partnership"
                 }
             ];
 
-            const servicesSection = document.getElementById('services'); // Get the #services section
+            const servicesSection = document.getElementById('services');
             const sliderContainer = servicesSection.querySelector('.services-slider-container');
             const dotsContainer = servicesSection.querySelector('.service-dots-container');
             const prevButton = document.getElementById('prevService');
@@ -1009,8 +1023,7 @@
                 servicesData.forEach((service, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
-                    // Individual slide background is now removed, handled by #services::before
-
+                    
                     const contentWrapper = document.createElement('div');
                     contentWrapper.className = 'service-slide-content-wrapper';
                     if (window.innerWidth >= 768) {
@@ -1037,10 +1050,9 @@
                     dotsContainer.appendChild(dot);
                 });
 
-                // Set initial background for the section
                 if (servicesData.length > 0 && servicesData[0].mainBgUrl) {
                     servicesSection.style.setProperty('--section-bg-image-url', `url('${servicesData[0].mainBgUrl}')`);
-                    setTimeout(() => { // Ensure transition fires
+                    setTimeout(() => { 
                         servicesSection.classList.add('background-active');
                     }, 50);
                 }
@@ -1048,9 +1060,9 @@
 
             function showService(index) {
                 const newIndex = (index + servicesData.length) % servicesData.length;
-                if (newIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
-                    return;
-                }
+                // if (newIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
+                //     return; // Avoid re-triggering if already active and visible
+                // }
 
                 serviceSlides.forEach((s, i) => {
                     s.classList.toggle('active', i === newIndex);
@@ -1059,15 +1071,13 @@
                     dot.classList.toggle('active', i === newIndex);
                 });
 
-                // Update section background
                 if (servicesData[newIndex] && servicesData[newIndex].mainBgUrl) {
                     servicesSection.style.setProperty('--section-bg-image-url', `url('${servicesData[newIndex].mainBgUrl}')`);
                     if (!servicesSection.classList.contains('background-active')) {
-                         // Add after a tiny delay if it was removed, to ensure opacity transition
                         setTimeout(() => servicesSection.classList.add('background-active'), 20);
                     }
                 } else {
-                    servicesSection.classList.remove('background-active'); // Fade out if no bg URL
+                    servicesSection.classList.remove('background-active');
                 }
                 currentServiceIndex = newIndex;
             }
@@ -1088,10 +1098,11 @@
 
             renderServices();
             if (serviceSlides.length > 0) {
-                showService(0);
+                showService(0); // Initialize first slide
             }
 
             window.addEventListener('resize', () => {
+                 // Re-apply layout classes on resize
                 serviceSlides.forEach((slide, index) => {
                     const wrapper = slide.querySelector('.service-slide-content-wrapper');
                     if(wrapper){
@@ -1101,6 +1112,8 @@
                         }
                     }
                 });
+                // Optionally, re-show current service to adjust layout if needed, though CSS should handle most of it.
+                // showService(currentServiceIndex); 
             });
         });
     </script>
