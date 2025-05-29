@@ -152,27 +152,27 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1.25rem 2rem; /* Slightly reduced padding */
-            /* Transparent frosted glass effect */
-            background-color: rgba(255, 255, 255, 0.12); /* More transparent base for blur */
-            backdrop-filter: blur(8px); /* Blur effect */
-            -webkit-backdrop-filter: blur(8px); /* Safari support */
+            padding: 1.25rem 2rem;
+            background-color: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.18); /* Very subtle border */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* More subtle border */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             margin-top: 1.5rem;
         }
 
         .world-phrase-text {
-            font-weight: 700;
+            font-weight: 700; /* Bold text */
             font-size: 1.2em;
-            background: linear-gradient(to right, #FFFFFF 70%, #E0F2F7 95%);
+            /* New bright white gradient */
+            background: linear-gradient(to right, #FFFFFF 75%, #D6EFFF 95%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.12); /* Adjusted shadow */
             margin-bottom: 16px;
             z-index: 2;
         }
@@ -180,7 +180,7 @@
         .vehicle-path-line {
             width: 100%;
             height: 2px;
-            background-color: rgba(220, 220, 230, 0.65); /* Light, semi-transparent path line */
+            background-color: rgba(220, 220, 230, 0.65);
             border-radius: 1px;
             z-index: 1;
             margin-bottom: 10px;
@@ -188,7 +188,7 @@
 
         .flying-airplane-emoji {
             position: absolute;
-            bottom: 5px;
+            bottom: 5px; /* Visually centers emoji on the line */
             left: -40px;
             font-size: 28px;
             color: #FFFFFF;
@@ -294,10 +294,12 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* --- Services Section Enhanced Styling --- */
         #services {
-            padding: 0; /* Changed from padding: 0; */
-            min-height: auto; /* Changed from 100vh to allow content to define height */
-            height: auto; /* Changed from 100vh */
+            padding-top: 3rem; /* Add some top padding to the section */
+            padding-bottom: 3rem; /* Add some bottom padding */
+            min-height: auto;
+            height: auto;
             position: relative;
             overflow: hidden;
         }
@@ -305,9 +307,8 @@
         .services-slider-container {
             position: relative;
             width: 100%;
-            /* Height will be determined by its content or a specific aspect ratio for slides */
-             min-height: 500px; /* Minimum height for the slider area */
-            display: flex; /* Added for potential alignment if slides are not absolute */
+            min-height: 500px; /* Base min-height, adjust per breakpoint */
+            display: flex;
         }
 
         .service-slide-item {
@@ -315,147 +316,176 @@
             inset: 0;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Added transform transition */
-            display: flex;
-            flex-direction: column;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            display: flex; /* Keep flex for alignment */
+            flex-direction: column; /* Stack on mobile by default */
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1.5rem; /* Adjusted padding */
             text-align: center;
             color: #FFFFFF;
             will-change: opacity, transform;
-            overflow: hidden; /* Keep overflow hidden for the slide itself */
-            width: 100%; /* Ensure slides take full width of container */
-            height: 100%; /* Ensure slides take full height of container */
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
         }
 
-        .service-slide-item::before {
+        .service-slide-item::before { /* Background image styling */
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background-size: cover;
             background-position: center;
             background-image: var(--slide-bg-image);
-            filter: blur(2px) brightness(0.8); /* Slightly blur and darken bg image for text contrast */
-            transform: scale(1.05);
+            filter: blur(2px) brightness(0.75); /* Darken and blur for text contrast */
+            transform: scale(1.1); /* Slightly zoomed for active effect */
             z-index: 1;
-            transition: transform 0.5s ease-in-out; /* Smooth transition for scale */
+            transition: transform 0.8s ease-in-out;
         }
-         .service-slide-item.active::before {
-            transform: scale(1); /* Scale down to normal on active */
+        .service-slide-item.active::before {
+            transform: scale(1); /* Zoom out to normal on active */
         }
 
-
-        .service-slide-item::after { /* Optional: Dark overlay for better text readability */
+        .service-slide-item::after { /* Dark overlay for readability */
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.35); /* Slightly increased overlay */
-            z-index: 1; /* Above ::before, below content */
+            background-color: rgba(0,0,0,0.4); /* Adjusted overlay */
+            z-index: 1;
         }
-
 
         .service-slide-item.active {
             opacity: 1;
             pointer-events: auto;
             z-index: 2;
-            transform: scale(1); /* Ensure active slide is normal size */
+            transform: scale(1);
         }
-         .service-slide-item:not(.active) {
-            transform: scale(0.95); /* Slightly scale down non-active slides */
+        .service-slide-item:not(.active) {
+            transform: scale(0.98); /* Non-active slides slightly smaller */
         }
-
 
         .service-slide-content-wrapper {
             position: relative;
-            z-index: 2; /* Content above overlays */
-            max-width: 900px;
+            z-index: 2;
+            max-width: 1000px; /* Increased max-width */
             width: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Default mobile: stack image and text */
             align-items: center;
-            gap: 1rem; /* Reduced gap */
+            gap: 1.5rem; /* Gap between image and text block on mobile */
+        }
+
+        .service-slide-integrated-image-container {
+            flex-shrink: 0; /* Prevent image from shrinking too much */
+            width: 100%; /* Full width on mobile */
+            max-width: 200px; /* Max width for the image on mobile */
+            margin-bottom: 1rem; /* Space below image on mobile */
+        }
+
+        .service-slide-integrated-image {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            max-height: 200px; /* Max height for image */
+            object-fit: contain;
+            border-radius: 0.5rem; /* Tailwind's rounded-lg */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .service-slide-text-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center text on mobile */
+            text-align: center; /* Center text on mobile */
         }
 
         .service-slide-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem; /* Adjusted */
+            font-size: 1.75rem; /* Mobile title size */
             font-weight: 700;
             color: #FACC15;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Slightly stronger shadow */
-            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.65);
+            margin-bottom: 0.75rem;
         }
 
         .service-slide-description {
             font-family: 'Raleway', sans-serif;
-            font-size: 0.95rem; /* Adjusted */
-            line-height: 1.6;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            max-width: 550px; /* Slightly narrower for better readability */
-            margin-bottom: 1rem; /* Space before image */
+            font-size: 0.9rem; /* Mobile description size */
+            line-height: 1.65;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+            max-width: 500px; /* Limit width on mobile for readability */
         }
 
-        .service-slide-integrated-image {
-            max-width: 120px; /* Adjusted size */
-            max-height: 120px; /* Adjusted size */
-            width: 100%;
-            object-fit: contain;
-            border-radius: 0.375rem; /* Tailwind's rounded-md */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-        }
-
+        /* Desktop layout for services */
         @media (min-width: 768px) {
             .services-slider-container {
                  min-height: 550px;
             }
             .service-slide-content-wrapper {
-                flex-direction: row;
-                text-align: left;
-                gap: 2rem;
-            }
-            .service-slide-text-block {
-                flex: 3;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row; /* Side-by-side on desktop */
+                align-items: center; /* Vertically align items */
+                gap: 2.5rem; /* Gap between image and text */
             }
             .service-slide-integrated-image-container {
-                flex: 1; /* Adjusted flex for image */
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                flex: 1; /* Image container takes up space */
+                max-width: 280px; /* Max width for image on desktop */
+                margin-bottom: 0; /* Reset margin */
+            }
+             /* Alternating layout for desktop */
+            .service-slide-content-wrapper.slide-image-left .service-slide-integrated-image-container {
+                order: 1;
+            }
+            .service-slide-content-wrapper.slide-image-left .service-slide-text-block {
+                order: 2;
+                align-items: flex-start; /* Align text to left */
+                text-align: left; /* Align text to left */
+            }
+             .service-slide-content-wrapper.slide-image-right .service-slide-integrated-image-container {
+                order: 2;
+            }
+            .service-slide-content-wrapper.slide-image-right .service-slide-text-block {
+                order: 1;
+                align-items: flex-start; /* Align text to left */
+                text-align: left; /* Align text to left */
+            }
+
+
+            .service-slide-integrated-image {
+                max-height: 280px;
+            }
+            .service-slide-text-block {
+                flex: 1.5; /* Text block takes more space */
+                align-items: flex-start; /* Align text to left */
+                text-align: left; /* Align text to left */
             }
             .service-slide-title {
-                font-size: 2.5rem; /* Adjusted */
+                font-size: 2.5rem;
             }
             .service-slide-description {
-                font-size: 1.05rem; /* Adjusted */
-                max-width: none; /* Allow text to use available space */
-            }
-            .service-slide-integrated-image {
-                max-width: 150px; /* Adjusted */
-                max-height: 150px; /* Adjusted */
+                font-size: 1.05rem;
+                max-width: none; /* Allow text to fill available space */
             }
         }
         @media (min-width: 1024px) {
             .services-slider-container {
                  min-height: 600px;
             }
+            .service-slide-integrated-image-container {
+                max-width: 320px;
+            }
+            .service-slide-integrated-image {
+                max-height: 320px;
+            }
              .service-slide-title {
-                font-size: 2.75rem; /* Adjusted */
+                font-size: 2.75rem;
             }
             .service-slide-description {
-                font-size: 1.1rem; /* Adjusted */
-            }
-             .service-slide-integrated-image {
-                max-width: 180px; /* Adjusted */
-                max-height: 180px; /* Adjusted */
+                font-size: 1.1rem;
             }
         }
 
         .service-dots-container {
             position: absolute;
-            bottom: 1.5rem; /* Adjusted */
+            bottom: 1.5rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -465,21 +495,18 @@
             background-color: rgba(0,0,0,0.25);
             border-radius: 9999px;
         }
-
         .service-dot {
-            width: 9px; /* Adjusted */
-            height: 9px; /* Adjusted */
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.35);
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
-
         .service-dot.active {
             background-color: #FACC15;
-            transform: scale(1.25); /* Adjusted */
+            transform: scale(1.25);
         }
-
         .service-nav-arrow {
             position: absolute;
             top: 50%;
@@ -488,8 +515,8 @@
             background-color: rgba(0, 0, 0, 0.25);
             color: white;
             border-radius: 50%;
-            width: 2.75rem; /* Adjusted */
-            height: 2.75rem; /* Adjusted */
+            width: 2.75rem;
+            height: 2.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -502,23 +529,25 @@
             transform: translateY(-50%) scale(1.05);
         }
         .service-nav-arrow svg {
-            width: 1.25rem; /* Adjusted */
-            height: 1.25rem; /* Adjusted */
+            width: 1.25rem;
+            height: 1.25rem;
         }
-        #prevService { left: 1rem; } /* Adjusted */
-        #nextService { right: 1rem; } /* Adjusted */
+        #prevService { left: 1rem; }
+        #nextService { right: 1rem; }
 
-        @media (max-width: 767px) {
+        @media (max-width: 767px) { /* Specific mobile adjustments for services */
             .service-nav-arrow { display: none; }
             .service-dots-container { bottom: 1rem; }
             .service-slide-title { font-size: 1.6rem; }
-            .service-slide-description { font-size: 0.85rem; }
-            .service-slide-integrated-image { max-width: 100px; max-height: 100px; }
+            .service-slide-description { font-size: 0.875rem; }
+            .service-slide-integrated-image-container { max-width: 160px; }
+            .service-slide-integrated-image { max-height: 160px; }
              .services-slider-container {
-                 min-height: 450px; /* Min height for mobile */
+                 min-height: 500px; /* Ensure enough height on mobile for stacked content */
             }
+            .service-slide-content-wrapper { gap: 1rem; padding: 1rem; }
         }
-        /* End Services Section Styles */
+        /* --- End Services Section Enhanced Styling --- */
 
         #area { position: relative; overflow: hidden; }
          .section-blur-bg-area {
@@ -537,12 +566,41 @@
         .area-card ul li { color: #e5e7eb; font-size: 0.875rem; }
          @media (min-width: 768px) { .area-card ul li { font-size: 0.875rem; } }
 
+        /* --- About Us Section Quick Links Enhancement --- */
         #about-us {
             background-color: #1f2937; color: #d1d5db;
+        }
+        #about-us .lg\:col-span-1 { /* Targeting the Quick Links column */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the H3 and the box below it */
+        }
+        #about-us .lg\:col-span-1 > h3 { /* Main "Quick Links" title */
+            text-align: center;
+            width: 100%; /* Ensure it takes full width for centering */
+            margin-bottom: 1.5rem; /* Add space below the main title */
+        }
+        .quick-links-box { /* The gray box containing sub-links */
+            background-color: rgba(55, 65, 81, 0.6); /* bg-gray-700/60 with adjusted opacity */
+            padding: 1.5rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 350px; /* Control max width for better appearance */
+        }
+        .quick-links-box h4 { /* Sub-headers like "Our Franchise Partners" */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* semibold */
+            margin-bottom: 0.75rem; /* mb-3 */
+            padding-bottom: 0.5rem; /* pb-2 */
+            border-bottom: 1px solid rgba(107, 114, 128, 0.5); /* border-gray-500/50 */
+            color: #FACC15; /* Example: yellow color for sub-headers */
         }
         #about-us a:not(.map-image-link) { color: #9ca3af; transition: color 0.3s ease; }
         #about-us a:not(.map-image-link):hover { color: #FACC15; }
         .quick-link-item { padding: 0.25rem 0; }
+        /* --- End About Us Section Styling --- */
+
         .input-error-highlight { border-color: #ef4444 !important; }
         #tracking-number-error { color: #fca5a5; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
 
@@ -759,15 +817,13 @@
 
         <section id="about-us" class="section animate-on-scroll bg-black">
             <div class="container mx-auto px-4">
-                <div class="text-center">
-                    <h2 class="section-heading text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">About <span class="heading-gradient-part">OM International Courier</span></h2>
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="section-heading text-2xl md:text-3xl font-bold">About <span class="heading-gradient-part">OM International Courier</span></h2>
                 </div>
-                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 items-start">
-                    <div class="lg:col-span-1">
-                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gradient text-gradient-7">Quick Links</h3>
-                        <div class="bg-gray-800/60 p-4 md:p-6 rounded-lg shadow-md">
-                            <h4 class="text-lg md:text-xl font-semibold text-gradient text-gradient-blue-purple mb-3">Our Franchise Partners</h4>
-                            <ul class="space-y-1 md:space-y-2 mb-4 md:mb-6 text-sm md:text-base">
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+                    <div class="lg:col-span-1 flex flex-col items-center"> <h3 class="text-xl md:text-2xl font-semibold mb-6 text-gradient text-gradient-7 text-center">Quick Links</h3>
+                        <div class="quick-links-box w-full max-w-md"> <h4 class="text-gradient text-gradient-blue-purple">Our Franchise Partners</h4>
+                            <ul class="space-y-1 md:space-y-2 mb-6 text-sm md:text-base">
                                 <li class="quick-link-item"><a href="https://dtdc.com" target="_blank" rel="noopener noreferrer" class="hover:underline">DTDC Services</a></li>
                                 <li class="quick-link-item"><a href="https://www.tpcindia.com" target="_blank" rel="noopener noreferrer" class="hover:underline">The Professional Couriers Network</a></li>
                                 <li class="quick-link-item"><a href="https://www.bluedart.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Blue Dart Express</a></li>
@@ -775,7 +831,7 @@
                                 <li class="quick-link-item"><a href="https://www.fedex.com/en-in/home.html" target="_blank" rel="noopener noreferrer" class="hover:underline">FedEx India</a></li>
                                 <li class="quick-link-item"><a href="https://www.aramex.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Aramex Global Solutions</a></li>
                             </ul>
-                            <h4 class="text-lg md:text-xl font-semibold text-gradient text-gradient-green-yellow mb-3">Connect With Us</h4>
+                            <h4 class="text-gradient text-gradient-green-yellow">Connect With Us</h4>
                             <ul class="space-y-1 md:space-y-2 text-sm md:text-base">
                                 <li class="quick-link-item"><a href="#contact">Contact Page</a></li>
                                 <li class="quick-link-item"><a href="mailto:ominternationalcep@gmail.com">Email Us: ominternationalcep@gmail.com</a></li>
@@ -944,57 +1000,45 @@
             const servicesData = [
                 {
                     title: "Domestic Courier",
-                    description: "Swift and secure door-to-door delivery across India. Express and standard options for documents, parcels, and e-commerce logistics.",
-                    // IMPORTANT: Replace with your actual image URL
-                    mainBgUrl: "https://placehold.co/1280x720/E0E0E0/666666?text=Domestic+Parcel+Delivery",
-                    // IMPORTANT: Replace with your actual image URL
-                    integratedImageUrl: "https://placehold.co/150x150/FDE047/1F2937?text=Truck+Icon",
-                    altText: "Domestic Parcel Delivery in India"
+                    description: "Experience swift, secure door-to-door delivery across India. We offer versatile options including express (same-day/next-day in metro areas) and standard shipping, perfectly suited for documents, personal parcels, e-commerce logistics, and items requiring special handling or COD.",
+                    mainBgUrl: "https://placehold.co/1280x720/E0E0E0/333333?text=Domestic+Logistics+Network",
+                    integratedImageUrl: "https://placehold.co/220x220/FDE047/1F2937?text=Van+Icon",
+                    altText: "Domestic Parcel Delivery Van"
                 },
                 {
                     title: "International Courier",
-                    description: "Reliable international shipping with a robust global network. Expert customs clearance and comprehensive tracking for timely cross-border deliveries.",
-                    // IMPORTANT: Replace with your actual image URL
-                    mainBgUrl: "https://placehold.co/1280x720/D0E4F8/5C7BAA?text=International+Shipping+Boxes",
-                     // IMPORTANT: Replace with your actual image URL
-                    integratedImageUrl: "https://placehold.co/150x150/A5F3FC/1F2937?text=Plane+Icon",
-                    altText: "Global International Shipping"
+                    description: "Connect globally with our expedited and dependable international shipping. We leverage a robust worldwide network, provide expert customs clearance, and offer comprehensive end-to-end tracking for secure, timely cross-border deliveries of both commercial and personal shipments, with express and economy options.",
+                    mainBgUrl: "https://placehold.co/1280x720/D0E4F8/2A4B7C?text=Global+Shipping+Containers",
+                    integratedImageUrl: "https://placehold.co/220x220/A5F3FC/1F2937?text=Cargo+Plane",
+                    altText: "International Cargo Plane"
                 },
                 {
                     title: "Real-Time Tracking",
-                    description: "Monitor your shipment's journey with our advanced real-time tracking system. User-friendly interface with optional proactive notifications.",
-                    // IMPORTANT: Replace with your actual image URL
-                    mainBgUrl: "https://placehold.co/1280x720/E8F5E9/7CB342?text=Tracking+Screen+Interface",
-                    // IMPORTANT: Replace with your actual image URL
-                    integratedImageUrl: "https://placehold.co/150x150/D9F99D/1F2937?text=Scan+Icon",
-                    altText: "Live Shipment Tracking"
+                    description: "Stay informed every step of the way. Our advanced real-time tracking system is accessible via a user-friendly web and mobile interface, providing live updates, estimated delivery times, proactive notifications for key milestones, and digital proof of delivery.",
+                    mainBgUrl: "https://placehold.co/1280x720/E8F5E9/4CAF50?text=Live+Tracking+Dashboard",
+                    integratedImageUrl: "https://placehold.co/220x220/D9F99D/1F2937?text=GPS+Pin",
+                    altText: "Shipment Tracking GPS Pin"
                 },
                 {
                     title: "Extensive Network",
-                    description: "Comprehensive pan-India coverage and strong collaborations with leading logistics providers. Efficient reach to even remote locations.",
-                     // IMPORTANT: Replace with your actual image URL
-                    mainBgUrl: "https://placehold.co/1280x720/FCE4EC/E91E63?text=Logistics+Network+Map",
-                    // IMPORTANT: Replace with your actual image URL
-                    integratedImageUrl: "https://placehold.co/150x150/FBCFE8/1F2937?text=Branch+Icon",
-                    altText: "Wide Courier Network Coverage"
+                    description: "Benefit from our comprehensive pan-India coverage, including tier 2 & 3 cities, through strong collaborations with leading logistics providers and local experts. Our extensive network ensures efficient last-mile delivery and consistent service quality nationwide.",
+                    mainBgUrl: "https://placehold.co/1280x720/FCE4EC/AD1457?text=India+Delivery+Network",
+                    integratedImageUrl: "https://placehold.co/220x220/FBCFE8/1F2937?text=Hub+Network",
+                    altText: "Courier Hub Network"
                 },
                 {
                     title: "Customized Solutions",
-                    description: "Tailored logistics for unique needs: bulk shipping, specialized handling for fragile items, scheduled pickups, and industry-specific services.",
-                    // IMPORTANT: Replace with your actual image URL
-                    mainBgUrl: "https://placehold.co/1280x720/E3F2FD/42A5F5?text=Custom+Packaging+Service",
-                    // IMPORTANT: Replace with your actual image URL
-                    integratedImageUrl: "https://placehold.co/150x150/BFDBFE/1F2937?text=Gear+Icon",
-                    altText: "Customized Shipping Solutions"
+                    description: "We understand unique shipping needs. We offer tailored logistics solutions, including bulk shipping discounts, specialized handling for fragile/high-value items, scheduled pickups, dedicated account managers for businesses, and optional services like temperature-controlled shipping or enhanced insurance.",
+                    mainBgUrl: "https://placehold.co/1280x720/E3F2FD/1E88E5?text=Tailored+Logistics+Plan",
+                    integratedImageUrl: "https://placehold.co/220x220/BFDBFE/1F2937?text=Settings+Icon",
+                    altText: "Customized Shipping Settings"
                 },
                 {
                     title: "Franchise Adaptability",
-                    description: "Seamless operations and standardized processes ensure consistent, high-quality service across our entire network, including all partner franchises.",
-                    // IMPORTANT: Replace with your actual image URL
-                    mainBgUrl: "https://placehold.co/1280x720/EDE7F6/7E57C2?text=Courier+Franchise+Office",
-                    // IMPORTANT: Replace with your actual image URL
-                    integratedImageUrl: "https://placehold.co/150x150/DDD6FE/1F2937?text=People+Icon",
-                    altText: "Reliable Franchise Partners"
+                    description: "Our seamless operations, standardized processes, and integrated technology ensure consistent, high-quality service across our entire network, including all partner franchises. We empower collaborators with training and support for a reliable, uniform customer experience.",
+                    mainBgUrl: "https://placehold.co/1280x720/EDE7F6/5E35B1?text=Courier+Team+Collaboration",
+                    integratedImageUrl: "https://placehold.co/220x220/DDD6FE/1F2937?text=Partnership",
+                    altText: "Courier Franchise Partnership"
                 }
             ];
 
@@ -1020,17 +1064,25 @@
                     slide.className = 'service-slide-item';
                     slide.style.setProperty('--slide-bg-image', `url('${service.mainBgUrl}')`);
 
-                    slide.innerHTML = `
-                        <div class="service-slide-content-wrapper">
-                            <div class="service-slide-text-block">
-                                <h3 class="service-slide-title">${service.title}</h3>
-                                <p class="service-slide-description">${service.description}</p>
-                            </div>
-                            <div class="service-slide-integrated-image-container">
-                                <img src="${service.integratedImageUrl}" alt="${service.altText}" class="service-slide-integrated-image">
-                            </div>
+                    const contentWrapper = document.createElement('div');
+                    contentWrapper.className = 'service-slide-content-wrapper';
+
+                    // Add class for alternating layout on desktop
+                    if (window.innerWidth >= 768) { // md breakpoint
+                        contentWrapper.classList.add(index % 2 === 0 ? 'slide-image-right' : 'slide-image-left');
+                    }
+
+
+                    contentWrapper.innerHTML = `
+                        <div class="service-slide-integrated-image-container">
+                            <img src="${service.integratedImageUrl}" alt="${service.altText}" class="service-slide-integrated-image">
+                        </div>
+                        <div class="service-slide-text-block">
+                            <h3 class="service-slide-title">${service.title}</h3>
+                            <p class="service-slide-description">${service.description}</p>
                         </div>
                     `;
+                    slide.appendChild(contentWrapper);
                     sliderContainer.appendChild(slide);
                     serviceSlides.push(slide);
 
@@ -1045,22 +1097,16 @@
             }
 
             function showService(index) {
-                // Ensure index is within bounds
                 const newIndex = (index + servicesData.length) % servicesData.length;
 
                 if (newIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
-                     // If it's already the active slide, do nothing to prevent animation re-trigger
-                    // Or, if you want to allow re-triggering for some reason, this check can be modified.
                     return;
                 }
 
-
-                // Update active class on slides
                 serviceSlides.forEach((s, i) => {
                     s.classList.toggle('active', i === newIndex);
                 });
 
-                // Update active class on dots
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === newIndex);
                 });
@@ -1072,7 +1118,7 @@
 
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; // Minimum distance for a swipe
+            const swipeThreshold = 50;
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -1084,26 +1130,44 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
+                if (touchEndX < touchStartX - swipeThreshold) {
                     showService(currentServiceIndex + 1);
-                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
+                } else if (touchEndX > touchStartX + swipeThreshold) {
                     showService(currentServiceIndex - 1);
                 }
-                // Reset values for next swipe
                 touchStartX = 0;
                 touchEndX = 0;
             }
 
             renderServices();
             if (serviceSlides.length > 0) {
-                showService(0); // Initialize the first slide as active
+                showService(0);
             }
+
+            // Re-apply alternating layout on resize for desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    serviceSlides.forEach((slide, index) => {
+                        const wrapper = slide.querySelector('.service-slide-content-wrapper');
+                        if(wrapper){
+                            wrapper.classList.remove('slide-image-left', 'slide-image-right');
+                            wrapper.classList.add(index % 2 === 0 ? 'slide-image-right' : 'slide-image-left');
+                        }
+                    });
+                } else {
+                     serviceSlides.forEach((slide) => {
+                        const wrapper = slide.querySelector('.service-slide-content-wrapper');
+                         if(wrapper){
+                            wrapper.classList.remove('slide-image-left', 'slide-image-right');
+                        }
+                    });
+                }
+            });
         });
 
         window.addEventListener('load', () => {
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // Check if the section is at least partially in the viewport
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
                     section.classList.add('visible');
                 }
