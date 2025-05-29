@@ -146,80 +146,81 @@
             text-fill-color: transparent;
         }
 
-        /* --- "From Delhi to the World" Styling (Frosted Glass Effect) --- */
+        /* --- Updated "From Delhi to the World" Styling with Ice Theme --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1rem 2rem; 
-            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white for frosted look */
-            backdrop-filter: blur(8px); /* Blur effect for content behind */
-            -webkit-backdrop-filter: blur(8px); /* Safari compatibility */
-            border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle light border */
-            border-radius: 0.75rem; 
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Adjusted shadow for depth */
-            overflow: hidden; /* Ensures content doesn't spill from rounded corners */
-            margin-top: 1.5rem;
-            transition: transform 0.3s ease; 
+            padding: 1.5rem 2.5rem; /* Generous padding */
+            /* Ice themed background gradient */
+            background: linear-gradient(135deg, #E0F2F7 0%, #B2EBF2 100%);
+            border-radius: 0.75rem; /* Slightly larger radius */
+            /* Softer shadow for the ice theme, no explicit border or a very subtle one */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 0 15px rgba(178, 235, 242, 0.3) inset;
+            /* border: 1px solid rgba(255, 255, 255, 0.4); /* Optional: very subtle border */
+            overflow: hidden;
+            margin-top: 1.5rem; /* Increased space above */
         }
 
         .world-phrase-text {
             font-weight: 700;
-            font-size: 1.25em; 
-            background: linear-gradient(to right, #F9A825, #F57F17); /* Strong yellow to rich orange gradient */
+            font-size: 1.2em; /* Larger text */
+            /* New Text Gradient Option 1: Cool Blues */
+            background: linear-gradient(to right, #2E6C8F, #4A90E2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            text-shadow: none; 
-            margin-bottom: 0.75rem; 
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2); /* Softer shadow for better readability on light bg */
+            margin-bottom: 16px; /* Increased space between text and line */
             z-index: 2;
         }
 
         .vehicle-path-line {
             width: 100%;
-            height: 2px; 
-            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white line on the frosted surface */
+            height: 2px; /* Standard line thickness */
+            background-color: #A8D8E0; /* Lighter, icy color for path line */
             border-radius: 1px;
             z-index: 1;
-            margin-bottom: 10px; 
+            margin-bottom: 10px; /* Space for emoji to sit above/on line */
         }
 
-        .flying-airplane-emoji {
+        .flying-airplane-emoji { /* For the airplane emoji */
             position: absolute;
-            bottom: 5px; 
-            left: -40px; 
-            font-size: 28px; 
+            bottom: 5px; /* Adjust to make emoji sit visually on the line */
+            left: -40px; /* Start off-screen (emoji width + buffer) */
+            font-size: 28px; /* Adjust emoji size */
+            color: #FFFFFF; /* White color for the emoji */
+            text-shadow: 0 0 5px rgba(0,0,0,0.3); /* Optional: slight shadow for depth */
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
             z-index: 3;
-            color: #F57F17; /* Rich orange for good visibility on frosted glass */
         }
 
         @keyframes flyEmojiOnLine {
             0% {
-                left: -40px; 
+                left: -40px; /* Start position: completely off-screen to the left */
                 opacity: 0;
-                transform: translateX(0);
+                transform: translateX(0) translateY(0);
             }
-            10% { 
+            10% { /* Fade in at the starting position */
                 left: -40px;
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateX(0) translateY(0);
             }
-            90% { 
+            90% { /* Emoji's left edge reaches the right edge of the container */
                 left: 100%;
                 opacity: 1;
-                transform: translateX(0); 
+                transform: translateX(0) translateY(0); /* Ensure it's moving straight */
             }
-            100% { 
+            100% { /* Ensure it's fully off-screen and faded out */
                 left: 100%;
                 opacity: 0;
-                transform: translateX(0);
+                transform: translateX(0) translateY(0);
             }
         }
-        /* --- End of Updated Styling --- */
+        /* --- End of Updated Ice Theme Styling --- */
 
 
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
@@ -600,7 +601,7 @@
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈</span> </div>
+                        <span class="flying-airplane-emoji">✈️</span> </div>
                 </div>
 
                 <button
@@ -616,12 +617,12 @@
                 </div>
             <div class="service-dots-container">
                 </div>
-            <button id="prevService" class="service-nav-arrow" aria-label="Previous service">
+            <button id="prevService" class="service-nav-arrow">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
             </button>
-            <button id="nextService" class="service-nav-arrow" aria-label="Next service">
+            <button id="nextService" class="service-nav-arrow">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
@@ -713,7 +714,7 @@
                 <div class="tracking-form-container">
                     <div class="tracking-form">
                         <input type="text" id="tracking-number-input" placeholder="Enter Your Tracking Number" class="text-center">
-                        <select id="courier-partner" class="text-center" aria-label="Select Courier Partner">
+                        <select id="courier-partner" class="text-center">
                             <option value="">Select Courier Partner</option>
                             <option value="dtdc">DTDC</option>
                             <option value="tpc">Professional Couriers</option>
@@ -805,7 +806,7 @@
     </footer>
 
     <script>
-        // Preloader Logic
+        // Preloader
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
             if (preloader) {
@@ -813,12 +814,12 @@
             }
         });
 
-        // Smooth scroll functionality for all anchor links pointing to an ID
+        // Smooth scroll functionality for navigation links
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                const headerOffset = document.querySelector('.header')?.offsetHeight || 0; // Get header height
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset; // Adjust for header
+                const headerOffset = document.querySelector('.header')?.offsetHeight || 0;
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
                 window.scrollTo({
                     top: elementPosition,
                     behavior: 'smooth'
@@ -826,15 +827,24 @@
             }
         }
 
-        // Apply smooth scroll to all relevant links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href').substring(1);
-                if (document.getElementById(targetId)) { // Check if the target element exists
+                if (document.getElementById(targetId)) {
                     e.preventDefault();
                     smoothScrollTo(targetId);
                 }
             });
+        });
+
+        document.querySelectorAll('a[href^="#"]:not(nav a)').forEach(anchor => {
+            const targetId = anchor.getAttribute('href').substring(1);
+            if (document.getElementById(targetId)) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    smoothScrollTo(targetId);
+                });
+            }
         });
 
         // Tracking shipment functionality
@@ -846,13 +856,11 @@
             const trackingNumber = trackingInput.value.trim();
             let trackingUrl = "";
 
-            // Reset error states
             trackingInput.classList.remove('input-error-highlight');
             courierSelect.classList.remove('input-error-highlight');
             errorMessageElement.style.display = 'none';
-            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.'; // Default error
+            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.';
 
-            // Validation
             if (!trackingNumber && !courier) {
                 trackingInput.classList.add('input-error-highlight');
                 courierSelect.classList.add('input-error-highlight');
@@ -872,7 +880,6 @@
                 return;
             }
 
-            // Construct tracking URL
             const encodedTrackingNumber = encodeURIComponent(trackingNumber);
             switch (courier) {
                 case "dtdc": trackingUrl = `https://www.dtdc.in/tracking/shipment-tracking.asp?strCnNo1=${encodedTrackingNumber}&strSearchType=cnno`; break;
@@ -882,52 +889,42 @@
                 case "fedex": trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; break;
                 case "aramex": trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; break;
                 default:
-                    errorMessageElement.textContent = 'Invalid courier selected.'; // Specific error
+                    errorMessageElement.textContent = 'Invalid courier selected.';
                     errorMessageElement.style.display = 'block';
-                    return; // Exit if no valid courier
+                    return;
             }
-            if (trackingUrl) { // Open URL if valid
-                window.open(trackingUrl, "_blank");
-            }
+            if (trackingUrl) window.open(trackingUrl, "_blank");
         }
 
-        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Partner Logos Slider Animation (Continuous, no pause on hover/touch)
+        // Partner Logos Slider Animation
         function setupSliderAnimation(trackSelector, noHoverPause = false) {
             const track = document.querySelector(trackSelector);
             if (track) {
-                // For continuous animation, we don't add hover/touch pause listeners if noHoverPause is true
                 if (!noHoverPause) {
                     track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
                     track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
-                    track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
-                    track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
                 }
+                track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
+                track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
             }
         }
-        setupSliderAnimation('.logos-track', true); // true makes it continuous without pause
+        setupSliderAnimation('.logos-track', true);
 
-        // Section visibility animation on scroll
+        // Section visibility animation
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = {
-            root: null, // relative to the viewport
+            root: null,
             rootMargin: '0px',
-            threshold: 0.1 // 10% of the element is visible
+            threshold: 0.1
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Optional: unobserve after animation if you want it to trigger only once
-                    // observer.unobserve(entry.target);
                 }
-                // Optional: remove 'visible' class if element scrolls out of view (for re-animation)
-                // else {
-                //     entry.target.classList.remove('visible');
-                // }
             });
         }, sectionObserverOptions);
 
@@ -987,25 +984,23 @@
             const prevButton = document.getElementById('prevService');
             const nextButton = document.getElementById('nextService');
 
-            // Check if all necessary elements are present
             if (!sliderContainer || !dotsContainer || !prevButton || !nextButton) {
-                console.warn("Services slider elements not found. Slider functionality will be disabled.");
-                return; // Exit if elements are missing
+                console.warn('Services slider elements not found. Slider will not initialize.');
+                return;
             }
 
             let currentServiceIndex = 0;
-            let serviceSlides = []; // To store slide elements
+            let serviceSlides = [];
 
             function renderServices() {
-                sliderContainer.innerHTML = ''; // Clear existing slides
-                dotsContainer.innerHTML = '';   // Clear existing dots
-                serviceSlides = []; // Reset slides array
+                sliderContainer.innerHTML = '';
+                dotsContainer.innerHTML = '';
 
                 servicesData.forEach((service, index) => {
-                    // Create slide element
                     const slide = document.createElement('div');
                     slide.className = 'service-slide-item';
                     slide.style.setProperty('--slide-bg-image', `url('${service.mainBgUrl}')`);
+
                     slide.innerHTML = `
                         <div class="service-slide-content-wrapper">
                             <div class="service-slide-integrated-image-container">
@@ -1020,7 +1015,6 @@
                     sliderContainer.appendChild(slide);
                     serviceSlides.push(slide);
 
-                    // Create dot element
                     const dot = document.createElement('div');
                     dot.className = 'service-dot';
                     dot.setAttribute('aria-label', `Go to service slide ${index + 1}: ${service.title}`);
@@ -1032,33 +1026,29 @@
             }
 
             function showService(index) {
-                // Prevent re-triggering if already on the active slide
                 if (index === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
                     return;
                 }
 
-                currentServiceIndex = (index + servicesData.length) % servicesData.length; // Loop through slides
+                currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
-                // Update active slide
                 serviceSlides.forEach(s => s.classList.remove('active'));
+
                 if (serviceSlides[currentServiceIndex]) {
                     serviceSlides[currentServiceIndex].classList.add('active');
                 }
 
-                // Update active dot
                 Array.from(dotsContainer.children).forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentServiceIndex);
                 });
             }
 
-            // Event listeners for navigation
             prevButton.addEventListener('click', () => showService(currentServiceIndex - 1));
             nextButton.addEventListener('click', () => showService(currentServiceIndex + 1));
 
-            // Touch swipe functionality
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; // Minimum swipe distance
+            const swipeThreshold = 50;
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -1070,24 +1060,21 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
+                if (touchEndX < touchStartX - swipeThreshold) {
                     showService(currentServiceIndex + 1);
-                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
+                } else if (touchEndX > touchStartX + swipeThreshold) {
                     showService(currentServiceIndex - 1);
                 }
-                // Reset touch coordinates
                 touchStartX = 0;
                 touchEndX = 0;
             }
 
-            // Initial render and display
             renderServices();
             if (serviceSlides.length > 0) {
-                showService(0); // Show the first slide initially
+                showService(0);
             }
         });
 
-        // Fallback for IntersectionObserver on page load for initially visible elements
         window.addEventListener('load', () => {
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
