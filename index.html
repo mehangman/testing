@@ -146,52 +146,57 @@
             text-fill-color: transparent;
         }
 
-        /* --- Updated "From Delhi to the World" Styling with Airplane Emoji --- */
+        /* --- Updated "From Delhi to the World" Styling with Frosted Glass Effect & Division Blur --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1rem 2rem; /* Generous padding */
-            background: #1A1A1A; /* Very dark gray, almost black */
-            border: 1px solid #444; /* Medium gray border */
-            border-radius: 0.75rem; /* Slightly larger radius */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255,255,255,0.05) inset; /* Darker shadow, subtle inset */
-            overflow: hidden;
-            margin-top: 1.5rem; /* Increased space above */
+            padding: 1.5rem 2.5rem; /* Generous padding */
+            /* Frosted glass effect with direct backdrop blur */
+            background-color: rgba(224, 242, 247, 0.6); /* Light icy blue with transparency - slightly more transparent */
+            backdrop-filter: blur(10px); /* Increased blur for the container itself */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle, non-contrasting border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Slightly adjusted shadow */
+            overflow: hidden; /* Important for backdrop-filter to not affect child elements like text shadow */
+            margin-top: 1.5rem;
         }
 
         .world-phrase-text {
             font-weight: 700;
-            font-size: 1.2em; /* Larger text */
-            background: linear-gradient(to right, #E0E0E0, #999999); /* Light gray to darker gray gradient for text */
+            font-size: 1.2em;
+            /* Text gradient with mostly white texture */
+            background: linear-gradient(to right, #FFFFFF 70%, #E0F2F7 95%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.7); /* Stronger text shadow for contrast */
-            margin-bottom: 16px; /* Increased space between text and line */
-            z-index: 2;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15); /* Subtle shadow for depth, slightly enhanced */
+            margin-bottom: 16px;
+            z-index: 2; /* Ensure text is above the blurred background effect of its container */
         }
 
         .vehicle-path-line {
             width: 100%;
-            height: 2px; /* Standard line thickness */
-            background-color: #666; /* Darker gray for path line */
+            height: 2px;
+            background-color: rgba(200, 230, 240, 0.75); /* Icy path line, slightly more opaque for visibility */
             border-radius: 1px;
-            z-index: 1;
-            margin-bottom: 10px; /* Space for emoji to sit above/on line */
+            z-index: 1; /* Below text and emoji */
+            margin-bottom: 10px;
         }
 
-        .flying-airplane-emoji { /* For the airplane emoji */
+        .flying-airplane-emoji {
             position: absolute;
-            bottom: 5px; /* Adjust to make emoji sit visually on the line */
-            left: -40px; /* Start off-screen (emoji width + buffer) */
+            bottom: 5px;
+            left: -40px; /* Start off-screen */
             font-size: 28px; /* Adjust emoji size */
+            color: #FFFFFF; /* White color for the emoji */
+            text-shadow: 0 0 6px rgba(0,0,0,0.35); /* Optional: slight shadow for depth */
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
-            z-index: 3;
-            /* Emoji color is typically controlled by the font/system, not CSS color property */
+            z-index: 3; /* Ensure emoji is on top */
         }
 
         @keyframes flyEmojiOnLine {
@@ -205,14 +210,6 @@
                 opacity: 1;
                 transform: translateX(0) translateY(0);
             }
-            /* Optional: add a slight lift or wobble
-            20% {
-                transform: translateX(20%) translateY(-3px);
-            }
-            80% {
-                 transform: translateX(calc(100% + 20px)) translateY(-2px);
-            }
-            */
             90% { /* Emoji's left edge reaches the right edge of the container */
                 left: 100%;
                 opacity: 1;
@@ -596,7 +593,7 @@
         <section
             class="hero bg-cover bg-no-repeat bg-center text-center py-10 px-4 md:py-12 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] md:min-h-[600px] animate-on-scroll"
             style="background-image: url('https://img.pikbest.com/backgrounds/20200423/2d-labor-day-delivery-banner_1910020.jpg!sw800')">
-            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
+            <div class="absolute inset-0 bg-black/60 z-0" style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);"></div>
             <div class="relative z-10 max-w-4xl w-full px-4 space-y-4 md:space-y-6">
                 <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
                 <p class="text-md sm:text-lg md:text-xl mb-6 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
@@ -605,8 +602,7 @@
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈</span>
-                    </div>
+                        <span class="flying-airplane-emoji">✈</span> </div>
                 </div>
 
                 <button
@@ -990,6 +986,7 @@
             const nextButton = document.getElementById('nextService');
 
             if (!sliderContainer || !dotsContainer || !prevButton || !nextButton) {
+                console.warn('Services slider elements not found. Slider will not initialize.');
                 return;
             }
 
