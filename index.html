@@ -146,80 +146,63 @@
             text-fill-color: transparent;
         }
 
-        /* --- Updated "From Delhi to the World" Styling with Frosted Glass Effect & Division Blur --- */
+        /* --- "From Delhi to the World" Styling with Transparent Frosted Glass --- */
         .world-phrase-container {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1.5rem 2.5rem; /* Generous padding */
-            /* Frosted glass effect with direct backdrop blur */
-            background-color: rgba(224, 242, 247, 0.6); /* Light icy blue with transparency - slightly more transparent */
-            backdrop-filter: blur(10px); /* Increased blur for the container itself */
-            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            padding: 1.25rem 2rem; /* Slightly reduced padding */
+            /* Transparent frosted glass effect */
+            background-color: rgba(255, 255, 255, 0.12); /* More transparent base for blur */
+            backdrop-filter: blur(8px); /* Blur effect */
+            -webkit-backdrop-filter: blur(8px); /* Safari support */
             border-radius: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle, non-contrasting border */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Slightly adjusted shadow */
-            overflow: hidden; /* Important for backdrop-filter to not affect child elements like text shadow */
+            border: 1px solid rgba(255, 255, 255, 0.18); /* Very subtle border */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            overflow: hidden;
             margin-top: 1.5rem;
         }
 
         .world-phrase-text {
             font-weight: 700;
             font-size: 1.2em;
-            /* Text gradient with mostly white texture */
             background: linear-gradient(to right, #FFFFFF 70%, #E0F2F7 95%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.15); /* Subtle shadow for depth, slightly enhanced */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
             margin-bottom: 16px;
-            z-index: 2; /* Ensure text is above the blurred background effect of its container */
+            z-index: 2;
         }
 
         .vehicle-path-line {
             width: 100%;
             height: 2px;
-            background-color: rgba(200, 230, 240, 0.75); /* Icy path line, slightly more opaque for visibility */
+            background-color: rgba(220, 220, 230, 0.65); /* Light, semi-transparent path line */
             border-radius: 1px;
-            z-index: 1; /* Below text and emoji */
+            z-index: 1;
             margin-bottom: 10px;
         }
 
         .flying-airplane-emoji {
             position: absolute;
             bottom: 5px;
-            left: -40px; /* Start off-screen */
-            font-size: 28px; /* Adjust emoji size */
-            color: #FFFFFF; /* White color for the emoji */
-            text-shadow: 0 0 6px rgba(0,0,0,0.35); /* Optional: slight shadow for depth */
+            left: -40px;
+            font-size: 28px;
+            color: #FFFFFF;
+            text-shadow: 0 0 6px rgba(0,0,0,0.35);
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
-            z-index: 3; /* Ensure emoji is on top */
+            z-index: 3;
         }
 
         @keyframes flyEmojiOnLine {
-            0% {
-                left: -40px; /* Start position: completely off-screen to the left */
-                opacity: 0;
-                transform: translateX(0) translateY(0);
-            }
-            10% { /* Fade in at the starting position */
-                left: -40px;
-                opacity: 1;
-                transform: translateX(0) translateY(0);
-            }
-            90% { /* Emoji's left edge reaches the right edge of the container */
-                left: 100%;
-                opacity: 1;
-                transform: translateX(0) translateY(0); /* Ensure it's moving straight */
-            }
-            100% { /* Ensure it's fully off-screen and faded out */
-                left: 100%;
-                opacity: 0;
-                transform: translateX(0) translateY(0);
-            }
+            0% { left: -40px; opacity: 0; transform: translateX(0) translateY(0); }
+            10% { left: -40px; opacity: 1; transform: translateX(0) translateY(0); }
+            90% { left: 100%; opacity: 1; transform: translateX(0) translateY(0); }
+            100% { left: 100%; opacity: 0; transform: translateX(0) translateY(0); }
         }
         /* --- End of Updated Styling --- */
 
@@ -312,9 +295,9 @@
         }
 
         #services {
-            padding: 0;
-            min-height: 100vh;
-            height: 100vh;
+            padding: 0; /* Changed from padding: 0; */
+            min-height: auto; /* Changed from 100vh to allow content to define height */
+            height: auto; /* Changed from 100vh */
             position: relative;
             overflow: hidden;
         }
@@ -322,8 +305,9 @@
         .services-slider-container {
             position: relative;
             width: 100%;
-            height: 100%;
-            z-index: 1;
+            /* Height will be determined by its content or a specific aspect ratio for slides */
+             min-height: 500px; /* Minimum height for the slider area */
+            display: flex; /* Added for potential alignment if slides are not absolute */
         }
 
         .service-slide-item {
@@ -331,7 +315,7 @@
             inset: 0;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Added transform transition */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -339,8 +323,10 @@
             padding: 2rem;
             text-align: center;
             color: #FFFFFF;
-            will-change: opacity;
-            overflow: hidden;
+            will-change: opacity, transform;
+            overflow: hidden; /* Keep overflow hidden for the slide itself */
+            width: 100%; /* Ensure slides take full width of container */
+            height: 100%; /* Ensure slides take full height of container */
         }
 
         .service-slide-item::before {
@@ -350,70 +336,82 @@
             background-size: cover;
             background-position: center;
             background-image: var(--slide-bg-image);
-            filter: blur(3px);
+            filter: blur(2px) brightness(0.8); /* Slightly blur and darken bg image for text contrast */
             transform: scale(1.05);
             z-index: 1;
+            transition: transform 0.5s ease-in-out; /* Smooth transition for scale */
+        }
+         .service-slide-item.active::before {
+            transform: scale(1); /* Scale down to normal on active */
         }
 
-        .service-slide-item::after {
+
+        .service-slide-item::after { /* Optional: Dark overlay for better text readability */
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.45);
-            z-index: 1;
+            background-color: rgba(0,0,0,0.35); /* Slightly increased overlay */
+            z-index: 1; /* Above ::before, below content */
         }
+
 
         .service-slide-item.active {
             opacity: 1;
             pointer-events: auto;
             z-index: 2;
+            transform: scale(1); /* Ensure active slide is normal size */
         }
+         .service-slide-item:not(.active) {
+            transform: scale(0.95); /* Slightly scale down non-active slides */
+        }
+
 
         .service-slide-content-wrapper {
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Content above overlays */
             max-width: 900px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem; /* Reduced gap */
         }
 
         .service-slide-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.25rem;
+            font-size: 2rem; /* Adjusted */
             font-weight: 700;
             color: #FACC15;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Slightly stronger shadow */
             margin-bottom: 0.5rem;
         }
 
         .service-slide-description {
             font-family: 'Raleway', sans-serif;
-            font-size: 1rem;
-            line-height: 1.7;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-            max-width: 600px;
+            font-size: 0.95rem; /* Adjusted */
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            max-width: 550px; /* Slightly narrower for better readability */
+            margin-bottom: 1rem; /* Space before image */
         }
 
         .service-slide-integrated-image {
-            max-width: 200px;
-            max-height: 200px;
+            max-width: 120px; /* Adjusted size */
+            max-height: 120px; /* Adjusted size */
             width: 100%;
             object-fit: contain;
-            border-radius: 0.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
         }
 
         @media (min-width: 768px) {
-            .service-slide-item {
-                padding: 3rem;
+            .services-slider-container {
+                 min-height: 550px;
             }
             .service-slide-content-wrapper {
                 flex-direction: row;
                 text-align: left;
-                gap: 2.5rem;
+                gap: 2rem;
             }
             .service-slide-text-block {
                 flex: 3;
@@ -422,60 +420,64 @@
                 align-items: flex-start;
             }
             .service-slide-integrated-image-container {
-                flex: 2;
+                flex: 1; /* Adjusted flex for image */
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
             .service-slide-title {
-                font-size: 2.75rem;
+                font-size: 2.5rem; /* Adjusted */
             }
             .service-slide-description {
-                font-size: 1.125rem;
+                font-size: 1.05rem; /* Adjusted */
+                max-width: none; /* Allow text to use available space */
             }
             .service-slide-integrated-image {
-                max-width: 280px;
-                max-height: 280px;
+                max-width: 150px; /* Adjusted */
+                max-height: 150px; /* Adjusted */
             }
         }
         @media (min-width: 1024px) {
+            .services-slider-container {
+                 min-height: 600px;
+            }
              .service-slide-title {
-                font-size: 3.25rem;
+                font-size: 2.75rem; /* Adjusted */
             }
             .service-slide-description {
-                font-size: 1.25rem;
+                font-size: 1.1rem; /* Adjusted */
             }
              .service-slide-integrated-image {
-                max-width: 320px;
-                max-height: 320px;
+                max-width: 180px; /* Adjusted */
+                max-height: 180px; /* Adjusted */
             }
         }
 
         .service-dots-container {
             position: absolute;
-            bottom: 2rem;
+            bottom: 1.5rem; /* Adjusted */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 0.75rem;
             z-index: 10;
             padding: 0.5rem;
-            background-color: rgba(0,0,0,0.3);
+            background-color: rgba(0,0,0,0.25);
             border-radius: 9999px;
         }
 
         .service-dot {
-            width: 10px;
-            height: 10px;
+            width: 9px; /* Adjusted */
+            height: 9px; /* Adjusted */
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.35);
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .service-dot.active {
             background-color: #FACC15;
-            transform: scale(1.3);
+            transform: scale(1.25); /* Adjusted */
         }
 
         .service-nav-arrow {
@@ -483,35 +485,38 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.25);
             color: white;
             border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
+            width: 2.75rem; /* Adjusted */
+            height: 2.75rem; /* Adjusted */
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .service-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.45);
             transform: translateY(-50%) scale(1.05);
         }
         .service-nav-arrow svg {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.25rem; /* Adjusted */
+            height: 1.25rem; /* Adjusted */
         }
-        #prevService { left: 1.5rem; }
-        #nextService { right: 1.5rem; }
+        #prevService { left: 1rem; } /* Adjusted */
+        #nextService { right: 1rem; } /* Adjusted */
 
         @media (max-width: 767px) {
             .service-nav-arrow { display: none; }
             .service-dots-container { bottom: 1rem; }
-            .service-slide-title { font-size: 1.75rem; }
-            .service-slide-description { font-size: 0.875rem; }
-            .service-slide-integrated-image { max-width: 150px; max-height: 150px; }
+            .service-slide-title { font-size: 1.6rem; }
+            .service-slide-description { font-size: 0.85rem; }
+            .service-slide-integrated-image { max-width: 100px; max-height: 100px; }
+             .services-slider-container {
+                 min-height: 450px; /* Min height for mobile */
+            }
         }
         /* End Services Section Styles */
 
@@ -602,7 +607,8 @@
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈</span> </div>
+                        <span class="flying-airplane-emoji">✈</span>
+                    </div>
                 </div>
 
                 <button
@@ -938,45 +944,57 @@
             const servicesData = [
                 {
                     title: "Domestic Courier",
-                    description: "Experience swift and secure door-to-door delivery across India. We offer versatile options including express and standard shipping, perfectly suited for documents, personal parcels, and e-commerce logistics, ensuring your items arrive safely and on time.",
-                    integratedImageUrl: "https://placehold.co/300x300/FDE047/1F2937?text=India+Map+Icon",
-                    altText: "Domestic Parcel Delivery in India",
-                    mainBgUrl: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
+                    description: "Swift and secure door-to-door delivery across India. Express and standard options for documents, parcels, and e-commerce logistics.",
+                    // IMPORTANT: Replace with your actual image URL
+                    mainBgUrl: "https://placehold.co/1280x720/E0E0E0/666666?text=Domestic+Parcel+Delivery",
+                    // IMPORTANT: Replace with your actual image URL
+                    integratedImageUrl: "https://placehold.co/150x150/FDE047/1F2937?text=Truck+Icon",
+                    altText: "Domestic Parcel Delivery in India"
                 },
                 {
                     title: "International Courier",
-                    description: "Connect to the globe with our expedited and dependable international shipping services. We leverage a robust global network, provide expert customs clearance assistance, and offer comprehensive tracking visibility for secure and timely cross-border deliveries.",
-                    integratedImageUrl: "https://placehold.co/300x300/A5F3FC/1F2937?text=Globe+Icon",
-                    altText: "Global International Shipping",
-                    mainBgUrl: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
+                    description: "Reliable international shipping with a robust global network. Expert customs clearance and comprehensive tracking for timely cross-border deliveries.",
+                    // IMPORTANT: Replace with your actual image URL
+                    mainBgUrl: "https://placehold.co/1280x720/D0E4F8/5C7BAA?text=International+Shipping+Boxes",
+                     // IMPORTANT: Replace with your actual image URL
+                    integratedImageUrl: "https://placehold.co/150x150/A5F3FC/1F2937?text=Plane+Icon",
+                    altText: "Global International Shipping"
                 },
                 {
                     title: "Real-Time Tracking",
-                    description: "Stay informed every step of the way with our advanced real-time tracking system. Accessible via a user-friendly interface on desktop and mobile, you can monitor your shipment's entire journey from pickup to delivery, with optional proactive notifications for key updates.",
-                    integratedImageUrl: "https://placehold.co/300x300/D9F99D/1F2937?text=Track+Symbol",
-                    altText: "Live Shipment Tracking",
-                    mainBgUrl: "https://images.unsplash.com/photo-1557683304-678aab083da8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWJzdHJhY3QlMjBncmFkaWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=70"
+                    description: "Monitor your shipment's journey with our advanced real-time tracking system. User-friendly interface with optional proactive notifications.",
+                    // IMPORTANT: Replace with your actual image URL
+                    mainBgUrl: "https://placehold.co/1280x720/E8F5E9/7CB342?text=Tracking+Screen+Interface",
+                    // IMPORTANT: Replace with your actual image URL
+                    integratedImageUrl: "https://placehold.co/150x150/D9F99D/1F2937?text=Scan+Icon",
+                    altText: "Live Shipment Tracking"
                 },
                 {
                     title: "Extensive Network",
-                    description: "Benefit from our comprehensive pan-India coverage and strong collaborations with leading logistics providers. Our extensive network and last-mile delivery expertise ensure we can efficiently reach even the most remote locations, providing consistent service quality.",
-                    integratedImageUrl: "https://placehold.co/300x300/FBCFE8/1F2937?text=Network+Web",
-                    altText: "Wide Courier Network Coverage",
-                    mainBgUrl: "https://images.unsplash.com/photo-1557683325-3ba8f0df79de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
+                    description: "Comprehensive pan-India coverage and strong collaborations with leading logistics providers. Efficient reach to even remote locations.",
+                     // IMPORTANT: Replace with your actual image URL
+                    mainBgUrl: "https://placehold.co/1280x720/FCE4EC/E91E63?text=Logistics+Network+Map",
+                    // IMPORTANT: Replace with your actual image URL
+                    integratedImageUrl: "https://placehold.co/150x150/FBCFE8/1F2937?text=Branch+Icon",
+                    altText: "Wide Courier Network Coverage"
                 },
                 {
                     title: "Customized Solutions",
-                    description: "We understand unique shipping needs. We offer tailored logistics solutions, including bulk shipping discounts, specialized handling for fragile or high-value items, scheduled pickups, and industry-specific services to perfectly match your individual or business requirements.",
-                    integratedImageUrl: "https://placehold.co/300x300/BFDBFE/1F2937?text=Tailored+Box",
-                    altText: "Customized Shipping Solutions",
-                    mainBgUrl: "https://images.unsplash.com/photo-1557683308-04fe74403247?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
+                    description: "Tailored logistics for unique needs: bulk shipping, specialized handling for fragile items, scheduled pickups, and industry-specific services.",
+                    // IMPORTANT: Replace with your actual image URL
+                    mainBgUrl: "https://placehold.co/1280x720/E3F2FD/42A5F5?text=Custom+Packaging+Service",
+                    // IMPORTANT: Replace with your actual image URL
+                    integratedImageUrl: "https://placehold.co/150x150/BFDBFE/1F2937?text=Gear+Icon",
+                    altText: "Customized Shipping Solutions"
                 },
                 {
                     title: "Franchise Adaptability",
-                    description: "Our seamless operations and standardized processes ensure consistent, high-quality service across our entire network, including all partner franchises. We work efficiently with our collaborators to provide a reliable and uniform experience for all your shipments.",
-                    integratedImageUrl: "https://placehold.co/300x300/DDD6FE/1F2937?text=Handshake",
-                    altText: "Reliable Franchise Partners",
-                    mainBgUrl: "https://images.unsplash.com/photo-1557683321-ead24b075200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwZ3JhZGllbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=70"
+                    description: "Seamless operations and standardized processes ensure consistent, high-quality service across our entire network, including all partner franchises.",
+                    // IMPORTANT: Replace with your actual image URL
+                    mainBgUrl: "https://placehold.co/1280x720/EDE7F6/7E57C2?text=Courier+Franchise+Office",
+                    // IMPORTANT: Replace with your actual image URL
+                    integratedImageUrl: "https://placehold.co/150x150/DDD6FE/1F2937?text=People+Icon",
+                    altText: "Reliable Franchise Partners"
                 }
             ];
 
@@ -1004,12 +1022,12 @@
 
                     slide.innerHTML = `
                         <div class="service-slide-content-wrapper">
-                            <div class="service-slide-integrated-image-container">
-                                <img src="${service.integratedImageUrl}" alt="${service.altText}" class="service-slide-integrated-image">
-                            </div>
                             <div class="service-slide-text-block">
                                 <h3 class="service-slide-title">${service.title}</h3>
                                 <p class="service-slide-description">${service.description}</p>
+                            </div>
+                            <div class="service-slide-integrated-image-container">
+                                <img src="${service.integratedImageUrl}" alt="${service.altText}" class="service-slide-integrated-image">
                             </div>
                         </div>
                     `;
@@ -1027,21 +1045,26 @@
             }
 
             function showService(index) {
-                if (index === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
+                // Ensure index is within bounds
+                const newIndex = (index + servicesData.length) % servicesData.length;
+
+                if (newIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
+                     // If it's already the active slide, do nothing to prevent animation re-trigger
+                    // Or, if you want to allow re-triggering for some reason, this check can be modified.
                     return;
                 }
 
-                currentServiceIndex = (index + servicesData.length) % servicesData.length;
 
-                serviceSlides.forEach(s => s.classList.remove('active'));
-
-                if (serviceSlides[currentServiceIndex]) {
-                    serviceSlides[currentServiceIndex].classList.add('active');
-                }
-
-                Array.from(dotsContainer.children).forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentServiceIndex);
+                // Update active class on slides
+                serviceSlides.forEach((s, i) => {
+                    s.classList.toggle('active', i === newIndex);
                 });
+
+                // Update active class on dots
+                Array.from(dotsContainer.children).forEach((dot, i) => {
+                    dot.classList.toggle('active', i === newIndex);
+                });
+                currentServiceIndex = newIndex;
             }
 
             prevButton.addEventListener('click', () => showService(currentServiceIndex - 1));
@@ -1049,7 +1072,7 @@
 
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50;
+            const swipeThreshold = 50; // Minimum distance for a swipe
 
             sliderContainer.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -1061,24 +1084,26 @@
             }, { passive: true });
 
             function handleSwipe() {
-                if (touchEndX < touchStartX - swipeThreshold) {
+                if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
                     showService(currentServiceIndex + 1);
-                } else if (touchEndX > touchStartX + swipeThreshold) {
+                } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
                     showService(currentServiceIndex - 1);
                 }
+                // Reset values for next swipe
                 touchStartX = 0;
                 touchEndX = 0;
             }
 
             renderServices();
             if (serviceSlides.length > 0) {
-                showService(0);
+                showService(0); // Initialize the first slide as active
             }
         });
 
         window.addEventListener('load', () => {
             sectionsToAnimate.forEach(section => {
                 const rect = section.getBoundingClientRect();
+                // Check if the section is at least partially in the viewport
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
                     section.classList.add('visible');
                 }
