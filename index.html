@@ -172,49 +172,73 @@
             text-fill-color: transparent;
         }
 
-        /* --- New Hyphen Path Emoji Animation Styling --- */
+        /* --- "From Delhi to the World !!" Quote Styling --- */
+        .hero-world-quote-container {
+            margin: 1.5rem auto; /* Adjusted margin for spacing */
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            text-align: center;
+        }
+        .hero-world-quote-text {
+            font-size: 1.5em; /* Adjust size as needed */
+            font-weight: 700; /* Bold */
+            background: linear-gradient(to right, #FFFFFF 40%, #FACC15 65%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+        }
+         @media (min-width: 768px) {
+            .hero-world-quote-text {
+                font-size: 1.75em;
+            }
+        }
+
+
+        /* --- Hyphen Path Emoji Animation Styling - Updated --- */
         .hyphen-path-animation-container {
             position: relative;
-            width: 80%; /* Adjust width of the animation area */
-            max-width: 300px; /* Max width for the animation area */
-            margin: 2rem auto; /* Space above and below, centered */
-            overflow: hidden; /* Clip emoji as it flies off */
-            height: 30px; /* Give some height for the emoji and path */
+            width: 60%; /* Reduced width further */
+            max-width: 200px; /* Reduced max width */
+            margin: 1rem auto 2rem auto; /* Adjusted margin, more space at bottom */
+            overflow: hidden; 
+            height: 40px; /* Increased height for larger emoji */
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .hyphen-path-text {
-            font-family: monospace; /* For consistent hyphen width */
-            font-size: 1.8rem; /* Adjust size for visual thickness of the "line" */
-            color: rgba(255, 255, 255, 0.6); /* Light color for the path */
-            letter-spacing: -3px; /* Adjust to make hyphens connect or nearly connect */
-            white-space: nowrap; /* Prevent hyphens from wrapping */
+            font-family: monospace; 
+            font-size: 2rem; /* Slightly increased for visibility with larger emoji */
+            color: rgba(255, 255, 255, 0.55); 
+            letter-spacing: -4px; /* Further adjusted for connection */
+            white-space: nowrap; 
             position: relative;
             z-index: 1;
         }
 
         .new-flying-airplane {
             position: absolute;
-            left: -30px; /* Start off-screen */
-            top: 50%; /* Align to vertical center of container */
-            transform: translateY(-50%); /* Precisely center emoji on path */
-            font-size: 22px; /* Adjust emoji size as needed */
+            left: -35px; /* Start further off-screen for larger emoji */
+            top: 50%; 
+            transform: translateY(-50%); 
+            font-size: 28px; /* Increased emoji size */
             color: #FFFFFF;
-            text-shadow: 0 0 5px rgba(0,0,0,0.3);
+            text-shadow: 0 0 6px rgba(0,0,0,0.35);
             opacity: 0;
             animation: flyOnHyphenPath 5s linear infinite 0.5s;
-            z-index: 2; /* Emoji above the hyphen path */
+            z-index: 2; 
         }
 
         @keyframes flyOnHyphenPath {
-            0% { left: -30px; opacity: 0; } /* Start off-screen, invisible */
-            10% { opacity: 1; } /* Fade in */
-            90% { left: calc(100% + 10px); opacity: 1; } /* Fly across to just off-screen */
-            100% { left: calc(100% + 10px); opacity: 0; } /* Fade out off-screen */
+            0% { left: -35px; opacity: 0; } 
+            10% { opacity: 1; } 
+            90% { left: calc(100% + 15px); opacity: 1; } /* Adjusted end point for larger emoji */
+            100% { left: calc(100% + 15px); opacity: 0; } 
         }
-        /* --- End of New Hyphen Path Emoji Animation Styling --- */
+        /* --- End of Hyphen Path Emoji Animation Styling --- */
 
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
          @media (min-width: 768px) { .logo-img { height: 48px; } }
@@ -621,14 +645,16 @@
             class="hero bg-cover bg-no-repeat bg-center text-center py-10 px-4 md:py-12 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] md:min-h-[600px] animate-on-scroll"
             style="background-image: url('https://img.pikbest.com/backgrounds/20200423/2d-labor-day-delivery-banner_1910020.jpg!sw800')">
             <div class="absolute inset-0 bg-black/60 z-0" style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);"></div>
-            <div class="relative z-10 max-w-4xl w-full px-4 space-y-4 md:space-y-6 flex flex-col items-center">
-                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
-                <p class="text-md sm:text-lg md:text-xl mb-6 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
+            <div class="relative z-10 max-w-4xl w-full px-4 space-y-3 md:space-y-5 flex flex-col items-center"> <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 md:mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
+                <p class="text-md sm:text-lg md:text-xl mb-4 md:mb-5 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
 
-                <div class="hyphen-path-animation-container mb-8">
-                    <span class="hyphen-path-text">------------------------------</span>
-                    <span class="new-flying-airplane">✈</span>
+                <div class="hero-world-quote-container">
+                    <p class="hero-world-quote-text">From Delhi to the World !!</p>
                 </div>
+
+                <div class="hyphen-path-animation-container"> <span class="hyphen-path-text">--------------------</span> <span class="new-flying-airplane">✈</span>
+                </div>
+                
                 <button
                     onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Quotation Request&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request a quotation for courier services. Please find my company details below:%0d%0a%0d%0aCompany Name:%0d%0aCompany Address:%0d%0aContact Person:%0d%0aPhone Number:%0d%0aEmail Address:%0d%0a%0d%0aLooking forward to hearing from you soon.%0d%0a%0d%0aSincerely,%0d%0a[Your Name]'"
                     class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold rounded-full shadow-2xl py-3 px-8 md:py-4 md:px-10 transition-all duration-300 text-md md:text-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-500/50">
@@ -1013,7 +1039,7 @@
 
             function startAutoSwipe() {
                 stopAutoSwipe(); 
-                if (servicesData.length > 1) { // Only start if there's more than one slide
+                if (servicesData.length > 1) { 
                     autoSwipeInterval = setInterval(() => {
                         showService(currentServiceIndex + 1);
                     }, autoSwipeDelay);
@@ -1078,15 +1104,13 @@
                         servicesSection.classList.add('background-active');
                     }, 50);
                 }
-                 // Hide dots if only one service
                 if (servicesData.length <= 1) {
                     dotsContainer.style.display = 'none';
                     prevButton.style.display = 'none';
                     nextButton.style.display = 'none';
                 } else {
                     dotsContainer.style.display = 'flex';
-                    // Arrows visibility is handled by media query, but ensure they are not forced hidden if >1 slide
-                     if(window.innerWidth > 767) { // Only show arrows on desktop if multiple slides
+                     if(window.innerWidth > 767) { 
                         prevButton.style.display = 'flex';
                         nextButton.style.display = 'flex';
                     } else {
@@ -1130,13 +1154,13 @@
             let touchEndX = 0;
             const swipeThreshold = 50; 
             sliderContainer.addEventListener('touchstart', (e) => {
-                if (servicesData.length <= 1) return; // Disable swipe if only one item
+                if (servicesData.length <= 1) return; 
                 touchStartX = e.changedTouches[0].screenX;
                 stopAutoSwipe(); 
             }, { passive: true });
 
             sliderContainer.addEventListener('touchend', (e) => {
-                if (servicesData.length <= 1) return; // Disable swipe if only one item
+                if (servicesData.length <= 1) return; 
                 touchEndX = e.changedTouches[0].screenX;
                 if (touchEndX < touchStartX - swipeThreshold) { 
                     showService(currentServiceIndex + 1); 
@@ -1163,7 +1187,6 @@
                         }
                     }
                 });
-                // Adjust arrow visibility on resize
                 if (servicesData.length > 1) {
                     if(window.innerWidth > 767) {
                         prevButton.style.display = 'flex';
