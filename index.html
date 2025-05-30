@@ -62,32 +62,60 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Header styling */
+        /* Header styling - Updated */
         .header {
-            background-color: #000; color: #fff; padding: 0.3rem 0.5rem; /* Reduced padding */
+            background-color: #000; color: #fff;
+            padding: 0.8rem 1rem; /* Increased padding */
             display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            /* position: sticky; Removed sticky */
+            /* position: sticky; Ensured not sticky */
             top: 0;
             z-index: 50;
         }
-        .logo { margin-left: 0.5rem; /* Reduced margin */ }
-        .logo img { margin-right: 0.5rem; border-radius: 50%; height: 24px; width: 24px; /* Slightly smaller logo */ }
+        .logo { /* This is the div containing img and text */
+            font-size: 1.35rem; /* Custom size for "OM International Courier" */
+            margin-left: 1rem; /* Adjusted from original Tailwind */
+            display: flex; /* Ensure flex properties from HTML are considered if not overridden by Tailwind */
+            align-items: center;
+            font-weight: 700; /* bold */
+        }
+        .logo img {
+            height: 2.25rem; /* approx 36px, overrides Tailwind h-7 w-7 */
+            width: 2.25rem;  /* approx 36px, overrides Tailwind h-7 w-7 */
+            margin-right: 0.75rem; /* Adjusted margin */
+            border-radius: 50%;
+        }
         .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
-        .nav ul li { margin-left: 0.8rem; /* Reduced margin */ }
-        .nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s ease; font-size: 0.8rem; /* Slightly smaller font */ }
+        .nav ul li {
+             margin-left: 1.2rem; /* Increased margin */
+        }
+        .nav ul li a {
+            color: #fff; text-decoration: none; transition: color 0.3s ease;
+            font-size: 0.95rem; /* Increased font size */
+        }
         .nav ul li a:hover { color: #FACC15; }
         .hero { position: relative; z-index: 0; }
 
-        /* Responsive navigation */
+
+        /* Responsive navigation - Updated header parts */
         @media (max-width: 768px) {
-            .nav { display: none; }
-            .header { justify-content: space-between; padding: 0.4rem 0.5rem; } /* Adjusted padding for mobile */
-            .logo { margin-left: 0.5rem; font-size: 0.9rem; }
-            .logo img { height: 20px; width: 20px;}
+            .nav { display: none; } /* Keeps nav hidden on mobile, assuming a burger menu would be added if needed */
+            .header {
+                justify-content: space-between;
+                padding: 0.7rem 0.8rem; /* Adjusted padding for mobile */
+            }
+            .logo { /* Selector for the div */
+                font-size: 1.15rem; /* Slightly smaller for mobile */
+                margin-left: 0.8rem;
+            }
+            .logo img {
+                height: 2rem; /* approx 32px */
+                width: 2rem;  /* approx 32px */
+                margin-right: 0.5rem;
+            }
         }
         @media (min-width: 769px) {
-            .nav { display: block !important; margin-right: 0.5rem; /* Reduced margin */}
+            .nav { display: block !important; margin-right: 1rem; /* Adjusted margin */}
         }
 
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
@@ -147,72 +175,67 @@
             text-fill-color: transparent;
         }
 
-        /* --- "From Delhi to the World" Styling --- */
+        /* --- "From Delhi to the World" Styling - Updated --- */
         .world-phrase-container {
-            display: inline-flex;
+            display: inline-flex; /* Changed to inline-flex for better centering if needed */
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 1rem 1.5rem; /* Adjusted padding */
-            background-color: transparent; /* Fully transparent background */
-            /* backdrop-filter: blur(8px); Removed blur */
-            /* -webkit-backdrop-filter: blur(8px); Removed blur */
+            padding: 1rem 1.5rem;
+            background-color: transparent;
             border-radius: 0.75rem;
-            /* border: 1px solid rgba(255, 255, 255, 0.15); Removed border */
-            /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); Removed shadow */
-            overflow: hidden;
+            overflow: hidden; /* Important for emoji animation bounds */
             margin-top: 1.5rem;
-            width: 90%; /* Ensure it has some width for the line */
+            width: 90%;
             max-width: 350px; /* Max width for the container */
         }
 
         .world-phrase-text {
             font-weight: 700;
-            font-size: 1.2em;
+            font-size: 1.2em; /* Adjust if needed relative to other text */
             background: linear-gradient(to right, #FFFFFF 40%, #FACC15 70%, #F59E0B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
             text-shadow: 0 1px 2px rgba(0,0,0,0.12);
-            margin-bottom: 1.5rem; /* Increased space for emoji and line */
-            z-index: 2;
+            margin-bottom: 2.8rem; /* Increased space for emoji and line below text */
+            z-index: 2; /* Text above line */
+            position: relative; /* For z-index context */
         }
 
         .vehicle-path-line {
-            width: 100%; /* Line spans the container */
-            height: 2px;
-            background-color: rgba(220, 220, 230, 0.65); /* Visible line */
-            border-radius: 1px;
+            width: 100%;
+            height: 2.5px; /* Slightly thicker line */
+            background-color: rgba(255, 255, 255, 0.9); /* White and more opaque */
+            border-radius: 1.5px;
             position: absolute;
-            bottom: 25px; /* Position line below text, adjust as needed */
+            bottom: 1.2rem; /* Position line within the space created by text margin-bottom */
             left: 0;
-            z-index: 1;
+            z-index: 1; /* Line below text, but above container background */
         }
 
         .flying-airplane-emoji {
             position: absolute;
-            bottom: 25px; /* Position emoji on the line, adjust Y to center on line */
-            left: -40px;
-            font-size: 28px;
+            bottom: 1.2rem; /* Align with the line's bottom */
+            left: -40px; /* Start off-screen */
+            font-size: 26px; /* Adjusted emoji size */
             color: #FFFFFF;
             text-shadow: 0 0 6px rgba(0,0,0,0.35);
             opacity: 0;
             animation: flyEmojiOnLine 6s linear infinite 0.5s;
-            z-index: 3;
-            transform: translateY(-50%); /* Vertically center emoji on its 'bottom' reference */
+            z-index: 3; /* Emoji above the line */
+            transform: translateY(-55%); /* Vertically center emoji ON the line */
         }
 
         @keyframes flyEmojiOnLine {
-            0% { left: -40px; opacity: 0; transform: translateY(-50%) rotate(0deg); }
-            10% { left: -40px; opacity: 1; transform: translateY(-50%) rotate(0deg); }
-            48% { transform: translateY(-50%) rotate(0deg); } /* Keep straight */
-            50% { transform: translateY(-50%) rotate(0deg); } /* Midpoint, can add dip or rise here if desired */
-            52% { transform: translateY(-50%) rotate(0deg); } /* Keep straight */
-            90% { left: calc(100% + 10px); opacity: 1; transform: translateY(-50%) rotate(0deg); } /* Adjusted to fly off screen */
-            100% { left: calc(100% + 10px); opacity: 0; transform: translateY(-50%) rotate(0deg); }
+            0% { left: -40px; opacity: 0; transform: translateY(-55%) rotate(0deg); }
+            10% { opacity: 1; transform: translateY(-55%) rotate(0deg); } /* Fade in at start position */
+            /* No intermediate transform steps for simple straight travel */
+            90% { left: calc(100% + 10px); opacity: 1; transform: translateY(-55%) rotate(0deg); } /* Fly across */
+            100% { left: calc(100% + 10px); opacity: 0; transform: translateY(-55%) rotate(0deg); } /* Fade out at end */
         }
-        /* --- End of Updated Styling --- */
+        /* --- End of "From Delhi to the World" Styling --- */
 
 
         .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
@@ -302,7 +325,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* --- Services Section Enhanced Styling --- */
+        /* --- Services Section Enhanced Styling - Updated --- */
         #services {
             padding-top: 3rem;
             padding-bottom: 3rem;
@@ -323,7 +346,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            filter: brightness(0.65); /* Removed blur, adjusted brightness */
+            filter: brightness(0.65); /* Brightness for section background */
             z-index: 0;
             opacity: 0;
             transition: opacity 0.6s ease-in-out;
@@ -337,9 +360,9 @@
         .services-slider-container {
             position: relative;
             width: 100%;
-            min-height: 500px; /* Ensure there's enough height for content */
+            min-height: 500px;
             display: flex;
-            z-index: 1;
+            z-index: 1; /* Above section background */
         }
 
         .service-slide-item {
@@ -352,7 +375,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1rem; /* Reduced padding for more content space */
+            padding: 1rem;
             text-align: center;
             color: #FFFFFF;
             will-change: opacity, transform;
@@ -362,54 +385,50 @@
         }
         
         .service-slide-item::before {
-             content: none; 
+             content: none; /* Ensuring no other pseudo-element overlay here */
         }
 
-
-        .service-slide-item.active::after { /* Dark overlay for readability on the active slide */
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.65); /* Increased opacity */
-            z-index: 1; 
+        /* Removed the .service-slide-item.active::after overlay */
+        .service-slide-item.active::after {
+            content: none; /* This layer is removed as requested */
         }
 
         .service-slide-item.active {
             opacity: 1;
             pointer-events: auto;
-            z-index: 2; 
+            z-index: 2; /* Active slide content wrapper is above other slides */
             transform: scale(1);
         }
         .service-slide-item:not(.active) {
             transform: scale(0.98);
         }
 
-        .service-slide-content-wrapper {
+        .service-slide-content-wrapper { /* This is the card itself */
             position: relative;
-            z-index: 2; 
-            max-width: 90%; /* Increased max-width to use more horizontal space */
+            z-index: 2; /* Content wrapper is above its slide item's base */
+            max-width: 90%;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem; /* Adjusted gap */
-            background-color: rgba(10, 10, 10, 0.7); /* Slightly more opaque background for the card itself */
-            padding: 1.5rem; /* Padding inside the card */
-            border-radius: 0.75rem; /* Rounded corners for the card */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+            gap: 1rem;
+            background-color: rgba(10, 10, 10, 0.75); /* Slightly more opaque card background for readability */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .service-slide-integrated-image-container {
             flex-shrink: 0;
             width: 100%;
-            max-width: 180px; /* Adjusted image size */
+            max-width: 180px;
             margin-bottom: 1rem;
         }
 
         .service-slide-integrated-image {
             width: 100%;
             height: auto;
-            max-height: 180px; /* Adjusted image size */
+            max-height: 180px;
             object-fit: contain;
             border-radius: 0.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -424,19 +443,19 @@
 
         .service-slide-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem; /* Adjusted font size */
+            font-size: 1.6rem;
             font-weight: 700;
             color: #FACC15;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.65);
-            margin-bottom: 0.5rem; /* Adjusted margin */
+            margin-bottom: 0.5rem;
         }
 
         .service-slide-description {
             font-family: 'Raleway', sans-serif;
-            font-size: 0.85rem; /* Adjusted font size */
+            font-size: 0.85rem;
             line-height: 1.6;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
-            max-width: 100%; /* Allow description to use full width of text block */
+            max-width: 100%;
         }
 
         /* Desktop layout for services */
@@ -447,12 +466,12 @@
             .service-slide-content-wrapper {
                 flex-direction: row;
                 align-items: center;
-                gap: 2rem; /* Adjusted gap */
-                max-width: 85%; /* Wider on desktop */
+                gap: 2rem;
+                max-width: 85%;
                 padding: 2rem;
             }
             .service-slide-integrated-image-container {
-                flex: 0 0 220px; /* Fixed width for image container */
+                flex: 0 0 220px;
                 max-width: 220px;
                 margin-bottom: 0;
             }
@@ -469,7 +488,7 @@
         @media (min-width: 1024px) {
             .services-slider-container { min-height: 600px; }
              .service-slide-content-wrapper {
-                max-width: 80%; /* Even wider on large screens */
+                max-width: 80%;
              }
             .service-slide-integrated-image-container { flex: 0 0 280px; max-width: 280px; }
             .service-slide-integrated-image { max-height: 280px; }
@@ -484,7 +503,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 0.75rem;
-            z-index: 10;
+            z-index: 10; /* Above slides */
             padding: 0.5rem;
             background-color: rgba(0,0,0,0.25);
             border-radius: 9999px;
@@ -505,7 +524,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 10;
+            z-index: 10; /* Above slides */
             background-color: rgba(0, 0, 0, 0.25);
             color: white;
             border-radius: 50%;
@@ -533,7 +552,7 @@
             .service-slide-description { font-size: 0.8rem; }
             .service-slide-integrated-image-container { max-width: 140px; }
             .service-slide-integrated-image { max-height: 140px; }
-            .services-slider-container { min-height: 480px; } /* Adjusted height for mobile */
+            .services-slider-container { min-height: 480px; }
             .service-slide-content-wrapper { gap: 0.8rem; padding: 1rem; max-width: 95%; }
         }
         /* --- End Services Section Enhanced Styling --- */
@@ -608,7 +627,7 @@
     </div>
 
     <header class="header shadow-md">
-        <div class="logo text-lg font-bold flex items-center"> <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" class="rounded-full h-7 w-7 mr-2"> <span class="text-yellow-400 mr-1">OM</span> International Courier
+        <div class="logo"> <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo"> <span class="text-yellow-400 mr-1">OM</span> International Courier
         </div>
         <nav class="nav">
             <ul>
@@ -633,7 +652,7 @@
                     <div class="world-phrase-container">
                         <span class="world-phrase-text">From Delhi to the World!</span>
                         <div class="vehicle-path-line"></div>
-                        <span class="flying-airplane-emoji">✈️</span> </div>
+                        <span class="flying-airplane-emoji">✈</span> </div>
                 </div>
 
                 <button
@@ -848,8 +867,7 @@
         function smoothScrollTo(targetId) {
             const element = document.getElementById(targetId);
             if (element) {
-                // const headerOffset = document.querySelector('.header')?.offsetHeight || 0; // No longer needed for non-sticky header
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset; // Simplified for non-sticky
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({
                     top: elementPosition,
                     behavior: 'smooth'
@@ -996,7 +1014,7 @@
                     title: "Franchise Adaptability",
                     description: "Our seamless operations, standardized processes, and integrated technology ensure consistent, high-quality service across our entire network, including all partner franchises. We empower collaborators with training and support for a reliable, uniform customer experience.",
                     mainBgUrl: "https://placehold.co/1280x720/EDE7F6/5E35B1?text=Courier+Team+Collaboration",
-                    integratedImageUrl: "https://placehold.co/220x220/C5B3F2/1F2937?text=Team+Icon", // Placeholder, consider a more relevant icon
+                    integratedImageUrl: "https://placehold.co/220x220/C5B3F2/1F2937?text=Team+Icon", 
                     altText: "Courier Franchise Partnership"
                 }
             ];
@@ -1054,15 +1072,12 @@
                     servicesSection.style.setProperty('--section-bg-image-url', `url('${servicesData[0].mainBgUrl}')`);
                     setTimeout(() => { 
                         servicesSection.classList.add('background-active');
-                    }, 50);
+                    }, 50); // Small delay for transition
                 }
             }
 
             function showService(index) {
                 const newIndex = (index + servicesData.length) % servicesData.length;
-                // if (newIndex === currentServiceIndex && serviceSlides[currentServiceIndex]?.classList.contains('active')) {
-                //     return; // Avoid re-triggering if already active and visible
-                // }
 
                 serviceSlides.forEach((s, i) => {
                     s.classList.toggle('active', i === newIndex);
@@ -1074,10 +1089,11 @@
                 if (servicesData[newIndex] && servicesData[newIndex].mainBgUrl) {
                     servicesSection.style.setProperty('--section-bg-image-url', `url('${servicesData[newIndex].mainBgUrl}')`);
                     if (!servicesSection.classList.contains('background-active')) {
+                         // Ensure background becomes active if it wasn't
                         setTimeout(() => servicesSection.classList.add('background-active'), 20);
                     }
                 } else {
-                    servicesSection.classList.remove('background-active');
+                    servicesSection.classList.remove('background-active'); // Fallback if no bg URL
                 }
                 currentServiceIndex = newIndex;
             }
@@ -1087,13 +1103,13 @@
 
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50;
+            const swipeThreshold = 50; // Minimum swipe distance
             sliderContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
             sliderContainer.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
-                if (touchEndX < touchStartX - swipeThreshold) { showService(currentServiceIndex + 1); }
-                else if (touchEndX > touchStartX + swipeThreshold) { showService(currentServiceIndex - 1); }
-                touchStartX = 0; touchEndX = 0;
+                if (touchEndX < touchStartX - swipeThreshold) { showService(currentServiceIndex + 1); } // Swiped left
+                else if (touchEndX > touchStartX + swipeThreshold) { showService(currentServiceIndex - 1); } // Swiped right
+                touchStartX = 0; touchEndX = 0; // Reset
             }, { passive: true });
 
             renderServices();
@@ -1102,18 +1118,15 @@
             }
 
             window.addEventListener('resize', () => {
-                 // Re-apply layout classes on resize
                 serviceSlides.forEach((slide, index) => {
                     const wrapper = slide.querySelector('.service-slide-content-wrapper');
                     if(wrapper){
-                        wrapper.classList.remove('slide-image-left', 'slide-image-right');
-                        if (window.innerWidth >= 768) {
+                        wrapper.classList.remove('slide-image-left', 'slide-image-right'); // Clear existing layout classes
+                        if (window.innerWidth >= 768) { // Re-apply based on new width
                             wrapper.classList.add(index % 2 === 0 ? 'slide-image-right' : 'slide-image-left');
                         }
                     }
                 });
-                // Optionally, re-show current service to adjust layout if needed, though CSS should handle most of it.
-                // showService(currentServiceIndex); 
             });
         });
     </script>
