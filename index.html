@@ -309,7 +309,7 @@
 
         a { transition: color 0.3s ease; }
 
-        /* --- Partner Logos Section - MODIFIED --- */
+        /* --- Partner Logos Section - CSS (No changes here, animation is CSS driven) --- */
         #partner-logos {
             overflow-x: hidden; /* Prevents horizontal scrollbar */
             background-color: #000000; /* Background for the section */
@@ -324,18 +324,15 @@
         .logos-track {
             display: flex; /* Aligns logos in a row */
             align-items: center; /* Vertically centers logos */
-            /* Animation: name duration timing-function delay iteration-count direction fill-mode play-state */
-            animation: continuous-slide-logos 16s linear infinite; /* Adjusted duration: 4s per set * 4 sets = 16s */
+            animation: continuous-slide-logos 16s linear infinite; 
             will-change: transform; /* Optimization for animation performance */
-            /* The track will contain 4 sets of logos, so its width will be 400% of one set. */
-            /* The animation moves it by 25% of its total width to show one full set. */
         }
         .logos-track img {
             height: 36px; /* Default height for smaller screens */
             flex-shrink: 0; /* Prevents logos from shrinking if space is tight */
-            margin: 0 1.5rem; /* Spacing between logos, increased slightly for better visual separation */
+            margin: 0 1.5rem; /* Spacing between logos */
             object-fit: contain; /* Ensures logo aspect ratio is maintained */
-            max-width: none; /* Allows logos to maintain their intrinsic width if larger than column */
+            max-width: none; 
         }
         @media (min-width: 768px) {
             .logos-track img {
@@ -346,12 +343,10 @@
 
         @keyframes continuous-slide-logos {
             0% {
-                transform: translateX(0%); /* Start position */
+                transform: translateX(0%); 
             }
             100% {
-                /* If there are 4 sets of logos, to make it loop after one set passes,
-                   we need to translate by -1/4th of the total width. */
-                transform: translateX(-25%); /* End position for a seamless loop with 4 sets */
+                transform: translateX(-25%); /* End position for a seamless loop with 4 sets of logos */
             }
         }
         /* --- End Partner Logos Section --- */
@@ -988,23 +983,9 @@
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Partner Logos Slider - MODIFIED SCRIPT (No changes needed here based on request, but kept for completeness)
-        function setupSliderAnimation(trackSelector, noHoverPause = false) {
-            const track = document.querySelector(trackSelector);
-            if (track) {
-                // The 'noHoverPause' parameter was already true, so mouseenter/mouseleave for pause is disabled.
-                // Touch events for pause/play are kept.
-                if (!noHoverPause) { // This block will not run if noHoverPause is true
-                    track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
-                    track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
-                }
-                track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
-                track.addEventListener('touchend', () => { track.style.animationPlayState = 'running'; });
-            }
-        }
-        // Initialize the logo slider animation. The `true` argument disables pause on mouse hover.
-        setupSliderAnimation('.logos-track', true);
-
+        // Partner Logos Slider - Animation is now purely CSS-driven and non-interactive.
+        // The JavaScript function for pausing the slider has been removed.
+        // The animation 'continuous-slide-logos' is defined in CSS and runs automatically.
 
         // Section visibility animation
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
