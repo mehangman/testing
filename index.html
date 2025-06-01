@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OM International Courier Services</title>
     
-    <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
@@ -651,6 +650,96 @@
             transform: scale(1.05);
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
+
+        /* Styles for the Rate Calculator */
+        .rate-calculator-form label {
+            color: #e5e7eb; /* text-gray-200 */
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .rate-calculator-form input[type="number"],
+        .rate-calculator-form select {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            width: 100%;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .rate-calculator-form input[type="number"]:focus,
+        .rate-calculator-form select:focus {
+            border-color: #FACC15; /* yellow-400 */
+            background-color: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+        .rate-calculator-form input[type="number"]::placeholder {
+            color: #a0aec0; /* text-gray-400 */
+        }
+         .rate-calculator-form select option {
+            background-color: #374151; /* bg-gray-700 */
+            color: white;
+        }
+        .rate-calculator-form button {
+            background-color: #FACC15; /* bg-yellow-400 */
+            color: #111827; /* text-gray-900 */
+            font-weight: 700; /* font-bold */
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .rate-calculator-form button:hover {
+            background-color: #FBBF24; /* hover:bg-yellow-500 */
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(250, 204, 21, 0.3);
+        }
+        #rate-calculator-result {
+            margin-top: 1.5rem; /* mt-6 */
+            padding: 1rem; /* p-4 */
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem; /* rounded-lg */
+            color: #e5e7eb; /* text-gray-200 */
+            font-size: 1rem; /* text-lg */
+            text-align: center;
+            min-height: 50px;
+        }
+        .dimension-inputs { display: flex; gap: 0.5rem; }
+        .dimension-inputs input { flex: 1; }
+
+        .service-type-options label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 1rem;
+            color: #e5e7eb;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 0.5rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .service-type-options input[type="radio"] {
+            display: none; /* Hide the actual radio button */
+        }
+        .service-type-options input[type="radio"]:checked + span {
+            background-color: #FACC15;
+            color: #111827;
+            border-color: #FACC15;
+        }
+         .service-type-options label:hover span:not(input[type="radio"]:checked + span) {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .service-type-options span {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+            display: block;
+            width: 100%;
+            height: 100%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+
     </style>
 </head>
 
@@ -660,7 +749,7 @@
     </div>
 
     <header class="header shadow-md">
-        <div class="logo"> <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo"> <span class="text-yellow-400 mr-1">OM</span> International Courier
+        <div class="logo"> <img src="https://i.pinimg.com/736x/88/0d/09/880d092406f5fa5f08b2074c6787eaf4.jpg" alt="OM International Courier Logo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FACC15/111827?text=OM';"> <span class="text-yellow-400 mr-1">OM</span> International Courier
         </div>
         <nav class="nav">
             <ul>
@@ -715,26 +804,74 @@
 
         <section id="rates" class="section relative py-12 md:py-16 px-4 text-center overflow-hidden animate-on-scroll">
             <div class="absolute inset-0 bg-[url('https://previews.123rf.com/images/gmast3r/gmast3r1604/gmast3r160400443/55343577-truck-lorry-car-on-road-cargo-shipping-delivery-banner-flat-vector-illustration.jpg')] bg-cover bg-center z-0"></div>
-            <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm z-0"></div>
+            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-md z-0"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="section-heading text-2xl md:text-4xl font-bold mb-6">Competitive Shipping <span class="heading-gradient-part">Rates</span></h2>
-                <div class="space-y-6 px-4">
-                    <p class="text-md md:text-xl text-gray-100 leading-relaxed max-w-3xl mx-auto">For immediate rate confirmation, submit your shipment particulars using our template by clicking below.</p>
+                <h2 class="section-heading text-2xl md:text-4xl font-bold mb-8 md:mb-12">DTDC Rate <span class="heading-gradient-part">Calculator & Quotes</span></h2>
+                
+                <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/10 shadow-xl rate-calculator-form max-w-2xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6">
+                        <div>
+                            <label for="service-type" class="block text-left mb-2">Service Type:</label>
+                            <div class="service-type-options flex flex-wrap gap-2">
+                                <label>
+                                    <input type="radio" name="serviceType" value="surface" checked onchange="updateDestinationOptions()">
+                                    <span>Surface</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="serviceType" value="air" onchange="updateDestinationOptions()">
+                                    <span>Air (>5kg)</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="serviceType" value="prime" onchange="updateDestinationOptions()">
+                                    <span>Prime Time Plus</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="weight" class="block text-left mb-2">Weight (kg):</label>
+                            <input type="number" id="weight" name="weight" placeholder="e.g., 2.5" min="0.01" step="0.01" required>
+                        </div>
+                        <div>
+                            <label for="destination" class="block text-left mb-2">Destination:</label>
+                            <select id="destination" name="destination" required>
+                                </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-left mb-2">Dimensions (cm) - Optional (for Volumetric Weight):</label>
+                        <div class="dimension-inputs grid grid-cols-3 gap-2">
+                            <input type="number" id="length" name="length" placeholder="Length" min="0">
+                            <input type="number" id="width_dim" name="width_dim" placeholder="Width" min="0"> <input type="number" id="height" name="height" placeholder="Height" min="0">
+                        </div>
+                         <p class="text-xs text-gray-400 mt-1 text-left">If dimensions are provided, volumetric weight (L×W×H/4750) will be considered if greater than actual weight.</p>
+                    </div>
+
+                    <button type="button" onclick="calculateRate()" class="w-full md:w-auto">Calculate Estimated Rate</button>
+
+                    <div id="rate-calculator-result" class="mt-6 p-4 bg-gray-800/50 rounded-lg text-lg min-h-[60px] flex items-center justify-center">
+                        Enter details to see estimated rate.
+                    </div>
+                     <p class="text-xs text-gray-400 mt-3">Includes Fuel Surcharge (35%) and GST (18%). Final charges may vary.</p>
+                </div>
+
+                <div class="mt-10">
+                     <p class="text-md md:text-lg text-gray-100 leading-relaxed max-w-3xl mx-auto mb-6">
+                        The calculator provides an estimate for standard DTDC services.
+                    </p>
                     <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/10">
-                        <button onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Courier Rate Request - Shipment Particulars&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request the current rate for my shipment based on the following particulars:%0d%0a%0d%0a[ Pickup Details ]%0d%0aCompany Name: %0d%0aContact Person: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Delivery Details ]%0d%0aRecipient Name: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Shipment Particulars ]%0d%0aType: (Document/Parcel)%0d%0aWeight: %0d%0aDimensions: %0d%0aContents: %0d%0aDeclared Value: %0d%0aSpecial Instructions: %0d%0a%0d%0aPlease confirm your rate and service availability for this specific shipment.%0d%0a%0d%0aContact Information:%0d%0aName: %0d%0aEmail: %0d%0aPhone: %0d%0a%0d%0aBest regards,%0d%0a[Your Full Name]'"
+                        <p class="text-md md:text-lg text-gray-200 mb-4">For further demands, bulk shipments, or customized quotes including COD, Insurance, and special handling:</p>
+                        <button onclick="window.location.href='mailto:ominternationalcep@gmail.com?subject=Courier Rate Request - Detailed Quotation&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request a detailed quotation for my shipment requirements. Please find the details below and let me know if you need more information:%0d%0a%0d%0a[ Pickup Details ]%0d%0aCompany Name: %0d%0aContact Person: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Delivery Details ]%0d%0aRecipient Name: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Shipment Particulars ]%0d%0aService Type (e.g., Surface, Air, Prime, International): %0d%0aWeight (approx kg): %0d%0aDimensions (L x W x H cm, if applicable): %0d%0aContents Description: %0d%0aDeclared Value (for insurance purposes): %0d%0aSpecial Instructions (e.g., COD amount, fragile, temperature-sensitive): %0d%0aExpected Frequency/Volume (if applicable for bulk rates): %0d%0a%0d%0aPlease provide a comprehensive quote including all applicable charges.%0d%0a%0d%0aContact Information:%0d%0aName: %0d%0aEmail: %0d%0aPhone: %0d%0a%0d%0aBest regards,%0d%0a[Your Full Name]'"
                             class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold py-3 px-6 md:px-8 rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-md md:text-xl">
-                            Request Rate Details
+                            Request Detailed Quote
                         </button>
                     </div>
-                    <p class="text-gray-300 mt-6 text-sm md:text-lg max-w-3xl mx-auto">
-                        For complex needs or premium services, visit our
-                        <a href="#contact" class="text-yellow-400 hover:text-yellow-300 underline">Contact Section</a>
-                        for personalized help.
-                    </p>
                 </div>
             </div>
         </section>
-
         <section id="area" class="section animate-on-scroll bg-gray-800">
              <div class="section-blur-bg-area" style="background-image: url('https://img.freepik.com/free-vector/worldwide-global-map-outline-black-background_1017-46153.jpg?semt=ais_hybrid&w=740');"></div>
             <div class="relative z-10 text-center">
@@ -883,8 +1020,8 @@
                                 <p>At OM International Courier, we deliver more than packages; we deliver assurance and peace of mind. Our mission is to offer seamless, efficient, and cost-effective solutions, building lasting client and partner relationships through transparency and service excellence.</p>
                             </div>
                             <div class="md:col-span-1 flex flex-col space-y-4 about-us-image-gallery mt-6 md:mt-0">
-                                <img src="https://img.freepik.com/free-psd/3d-illustration-people-with-gadget-use-highspeed-internet_1150-65899.jpg?semt=ais_items_boosted&w=740" alt="Securely packaged courier items" class="rounded-lg shadow-lg w-full h-auto object-cover">
-                                <img src="https://img.pikbest.com/png-images/20240913/cheerful-delivery-rider-on-a-scootera-playful-vector-cartoon-illustration-of-food-service_10834349.png!sw800" alt="Courier delivering a package quickly" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                                <img src="https://img.freepik.com/free-psd/3d-illustration-people-with-gadget-use-highspeed-internet_1150-65899.jpg?semt=ais_items_boosted&w=740" alt="Securely packaged courier items" class="rounded-lg shadow-lg w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/CCCCCC/1F2937?text=Secure+Packaging';">
+                                <img src="https://img.pikbest.com/png-images/20240913/cheerful-delivery-rider-on-a-scootera-playful-vector-cartoon-illustration-of-food-service_10834349.png!sw800" alt="Courier delivering a package quickly" class="rounded-lg shadow-lg w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/CCCCCC/1F2937?text=Fast+Delivery';">
                             </div>
                         </div>
                     </div>
@@ -990,11 +1127,7 @@
         }
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Partner Logos Slider - Animation is now purely CSS-driven and non-interactive.
-        // The JavaScript function for pausing the slider has been removed.
-        // The animation 'continuous-slide-logos' is defined in CSS and runs automatically.
-
+        
         // Section visibility animation
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const sectionObserverOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
@@ -1007,7 +1140,7 @@
         }, sectionObserverOptions);
         sectionsToAnimate.forEach(section => { sectionObserver.observe(section); });
 
-        // Services Slider Logic
+        // Services Slider Logic (Existing - unchanged)
         document.addEventListener('DOMContentLoaded', () => {
             const servicesData = [
                 {
@@ -1068,9 +1201,9 @@
             let currentServiceIndex = 0;
             let serviceSlides = [];
             let autoSwipeInterval = null;
-            const autoSwipeDelay = 3000; // 3 seconds
+            const autoSwipeDelay = 3000; 
             let userInteractionTimeout = null;
-            const interactionRestartDelay = 5000; // 5 seconds before resuming auto-swipe
+            const interactionRestartDelay = 5000; 
 
             function startAutoSwipe() {
                 stopAutoSwipe(); 
@@ -1112,7 +1245,7 @@
 
                     contentWrapper.innerHTML = `
                         <div class="service-slide-integrated-image-container">
-                            <img src="${service.integratedImageUrl || 'https://placehold.co/220x220/CCCCCC/1F2937?text=Image'}" alt="${service.altText || 'Service Image'}" class="service-slide-integrated-image">
+                            <img src="${service.integratedImageUrl || 'https://placehold.co/220x220/CCCCCC/1F2937?text=Image'}" alt="${service.altText || 'Service Image'}" class="service-slide-integrated-image" onerror="this.onerror=null;this.src='https://placehold.co/220x220/CCCCCC/1F2937?text=Image+Not+Found';">
                         </div>
                         <div class="service-slide-text-block">
                             <h3 class="service-slide-title">${service.title}</h3>
@@ -1232,7 +1365,174 @@
                     }
                 }
             });
+
+
+            // ========== RATE CALCULATOR SCRIPT STARTS HERE ==========
+            const dtdcSurfaceRates = {
+                "DELHI": { base250g: 25, base500g: 35, add500g: 20, above5kgPerKg: 45, above50kgPerKg: 40 },
+                "NCR": { base250g: 30, base500g: 40, add500g: 30, above5kgPerKg: 50, above50kgPerKg: 40 },
+                "NORTH": { base250g: 40, base500g: 60, add500g: 45, above5kgPerKg: 80, above50kgPerKg: 75 },
+                "METRO/BIHAR JHARKHAND/ SRINAGAR SECTOR": { base250g: 55, base500g: 80, add500g: 85, above5kgPerKg: 85, above50kgPerKg: 80 },
+                "ROI": { base250g: 90, base500g: 110, add500g: 90, above5kgPerKg: 90, above50kgPerKg: 85 }
+            };
+
+            const dtdcAirRatesPerKg = { // For "Air Above 5 Kg"
+                "Srinagar Sector": 110,
+                "Bihar & Jharkhand": 180,
+                "Metros & Guwahati": 175, // Simplified key
+                "ROI & North East & Port Blair": 190 // Simplified key
+            };
+
+            const dtdcPrimeTimePlusRates = {
+                "CITY PTP 12:00": { first500gms: 155, additional500gms: 65 },
+                "METRO PTP 12:00": { first500gms: 275, additional500gms: 165 },
+                "ZONAL PTP 12:00": { first500gms: 250, additional500gms: 175 }
+            };
+
+            const fuelSurchargePercent = 35;
+            const gstPercent = 18;
+            const volumetricDivisor = 4750;
+
+            const destinationSelect = document.getElementById('destination');
+            const weightInput = document.getElementById('weight');
+            const resultDiv = document.getElementById('rate-calculator-result');
+            const lengthInput = document.getElementById('length');
+            const widthDimInput = document.getElementById('width_dim');
+            const heightInput = document.getElementById('height');
+
+
+            window.updateDestinationOptions = function() {
+                const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+                destinationSelect.innerHTML = ''; // Clear existing options
+
+                let options = {};
+                if (serviceType === 'surface') {
+                    options = {
+                        "DELHI": "Delhi",
+                        "NCR": "NCR",
+                        "NORTH": "North India",
+                        "METRO/BIHAR JHARKHAND/ SRINAGAR SECTOR": "Metros / Bihar / Jharkhand / Srinagar Sector",
+                        "ROI": "Rest of India (ROI)"
+                    };
+                } else if (serviceType === 'air') {
+                    options = {
+                        "Srinagar Sector": "Srinagar Sector",
+                        "Bihar & Jharkhand": "Bihar & Jharkhand",
+                        "Metros & Guwahati": "Metros (Mumbai, Ahmedabad, Pune, Kolkata, Chennai, Hyderabad, Bangalore) & Guwahati",
+                        "ROI & North East & Port Blair": "ROI (East, West, Central & South Zones - exc. Gwalior), North East (inc. Tripura) & Port Blair"
+                    };
+                } else if (serviceType === 'prime') {
+                    options = {
+                        "CITY PTP 12:00": "City PTP 12:00",
+                        "METRO PTP 12:00": "Metro PTP 12:00",
+                        "ZONAL PTP 12:00": "Zonal PTP 12:00"
+                    };
+                }
+
+                for (const key in options) {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = options[key];
+                    destinationSelect.appendChild(option);
+                }
+            }
+            
+            window.calculateRate = function() {
+                const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+                const destinationKey = destinationSelect.value;
+                const actualWeightKg = parseFloat(weightInput.value);
+
+                const L = parseFloat(lengthInput.value) || 0;
+                const W = parseFloat(widthDimInput.value) || 0;
+                const H = parseFloat(heightInput.value) || 0;
+                let volumetricWeightKg = 0;
+
+                if (L > 0 && W > 0 && H > 0) {
+                    volumetricWeightKg = (L * W * H) / volumetricDivisor;
+                }
+                
+                const chargeableWeightKg = Math.max(actualWeightKg, volumetricWeightKg);
+
+                if (isNaN(chargeableWeightKg) || chargeableWeightKg <= 0) {
+                    resultDiv.innerHTML = `<span class="text-red-400">Please enter a valid weight.</span>`;
+                    return;
+                }
+                if (!destinationKey) {
+                     resultDiv.innerHTML = `<span class="text-red-400">Please select a destination.</span>`;
+                    return;
+                }
+
+
+                let baseRate = 0;
+
+                if (serviceType === 'surface') {
+                    const rates = dtdcSurfaceRates[destinationKey];
+                    if (!rates) {
+                        resultDiv.innerHTML = `<span class="text-red-400">Rates not available for this surface destination.</span>`;
+                        return;
+                    }
+                    const weightGrams = chargeableWeightKg * 1000;
+
+                    if (chargeableWeightKg > 50) {
+                        baseRate = chargeableWeightKg * rates.above50kgPerKg;
+                    } else if (chargeableWeightKg > 5) {
+                        baseRate = chargeableWeightKg * rates.above5kgPerKg;
+                    } else if (weightGrams <= 250) {
+                        baseRate = rates.base250g;
+                    } else if (weightGrams <= 500) {
+                        baseRate = rates.base500g;
+                    } else { // 500g < weight <= 5kg (5000g)
+                        baseRate = rates.base500g;
+                        const additionalWeightGrams = weightGrams - 500;
+                        baseRate += Math.ceil(additionalWeightGrams / 500) * rates.add500g;
+                    }
+                } else if (serviceType === 'air') {
+                    if (chargeableWeightKg <= 5) {
+                        resultDiv.innerHTML = `<span class="text-yellow-300">Air rates apply for shipments above 5kg. Please select Surface or Prime for lighter shipments, or contact us.</span>`;
+                        return;
+                    }
+                    const ratePerKg = dtdcAirRatesPerKg[destinationKey];
+                    if (!ratePerKg) {
+                        resultDiv.innerHTML = `<span class="text-red-400">Rates not available for this air destination.</span>`;
+                        return;
+                    }
+                    baseRate = chargeableWeightKg * ratePerKg;
+                } else if (serviceType === 'prime') {
+                    const rates = dtdcPrimeTimePlusRates[destinationKey];
+                     if (!rates) {
+                        resultDiv.innerHTML = `<span class="text-red-400">Rates not available for this Prime Time Plus destination.</span>`;
+                        return;
+                    }
+                    const weightGrams = chargeableWeightKg * 1000;
+                    baseRate = rates.first500gms;
+                    if (weightGrams > 500) {
+                        const additionalWeightGrams = weightGrams - 500;
+                        baseRate += Math.ceil(additionalWeightGrams / 500) * rates.additional500gms;
+                    }
+                }
+
+                if (baseRate > 0) {
+                    const fuelSurcharge = baseRate * (fuelSurchargePercent / 100);
+                    const totalBeforeGst = baseRate + fuelSurcharge;
+                    const gstAmount = totalBeforeGst * (gstPercent / 100);
+                    const finalRate = totalBeforeGst + gstAmount;
+                    resultDiv.innerHTML = `Estimated Rate: <strong class="text-yellow-400">₹${finalRate.toFixed(2)}</strong>`;
+                     if (volumetricWeightKg > actualWeightKg && L > 0) {
+                        resultDiv.innerHTML += `<br><span class="text-xs text-gray-300">(Calculated using volumetric weight: ${volumetricWeightKg.toFixed(2)}kg)</span>`;
+                    }
+                } else if (serviceType === 'air' && chargeableWeightKg <=5 ) {
+                    // Message already handled
+                }
+                else {
+                     resultDiv.innerHTML = `<span class="text-red-400">Could not calculate rate. Please check inputs or contact us.</span>`;
+                }
+            }
+            // Initialize destination options on page load
+            updateDestinationOptions();
+
         });
+         // ========== RATE CALCULATOR SCRIPT ENDS HERE ==========
+
     </script>
 </body>
 </html>
