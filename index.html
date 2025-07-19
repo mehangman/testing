@@ -1,1190 +1,1694 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta name="description" content="Innovative Retail Solution offers reliable domestic and international shipping services from New Delhi. Track shipments, get quotes, and explore our partner network.">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Innovative Retail Solution Courier Services</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovative Retail Solution - Global Courier & Shipping Services</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles & Design System -->
     <style>
-        /* Preloader styles */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #111827; /* bg-gray-900 */
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
+        :root {
+            --primary-brand: #2563EB; /* Blue 600 */
+            --primary-dark: #1D4ED8; /* Blue 700 */
+            --secondary-brand: #F97316; /* Orange 500 */
+            --secondary-dark: #EA580C; /* Orange 600 */
+            --light-bg: #F0F9FF; /* Sky 50 */
+            --dark-text: #0F172A; /* Slate 900 */
+            --card-bg: #FFFFFF;
+            --border-color: #E2E8F0; /* Slate 200 */
+            --success: #16A34A; /* Green 600 */
+            --danger: #DC2626; /* Red 600 */
         }
-        .preloader.fade-out {
-            opacity: 0;
-            pointer-events: none;
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Prevent horizontal scroll caused by 100vw */
         }
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            border-left-color: #FACC15; /* yellow-400 */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
 
-        /* Header styling */
-        .header {
-            background-color: #000; color: #fff;
-            padding: 0.8rem 1rem; 
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            top: 0;
-            z-index: 50;
+        .section-padding {
+            padding: 5rem 1.5rem;
         }
-        .logo { 
-            font-size: 1.35rem; 
-            margin-left: 1rem; 
-            display: flex; 
-            align-items: center;
-            font-weight: 700; 
-        }
-        .logo img {
-            height: 2.25rem; 
-            width: 2.25rem;  
-            margin-right: 0.75rem; 
-            border-radius: 50%;
-        }
-        .nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
-        .nav ul li {
-             margin-left: 1.2rem; 
-        }
-        .nav ul li a {
-            color: #fff; text-decoration: none; transition: color 0.3s ease;
-            font-size: 0.95rem; 
-        }
-        .nav ul li a:hover { color: #FACC15; }
-        .hero { position: relative; z-index: 0; }
 
         @media (max-width: 768px) {
-            .nav { display: none; } 
-            .header {
-                justify-content: space-between;
-                padding: 0.7rem 0.8rem; 
-            }
-            .logo { 
-                font-size: 1.15rem; 
-                margin-left: 0.8rem;
-            }
-            .logo img {
-                height: 2rem; 
-                width: 2rem;  
-                margin-right: 0.5rem;
+            .section-padding {
+                padding: 4rem 1.5rem;
             }
         }
-        @media (min-width: 769px) {
-            .nav { display: block !important; margin-right: 1rem; }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        .section {
-            padding: 3rem 1rem;
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #475569; /* Slate 600 */
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
             position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-brand), var(--primary-dark));
+            color: white
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px)
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--primary-brand);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #fdfdff;
+            border-color: var(--primary-brand);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.1);
+        }
+
+        /* --- Gradient Border for Service Cards --- */
+        .card-gradient-border {
+            padding: 2px; /* This acts as the border thickness */
+            background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
+            border-radius: 1rem; /* Should match the inner card's border-radius */
+            transition: all 0.3s ease;
+        }
+
+        .card-gradient-border > .card {
+            /* Override original card styles that are now handled by the wrapper */
+            border: none;
+            box-shadow: none;
+            transition: none;
+            height: 100%; /* Ensure the inner card fills the wrapper */
+        }
+
+        .card-gradient-border > .card:hover {
+            /* Disable hover effects on the inner card itself */
+            transform: none;
+            box-shadow: none;
+        }
+        /* --- End Gradient Border Styles --- */
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #334155; /* Slate 700 */
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            font-size: 1rem;
+            background-color: #F8FAFC; /* Slate 50 */
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-brand);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            background-color: white;
+        }
+
+        /* Scroll Animation */
+        .scroll-observer {
             opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            background-color: transparent;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .section.visible {
+        .scroll-observer.in-view {
             opacity: 1;
-            transform: scale(1);
-        }
-        @media (min-width: 768px) {
-            .section { padding: 4rem 1rem; }
+            transform: translateY(0);
         }
 
-        .section-heading {
+        /* --- Partner Logos Section Styling --- */
+        #partner-logos {
+            background-color: white;
+            padding: 5rem 0;
+            overflow: hidden;
             position: relative;
-            display: inline-block;
-            padding-bottom: 12px;
-            color: #FFF;
         }
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%) scaleX(0);
-            transform-origin: center;
-            width: 70px;
-            height: 3px;
-            background: linear-gradient(to right, #FDE047, #FBBF24, #F59E0B);
-            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
-        }
-        .section.visible .section-heading::after {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .heading-gradient-part {
-            background: linear-gradient(to right, #FACC15, #F59E0B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            padding: 0 0.25em;
-        }
-
-        .hero-heading-gradient-part {
-            background: linear-gradient(to right, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-
-        /* --- "From Delhi to the World !!" Quote Styling --- */
-        .hero-world-quote-container {
-            margin: 1.5rem auto; /* Adjusted margin for spacing */
-            padding: 0.5rem 1rem;
-            background-color: transparent;
-            text-align: center;
-        }
-        .hero-world-quote-text {
-            font-size: 1.5em; /* Adjust size as needed */
-            font-weight: 700; /* Bold */
-            background: linear-gradient(to right, #FFFFFF 40%, #FACC15 65%, #F59E0B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-        }
-         @media (min-width: 768px) {
-            .hero-world-quote-text {
-                font-size: 1.75em;
-            }
-        }
-
-
-        /* --- Hyphen Path Emoji Animation Styling - Updated --- */
-        .hyphen-path-animation-container {
+        .partner-content-container {
             position: relative;
-            width: 60%; /* Reduced width further */
-            max-width: 200px; /* Reduced max width */
-            margin: 1rem auto 2rem auto; /* Adjusted margin, more space at bottom */
-            overflow: hidden; 
-            height: 40px; /* Increased height for larger emoji */
+            z-index: 2;
+        }
+        .logos-track {
+            display: flex;
+            align-items: center;
+            animation: continuous-slide-logos 18s linear infinite; 
+            will-change: transform;
+        }
+        .logo-item-container {
+            flex-shrink: 0;
+            margin: 0 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            pointer-events: none;
         }
-
-        .hyphen-path-text {
-            font-family: monospace; 
-            font-size: 2rem; /* Slightly increased for visibility with larger emoji */
-            color: rgba(255, 255, 255, 0.55); 
-            letter-spacing: -4px; /* Further adjusted for connection */
-            white-space: nowrap; 
-            position: relative;
-            z-index: 1;
+        .logo-item-container:hover {
+            transform: scale(1.05);
         }
-
-        .new-flying-airplane {
-            position: absolute;
-            left: -35px; /* Start further off-screen for larger emoji */
-            top: 50%; 
-            transform: translateY(-50%); 
-            font-size: 28px; /* Increased emoji size */
-            color: #FFFFFF;
-            text-shadow: 0 0 6px rgba(0,0,0,0.35);
-            opacity: 0;
-            animation: flyOnHyphenPath 5s linear infinite 0.5s;
-            z-index: 2; 
+        .logo-img {
+            height: 40px;
+            object-fit: contain;
         }
-
-        @keyframes flyOnHyphenPath {
-            0% { left: -35px; opacity: 0; } 
-            10% { opacity: 1; } 
-            90% { left: calc(100% + 15px); opacity: 1; } /* Adjusted end point for larger emoji */
-            100% { left: calc(100% + 15px); opacity: 0; } 
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 35px;
+            }
         }
-        /* --- End of Hyphen Path Emoji Animation Styling --- */
-
-        .logo-img { height: 40px; object-fit: contain; padding: 0.3rem; border-radius: 0.25rem; }
-         @media (min-width: 768px) { .logo-img { height: 48px; } }
         .dt_dc_logo_bg { background-color: white; }
         .tpc_logo_bg { background-color: white; }
-        .bluedart_logo_bg { background-color: #ffcc00; }
+        .bluedart_logo_bg { background-color: white; }
         .delhivery_logo_bg { background-color: black; }
         .fedex_logo_bg { background-color: #4D148C; }
         .aramex_logo_bg { background-color: white; }
-
-        .tracking-section {
-            text-align: center; position: relative; overflow: hidden;
-            min-height: 450px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-         @media (min-width: 768px) { .tracking-section { min-height: 500px; } }
-        .tracking-section-bg-overlay {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); z-index: 1;
-        }
-        .tracking-content { position: relative; z-index: 2; max-width: 800px; padding: 0 1rem; width: 100%;}
-
-        .tracking-section .tracking-heading {
-            font-size: 1.875rem; line-height: 2.25rem; font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 768px) { .tracking-section .tracking-heading { font-size: 2.25rem; line-height: 2.5rem; } }
-        .tracking-section .tracking-subheading {
-            font-size: 1rem; color: #e5e7eb; margin-bottom: 2rem;
-            max-width: 600px; margin-left: auto; margin-right: auto;
-        }
-         @media (min-width: 768px) { .tracking-section .tracking-subheading { font-size: 1.125rem; margin-bottom: 2.5rem;} }
-        .tracking-form-container {
-            background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
-            border-radius: 0.75rem; padding: 1.5rem; width: 100%; max-width: 550px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        @media (min-width: 768px) { .tracking-form-container { padding: 2rem; } }
-        .tracking-form { display: flex; flex-direction: column; gap: 1rem; }
-         @media (min-width: 768px) { .tracking-form { gap: 1.5rem; } }
-        .tracking-form select, .tracking-form input[type="text"] {
-            padding: 0.75rem 1rem; border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 0.5rem; font-size: 0.875rem; background-color: rgba(255, 255, 255, 0.05);
-            color: white; appearance: none; -webkit-appearance: none; outline: none;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
-        }
-        @media (min-width: 768px) { .tracking-form select, .tracking-form input[type="text"] { padding: 0.875rem 1rem; font-size: 1rem; } }
-        .tracking-form select::placeholder, .tracking-form input[type="text"]::placeholder { color: #a0aec0; }
-        .tracking-form select:focus, .tracking-form input[type="text"]:focus {
-            border-color: #FACC15; background-color: rgba(255, 255, 255, 0.1);
-        }
-        .tracking-form select option { background-color: #333; color: white; }
-        .tracking-form button {
-            padding: 0.75rem 1.5rem; background-color: #FACC15; color: #111827;
-            border: none; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 700;
-            cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-        }
-         @media (min-width: 768px) { .tracking-form button { padding: 0.875rem 1.5rem; font-size: 1rem; } }
-        .tracking-form button:hover {
-            background-color: #FBBF24;
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
-        }
-
-        footer { background-color: #000; color: #fff; padding: 1.5rem 1rem; text-align: center; margin-top: auto; }
-         @media (min-width: 768px) { footer { padding: 2rem 1rem; } }
-
-        a { transition: color 0.3s ease; }
-
-        /* --- Partner Logos Section - CSS (No changes here, animation is CSS driven) --- */
-        #partner-logos {
-            overflow-x: hidden; /* Prevents horizontal scrollbar */
-            background-color: #000000; /* Background for the section */
-            padding: 1rem 0; /* Add some vertical padding */
-        }
-        .logos-track-container {
-            width: 100%; 
-            display: flex; 
-            position: relative; 
-            z-index: 1;
-        }
-        .logos-track {
-            display: flex; /* Aligns logos in a row */
-            align-items: center; /* Vertically centers logos */
-            animation: continuous-slide-logos 16s linear infinite; 
-            will-change: transform; /* Optimization for animation performance */
-        }
-        .logos-track img {
-            height: 36px; /* Default height for smaller screens */
-            flex-shrink: 0; /* Prevents logos from shrinking if space is tight */
-            margin: 0 1.5rem; /* Spacing between logos */
-            object-fit: contain; /* Ensures logo aspect ratio is maintained */
-            max-width: none; 
-        }
-        @media (min-width: 768px) {
-            .logos-track img {
-                height: 48px; /* Taller logos on medium screens and up */
-                margin: 0 2rem; /* More spacing on larger screens */
-            }
-        }
+        .dhl_logo_bg { background-color: #ffcc00; }
 
         @keyframes continuous-slide-logos {
-            0% {
-                transform: translateX(0%); 
-            }
-            100% {
-                transform: translateX(-25%); /* End position for a seamless loop with 4 sets of logos */
-            }
+            from { transform: translateX(0%); }
+            to { transform: translateX(-150%); }
         }
-        /* --- End Partner Logos Section --- */
 
-
-        /* --- Services Section Enhanced Styling --- */
-        #services {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-            min-height: auto;
-            height: auto;
+        /* Hero Slider */
+        .hero-slider-container {
             position: relative;
+            width: 100vw; /* Use viewport width to ensure it spans the full screen */
+            height: 90vh;
             overflow: hidden;
+            cursor: grab;
+            left: 50%; /* Center the container */
+            transform: translateX(-50%); /* Adjust for perfect centering */
         }
-
-        #services::before { 
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-slider-container:active {
+            cursor: grabbing;
+        }
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+            will-change: transform;
+        }
+        .slide {
+            flex: 0 0 100%;
             width: 100%;
             height: 100%;
-            background-image: var(--section-bg-image-url); 
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            filter: brightness(0.65); 
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out;
-        }
-
-        #services.background-active::before {
-            opacity: 1;
-        }
-
-
-        .services-slider-container {
             position: relative;
-            width: 100%;
-            min-height: 500px;
             display: flex;
-            z-index: 1; 
-        }
-
-        .service-slide-item {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
             text-align: center;
-            color: #FFFFFF;
-            will-change: opacity, transform;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
+            color: white;
         }
-        
-        .service-slide-item::before {
-             content: none; 
-        }
-
-        .service-slide-item.active::after {
-            content: none; 
-        }
-
-        .service-slide-item.active {
-            opacity: 1;
-            pointer-events: auto;
-            z-index: 2; 
-            transform: scale(1);
-        }
-        .service-slide-item:not(.active) {
-            transform: scale(0.98);
-        }
-
-        .service-slide-content-wrapper { 
-            position: relative;
-            z-index: 2; 
-            max-width: 90%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            background-color: rgba(10, 10, 10, 0.75); 
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .service-slide-integrated-image-container {
-            flex-shrink: 0;
-            width: 100%;
-            max-width: 180px;
-            margin-bottom: 1rem;
-        }
-
-        .service-slide-integrated-image {
-            width: 100%;
-            height: auto;
-            max-height: 180px;
-            object-fit: contain;
-            border-radius: 0.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .service-slide-text-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .service-slide-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #FACC15;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.65);
-            margin-bottom: 0.5rem;
-        }
-
-        .service-slide-description {
-            font-family: 'Raleway', sans-serif;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
-            max-width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .services-slider-container {
-                 min-height: 550px;
-            }
-            .service-slide-content-wrapper {
-                flex-direction: row;
-                align-items: center;
-                gap: 2rem;
-                max-width: 85%;
-                padding: 2rem;
-            }
-            .service-slide-integrated-image-container {
-                flex: 0 0 220px;
-                max-width: 220px;
-                margin-bottom: 0;
-            }
-            .service-slide-content-wrapper.slide-image-left .service-slide-integrated-image-container { order: 1; }
-            .service-slide-content-wrapper.slide-image-left .service-slide-text-block { order: 2; align-items: flex-start; text-align: left; }
-            .service-slide-content-wrapper.slide-image-right .service-slide-integrated-image-container { order: 2; }
-            .service-slide-content-wrapper.slide-image-right .service-slide-text-block { order: 1; align-items: flex-start; text-align: left; }
-            
-            .service-slide-integrated-image { max-height: 220px; }
-            .service-slide-text-block { flex: 1; align-items: flex-start; text-align: left; }
-            .service-slide-title { font-size: 2.25rem; }
-            .service-slide-description { font-size: 1rem; }
-        }
-        @media (min-width: 1024px) {
-            .services-slider-container { min-height: 600px; }
-             .service-slide-content-wrapper {
-                max-width: 80%;
-             }
-            .service-slide-integrated-image-container { flex: 0 0 280px; max-width: 280px; }
-            .service-slide-integrated-image { max-height: 280px; }
-            .service-slide-title { font-size: 2.5rem; }
-            .service-slide-description { font-size: 1.05rem; }
-        }
-
-        .service-dots-container {
+        .slide::before {
+            content: '';
             position: absolute;
-            bottom: 1.5rem;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInText 1s ease forwards;
+        }
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .slide-content p {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 0.75rem;
-            z-index: 10; 
-            padding: 0.5rem;
-            background-color: rgba(0,0,0,0.25);
-            border-radius: 9999px;
+            gap: 10px;
+            z-index: 3;
         }
-        .service-dot {
-            width: 9px;
-            height: 9px;
+        .dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.35);
+            background-color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease;
         }
-        .service-dot.active {
-            background-color: #FACC15;
-            transform: scale(1.25);
+        .dot.active {
+            background-color: white;
         }
-        .service-nav-arrow {
+        .slider-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 10; 
-            background-color: rgba(0, 0, 0, 0.25);
+            z-index: 3;
+            background-color: rgba(255, 255, 255, 0.2);
             color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            width: 2.75rem;
-            height: 2.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
         }
-        .service-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.45);
-            transform: translateY(-50%) scale(1.05);
+        .slider-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.4);
         }
-        .service-nav-arrow svg { width: 1.25rem; height: 1.25rem; }
-        #prevService { left: 1rem; }
-        #nextService { right: 1rem; }
+        .slider-arrow.left {
+            left: 20px;
+        }
+        .slider-arrow.right {
+            right: 20px;
+        }
+        @media (max-width: 768px) {
+            .slider-arrow {
+                display: none;
+            }
+        }
 
-        @media (max-width: 767px) {
-            .service-nav-arrow { display: none; }
-            .service-dots-container { bottom: 1rem; }
-            .service-slide-title { font-size: 1.5rem; }
-            .service-slide-description { font-size: 0.8rem; }
-            .service-slide-integrated-image-container { max-width: 140px; }
-            .service-slide-integrated-image { max-height: 140px; }
-            .services-slider-container { min-height: 480px; }
-            .service-slide-content-wrapper { gap: 0.8rem; padding: 1rem; max-width: 95%; }
+        /* --- NEW TRACKING SECTION STYLES --- */
+        #tracking {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
         }
-        /* --- End Services Section Enhanced Styling --- */
-
-        #area { position: relative; overflow: hidden; }
-         .section-blur-bg-area {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-size: cover; background-position: center;
-            filter: blur(3px); -webkit-filter: blur(3px);
-            z-index: -1;
-            transition: background-image 0.5s ease-in-out;
+        #tracking-card {
+            transition: all 0.3s ease-in-out;
         }
-        .area-card {
-            background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        #tracking-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
         }
-        .area-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .area-card ul li { color: #e5e7eb; font-size: 0.875rem; }
-         @media (min-width: 768px) { .area-card ul li { font-size: 0.875rem; } }
-
-        #about-us { background-color: #1f2937; color: #d1d5db; }
-        #about-us .lg\:col-span-1 { display: flex; flex-direction: column; align-items: center; }
-        #about-us .lg\:col-span-1 > h3 { text-align: center; width: 100%; margin-bottom: 1.5rem; }
-        .quick-links-box {
-            background-color: rgba(55, 65, 81, 0.6); padding: 1.5rem;
-            border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 100%; max-width: 350px;
+        .courier-option-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem; /* Adjusted padding */
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            background-color: white; /* Explicitly set to white */
         }
-        .quick-links-box h4 {
-            font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;
-            padding-bottom: 0.5rem; border-bottom: 1px solid rgba(107, 114, 128, 0.5);
-            color: #FACC15;
+        .courier-option-item:hover {
+            background-color: #E5E7EB; /* silver / gray-200 */
         }
-        #about-us a:not(.map-image-link) { color: #9ca3af; transition: color 0.3s ease; }
-        #about-us a:not(.map-image-link):hover { color: #FACC15; }
-        .quick-link-item { padding: 0.25rem 0; }
-
-        .input-error-highlight { border-color: #ef4444 !important; }
-        #tracking-number-error { color: #fca5a5; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
-
-        .text-gradient { display: inline-block; }
-        .text-gradient-1 { background: linear-gradient(to right, #ef4444, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-2 { background: linear-gradient(to right, #f59e0b, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-3 { background: linear-gradient(to right, #84cc16, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-4 { background: linear-gradient(to right, #10b981, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-5 { background: linear-gradient(to right, #0ea5e9, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-6 { background: linear-gradient(to right, #8b5cf6, #d946ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-7 { background: linear-gradient(to right, #ec4899, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-blue-purple { background: linear-gradient(to right, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-green-yellow { background: linear-gradient(to right, #22c55e, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-pink-orange { background: linear-gradient(to right, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-        .text-gradient-teal-cyan { background: linear-gradient(to right, #14b8a6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
-
-        html { scroll-behavior: smooth; }
-        body { display: flex; flex-direction: column; min-height: 100vh; background-color: #111827; }
-        main { flex-grow: 1; }
-
-        .about-us-image-gallery img {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        /* NEW: Wrapper for the logo background */
+        .logo-bg-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 40px;
+            margin-right: 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            padding: 4px;
+            flex-shrink: 0;
         }
-        .about-us-image-gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+        /* MODIFIED: Image styles */
+        .courier-option-item img {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            margin-right: 0; /* Removed margin from img */
+        }
+
+        .courier-option-item span {
+            font-weight: 500;
+            color: #334155; /* slate-700 */
+        }
+        #selected-courier-display img {
+            height: 24px;
+            width: 80px;
+            object-fit: contain;
+        }
+        .plane-animation-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto 0 auto;
+            position: relative;
+            height: 40px;
+        }
+        .plane-path {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-image: linear-gradient(to right, rgba(255,255,255,0.5) 50%, transparent 50%);
+            background-size: 16px 2px;
+            transform: translateY(-50%);
+        }
+        .plane-icon {
+            position: absolute;
+            top: 50%;
+            left: 0; /* Animated property */
+            transform: translate(-50%, -50%); /* Keeps the icon centered on its 'left' coordinate */
+            color: white;
+            font-size: 2rem; /* Adjusted size for the new icon */
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+            animation: flyPlane 5s ease-in-out infinite;
+        }
+        @keyframes flyPlane {
+            0% { left: 0%; opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+        .track-btn-new {
+            background: linear-gradient(90deg, var(--secondary-brand), var(--secondary-dark));
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(249, 115, 22, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+        }
+        .track-btn-new:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(234, 88, 12, 0.4);
+            animation: none;
+        }
+        /* --- END NEW TRACKING SECTION STYLES --- */
+
+
+        #rate-result {
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+        }
+        #rate-result .total-amount {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary-brand));
+            color: white;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+        #rate-result .error-message {
+            color: var(--danger);
+            background-color: #FEE2E2;
+            border: 1px solid #FCA5A5;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .footer-social-link {
+            color: #94A3B8; /* slate-400 */
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-social-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* --- NEW: Social Icon Hover Colors --- */
+        .footer-social-link.facebook:hover { color: #1877F2; }
+        .footer-social-link.twitter:hover { color: #000000; }
+        .footer-social-link.linkedin:hover { color: #0A66C2; }
+        .footer-social-link.instagram:hover { color: #E1306C; }
+        .footer-social-link.youtube:hover { color: #FF0000; }
+        
+        .btn-x {
+            background-color: #000;
+            color: white;
+            border: none;
+        }
+        
+        .btn-x:hover {
+            background-color: #222;
+            transform: translateY(-3px);
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            border: none;
+        }
+        
+        .btn-instagram:hover {
+            background: linear-gradient(45deg, #2d4bd4, #473fd0, #6d2a9c, #a0286d, #c61a5a, #e00d0d);
+            transform: translateY(-3px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+        .btn-whatsapp:hover {
+            background-color: #1EBE57;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* --- NEW: Unique Section Title Styles --- */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Services Title */
+        .services-title {
+            position: relative;
+            display: inline-block;
+        }
+        .services-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
+            border-radius: 3px;
+        }
+
+        /* Tracking Title */
+        .tracking-title-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .tracking-title-wrapper .section-title {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(249, 115, 22, 0.5);
+        }
+        .tracking-title-wrapper::before {
+            content: 'LIVE';
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            background-color: var(--secondary-brand);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            transform: rotate(-15deg);
+            animation: pulse-live 1.5s infinite;
+        }
+        @keyframes pulse-live {
+            0%, 100% { transform: rotate(-15deg) scale(1); }
+            50% { transform: rotate(-15deg) scale(1.1); }
+        }
+
+        /* Calculator Title */
+        .calculator-title {
+            border-bottom: 4px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem !important;
+        }
+        .rate-calc-subtitle {
+            max-width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            background-color: #eef2ff; /* A subtle background */
+            border-left: 4px solid var(--primary-brand);
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        /* Partners Title */
+        .partners-title-wrapper {
+            position: relative;
+            padding-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .partners-title-wrapper::before,
+        .partners-title-wrapper::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--border-color));
+            border-radius: 2px;
+        }
+        .partners-title-wrapper::after {
+             background: linear-gradient(90deg, var(--border-color), transparent);
+        }
+
+        /* Contact Title */
+        .contact-title-wrapper {
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem;
+            border-bottom: 3px solid var(--primary-brand);
+        }
+        .contact-title-wrapper .section-title {
+             margin-bottom: 0 !important;
+        }
+        .contact-title-wrapper::before {
+            content: '\f0e0'; /* Font Awesome envelope icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--primary-brand);
+            opacity: 0.2;
+        }
+        .contact-title-wrapper::after {
+            content: '\f232'; /* Font Awesome whatsapp icon */
+            font-family: 'Font Awesome 6 Brands';
+            font-weight: 400;
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--secondary-brand);
+            opacity: 0.2;
         }
     </style>
 </head>
+<body class="bg-slate-50">
 
-<body class="text-gray-100">
-    <div class="preloader">
-        <div class="spinner"></div>
-    </div>
-
-    <main>
-        <section
-            class="hero bg-cover bg-no-repeat bg-center text-center py-10 px-4 md:py-12 rounded-md flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] md:min-h-[600px] animate-on-scroll"
-            style="background-image: url('https://img.pikbest.com/backgrounds/20200423/2d-labor-day-delivery-banner_1910020.jpg!sw800')">
-            <div class="absolute inset-0 bg-black/60 z-0" style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);"></div>
-            <div class="relative z-10 max-w-4xl w-full px-4 space-y-3 md:space-y-5 flex flex-col items-center"> <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 md:mb-4 section-heading">Your Trusted <span class="hero-heading-gradient-part">Courier Partner</span></h1>
-                <p class="text-md sm:text-lg md:text-xl mb-4 md:mb-5 text-gray-100 max-w-2xl mx-auto leading-relaxed font-medium">Bridging Distances, Delivering Trust – Seamless Domestic & International Shipping Solutions</p>
-
-                <div class="hero-world-quote-container">
-                    <p class="hero-world-quote-text">From Delhi to the World !!</p>
-                </div>
-
-                <div class="hyphen-path-animation-container"> <span class="hyphen-path-text">--------------------</span> <span class="new-flying-airplane">✈</span>
-                </div>
+    <!-- Header -->
+    <header class="bg-white/95 border-b border-gray-200/80 top-0 z-50">
+        <div class="container mx-auto px-6 py-2">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                   <img src="http://googleusercontent.com/file_content/0" alt="Innovative Retail Solution Logo" class="h-16">
+                </a>
                 
-                <button
-                    onclick="window.location.href='mailto:info@irsprints.com?subject=Quotation Request&body=Dear Innovative Retail Solution Courier Services Team,%0d%0a%0d%0aI would like to request a quotation for courier services. Please find my company details below:%0d%0a%0d%0aCompany Name:%0d%0aCompany Address:%0d%0aContact Person:%0d%0aPhone Number:%0d%0aEmail Address:%0d%0a%0d%0aLooking forward to hearing from you soon.%0d%0a%0d%0aSincerely,%0d%0a[Your Name]'"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold rounded-full shadow-2xl py-3 px-8 md:py-4 md:px-10 transition-all duration-300 text-md md:text-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-500/50">
-                    Get Instant Quote
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#services" class="text-gray-600 hover:text-blue-600 font-semibold transition">Services</a>
+                    <a href="#calculator" class="text-gray-600 hover:text-blue-600 font-semibold transition">Rate Calculator</a>
+                    <a href="#tracking" class="text-gray-600 hover:text-blue-600 font-semibold transition">Track</a>
+                    <a href="./about.html" class="text-gray-600 hover:text-blue-600 font-semibold transition">About Us</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 font-semibold transition">Contact</a>
+                </nav>
+                
+                <div class="hidden lg:block">
+                    <a href="tel:+919289580693" class="btn btn-primary">
+                        <i class="fas fa-phone"></i>
+                        <span>Call Us Now</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-button" class="lg:hidden text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
-        </section>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 border-t border-gray-200">
+             <nav class="flex flex-col space-y-4 pt-4">
+                <a href="#services" class="text-gray-600 hover:text-blue-600 font-semibold transition">Services</a>
+                <a href="#calculator" class="text-gray-600 hover:text-blue-600 font-semibold transition">Rate Calculator</a>
+                <a href="#tracking" class="text-gray-600 hover:text-blue-600 font-semibold transition">Track</a>
+                <a href="./about.html" class="text-gray-600 hover:text-blue-600 font-semibold transition">About Us</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-semibold transition">Contact</a>
+                <a href="tel:+919289580693" class="btn btn-primary mt-2">
+                    <i class="fas fa-phone"></i>
+                    <span>Call Us Now</span>
+                </a>
+            </nav>
+        </div>
+    </header>
 
-        <section id="services" class="section animate-on-scroll">
-            <div class="services-slider-container">
-                </div>
-            <div class="service-dots-container">
-                </div>
-            <button id="prevService" class="service-nav-arrow">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-            </button>
-            <button id="nextService" class="service-nav-arrow">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </button>
-        </section>
+    <!-- Hero Slider Section -->
+    <section class="hero-slider-container">
+        <div class="slider-wrapper">
+            <!-- Slides will be dynamically managed by JS -->
+        </div>
+        <div class="slider-dots"></div>
+        <div class="slider-arrow left" id="prev-slide"><i class="fas fa-chevron-left"></i></div>
+        <div class="slider-arrow right" id="next-slide"><i class="fas fa-chevron-right"></i></div>
+    </section>
 
-        <section id="rates" class="section relative py-12 md:py-16 px-4 text-center overflow-hidden animate-on-scroll">
-            <div class="absolute inset-0 bg-[url('https://previews.123rf.com/images/gmast3r/gmast3r1604/gmast3r160400443/55343577-truck-lorry-car-on-road-cargo-shipping-delivery-banner-flat-vector-illustration.jpg')] bg-cover bg-center z-0"></div>
-            <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm z-0"></div>
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="section-heading text-2xl md:text-4xl font-bold mb-6">Competitive Shipping <span class="heading-gradient-part">Rates</span></h2>
-                <div class="space-y-6 px-4">
-                    <p class="text-md md:text-xl text-gray-100 leading-relaxed max-w-3xl mx-auto">For immediate rate confirmation, submit your shipment particulars using our template by clicking below.</p>
-                    <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/10">
-                        <button onclick="window.location.href='mailto:info@irsprints.com?subject=Courier Rate Request - Shipment Particulars&body=Dear OM International Courier Team,%0d%0a%0d%0aI would like to request the current rate for my shipment based on the following particulars:%0d%0a%0d%0a[ Pickup Details ]%0d%0aCompany Name: %0d%0aContact Person: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Delivery Details ]%0d%0aRecipient Name: %0d%0aAddress: %0d%0aCity: %0d%0aCountry: %0d%0a%0d%0a[ Shipment Particulars ]%0d%0aType: (Document/Parcel)%0d%0aWeight: %0d%0aDimensions: %0d%0aContents: %0d%0aDeclared Value: %0d%0aSpecial Instructions: %0d%0a%0d%0aPlease confirm your rate and service availability for this specific shipment.%0d%0a%0d%0aContact Information:%0d%0aName: %0d%0aEmail: %0d%0aPhone: %0d%0a%0d%0aBest regards,%0d%0a[Your Full Name]'"
-                            class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold py-3 px-6 md:px-8 rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-md md:text-xl">
-                            Request Rate Details
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+        <div class="container mx-auto">
+            <!-- REDESIGNED: Services Section Heading -->
+            <div class="text-center mb-16 scroll-observer">
+                <h2 class="section-title services-title">Our Core <span class="gradient-text">Services</span></h2>
+                <p class="section-subtitle mx-auto mt-8">A complete suite of logistics services designed to meet any business or personal requirement with precision and care.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="card-gradient-border scroll-observer">
+                    <div class="card overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1622959954381-5df16a7d7831?q=80&w=2070&auto=format&fit=crop" alt="Secure Document Courier in India" class="w-full h-48 object-cover border-b border-slate-200">
+                        <div class="p-8 text-center">
+                            <h3 class="text-xl font-bold mb-3">Document Courier</h3>
+                            <p class="text-gray-600">Secure, time-sensitive delivery for your important documents, tenders, and contracts, ensuring confidentiality and punctuality across India.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="card-gradient-border scroll-observer" style="transition-delay: 200ms;">
+                     <div class="card overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605617397799-52c79b73b5a6?q=80&w=2070&auto=format&fit=crop" alt="Reliable Parcel Delivery from Delhi" class="w-full h-48 object-cover border-b border-slate-200">
+                        <div class="p-8 text-center">
+                            <h3 class="text-xl font-bold mb-3">Parcel Delivery</h3>
+                            <p class="text-gray-600">Reliable and cost-effective shipping for parcels of all sizes. We offer both surface and air freight options to match your budget and timeline.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="card-gradient-border scroll-observer" style="transition-delay: 400ms;">
+                    <div class="card overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=2070&auto=format&fit=crop" alt="Global International Shipping from India" class="w-full h-48 object-cover border-b border-slate-200">
+                        <div class="p-8 text-center">
+                            <h3 class="text-xl font-bold mb-3">International Shipping</h3>
+                            <p class="text-gray-600">Seamless global logistics to over 220 countries. We handle everything from pickup in Delhi to doorstep delivery for a hassle-free experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rate Calculator Section -->
+    <section id="calculator" class="section-padding">
+        <div class="container mx-auto calculator-content">
+            <!-- REDESIGNED: Calculator Section Heading -->
+            <div class="text-left mb-16 scroll-observer">
+                <h2 class="section-title calculator-title">Check Your <span class="gradient-text">Shipping Rate</span></h2>
+                <p class="section-subtitle rate-calc-subtitle mt-6">Get a quick and transparent shipping estimate for your package, with an approximate breakdown of all expected charges.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-5 gap-12 items-start">
+                <!-- Form Column -->
+                <div class="lg:col-span-3 scroll-observer">
+                    <div class="card p-6 sm:p-8">
+                        <form id="rate-calculator-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Shipment Type -->
+                            <div class="md:col-span-2">
+                                <label for="shipment-type" class="form-label">Shipment Type</label>
+                                <select id="shipment-type" class="form-select">
+                                    <option value="envelope">Envelope (Documents)</option>
+                                    <option value="parcel">Parcel (By- Surface/Air)</option>
+                                    <option value="air">Air Cargo (Above 5kg)</option>
+                                    <option value="international">International Shipment</option>
+                                </select>
+                            </div>
+
+                            <!-- Destination -->
+                            <div>
+                                <label for="destination" class="form-label">Destination Zone</label>
+                                <select id="destination" class="form-select"></select>
+                            </div>
+
+                            <!-- Weight -->
+                            <div>
+                                <label for="actual-weight" class="form-label">Actual Weight</label>
+                                <input type="number" id="actual-weight" class="form-input" placeholder="e.g., 450" min="100" step="10">
+                                <p id="weight-unit-label" class="text-xs text-gray-500 mt-2">Weight in Grams (g)</p>
+                            </div>
+
+                            <!-- Volumetric Dimensions (Conditional) -->
+                            <div id="volumetric-section" class="hidden md:col-span-2 space-y-4 pt-2">
+                                <label class="form-label">Dimensions (in cm) <span class="text-red-500">*</span></label>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <input type="number" id="length" class="form-input" placeholder="Length" min="1">
+                                    <input type="number" id="breadth" class="form-input" placeholder="Breadth" min="1">
+                                    <input type="number" id="height" class="form-input" placeholder="Height" min="1">
+                                </div>
+                                <p class="text-xs text-gray-500 text-center pt-1">Volumetric weight may apply. The higher of actual vs. volumetric is used for billing.</p>
+                            </div>
+                            
+                            <!-- Content Description -->
+                            <div id="content-section" class="hidden md:col-span-2">
+                                <label for="content-description" class="form-label">Content Description</label>
+                                <input type="text" id="content-description" class="form-input" placeholder="Describe the contents of your shipment">
+                            </div>
+                            
+                            <div class="md:col-span-2">
+                                <button type="button" id="calculate-rate-btn" class="btn btn-primary w-full mt-4 py-4 text-lg">
+                                    <i class="fas fa-calculator"></i> Calculate Rate
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Result & Info Column -->
+                <div class="lg:col-span-2 scroll-observer" style="transition-delay: 200ms;">
+                     <div id="rate-result-container">
+                        <!-- Initial state message -->
+                        <div id="rate-initial-message" class="card p-8 text-center border-solid border-2 border-slate-300">
+                           <div class="mx-auto w-20 h-20 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center text-3xl mb-6">
+                               <i class="fas fa-receipt"></i>
+                           </div>
+                            <h3 class="text-xl font-bold text-slate-700 mb-2">Your Estimate Will Appear Here</h3>
+                            <p class="text-slate-500">Fill out the form to see a detailed cost breakdown for your shipment.</p>
+                        </div>
+                        <!-- Result will be injected here -->
+                        <div id="rate-result" class="hidden"></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [START] Redesigned Tracking Section -->
+    <section id="tracking" class="section-padding relative overflow-hidden">
+        <!-- Background Element -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-black/60"></div>
+
+        <div class="container mx-auto relative z-10">
+            <!-- REDESIGNED: Tracking Section Heading -->
+            <div class="text-center mb-12 scroll-observer">
+                <div class="tracking-title-wrapper">
+                    <h2 class="section-title text-white">Track Your Shipment</h2>
+                </div>
+                <p class="section-subtitle text-slate-200 mx-auto mt-4">
+                    Select a courier and enter your tracking number to see the latest updates on your shipment's journey.
+                </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <div id="tracking-card" class="bg-white/10 border border-white/20 rounded-2xl p-6 backdrop-blur-lg shadow-2xl scroll-observer">
+                    <!-- Custom Courier Selector -->
+                    <div class="relative mb-4">
+                        <label class="form-label text-white/90">Select Courier Partner</label>
+                        <button id="courier-selector-btn" type="button" class="form-input text-left w-full flex justify-between items-center bg-white/10 text-white border-white/30 hover:bg-white/20 focus:bg-white/20 focus:border-orange-400 focus:shadow-none">
+                            <span id="selected-courier-display" class="flex items-center gap-3">
+                                <i class="fas fa-box text-white/70"></i>
+                                <span class="text-slate-300">Select a partner...</span>
+                            </span>
+                            <i id="courier-caret" class="fas fa-chevron-down transition-transform duration-300 text-white/70"></i>
                         </button>
-                    </div>
-                    <p class="text-gray-300 mt-6 text-sm md:text-lg max-w-3xl mx-auto">
-                        For complex needs or premium services, visit our
-                        <a href="#contact" class="text-yellow-400 hover:text-yellow-300 underline">Contact Section</a>
-                        for personalized help.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="area" class="section animate-on-scroll bg-gray-800">
-             <div class="section-blur-bg-area" style="background-image: url('https://img.freepik.com/free-vector/worldwide-global-map-outline-black-background_1017-46153.jpg?semt=ais_hybrid&w=740');"></div>
-            <div class="relative z-10 text-center">
-                <h2 class="section-heading text-2xl md:text-4xl font-bold mb-8 md:mb-12">Our Service <span class="heading-gradient-part">Areas</span></h2>
-                <p class="text-md md:text-lg text-gray-200 mb-8 md:mb-10 max-w-3xl mx-auto text-center">We operate from New Delhi, serving a wide range of domestic and international locations.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-blue-purple">North India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Delhi & NCR</li><li>Haryana</li><li>Punjab</li><li>Uttar Pradesh</li><li>Rajasthan</li><li>Himachal Pradesh</li><li>Jammu & Kashmir</li></ul></div>
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-green-yellow">East India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Bihar</li><li>Jharkhand</li><li>West Bengal</li><li>Odisha</li><li>North East States</li></ul></div>
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-pink-orange">West India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Maharashtra</li><li>Gujarat</li><li>Madhya Pradesh</li><li>Goa</li></ul></div>
-                    <div class="area-card rounded-xl shadow-xl p-4 md:p-6 text-center"><h3 class="font-semibold text-lg md:text-xl mb-3 text-gradient text-gradient-teal-cyan">South India</h3><ul class="list-disc list-inside text-sm space-y-1 text-left mx-auto max-w-xs"><li>Karnataka</li><li>Tamil Nadu</li><li>Andhra Pradesh</li><li>Telangana</li><li>Kerala</li></ul></div>
-                </div>
-                <p class="mt-8 md:mt-12 text-gray-300 text-md md:text-lg text-center">For international shipments and specific areas, please <a href="#contact" class="text-yellow-400 hover:text-yellow-300 font-semibold underline">contact us</a>.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="section relative py-12 md:py-16 px-4 text-center overflow-hidden animate-on-scroll">
-            <div class="absolute inset-0 bg-[url('https://t4.ftcdn.net/jpg/05/86/20/87/360_F_586208777_ff5IARSx9mR3y3hmfMYDTrQyQE4cA5nY.jpg')] bg-cover bg-center z-0"></div>
-            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm z-0"></div>
-            <div class="relative z-10 max-w-5xl mx-auto">
-                <h2 class="section-heading text-2xl md:text-4xl font-bold mb-8 md:mb-12">Get In <span class="heading-gradient-part">Touch With Us</span></h2>
-                <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch">
-                    <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
-                        <h3 class="text-lg md:text-2xl font-semibold mb-4 md:mb-6 text-left text-gradient text-gradient-5">Contact Information</h3>
-                        <p class="text-sm md:text-lg text-gray-200 mb-4 md:mb-6 text-left flex-grow">Reach out for quotes, support, or partnerships. We're here for your courier needs.</p>
-                        <div class="space-y-4 md:space-y-5 text-gray-200 text-left">
-                            <div class="contact-method"><strong class="block text-yellow-400 mb-1 text-xs md:text-sm uppercase tracking-wider">Phone:</strong><a href="tel:+919289580693" class="hover:text-yellow-300 transition-colors text-sm md:text-lg block">+91 9289580693</a> <a href="tel:+918766338468" class="hover:text-yellow-300 transition-colors text-sm md:text-lg block">+91 8766338468</a></div>
-                            <div class="contact-method"><strong class="block text-yellow-400 mb-1 text-xs md:text-sm uppercase tracking-wider">Email:</strong><a href="mailto:info@irsprints.com" class="hover:text-yellow-300 transition-colors break-all text-sm md:text-lg block">info@irsprints.com</a></div>
-                            <div class="contact-method mt-3 md:mt-5"><strong class="block text-yellow-400 mb-1 md:mb-2 text-xs md:text-sm uppercase tracking-wider">Office Address:</strong><p class="text-gray-200 leading-relaxed text-sm md:text-lg">253, A/6, 2nd Floor<br>Shahpur Jat, New Delhi-110049, India</p></div>
+                        <div id="courier-options-dropdown" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl p-2 z-20 hidden max-h-60 overflow-y-auto space-y-1">
+                            <!-- Options will be injected by JS -->
                         </div>
                     </div>
-                    <div class="bg-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20 shadow-xl flex flex-col">
-                        <h3 class="text-lg md:text-2xl font-semibold mb-4 md:mb-6 text-left text-gradient text-gradient-6">Instant Message</h3>
-                        <p class="text-sm md:text-lg text-gray-200 mb-4 md:mb-6 text-left flex-grow">Connect quickly via WhatsApp, LinkedIn, or find us on Google Maps.</p>
-                        <div class="mt-auto space-y-3 md:space-y-4">
-                            <a href="https://wa.me/919289580693?text=Hello%20Innovative%20Retail%20Solution,%20I%20have%20a%20query." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 md:space-x-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 px-4 md:py-3 md:px-5 rounded-lg transition-colors duration-300 w-full text-xs md:text-base">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413z"/></svg>
-                                <span>Message on WhatsApp</span>
-                            </a>
-                            <a href="https://www.linkedin.com/company/innovative-retail-solution/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 md:space-x-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 md:py-3 md:px-5 rounded-lg transition-colors duration-300 w-full text-xs md:text-base">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                                <span>Connect on LinkedIn</span>
-                            </a>
-                            <a href="https://www.google.com/maps/search/?api=1&query=OM%20International%20Courier%20253%2C%20A%2F6%2C%202nd%20Floor%20Shahpur%20Jat%20New%20Delhi%20110049" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 md:space-x-3 bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 px-4 md:py-3 md:px-5 rounded-lg transition-colors duration-300 w-full text-xs md:text-base">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                                </svg>
-                                <span>View on Google Maps</span>
-                            </a>
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-400 mt-3 md:mt-4 text-center">Typically replies within minutes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="track-shipment" class="tracking-section section animate-on-scroll" style="background-image: url('https://venuxpress.com/assets/images/domestic-courier.jpg'); background-size: cover; background-position: center;">
-            <div class="tracking-section-bg-overlay"></div>
-            <div class="tracking-content text-center">
-                 <h2 class="section-heading tracking-heading">Track Your <span class="heading-gradient-part">Shipment</span></h2>
-                <p class="tracking-subheading">Enter tracking number and select a partner to track your shipment.</p>
-                <div class="tracking-form-container">
-                    <div class="tracking-form">
-                        <input type="text" id="tracking-number-input" placeholder="Enter Your Tracking Number" class="text-center">
-                        <select id="courier-partner" class="text-center">
-                            <option value="">Select Courier Partner</option>
-                            <option value="dtdc">DTDC</option>
-                            <option value="tpc">Professional Couriers</option>
-                            <option value="bluedart">Blue Dart</option>
-                            <option value="delhivery">Delhivery</option>
-                            <option value="fedex">FedEx</option>
-                            <option value="aramex">Aramex</option>
-                        </select>
-                        <button onclick="trackShipment()">Track Directly</button>
-                        <p id="tracking-number-error" class="text-xs">Please enter a tracking number and select a courier.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <!-- Hidden original select for functionality -->
+                    <select id="courier-partner" class="hidden">
+                        <option value="">Select Courier Partner</option>
+                        <option value="dtdc" data-logo="https://www.dtdc.in/img/logos/logo.png" data-bg-class="dt_dc_logo_bg">DTDC</option>
+                        <option value="tpc" data-logo="https://www.tpcindia.com/images/logo.png" data-bg-class="tpc_logo_bg">Professional Couriers</option>
+                        <option value="bluedart" data-logo="https://companieslogo.com/img/orig/BLUEDART.NS_BIG-3e59e0be.png?t=1720244491" data-bg-class="bluedart_logo_bg">Blue Dart</option>
+                        <option value="delhivery" data-logo="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" data-bg-class="delhivery_logo_bg">Delhivery</option>
+                        <option value="fedex" data-logo="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" data-bg-class="fedex_logo_bg">FedEx</option>
+                        <option value="dhl" data-logo="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg" data-bg-class="dhl_logo_bg">DHL</option>
+                        <option value="aramex" data-logo="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" data-bg-class="aramex_logo_bg">Aramex</option>
+                    </select>
 
-        <section id="partner-logos" class="section animate-on-scroll py-8 md:py-12">
-            <div class="logos-track-container">
-                <div class="logos-track">
-                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
-                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
-                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
-                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
-                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4D148C/FFFFFF?text=FedEx'; this.onerror=null;">
-                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
-                    
-                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
-                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
-                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
-                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
-                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4D148C/FFFFFF?text=FedEx'; this.onerror=null;">
-                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
-
-                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
-                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
-                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
-                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
-                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4D148C/FFFFFF?text=FedEx'; this.onerror=null;">
-                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
-
-                    <img class="logo-img dt_dc_logo_bg" src="https://www.dtdc.in/img/logos/logo.png" alt="DTDC Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=DTDC'; this.onerror=null;">
-                    <img class="logo-img tpc_logo_bg" src="https://www.tpcindia.com/images/logo.png" alt="Professional Couriers Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=TPC'; this.onerror=null;">
-                    <img class="logo-img bluedart_logo_bg" src="https://www.bluedart.com/image/layout_set_logo?img_id=1414225&t=1743950364083" alt="BlueDart Logo" onerror="this.src='https://placehold.co/100x48/FFCC00/000000?text=BlueDart'; this.onerror=null;">
-                    <img class="logo-img delhivery_logo_bg" src="https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png" alt="Delhivery Logo" onerror="this.src='https://placehold.co/100x48/000000/FFFFFF?text=Delhivery'; this.onerror=null;">
-                    <img class="logo-img fedex_logo_bg" src="https://www.fedex.com/content/dam/fedex-com/logos/logo.png" alt="FedEx Logo" onerror="this.src='https://placehold.co/100x48/4D148C/FFFFFF?text=FedEx'; this.onerror=null;">
-                    <img class="logo-img aramex_logo_bg" src="https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp" alt="Aramex Logo" onerror="this.src='https://placehold.co/100x48/FFFFFF/000000?text=Aramex'; this.onerror=null;">
-                </div>
-            </div>
-        </section>
-        <section id="about-us" class="section animate-on-scroll bg-black">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-8 md:mb-12">
-                    <h2 class="section-heading text-2xl md:text-3xl font-bold">About <span class="heading-gradient-part">US</span></h2>
-                </div>
-                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
-                    <div class="lg:col-span-1 flex flex-col items-center"> <h3 class="text-xl md:text-2xl font-semibold mb-6 text-gradient text-gradient-7 text-center">Quick Links</h3>
-                        <div class="quick-links-box w-full max-w-md"> <h4 class="text-gradient text-gradient-blue-purple">Our Franchise Partners</h4>
-                            <ul class="space-y-1 md:space-y-2 mb-6 text-sm md:text-base">
-                                <li class="quick-link-item"><a href="https://dtdc.com" target="_blank" rel="noopener noreferrer" class="hover:underline">DTDC Services</a></li>
-                                <li class="quick-link-item"><a href="https://www.tpcindia.com" target="_blank" rel="noopener noreferrer" class="hover:underline">The Professional Couriers Network</a></li>
-                                <li class="quick-link-item"><a href="https://www.bluedart.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Blue Dart Express</a></li>
-                                <li class="quick-link-item"><a href="https://www.delhivery.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Delhivery Logistics</a></li>
-                                <li class="quick-link-item"><a href="https://www.fedex.com/en-in/home.html" target="_blank" rel="noopener noreferrer" class="hover:underline">FedEx India</a></li>
-                                <li class="quick-link-item"><a href="https://www.aramex.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Aramex Global Solutions</a></li>
-                            </ul>
-                            <h4 class="text-gradient text-gradient-green-yellow">Connect With Us</h4>
-                            <ul class="space-y-1 md:space-y-2 text-sm md:text-base">
-                                <li class="quick-link-item"><a href="#contact">Contact Page</a></li>
-                                <li class="quick-link-item"><a href="mailto:info@irsprints.com">Email Us: info@irsprints.com</a></li>
-                                <li class="quick-link-item"><a href="tel:+919289580693">Call Us: +91 9289580693</a></li>
-                            </ul>
+                    <!-- Tracking Number Input -->
+                    <div class="mb-4">
+                        <label for="tracking-number-input" class="form-label text-white/90">Tracking Number</label>
+                        <div class="relative">
+                            <i class="fas fa-barcode absolute left-4 top-1/2 -translate-y-1/2 text-white/40"></i>
+                            <input type="text" id="tracking-number-input" placeholder="Enter Your Tracking Number" class="form-input bg-white/10 text-white border-white/30 placeholder-slate-300 focus:bg-white/20 pl-12 focus:border-orange-400 focus:shadow-none">
                         </div>
                     </div>
-                    <div class="lg:col-span-2">
-                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gradient text-gradient-pink-orange">Our Story</h3>
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="md:col-span-2 space-y-3 text-sm md:text-base leading-relaxed text-gray-300">
-                                <p>OM International Courier started in New Delhi, aiming to connect businesses and individuals globally. We've grown from a small firm to a trusted logistics name.</p>
-                                <p>Our New Delhi hub efficiently manages shipments across India and worldwide. We are committed to reliability, speed, and total customer satisfaction. These values drive our operations.</p>
-                                <p>Our skilled team and strong network ensure every parcel is handled with precision. We oversee each delivery stage, guaranteeing timely arrival.</p>
-                                <p>We understand each consignment's importance, be it a business document, a personal gift, or commercial cargo. Every package receives our full attention.</p>
-                                <p>We use advanced technology, like real-time tracking, for transparency. Our diverse domestic and international services meet varied client needs.</p>
-                                <p>At OM International Courier, we deliver more than packages; we deliver assurance and peace of mind. Our mission is to offer seamless, efficient, and cost-effective solutions, building lasting client and partner relationships through transparency and service excellence.</p>
+
+                    <!-- Track Button -->
+                    <div>
+                        <button onclick="trackShipment()" class="btn w-full py-3 text-lg text-white track-btn-new">
+                            <i class="fas fa-search-location"></i>
+                            Track Now
+                        </button>
+                        <p id="tracking-error" class="text-orange-300 text-sm mt-3 h-4 text-center font-medium"></p>
+                    </div>
+                </div>
+                <!-- Plane Animation -->
+                <div class="plane-animation-container scroll-observer">
+                    <div class="plane-path"></div>
+                    <div class="plane-icon">✈︎</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- [END] Redesigned Tracking Section -->
+
+    <!-- Partner Logos Section -->
+    <section id="partner-logos" class="section-padding">
+        <div class="partner-content-container container mx-auto">
+            <!-- REDESIGNED: Partners Section Heading -->
+            <div class="text-center mb-12 scroll-observer">
+                <div class="partners-title-wrapper">
+                    <h2 class="section-title text-slate-800 !mb-0">Our Trusted <span class="gradient-text">Partners</span></h2>
+                </div>
+                <p class="section-subtitle text-slate-600 mt-8">We collaborate with the best in the business to guarantee reliable delivery.</p>
+            </div>
+            <div class="logos-track">
+                <!-- Logos will be duplicated by JS for a seamless loop -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-slate-100">
+        <div class="container mx-auto">
+            <!-- REDESIGNED: Contact Section Heading -->
+            <div class="text-center mb-16 scroll-observer">
+                <div class="contact-title-wrapper">
+                    <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                </div>
+                <p class="section-subtitle mt-4">Have questions or need a custom logistics solution? We're here to help.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 scroll-observer">
+                    <div class="card p-8 h-full flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex gap-4 items-start">
+                                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-phone"></i></div>
+                                    <div>
+                                        <h4 class="font-bold">Phone</h4>
+                                        <p class="text-gray-600 hover:text-blue-600"><a href="tel:+919289580693">+91 9289580693</a></p>
+                                        <p class="text-gray-600 hover:text-blue-600"><a href="tel:+919113467059">+91 9113467059</a></p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start">
+                                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-envelope"></i></div>
+                                    <div>
+                                        <h4 class="font-bold">Email</h4>
+                                        <p class="text-gray-600 hover:text-blue-600"><a href="mailto:info@irsprints.com">info@irsprints.com</a></p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start">
+                                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div>
+                                        <h4 class="font-bold">Office Address</h4>
+                                        <p class="text-gray-600">253, A/6, 2nd Floor, Shahpur Jat, New Delhi-110049, India</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="md:col-span-1 flex flex-col space-y-4 about-us-image-gallery mt-6 md:mt-0">
-                                <img src="https://img.freepik.com/free-psd/3d-illustration-people-with-gadget-use-highspeed-internet_1150-65899.jpg?semt=ais_items_boosted&w=740" alt="Securely packaged courier items" class="rounded-lg shadow-lg w-full h-auto object-cover">
-                                <img src="https://img.pikbest.com/png-images/20240913/cheerful-delivery-rider-on-a-scootera-playful-vector-cartoon-illustration-of-food-service_10834349.png!sw800" alt="Courier delivering a package quickly" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                            
+                            <!-- Follow Us buttons -->
+                            <div class="mt-8 pt-8 border-t border-slate-200 space-y-4">
+                                <h4 class="text-center font-bold text-slate-600 mb-4">Join Our Community</h4>
+                                <a href="https://x.com/irsprints" target="_blank" class="btn btn-x w-full">
+                                    <i class="fab fa-x-twitter"></i>
+                                    Follow Us on X
+                                </a>
+                                <a href="https://www.instagram.com/irsprints" target="_blank" class="btn btn-instagram w-full">
+                                    <i class="fab fa-instagram"></i>
+                                    Follow Us on Instagram
+                                </a>
+                                <a href="https://wa.me/919289580693" target="_blank" class="btn btn-whatsapp w-full">
+                                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="lg:col-span-3 scroll-observer" style="transition-delay: 200ms;">
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-bold mb-6">Request a Quote</h3>
+                        <form id="quote-request-form" class="space-y-4" onsubmit="return false;">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="quote-name" class="form-label">Full Name</label>
+                                    <input type="text" id="quote-name" class="form-input" placeholder="Your Name" required>
+                                </div>
+                                <div>
+                                    <label for="quote-email" class="form-label">Email Address</label>
+                                    <input type="email" id="quote-email" class="form-input" placeholder="your@email.com" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="quote-phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="quote-phone" class="form-input" placeholder="+91 00000 00000">
+                            </div>
+                            <div>
+                                <label for="quote-message" class="form-label">Message</label>
+                                <textarea id="quote-message" class="form-input" rows="5" placeholder="Tell us about your shipment needs..." required></textarea>
+                            </div>
+                            <button type="button" onclick="handleQuoteRequest()" class="btn btn-primary w-full py-3">
+                                <i class="fas fa-paper-plane"></i> Send Request
+                            </button>
+                            <p id="quote-error" class="text-red-600 text-sm mt-2 h-4 text-center font-medium"></p>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            if (preloader) {
-                preloader.classList.add('fade-out');
-            }
-        });
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300">
+        <div class="container mx-auto px-6 pt-16 pb-0">
+            <!-- [START] Modified Footer Layout -->
+            <div class="flex flex-wrap -mx-4">
+                <!-- About Column -->
+                <div class="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
+                    <img src="irs web footer.jpg" alt="Innovative Retail Solution Logo" class="w-full max-w-[280px] mb-4">
+                    <p class="text-slate-300 text-base mt-2 font-semibold">Your Trusted Global Logistics Partner</p>
+		            <p class="text-slate-400 text-sm mt-2">We provide premium courier services from Delhi to the rest of the world. Specializing in timely, secure, and cost effective delivery solutions, we are your trusted partner for both domestic and international logistics.</p>
+                </div>
+                <!-- Links Columns Wrapper -->
+                <div class="w-full lg:w-2/3 lg:pl-20 px-4">
+                    <div class="flex flex-wrap -mx-3">
+                        <!-- Quick Links Column -->
+                        <div class="w-full sm:w-1/3 px-3 mb-8 sm:mb-0">
+                            <h4 class="text-lg font-bold text-white mb-4">Quick Links</h4>
+                            <ul class="space-y-3">
+                                <li><a href="./about.html" class="text-slate-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                                <li><a href="#services" class="text-slate-400 hover:text-white transition-colors duration-300">Services</a></li>
+                                <li><a href="#calculator" class="text-slate-400 hover:text-white transition-colors duration-300">Rate Calculator</a></li>
+                                <li><a href="#tracking" class="text-slate-400 hover:text-white transition-colors duration-300">Track Shipment</a></li>
+                                <li><a href="#contact" class="text-slate-400 hover:text-white transition-colors duration-300">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- Legal Column -->
+                        <div class="w-full sm:w-1/3 px-3 mb-8 sm:mb-0">
+                            <h4 class="text-lg font-bold text-white mb-4">Legal</h4>
+                            <ul class="space-y-3">
+                                <li><a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                                <li><a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+			                    <li><a href="#" class="text-slate-400 hover:text-white transition-colors duration-300">Shipping Policy</a></li>
+                            </ul>
+                        </div>
+                         <!-- Connect Column -->
+                         <div class="w-full sm:w-1/3 px-3">
+                            <h4 class="text-lg font-bold text-white mb-4">Connect With Us</h4>
+                            <div class="flex space-x-5">
+                                <a href="https://www.facebook.com/innovativeretailsolution" class="footer-social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://x.com/irsprints" class="footer-social-link twitter"><i class="fab fa-x-twitter"></i></a>
+                                <a href="https://www.linkedin.com/company/innovative-retail-solution" class="footer-social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/irsprints" class="footer-social-link instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@innovativeretailsolution8222" class="footer-social-link youtube"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [END] Modified Footer Layout -->
+            <div class="border-t border-slate-800 mt-12 py-8 text-center text-slate-500 text-sm">
+                <p>&copy; Innovative Retail Solution. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        // Smooth scroll functionality
-        function smoothScrollTo(targetId) {
-            const element = document.getElementById(targetId);
-            if (element) {
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: elementPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
 
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href').substring(1);
-                if (document.getElementById(targetId)) {
-                    e.preventDefault();
-                    smoothScrollTo(targetId);
-                }
+<!-- Main Interaction Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
-
-        document.querySelectorAll('a[href^="#"]:not(nav a)').forEach(anchor => {
-            const targetId = anchor.getAttribute('href').substring(1);
-            if (document.getElementById(targetId)) {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    smoothScrollTo(targetId);
-                });
-            }
-        });
-
-        // Tracking shipment
-        function trackShipment() {
-            const courierSelect = document.getElementById("courier-partner");
-            const trackingInput = document.getElementById("tracking-number-input");
-            const errorMessageElement = document.getElementById("tracking-number-error");
-            const courier = courierSelect.value;
-            const trackingNumber = trackingInput.value.trim();
-            let trackingUrl = "";
-
-            trackingInput.classList.remove('input-error-highlight');
-            courierSelect.classList.remove('input-error-highlight');
-            errorMessageElement.style.display = 'none';
-            errorMessageElement.textContent = 'Please enter a tracking number and select a courier.';
-
-            if (!trackingNumber && !courier) {
-                trackingInput.classList.add('input-error-highlight');
-                courierSelect.classList.add('input-error-highlight');
-                errorMessageElement.style.display = 'block';
-                return;
-            }
-            if (!trackingNumber) {
-                trackingInput.classList.add('input-error-highlight');
-                errorMessageElement.textContent = 'Please enter a tracking number.';
-                errorMessageElement.style.display = 'block';
-                return;
-            }
-            if (!courier) {
-                courierSelect.classList.add('input-error-highlight');
-                errorMessageElement.textContent = 'Please select a courier partner.';
-                errorMessageElement.style.display = 'block';
-                return;
-            }
-
-            const encodedTrackingNumber = encodeURIComponent(trackingNumber);
-            switch (courier) {
-                case "dtdc": trackingUrl = `https://www.dtdc.in/tracking/shipment-tracking.asp?strCnNo1=${encodedTrackingNumber}&strSearchType=cnno`; break;
-                case "tpc": trackingUrl = `https://www.tpcindia.com/tracking.aspx?id=${encodedTrackingNumber}`; break;
-                case "bluedart": trackingUrl = `https://www.bluedart.com/maintracking.html?g-recaptcha-response=&awb=awb&numbers=${encodedTrackingNumber}`; break;
-                case "delhivery": trackingUrl = `https://www.delhivery.com/track/package/${encodedTrackingNumber}`; break;
-                case "fedex": trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; break;
-                case "aramex": trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; break;
-                default:
-                    errorMessageElement.textContent = 'Invalid courier selected.';
-                    errorMessageElement.style.display = 'block';
-                    return;
-            }
-            if (trackingUrl) window.open(trackingUrl, "_blank");
         }
 
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Partner Logos Slider - Animation is now purely CSS-driven and non-interactive.
-        // The JavaScript function for pausing the slider has been removed.
-        // The animation 'continuous-slide-logos' is defined in CSS and runs automatically.
-
-        // Section visibility animation
-        const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
-        const sectionObserverOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const sectionObserver = new IntersectionObserver((entries, observer) => {
+        // --- Scroll Animation Observer ---
+        const observers = document.querySelectorAll('.scroll-observer');
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('in-view');
                 }
             });
-        }, sectionObserverOptions);
-        sectionsToAnimate.forEach(section => { sectionObserver.observe(section); });
+        }, { threshold: 0.1 });
+        observers.forEach(obs => observer.observe(obs));
+        
+        // --- Hero Slider ---
+        const SLIDES_DATA = [
+            { img: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=2070&auto=format&fit=crop', title: 'Extensive Network', text: 'From the heart of Delhi to every corner of the globe, our network ensures your package is always moving.' },
+            { img: 'https://images.unsplash.com/photo-1551888315-941775ac2943?q=80&w=2070&auto=format&fit=crop', title: 'Real-Time Tracking', text: "Monitor your shipment's journey with our state-of-the-art, live tracking system for complete peace of mind." },
+            { img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format&fit=crop', title: 'Decade of Excellence', text: 'With 10+ years in the industry, we bring unparalleled expertise and reliability to every shipment.' },
+            { img: 'https://images.unsplash.com/photo-1587779772534-b172a05a8f41?q=80&w=2070&auto=format&fit=crop', title: 'Secure & Reliable', text: 'We prioritize the safety of your parcels with robust handling processes and dedicated support.' },
+            { img: 'https://images.unsplash.com/photo-1614728263952-84ea256ec346?q=80&w=1974&auto=format&fit=crop', title: 'Cost-Effective Solutions', text: 'Competitive pricing without compromising on service quality. Get the best value for your shipping needs.' }
+        ];
 
-        // Services Slider Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const servicesData = [
-                {
-                    title: "Domestic Courier",
-                    description: "Experience swift, secure door-to-door delivery across India. We offer versatile options including express (same-day/next-day in metro areas) and standard shipping, perfectly suited for documents, personal parcels, e-commerce logistics, and items requiring special handling or COD.",
-                    mainBgUrl: "https://designsvalley.com/wp-content/uploads/2023/08/Definite-Parcel-1024x576.jpg",
-                    integratedImageUrl: "https://www.equatorworldwide.co.uk/wp-content/uploads/2022/02/Services-Courier-The-Benefits-of-a-Courier-Service-Blog-Image.jpg",
-                    altText: "Domestic Parcel Delivery Van"
-                },
-                {
-                    title: "International Courier",
-                    description: "Connect globally with our expedited and dependable international shipping. We leverage a robust worldwide network, provide expert customs clearance, and offer comprehensive end-to-end tracking for secure, timely cross-border deliveries of both commercial and personal shipments, with express and economy options.",
-                    mainBgUrl: "https://www.pngitem.com/pimgs/m/138-1389209_cargo-plane-png-transparent-png.png",
-                    integratedImageUrl: "https://t3.ftcdn.net/jpg/14/23/57/08/360_F_1423570802_Tf6DbFbv828g4qlGneOnLEjSvWny9EfG.jpg",
-                    altText: "International Cargo Plane"
-                },
-                {
-                    title: "Real-Time Tracking",
-                    description: "Stay informed every step of the way. Our advanced real-time tracking system is accessible via a user-friendly web and mobile interface, providing live updates, estimated delivery times, proactive notifications for key milestones, and digital proof of delivery.",
-                    mainBgUrl: "https://img.freepik.com/free-photo/top-view-truck-boxes_23-2149853130.jpg?semt=ais_hybrid&w=740", 
-                    integratedImageUrl: "https://www.trukky.com/blog/wp-content/uploads/2018/01/truck-transport-1.jpg",
-                    altText: "Shipment Tracking GPS Pin"
-                },
-                {
-                    title: "Extensive Network",
-                    description: "Benefit from our comprehensive pan-India coverage, including tier 2 & 3 cities, through strong collaborations with leading logistics providers and local experts. Our extensive network ensures efficient last-mile delivery and consistent service quality nationwide.",
-                    mainBgUrl: "https://cdn.corporatefinanceinstitute.com/assets/distribution-network.png",
-                    integratedImageUrl: "https://static.vecteezy.com/system/resources/previews/023/743/919/non_2x/courier-delivery-man-holding-parcel-box-with-mobile-phone-fast-online-delivery-service-online-ordering-internet-e-commerce-ideas-for-websites-or-banners-3d-perspective-illustration-free-png.png",
-                    altText: "Courier Hub Network"
-                },
-                {
-                    title: "Customized Solutions",
-                    description: "We understand unique shipping needs. We offer tailored logistics solutions, including bulk shipping discounts, specialized handling for fragile/high-value items, scheduled pickups, dedicated account managers for businesses, and optional services like temperature-controlled shipping or enhanced insurance.",
-                    mainBgUrl: "https://img.freepik.com/premium-vector/delivery-services-e-commerce-packages-balloons-flying-blue-sky-background_44481-417.jpg?semt=ais_hybrid&w=740",
-                    integratedImageUrl: "https://talentfort.lk/wp-content/uploads/2024/09/custormized-1024x640.jpg",
-                    altText: "Customized Shipping Settings"
-                },
-                {
-                    title: "Franchise Adaptability",
-                    description: "Our seamless operations, standardized processes, and integrated technology ensure consistent, high-quality service across our entire network, including all partner franchises. We empower collaborators with training and support for a reliable, uniform customer experience.",
-                    mainBgUrl: "https://airindia.scene7.com/is/image/airindia/Courier-banner-web?fmt=png-alpha&bfc=on",
-                    integratedImageUrl: "https://www.teamwork.net/wp-content/uploads/2024/01/photo-partenaires.png", 
-                    altText: "Courier Franchise Partnership"
-                }
-            ];
+        const sliderContainer = document.querySelector('.hero-slider-container');
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        const dotsContainer = document.querySelector('.slider-dots');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
 
-            const servicesSection = document.getElementById('services');
-            const sliderContainer = servicesSection.querySelector('.services-slider-container');
-            const dotsContainer = servicesSection.querySelector('.service-dots-container');
-            const prevButton = document.getElementById('prevService');
-            const nextButton = document.getElementById('nextService');
-
-            if (!servicesSection || !sliderContainer || !dotsContainer || !prevButton || !nextButton) {
-                console.warn('Services slider elements not found. Slider will not initialize.');
-                return;
-            }
-
-            let currentServiceIndex = 0;
-            let serviceSlides = [];
-            let autoSwipeInterval = null;
-            const autoSwipeDelay = 3000; // 3 seconds
-            let userInteractionTimeout = null;
-            const interactionRestartDelay = 5000; // 5 seconds before resuming auto-swipe
-
-            function startAutoSwipe() {
-                stopAutoSwipe(); 
-                if (servicesData.length > 1) { 
-                    autoSwipeInterval = setInterval(() => {
-                        showService(currentServiceIndex + 1);
-                    }, autoSwipeDelay);
-                }
-            }
-
-            function stopAutoSwipe() {
-                clearInterval(autoSwipeInterval);
-                autoSwipeInterval = null;
-            }
-
-            function handleUserInteraction() {
-                stopAutoSwipe();
-                clearTimeout(userInteractionTimeout); 
-                userInteractionTimeout = setTimeout(() => {
-                    startAutoSwipe();
-                }, interactionRestartDelay);
-            }
-
-
-            function renderServices() {
-                sliderContainer.innerHTML = '';
-                dotsContainer.innerHTML = '';
-                serviceSlides = [];
-
-                servicesData.forEach((service, index) => {
-                    const slide = document.createElement('div');
-                    slide.className = 'service-slide-item';
-                    
-                    const contentWrapper = document.createElement('div');
-                    contentWrapper.className = 'service-slide-content-wrapper';
-                    if (window.innerWidth >= 768) {
-                        contentWrapper.classList.add(index % 2 === 0 ? 'slide-image-right' : 'slide-image-left');
-                    }
-
-                    contentWrapper.innerHTML = `
-                        <div class="service-slide-integrated-image-container">
-                            <img src="${service.integratedImageUrl || 'https://placehold.co/220x220/CCCCCC/1F2937?text=Image'}" alt="${service.altText || 'Service Image'}" class="service-slide-integrated-image">
-                        </div>
-                        <div class="service-slide-text-block">
-                            <h3 class="service-slide-title">${service.title}</h3>
-                            <p class="service-slide-description">${service.description}</p>
-                        </div>
-                    `;
-                    slide.appendChild(contentWrapper);
-                    sliderContainer.appendChild(slide);
-                    serviceSlides.push(slide);
-
-                    const dot = document.createElement('div');
-                    dot.className = 'service-dot';
-                    dot.setAttribute('aria-label', `Go to service slide ${index + 1}: ${service.title}`);
-                    dot.addEventListener('click', () => { 
-                        showService(index);
-                        handleUserInteraction(); 
-                    });
-                    dotsContainer.appendChild(dot);
-                });
-
-                if (servicesData.length > 0 && servicesData[0].mainBgUrl) {
-                    servicesSection.style.setProperty('--section-bg-image-url', `url('${servicesData[0].mainBgUrl}')`);
-                    setTimeout(() => { 
-                        servicesSection.classList.add('background-active');
-                    }, 50);
-                }
-                if (servicesData.length <= 1) {
-                    dotsContainer.style.display = 'none';
-                    prevButton.style.display = 'none';
-                    nextButton.style.display = 'none';
-                } else {
-                    dotsContainer.style.display = 'flex';
-                     if(window.innerWidth > 767) { 
-                        prevButton.style.display = 'flex';
-                        nextButton.style.display = 'flex';
-                    } else {
-                        prevButton.style.display = 'none';
-                        nextButton.style.display = 'none';
-                    }
-                }
-            }
-
-            function showService(index) {
-                const newIndex = (index + servicesData.length) % servicesData.length;
-
-                serviceSlides.forEach((s, i) => {
-                    s.classList.toggle('active', i === newIndex);
-                });
-                Array.from(dotsContainer.children).forEach((dot, i) => {
-                    dot.classList.toggle('active', i === newIndex);
-                });
-
-                if (servicesData[newIndex] && servicesData[newIndex].mainBgUrl) {
-                    servicesSection.style.setProperty('--section-bg-image-url', `url('${servicesData[newIndex].mainBgUrl}')`);
-                    if (!servicesSection.classList.contains('background-active')) {
-                        setTimeout(() => servicesSection.classList.add('background-active'), 20);
-                    }
-                } else {
-                    servicesSection.classList.remove('background-active');
-                }
-                currentServiceIndex = newIndex;
-            }
-
-            prevButton.addEventListener('click', () => {
-                showService(currentServiceIndex - 1);
-                handleUserInteraction();
-            });
-            nextButton.addEventListener('click', () => {
-                showService(currentServiceIndex + 1);
-                handleUserInteraction();
-            });
-
+        if (sliderContainer && sliderWrapper && dotsContainer && prevBtn && nextBtn) {
+            let currentIndex = 0;
+            let slideInterval;
+            let slides = [];
+            let dots = [];
+            let totalSlides = SLIDES_DATA.length;
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; 
-            sliderContainer.addEventListener('touchstart', (e) => {
-                if (servicesData.length <= 1) return; 
-                touchStartX = e.changedTouches[0].screenX;
-                stopAutoSwipe(); 
-            }, { passive: true });
+            let isDragging = false;
 
-            sliderContainer.addEventListener('touchend', (e) => {
-                if (servicesData.length <= 1) return; 
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchEndX < touchStartX - swipeThreshold) { 
-                    showService(currentServiceIndex + 1); 
-                } else if (touchEndX > touchStartX + swipeThreshold) { 
-                    showService(currentServiceIndex - 1); 
-                }
-                touchStartX = 0; touchEndX = 0; 
-                handleUserInteraction(); 
-            }, { passive: true });
+            SLIDES_DATA.forEach((slideData, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.style.backgroundImage = `url('${slideData.img}')`;
+                slide.innerHTML = `<div class="slide-content"><h1 class="text-4xl md:text-6xl">${slideData.title}</h1><p class="max-w-2xl mx-auto">${slideData.text}</p></div>`;
+                sliderWrapper.appendChild(slide);
 
-            renderServices();
-            if (serviceSlides.length > 0) {
-                showService(0); 
-                startAutoSwipe(); 
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => { goToSlide(i); resetInterval(); });
+                dotsContainer.appendChild(dot);
+            });
+            
+            slides = document.querySelectorAll('.slide');
+            dots = document.querySelectorAll('.dot');
+
+            function updateDots() {
+                dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
             }
 
-            window.addEventListener('resize', () => {
-                serviceSlides.forEach((slide, index) => {
-                    const wrapper = slide.querySelector('.service-slide-content-wrapper');
-                    if(wrapper){
-                        wrapper.classList.remove('slide-image-left', 'slide-image-right'); 
-                        if (window.innerWidth >= 768) { 
-                            wrapper.classList.add(index % 2 === 0 ? 'slide-image-right' : 'slide-image-left');
-                        }
-                    }
-                });
-                if (servicesData.length > 1) {
-                    if(window.innerWidth > 767) {
-                        prevButton.style.display = 'flex';
-                        nextButton.style.display = 'flex';
-                    } else {
-                        prevButton.style.display = 'none';
-                        nextButton.style.display = 'none';
-                    }
+            function goToSlide(index, transition = true) {
+                currentIndex = (index + totalSlides) % totalSlides;
+                sliderWrapper.style.transition = transition ? 'transform 0.7s ease-in-out' : 'none';
+                sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateDots();
+            }
+
+            function nextSlide() { goToSlide(currentIndex + 1); }
+            function prevSlide() { goToSlide(currentIndex - 1); }
+            function startInterval() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 5000); }
+            function resetInterval() { startInterval(); }
+
+            nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+            prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+            const handleDragStart = (e) => {
+                isDragging = true;
+                touchStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                sliderWrapper.style.transition = 'none';
+                clearInterval(slideInterval);
+            };
+
+            const handleDragMove = (e) => {
+                if (!isDragging) return;
+                const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const diff = currentX - touchStartX;
+                sliderWrapper.style.transform = `translateX(calc(-${currentIndex * 100}% + ${diff}px))`;
+            };
+
+            const handleDragEnd = (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                touchEndX = e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX;
+                const diff = touchEndX - touchStartX;
+                sliderWrapper.style.transition = 'transform 0.7s ease-in-out';
+                if (Math.abs(diff) > 50) {
+                    if (diff < 0) { nextSlide(); } else { prevSlide(); }
+                } else {
+                    goToSlide(currentIndex);
+                }
+                startInterval();
+            };
+            
+            sliderContainer.addEventListener('mousedown', handleDragStart);
+            sliderContainer.addEventListener('mousemove', handleDragMove);
+            sliderContainer.addEventListener('mouseup', handleDragEnd);
+            sliderContainer.addEventListener('mouseleave', handleDragEnd);
+            sliderContainer.addEventListener('touchstart', handleDragStart, { passive: true });
+            sliderContainer.addEventListener('touchmove', handleDragMove, { passive: true });
+            sliderContainer.addEventListener('touchend', handleDragEnd);
+            
+            goToSlide(0);
+            startInterval();
+        }
+
+        // --- Partner Logos Scroller ---
+        const logosTrack = document.querySelector('.logos-track');
+        if (logosTrack) {
+            const logos = [
+                { src: 'https://www.dtdc.in/img/logos/logo.png', alt: 'DTDC Logo', bgClass: 'dt_dc_logo_bg' },
+		        { src: 'https://companieslogo.com/img/orig/BLUEDART.NS_BIG-3e59e0be.png?t=1720244491', alt: 'BlueDart Logo', bgClass: 'bluedart_logo_bg'},
+                { src: 'https://www.tpcindia.com/images/logo.png', alt: 'Professional Couriers Logo', bgClass: 'tpc_logo_bg' },
+                { src: 'https://www.delhivery.com/_nuxt/img/Delhivery_logo.dcef706.png', alt: 'Delhivery Logo', bgClass: 'delhivery_logo_bg' },
+		        { src: 'https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg', alt: 'DHL Logo', bgClass: 'dhl_logo_bg'},
+                { src: 'https://www.fedex.com/content/dam/fedex-com/logos/logo.png', alt: 'FedEx Logo', bgClass: 'fedex_logo_bg' },
+                { src: 'https://www.aramex.com/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/Aramex%20logo%20English.webp', alt: 'Aramex Logo', bgClass: 'aramex_logo_bg' }
+            ];
+            const allLogos = [...logos, ...logos, ...logos, ...logos]; 
+            allLogos.forEach(logo => {
+                const div = document.createElement('div');
+                div.className = `logo-item-container ${logo.bgClass}`;
+                const img = document.createElement('img');
+                img.src = logo.src;
+                img.alt = logo.alt;
+                img.className = 'logo-img';
+                img.onerror = function() { this.style.display='none'; };
+                div.appendChild(img);
+                logosTrack.appendChild(div);
+            });
+        }
+        
+        // --- [START] Custom Courier Selector Logic ---
+        const courierSelectorBtn = document.getElementById('courier-selector-btn');
+        const courierOptionsDropdown = document.getElementById('courier-options-dropdown');
+        const originalSelect = document.getElementById('courier-partner');
+        const selectedCourierDisplay = document.getElementById('selected-courier-display');
+        const courierCaret = document.getElementById('courier-caret');
+
+        if (courierSelectorBtn && courierOptionsDropdown && originalSelect) {
+            // Populate custom dropdown from original select's options
+            Array.from(originalSelect.options).forEach(option => {
+                if (option.value) { // Skip the placeholder option
+                    const logoUrl = option.getAttribute('data-logo');
+                    const itemName = option.textContent;
+                    const bgClass = option.getAttribute('data-bg-class');
+                    
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'courier-option-item';
+                    itemDiv.dataset.value = option.value;
+                    
+                    itemDiv.innerHTML = `
+                        <div class="logo-bg-wrapper ${bgClass || ''}">
+                             <img src="${logoUrl}" alt="${itemName} logo" onerror="this.parentElement.style.display='none';">
+                        </div>
+                        <span>${itemName}</span>
+                    `;
+
+                    itemDiv.addEventListener('click', () => {
+                        originalSelect.value = option.value;
+                        selectedCourierDisplay.innerHTML = `
+                            <img src="${logoUrl}" alt="${itemName} logo" onerror="this.style.display='none';">
+                            <span class="text-white">${itemName}</span>
+                        `;
+                        courierOptionsDropdown.classList.add('hidden');
+                        courierCaret.classList.remove('rotate-180');
+                    });
+
+                    courierOptionsDropdown.appendChild(itemDiv);
                 }
             });
-        });
-    </script>
+
+            courierSelectorBtn.addEventListener('click', () => {
+                courierOptionsDropdown.classList.toggle('hidden');
+                courierCaret.classList.toggle('rotate-180');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!courierSelectorBtn.contains(e.target) && !courierOptionsDropdown.contains(e.target)) {
+                    courierOptionsDropdown.classList.add('hidden');
+                    courierCaret.classList.remove('rotate-180');
+                }
+            });
+        }
+        // --- [END] Custom Courier Selector Logic ---
+
+
+        // --- RATE CALCULATOR LOGIC ---
+        
+        // UPDATED: Function to return new international rates based on the provided CSV
+        function getNewInternationalRates() {
+            // Rates extracted from "DTDC International Rate Proposal.xlsx - WEP Rate-North.csv"
+            // Using "Non-Dox" prices.
+            const data = {
+                "United Kingdom": { name: "United Kingdom", rates: { 500: 1062.6, 1000: 1363.824, 1500: 1665.048, 2000: 1968.12, 2500: 2269.344, 3000: 2570.568, 3500: 2871.792, 4000: 3173.016, 4500: 3476.088, 5000: 3777.312, 5500: 4276.272, 6000: 4577.496, 6500: 4878.72, 7000: 5179.944, 7500: 5481.168, 8000: 5784.24, 8500: 6087.312, 9000: 6388.536, 9500: 6689.76, 10000: 6992.832, 10500: 7294.056, 11000: 7595.28, 11500: 7896.504, 12000: 8197.728, 12500: 8500.8, 13000: 8802.024, 13500: 9103.248, 14000: 9404.472, 14500: 9705.696, 15000: 10008.768, 15500: 10309.992, 16000: 10611.216, 16500: 10914.288, 17000: 11215.512, 17500: 11518.584, 18000: 11819.808, 18500: 12121.032, 19000: 12422.256, 19500: 12723.48, 20000: 13026.552, 21000: 13629, 22000: 14231.448, 23000: 14835.744, 24000: 15438.192, 25000: 16044.336, 26000: 16646.784, 27000: 17251.08, 28000: 17853.528, 29000: 18455.976, 30000: 19060.272 }, multiplier: 297.528 },
+                "Singapore": { name: "Singapore", rates: { 500: 851.928, 1000: 1094.016, 1500: 1173.48, 2000: 1236.312, 2500: 1308.384, 3000: 1347.192, 3500: 1428.504, 4000: 1548.624, 4500: 1665.048, 5000: 1788.864, 5500: 1984.752, 6000: 2104.872, 6500: 2300.76, 7000: 2422.728, 7500: 2370.984, 8000: 2480.016, 8500: 2659.272, 9000: 2768.304, 9500: 2945.712, 10000: 3054.744, 10500: 3232.152, 11000: 3341.184, 11500: 3522.288, 12000: 3627.624, 12500: 3808.728, 13000: 3917.76, 13500: 4095.168, 14000: 4204.2, 14500: 4381.608, 15000: 4490.64, 15500: 4669.896, 16000: 4778.928, 16500: 4956.336, 17000: 5065.368, 17500: 5242.776, 18000: 5351.808, 18500: 5532.912, 19000: 5638.248, 19500: 5819.352, 20000: 5928.384, 21000: 6214.824, 22000: 6501.264, 23000: 6789.552, 24000: 7075.992, 25000: 7362.432, 26000: 7648.872, 27000: 7939.008, 28000: 8225.448, 29000: 8511.888, 30000: 8800.176 }, multiplier: 460.152 },
+                "Malaysia": { name: "Malaysia", rates: { 500: 547.008, 1000: 694.848, 1500: 960.96, 2000: 1230.768, 2500: 1500.576, 3000: 1677.984, 3500: 1929.312, 4000: 2188.032, 4500: 2443.056, 5000: 2699.928, 5500: 2962.344, 6000: 3228.456, 6500: 3490.872, 7000: 3756.984, 7500: 4024.944, 8000: 4283.664, 8500: 4551.624, 9000: 4812.192, 9500: 5080.152, 10000: 5340.72, 10500: 5606.832, 11000: 5869.248, 11500: 6135.36, 12000: 6401.472, 12500: 6663.888, 13000: 6930, 13500: 7190.568, 14000: 7458.528, 14500: 7719.096, 15000: 7987.056, 15500: 8245.776, 16000: 8513.736, 16500: 8779.848, 17000: 9042.264, 17500: 9304.68, 18000: 9434.04, 18500: 9563.4, 19000: 9690.912, 19500: 9827.664, 20000: 9971.808, 21000: 10008.768, 22000: 10171.392, 23000: 10581.648, 24000: 11006.688, 25000: 11464.992, 26000: 11925.144, 27000: 12383.448, 28000: 12841.752, 29000: 13300.056, 30000: 13758.36 }, multiplier: 262.416 },
+                "United Arab Emirates": { name: "United Arab Emirates", rates: { 500: 848.232, 1000: 1201.2, 1500: 1585.584, 2000: 1938.552, 2500: 2322.936, 3000: 2675.904, 3500: 3093.552, 4000: 3481.632, 4500: 3901.128, 5000: 4289.208, 5500: 2725.8, 6000: 2727.648, 6500: 3176.712, 7000: 3178.56, 7500: 3625.776, 8000: 3633.168, 8500: 4076.688, 9000: 4082.232, 9500: 4529.448, 10000: 4534.992, 10500: 2762.76, 11000: 2877.336, 11500: 3023.328, 12000: 3137.904, 12500: 3285.744, 13000: 3400.32, 13500: 3546.312, 14000: 3660.888, 14500: 3808.728, 15000: 3923.304, 15500: 4069.296, 16000: 4183.872, 16500: 4331.712, 17000: 4444.44, 17500: 4594.128, 18000: 4706.856, 18500: 4852.848, 19000: 4967.424, 19500: 5115.264, 20000: 5229.84, 21000: 5490.408, 22000: 5752.824, 23000: 6013.392, 24000: 6275.808, 25000: 6534.528, 26000: 6796.944, 27000: 7059.36, 28000: 7319.928, 29000: 7582.344, 30000: 7842.912 }, multiplier: 656.04 },
+                "Bahrain": { name: "Bahrain", rates: { 500: 1709.4, 1000: 2158.464, 1500: 2679.6, 2000: 3169.32, 2500: 3690.456, 3000: 4732.728, 3500: 5242.776, 4000: 5717.712, 4500: 6227.76, 5000: 6702.696, 5500: 4960.032, 6000: 4961.88, 6500: 5782.392, 7000: 5784.24, 7500: 6604.752, 8000: 6606.6, 8500: 7428.96, 9000: 7430.808, 9500: 8253.168, 10000: 8253.168, 10500: 7221.984, 11000: 7221.984, 11500: 7876.176, 12000: 7874.328, 12500: 8532.216, 13000: 8532.216, 13500: 9186.408, 14000: 9184.56, 14500: 9840.6, 15000: 9840.6, 15500: 10494.792, 16000: 10494.792, 16500: 11147.136, 17000: 11147.136, 17500: 11803.176, 18000: 11805.024, 18500: 12457.368, 19000: 12457.368, 19500: 13111.56, 20000: 13113.408, 21000: 13721.4, 22000: 14373.744, 23000: 15027.936, 24000: 15680.28, 25000: 16332.624, 26000: 16984.968, 27000: 17641.008, 28000: 18293.352, 29000: 18945.696, 30000: 19599.888 }, multiplier: 656.04 },
+                "Kuwait": { name: "Kuwait", rates: { 500: 1709.4, 1000: 2158.464, 1500: 2679.6, 2000: 3169.32, 2500: 3690.456, 3000: 4732.728, 3500: 5242.776, 4000: 5717.712, 4500: 6227.76, 5000: 6702.696, 5500: 4960.032, 6000: 4961.88, 6500: 5782.392, 7000: 5784.24, 7500: 6604.752, 8000: 6606.6, 8500: 7428.96, 9000: 7430.808, 9500: 8253.168, 10000: 8253.168, 10500: 7221.984, 11000: 7221.984, 11500: 7876.176, 12000: 7874.328, 12500: 8532.216, 13000: 8532.216, 13500: 9186.408, 14000: 9184.56, 14500: 9840.6, 15000: 9840.6, 15500: 10494.792, 16000: 10494.792, 16500: 11147.136, 17000: 11147.136, 17500: 11803.176, 18000: 11805.024, 18500: 12457.368, 19000: 12457.368, 19500: 13111.56, 20000: 13113.408, 21000: 13721.4, 22000: 14373.744, 23000: 15027.936, 24000: 15680.28, 25000: 16332.624, 26000: 16984.968, 27000: 17641.008, 28000: 18293.352, 29000: 18945.696, 30000: 19599.888 }, multiplier: 656.04 },
+                "Oman": { name: "Oman", rates: { 500: 1709.4, 1000: 2158.464, 1500: 2679.6, 2000: 3169.32, 2500: 3690.456, 3000: 4732.728, 3500: 5242.776, 4000: 5717.712, 4500: 6227.76, 5000: 6702.696, 5500: 4960.032, 6000: 4961.88, 6500: 5782.392, 7000: 5784.24, 7500: 6604.752, 8000: 6606.6, 8500: 7428.96, 9000: 7430.808, 9500: 8253.168, 10000: 8253.168, 10500: 7221.984, 11000: 7221.984, 11500: 7876.176, 12000: 7874.328, 12500: 8532.216, 13000: 8532.216, 13500: 9186.408, 14000: 9184.56, 14500: 9840.6, 15000: 9840.6, 15500: 10494.792, 16000: 10494.792, 16500: 11147.136, 17000: 11147.136, 17500: 11803.176, 18000: 11805.024, 18500: 12457.368, 19000: 12457.368, 19500: 13111.56, 20000: 13113.408, 21000: 13721.4, 22000: 14373.744, 23000: 15027.936, 24000: 15680.28, 25000: 16332.624, 26000: 16984.968, 27000: 17641.008, 28000: 18293.352, 29000: 18945.696, 30000: 19599.888 }, multiplier: 656.04 },
+                "Jordan": { name: "Jordan", rates: { 500: 2256.408, 1000: 3167.472, 1500: 4119.192, 2000: 5030.256, 2500: 5970.888, 3000: 6904.128, 3500: 7822.584, 4000: 8755.824, 4500: 9696.456, 5000: 10607.52, 5500: 11614.68, 6000: 12592.272, 6500: 13597.584, 7000: 14575.176, 7500: 15582.336, 8000: 16559.928, 8500: 17565.24, 9000: 18540.984, 9500: 19548.144, 10000: 18923.52, 10500: 13135.584, 11000: 13115.256, 11500: 14329.392, 12000: 14309.064, 12500: 15519.504, 13000: 15501.024, 13500: 16713.312, 14000: 16692.984, 14500: 17905.272, 15000: 17884.944, 15500: 16271.64, 16000: 16251.312, 16500: 17286.192, 17000: 17265.864, 17500: 18300.744, 18000: 18282.264, 18500: 19318.992, 19000: 19298.664, 19500: 20333.544, 20000: 20313.216, 21000: 20501.712, 22000: 21477.456, 23000: 22453.2, 24000: 23430.792, 25000: 24406.536, 26000: 25382.28, 27000: 26359.872, 28000: 27335.616, 29000: 28311.36, 30000: 29288.952 }, multiplier: 949.872 },
+                "Saudi Arabia": { name: "Saudi Arabia", rates: { 500: 1848, 1000: 2040.192, 1500: 2343.264, 2000: 2616.768, 2500: 2919.84, 3000: 4303.992, 3500: 4579.344, 4000: 4826.976, 4500: 5104.176, 5000: 5351.808, 5500: 6878.256, 6000: 7164.696, 6500: 7482.552, 7000: 7768.992, 7500: 8086.848, 8000: 8373.288, 8500: 8691.144, 9000: 8977.584, 9500: 9295.44, 10000: 9581.88, 10500: 10258.248, 11000: 10239.768, 11500: 11189.64, 12000: 11169.312, 12500: 12119.184, 13000: 12100.704, 13500: 13050.576, 14000: 13032.096, 14500: 13980.12, 15000: 13961.64, 15500: 14246.232, 16000: 14227.752, 16500: 15135.12, 17000: 15116.64, 17500: 16024.008, 18000: 16007.376, 18500: 16912.896, 19000: 16896.264, 19500: 17805.48, 20000: 17785.152, 21000: 18291.504, 22000: 19161.912, 23000: 20032.32, 24000: 20904.576, 25000: 21774.984, 26000: 22309.056, 27000: 23166.528, 28000: 24024, 29000: 24883.32, 30000: 25740.792 }, multiplier: 779.856 },
+                "Qatar": { name: "Qatar", rates: { 500: 1709.4, 1000: 2158.464, 1500: 2679.6, 2000: 3169.32, 2500: 3690.456, 3000: 4732.728, 3500: 5242.776, 4000: 5717.712, 4500: 6227.76, 5000: 6702.696, 5500: 3827.208, 6000: 3827.208, 6500: 4461.072, 7000: 4461.072, 7500: 5096.784, 8000: 5096.784, 8500: 5730.648, 9000: 5730.648, 9500: 6362.664, 10000: 6362.664, 10500: 7221.984, 11000: 7221.984, 11500: 7876.176, 12000: 7874.328, 12500: 8532.216, 13000: 8532.216, 13500: 9186.408, 14000: 9184.56, 14500: 9840.6, 15000: 9840.6, 15500: 10078.992, 16000: 10077.144, 16500: 10707.312, 17000: 10705.464, 17500: 11333.784, 18000: 11333.784, 18500: 11962.104, 19000: 11963.952, 19500: 12592.272, 20000: 12594.12, 21000: 13202.112, 22000: 13830.432, 23000: 14458.752, 24000: 15085.224, 25000: 15715.392, 26000: 16343.712, 27000: 16972.032, 28000: 17600.352, 29000: 18228.672, 30000: 18856.992 }, multiplier: 630.168 },
+                "Kenya / South Africa / Nigeria": { name: "Kenya / South Africa / Nigeria", rates: { 500: 2114.112, 1000: 3056.592, 1500: 4024.944, 2000: 4985.904, 2500: 5954.256, 3000: 6894.888, 3500: 7865.088, 4000: 8803.872, 4500: 9774.072, 5000: 10735.032, 5500: 11792.088, 6000: 12819.576, 6500: 13878.48, 7000: 14905.968, 7500: 15963.024, 8000: 16990.512, 8500: 18049.416, 9000: 19075.056, 9500: 20132.112, 10000: 21159.6, 10500: 18358.032, 11000: 18343.248, 11500: 20024.928, 12000: 20008.296, 12500: 21691.824, 13000: 21677.04, 13500: 23360.568, 14000: 23343.936, 14500: 25027.464, 15000: 25012.68, 15500: 23634.072, 16000: 23619.288, 16500: 25110.624, 17000: 25093.992, 17500: 26585.328, 18000: 26570.544, 18500: 28063.728, 19000: 28047.096, 19500: 29538.432, 20000: 29521.8, 21000: 21664.104, 22000: 22697.136, 23000: 23728.32, 24000: 24759.504, 25000: 25790.688, 26000: 26823.72, 27000: 27854.904, 28000: 28886.088, 29000: 29917.272, 30000: 30950.304 }, multiplier: 1033.032 },
+                "Tanzania": { name: "Tanzania", rates: { 500: 2661.12, 1000: 3771.768, 1500: 4886.112, 2000: 5924.688, 2500: 7031.64, 3000: 8086.848, 3500: 9188.256, 4000: 10267.488, 4500: 11383.68, 5000: 12451.824, 5500: 13664.112, 6000: 14844.984, 6500: 16059.12, 7000: 17239.992, 7500: 18454.128, 8000: 19636.848, 8500: 20847.288, 9000: 22030.008, 9500: 23244.144, 10000: 23907.576, 10500: 20653.248, 11000: 20632.92, 11500: 22527.12, 12000: 22508.64, 12500: 24402.84, 13000: 24382.512, 13500: 26278.56, 14000: 26258.232, 14500: 28154.28, 15000: 28135.8, 15500: 26698.056, 16000: 26677.728, 16500: 28364.952, 17000: 28344.624, 17500: 30033.696, 18000: 30013.368, 18500: 31698.744, 19000: 31680.264, 19500: 33365.64, 20000: 33345.312, 21000: 32735.472, 22000: 34295.184, 23000: 35853.048, 24000: 37412.76, 25000: 38970.624, 26000: 40528.488, 27000: 42088.2, 28000: 43646.064, 29000: 45205.776, 30000: 46763.64 }, multiplier: 1537.536 },
+                "Uganda": { name: "Uganda", rates: { 500: 2655.576, 1000: 3764.376, 1500: 4876.872, 2000: 5917.296, 2500: 7024.248, 3000: 8079.456, 3500: 9180.864, 4000: 10256.4, 4500: 11374.44, 5000: 12440.736, 5500: 13653.024, 6000: 14833.896, 6500: 16044.336, 7000: 17225.208, 7500: 18439.344, 8000: 19620.216, 8500: 20832.504, 9000: 22013.376, 9500: 23223.816, 10000: 23889.096, 10500: 20651.4, 11000: 20636.616, 11500: 22527.12, 12000: 22514.184, 12500: 24402.84, 13000: 24389.904, 13500: 26278.56, 14000: 26265.624, 14500: 28154.28, 15000: 28141.344, 15500: 26710.992, 16000: 26696.208, 16500: 28381.584, 17000: 28364.952, 17500: 30048.48, 18000: 30033.696, 18500: 31717.224, 19000: 31700.592, 19500: 33385.968, 20000: 33369.336, 21000: 32766.888, 22000: 34328.448, 23000: 35888.16, 24000: 37449.72, 25000: 39009.432, 26000: 40569.144, 27000: 42130.704, 28000: 43690.416, 29000: 45251.976, 30000: 46811.688 }, multiplier: 1561.56 },
+                "Mauritious": { name: "Mauritious", rates: { 500: 1652.112, 1000: 1981.056, 1500: 2343.264, 2000: 2672.208, 2500: 3032.568, 3000: 3359.664, 3500: 3718.176, 4000: 4032.336, 4500: 4390.848, 5000: 4703.16, 5500: 5045.04, 6000: 5362.896, 6500: 5704.776, 7000: 6020.784, 7500: 6362.664, 8000: 6678.672, 8500: 7022.4, 9000: 7334.712, 9500: 7680.288, 10000: 7992.6, 10500: 8340.024, 11000: 8652.336, 11500: 8994.216, 12000: 9310.224, 12500: 9652.104, 13000: 9966.264, 13500: 10311.84, 14000: 10626, 14500: 10969.728, 15000: 11282.04, 15500: 11625.768, 16000: 11939.928, 16500: 12285.504, 17000: 12597.816, 17500: 12941.544, 18000: 13255.704, 18500: 13601.28, 19000: 13915.44, 19500: 14257.32, 20000: 14573.328, 21000: 16552.536, 22000: 17339.784, 23000: 18128.88, 24000: 18916.128, 25000: 19705.224, 26000: 20490.624, 27000: 21279.72, 28000: 22070.664, 29000: 22857.912, 30000: 23647.008 }, multiplier: 1561.56 },
+                "United States of America": { name: "United States of America", rates: { 500: 2845.92, 1000: 3265.416, 1500: 3683.064, 2000: 4102.56, 2500: 4520.208, 3000: 4939.704, 3500: 5355.504, 4000: 5710.32, 4500: 6126.12, 5000: 6538.224, 5500: 6952.176, 6000: 7366.128, 6500: 7780.08, 7000: 8194.032, 7500: 8606.136, 8000: 9020.088, 8500: 9435.888, 9000: 9847.992, 9500: 10260.096, 10000: 10446.744, 10500: 10851.456, 11000: 10851.456, 11500: 11237.688, 12000: 11631.312, 12500: 12034.176, 13000: 12437.04, 13500: 12843.6, 14000: 13179.936, 14500: 13579.104, 15000: 13983.816, 15500: 14412.552, 16000: 14802.48, 16500: 15197.952, 17000: 15598.968, 17500: 16020.312, 18000: 16410.24, 18500: 16835.28, 19000: 17252.928, 19500: 17665.032, 20000: 18053.112, 21000: 19311.6, 22000: 20104.392, 23000: 20897.184, 24000: 21691.824, 25000: 22504.944, 26000: 23299.584, 27000: 24157.056, 28000: 25068.12, 29000: 25927.44, 30000: 26768.28 }, multiplier: 892.584 },
+                "Australia": { name: "Australia", rates: { 500: 1580.04, 1000: 1888.656, 1500: 2199.12, 2000: 2507.736, 2500: 2818.2, 3000: 3128.664, 3500: 3437.28, 4000: 3747.744, 4500: 4056.36, 5000: 4366.824, 5500: 4551.624, 6000: 4828.824, 6500: 5107.872, 7000: 5385.072, 7500: 5664.12, 8000: 5941.32, 8500: 6218.52, 9000: 6497.568, 9500: 6774.768, 10000: 7053.816, 10500: 7331.016, 11000: 7608.216, 11500: 7887.264, 12000: 8164.464, 12500: 8443.512, 13000: 8720.712, 13500: 8997.912, 14000: 9276.96, 14500: 9554.16, 15000: 9833.208, 15500: 10110.408, 16000: 10387.608, 16500: 10666.656, 17000: 10943.856, 17500: 11221.056, 18000: 11500.104, 18500: 11777.304, 19000: 12056.352, 19500: 12333.552, 20000: 12610.752, 21000: 13167, 22000: 13723.248, 23000: 14279.496, 24000: 14835.744, 25000: 15390.144, 26000: 0, 27000: 0, 28000: 0, 29000: 0, 30000: 0 }, multiplier: 0 }
+            };
+            return data;
+        }
+
+        const RATES_DATA = {
+            envelope: {
+                'DELHI': { name: 'Delhi', upto250: 70, upto500: 80, additional500: 70 },
+                'NCR': { name: 'National Capital Region (NCR)', upto250: 90, upto500: 110, additional500: 85 },
+                'NORTH': { name: 'North (UP, Punjab, Haryana, etc.)', upto250: 95, upto500: 110, additional500: 90 },
+                'METRO': { name: 'Metros (Mumbai, Bangalore, etc.)', upto250: 120, upto500: 140, additional500: 100 },
+                'ROI': { name: 'Rest of India (ROI)', upto250: 190, upto500: 210, additional500: 170 }
+            },
+            parcel: { 
+                'DELHI': { name: 'Delhi', perKg: 45 },
+                'NCR': { name: 'National Capital Region (NCR)', perKg: 65 },
+                'NORTH': { name: 'North (UP, Punjab, Haryana, etc.)', perKg: 80 },
+                'METRO': { name: 'Metros (Mumbai, Bangalore, etc.)', perKg: 110 },
+                'ROI': { name: 'Rest of India (ROI)', perKg: 160 }
+            },
+            air: { 
+                'NORTH': { name: 'North (UP, Punjab, Haryana, etc.)', perKg: 120 },
+                'METRO': { name: 'Metros (Mumbai, Bangalore, etc.)', perKg: 170 },
+                'ROI': { name: 'Rest of India (ROI)', perKg: 195 }
+            },
+            international: getNewInternationalRates(),
+            constants: {
+                VOLUMETRIC_DIVISOR: 4750,
+                FUEL_SURCHARGE_PERCENT: 0.35,
+                GST_PERCENT: 0.18,
+            }
+        };
+
+        const form = document.getElementById('rate-calculator-form');
+        if (form) {
+            const shipmentTypeSelect = document.getElementById('shipment-type');
+            const destinationSelect = document.getElementById('destination');
+            const weightInput = document.getElementById('actual-weight');
+            const weightUnitLabel = document.getElementById('weight-unit-label');
+            const volumetricSection = document.getElementById('volumetric-section');
+            const contentSection = document.getElementById('content-section');
+            const lengthInput = document.getElementById('length');
+            const breadthInput = document.getElementById('breadth');
+            const heightInput = document.getElementById('height');
+            const contentInput = document.getElementById('content-description');
+            const calculateBtn = document.getElementById('calculate-rate-btn');
+            const resultDiv = document.getElementById('rate-result');
+            const initialMessageDiv = document.getElementById('rate-initial-message');
+
+            function updateFormUI() {
+                const type = shipmentTypeSelect.value;
+                let destinations = RATES_DATA[type];
+                
+                destinationSelect.innerHTML = '';
+                for (const key in destinations) {
+                    // The international object has 'name' and 'rates' properties, so we check for 'name'
+                    if (destinations.hasOwnProperty(key) && destinations[key].name) {
+                        const option = document.createElement('option');
+                        option.value = key;
+                        option.textContent = destinations[key].name;
+                        destinationSelect.appendChild(option);
+                    }
+                }
+
+                if (type === 'envelope') {
+                    weightInput.placeholder = "e.g., 450";
+                    weightInput.min = "100";
+                    weightInput.step = "50";
+                    weightUnitLabel.textContent = "Weight in Grams (g)";
+                    volumetricSection.classList.add('hidden');
+                    contentSection.classList.add('hidden');
+                } 
+                else if (type === 'international') {
+                    weightInput.placeholder = "e.g., 1250";
+                    weightInput.min = "250";
+                    weightInput.step = "100";
+                    weightUnitLabel.textContent = "Weight in Grams (g)";
+                    volumetricSection.classList.remove('hidden');
+                    contentSection.classList.remove('hidden');
+                } 
+                else { // Parcel or Air
+                    weightInput.placeholder = "e.g., 1.2";
+                    weightInput.min = "1";
+                    weightInput.step = "0.1";
+                    weightUnitLabel.textContent = "Weight in Kilograms (kg)";
+                    volumetricSection.classList.remove('hidden');
+                    contentSection.classList.add('hidden');
+                }
+                
+                resultDiv.classList.add('hidden');
+                initialMessageDiv.classList.remove('hidden');
+            }
+
+            function displayError(message) {
+                resultDiv.innerHTML = `<div class="error-message">${message}</div>`;
+                initialMessageDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+            }
+            
+            function calculateRate() {
+                const type = shipmentTypeSelect.value;
+                const destinationKey = destinationSelect.value;
+                const weight = parseFloat(weightInput.value);
+
+                if (isNaN(weight) || weight <= 0) {
+                    displayError("Please enter a valid positive weight.");
+                    return;
+                }
+
+                // **MODIFIED**: Compulsory volumetric check
+                const length = parseFloat(lengthInput.value);
+                const breadth = parseFloat(breadthInput.value);
+                const height = parseFloat(heightInput.value);
+
+                if (type === 'parcel' || type === 'air' || type === 'international') {
+                    if (isNaN(length) || length <= 0 || isNaN(breadth) || breadth <= 0 || isNaN(height) || height <= 0) {
+                        displayError("Please provide valid Length, Breadth, and Height in cm for this shipment type.");
+                        return;
+                    }
+                }
+
+                let baseCost = 0;
+                let calculationNotes = [];
+                let chargeableWeight = weight;
+                
+                if (type !== 'envelope') {
+                    let volumetricWeight;
+                    // For international, volumetric weight is in grams, same as actual weight unit
+                    // For domestic, it's in kg, same as actual weight unit
+                    const volumetricDivisor = 5000; // Standard is 5000
+                    volumetricWeight = (length * breadth * height) / volumetricDivisor;
+                    
+                    if (type !== 'international') { 
+                         // The formula is L*B*H (cm) / 5000 = Volumetric Weight (kg)
+                    } else {
+                        // The formula is L*B*H (cm) / 5000 = Volumetric Weight (kg), so convert to grams
+                        volumetricWeight = volumetricWeight * 1000;
+                    }
+
+
+                    if (volumetricWeight > weight) {
+                        chargeableWeight = volumetricWeight;
+                        calculationNotes.push(`Volumetric weight is higher: ${chargeableWeight.toFixed(2)}${type === 'international' ? 'g' : 'kg'}`);
+                    } else {
+                        calculationNotes.push(`Actual weight is used: ${weight.toFixed(2)}${type === 'international' ? 'g' : 'kg'}`);
+                    }
+                }
+
+                if (type === 'envelope') {
+                    const zoneRates = RATES_DATA.envelope[destinationKey];
+                    if (chargeableWeight <= 250) {
+                        baseCost = zoneRates.upto250;
+                        calculationNotes.push(`Base rate for up to 250g.`);
+                    } else if (chargeableWeight <= 500) {
+                        baseCost = zoneRates.upto500;
+                        calculationNotes.push(`Base rate for 251g-500g slab.`);
+                    } else {
+                        const baseRate = zoneRates.upto500;
+                        const additionalWeight = chargeableWeight - 500;
+                        const additionalBlocks = Math.ceil(additionalWeight / 500);
+                        const additionalCost = additionalBlocks * zoneRates.additional500;
+                        baseCost = baseRate + additionalCost;
+                        calculationNotes.push(`Base for 500g + ${additionalBlocks} additional 500g slab(s).`);
+                    }
+                } 
+                else if (type === 'international') {
+                    const zoneRates = RATES_DATA.international[destinationKey];
+                    if (!zoneRates) {
+                        displayError("Rates for the selected country are not available.");
+                        return;
+                    }
+                    
+                    // chargeableWeight is in grams
+                    if (chargeableWeight > 30000) {
+                        const baseCost30kg = zoneRates.rates[30000];
+                        const additionalWeightKg = (chargeableWeight - 30000) / 1000;
+                        // Bill per additional kg or part thereof
+                        const additionalCost = Math.ceil(additionalWeightKg) * zoneRates.multiplier;
+                        baseCost = baseCost30kg + additionalCost;
+                        calculationNotes.push(`Rate for 30kg slab + ${Math.ceil(additionalWeightKg)}kg at multiplier rate.`);
+                    } else {
+                        const billingSlabGrams = Math.ceil(chargeableWeight / 500) * 500;
+                        baseCost = zoneRates.rates[billingSlabGrams];
+                        
+                        if (typeof baseCost === 'undefined' || baseCost === 0) {
+                            displayError(`Rates for the specified weight are not available for this country. Please contact us for a custom quote.`);
+                            return;
+                        }
+                        calculationNotes.push(`Rate for ${billingSlabGrams / 1000}kg slab applied.`);
+                    }
+                    
+                    // *** CHANGE REQUEST: Increase base freight charge by 15% but don't show the note ***
+                    if (baseCost > 0) {
+                        baseCost = baseCost * 1.15;
+                        // **REMOVED**: The note about the handling fee is no longer added to calculationNotes.
+                        // calculationNotes.push(`A 15% international handling fee (₹${(baseCost - originalBaseCost).toFixed(2)}) has been added.`);
+                    }
+                    
+                } 
+                else { // Parcel or Air Cargo
+                    const billingWeightKg = Math.ceil(chargeableWeight);
+                    if (billingWeightKg > chargeableWeight) {
+                       calculationNotes.push(`Weight rounded up to ${billingWeightKg} kg for billing.`);
+                    }
+                    const zoneRates = RATES_DATA[type][destinationKey];
+                    baseCost = billingWeightKg * zoneRates.perKg;
+                    calculationNotes.push(`Calculation: ${billingWeightKg} kg x ₹${zoneRates.perKg}/kg.`);
+                }
+                
+                const fuelSurcharge = baseCost * RATES_DATA.constants.FUEL_SURCHARGE_PERCENT;
+                const costWithFuel = baseCost + fuelSurcharge;
+                const gstAmount = costWithFuel * RATES_DATA.constants.GST_PERCENT;
+                const grandTotal = costWithFuel + gstAmount;
+
+                displayResult({
+                    baseCost: baseCost,
+                    fuelSurcharge: fuelSurcharge,
+                    gstAmount: gstAmount,
+                    grandTotal: grandTotal,
+                    notes: calculationNotes,
+                });
+            }
+
+            function displayResult(result) {
+                let notesHtml = result.notes.map(note => `<li class="text-xs text-slate-500">${note}</li>`).join('');
+
+                const shipmentType = shipmentTypeSelect.options[shipmentTypeSelect.selectedIndex].text;
+                const destination = destinationSelect.options[destinationSelect.selectedIndex].text;
+                const weight = document.getElementById('actual-weight').value;
+                const weightUnit = document.getElementById('weight-unit-label').textContent;
+                const contentDesc = document.getElementById('content-description').value;
+
+                let whatsappMessage = `*New Shipment Enquiry*\n\n` +
+                                      `*Service:* ${shipmentType}\n` +
+                                      `*Destination:* ${destination}\n` +
+                                      `*Weight:* ${weight} ${weightUnit}\n`;
+                
+                if (contentDesc) {
+                    whatsappMessage += `*Contents:* ${contentDesc}\n`;
+                }
+
+                whatsappMessage += `*Estimated Cost:* ₹${Math.ceil(result.grandTotal).toFixed(2)}\n\n` +
+                                   `To proceed, please provide your full pickup address and contact number.`;
+
+                const whatsappLink = `https://wa.me/919289580693?text=${encodeURIComponent(whatsappMessage)}`;
+
+
+                resultDiv.innerHTML = `
+                    <div class="card p-6">
+                        <h4 class="text-lg font-bold mb-4 text-center text-gray-800">Estimated Shipment Rate</h4>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">Base Freight Charge</span>
+                                <span class="font-semibold text-slate-800">₹ ${result.baseCost.toFixed(2)}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">Fuel Surcharge (35%)</span>
+                                <span class="font-semibold text-slate-800">+ ₹ ${result.fuelSurcharge.toFixed(2)}</span>
+                            </div>
+                            <hr/>
+                            <div class="flex justify-between items-center font-semibold">
+                                <span class="text-slate-600">Subtotal</span>
+                                <span class="text-slate-800">₹ ${(result.baseCost + result.fuelSurcharge).toFixed(2)}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-600">GST (18%)</span>
+                                <span class="font-semibold text-slate-800">+ ₹ ${result.gstAmount.toFixed(2)}</span>
+                            </div>
+                        </div>
+
+                        <div class="total-amount mt-4">
+                            <span class="text-lg font-bold">Grand Total</span>
+                            <p class="text-4xl font-extrabold tracking-tight">₹ ${Math.ceil(result.grandTotal).toFixed(2)}</p>
+                        </div>
+
+                        <div class="bg-slate-100 rounded-lg p-3 mt-4">
+                            <h5 class="font-bold text-xs text-slate-600 mb-1">Calculation Details:</h5>
+                            <ul class="list-disc list-inside space-y-1">${notesHtml}</ul>
+                        </div>
+                        
+                        <a href="${whatsappLink}" target="_blank" class="btn w-full mt-4 bg-green-500 hover:bg-green-600 border-0 text-white">
+                            <i class="fab fa-whatsapp"></i> Send Enquiry via WhatsApp
+                        </a>
+                        
+                        <p class="text-xs text-gray-500 mt-4 text-center">This is an estimated rate. Final charges may vary based on actual weight, dimensions, and applicable taxes.</p>
+                    </div>
+                `;
+                initialMessageDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+            }
+
+            shipmentTypeSelect.addEventListener('change', updateFormUI);
+            calculateBtn.addEventListener('click', calculateRate);
+            
+            updateFormUI();
+        }
+    });
+
+    // --- QUOTE REQUEST SCRIPT (Global Scope for onclick) ---
+    function handleQuoteRequest() {
+        const errorElement = document.getElementById('quote-error');
+        errorElement.textContent = ''; 
+
+        const nameInput = document.getElementById('quote-name');
+        const emailInput = document.getElementById('quote-email');
+        const messageInput = document.getElementById('quote-message');
+        const phoneInput = document.getElementById('quote-phone');
+        
+        nameInput.style.borderColor = '';
+        emailInput.style.borderColor = '';
+        messageInput.style.borderColor = '';
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const message = messageInput.value.trim();
+
+        let errors = [];
+        if (!name) {
+            errors.push('Name is required.');
+            nameInput.style.borderColor = 'var(--danger)';
+        }
+        if (!email) {
+            errors.push('Email is required.');
+            emailInput.style.borderColor = 'var(--danger)';
+        }
+        if (!message) {
+            errors.push('Message is required.');
+            messageInput.style.borderColor = 'var(--danger)';
+        }
+
+        if (errors.length > 0) {
+            errorElement.textContent = errors.join(' ');
+            return;
+        }
+
+        const subject = `Quote Request from ${name}`;
+        const body = `A new quote request has been submitted from the website.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`;
+
+        const mailtoLink = `mailto:info@irsprints.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoLink;
+    }
+
+    // --- TRACKING SCRIPT (Global Scope for onclick) ---
+    function trackShipment() {
+        const courierSelect = document.getElementById("courier-partner");
+        const trackingInput = document.getElementById("tracking-number-input");
+        const errorElement = document.getElementById("tracking-error");
+
+        errorElement.textContent = '';
+        trackingInput.style.borderColor = '';
+        const courierButton = document.getElementById('courier-selector-btn');
+        courierButton.style.borderColor = '';
+
+        if (!courierSelect.value) {
+            errorElement.textContent = 'Please select a courier partner.';
+            courierButton.style.borderColor = 'var(--secondary-brand)';
+            return;
+        }
+        const trackingNumber = trackingInput.value.trim();
+        if (!trackingNumber) {
+            errorElement.textContent = 'Please enter a tracking number.';
+            trackingInput.style.borderColor = 'var(--secondary-brand)';
+            return;
+        }
+
+        const encodedTrackingNumber = encodeURIComponent(trackingNumber);
+        let trackingUrl = "";
+        switch (courierSelect.value) {
+            case "dtdc": trackingUrl = `https://www.dtdc.in/tracking/shipment-tracking.asp?strCnNo1=${encodedTrackingNumber}&strSearchType=cnno`; break;
+            case "tpc": trackingUrl = `https://www.tpcindia.com/tracking.aspx?id=${encodedTrackingNumber}`; break;
+            case "bluedart": trackingUrl = `https://www.bluedart.com/maintracking.html?awb=awb&numbers=${encodedTrackingNumber}`; break;
+            case "delhivery": trackingUrl = `https://www.delhivery.com/track/package/${encodedTrackingNumber}`; break;
+            case "fedex": trackingUrl = `https://www.fedex.com/fedextrack/?trknbr=${encodedTrackingNumber}`; break;
+            case "dhl": trackingUrl = `https://www.dhl.com/in-en/home/tracking.html?tracking-id=${encodedTrackingNumber}`; break;
+            case "aramex": trackingUrl = `https://www.aramex.com/track/results?ShipmentNumber=${encodedTrackingNumber}`; break;
+            default:
+                errorElement.textContent = 'Invalid courier selected.';
+                return;
+        }
+        
+        if (trackingUrl) {
+            window.open(trackingUrl, "_blank");
+        }
+    }
+</script>
+
 </body>
 </html>
